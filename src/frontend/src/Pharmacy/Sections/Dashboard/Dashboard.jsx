@@ -7,7 +7,7 @@ import Dashboardgrp from "../../Components/DashboardGroups/Dashboardgrp";
 const Dashboard = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
   const [revenue, setRevenue] = useState(0);
-  const [availableMeds, setAvailableMeds] = useState(0);
+  const [availableMeds, setAvailableMeds] = useState(50);
   const [medicineShortage, setMedicineShortage] = useState(0);
 
   /*
@@ -23,6 +23,7 @@ const Dashboard = () => {
       linkTo: "reports",
       accentColor: "#01A768",
       bgColor: "#01A7684D",
+      activeTab: "repo",
     },
     {
       icon: Assets.Revenue,
@@ -32,6 +33,8 @@ const Dashboard = () => {
       linkTo: "reports",
       accentColor: "#FED600",
       bgColor: "#FED6004D",
+      rs: true,
+      activeTab: "repo",
     },
     {
       icon: Assets.AvailableMeds,
@@ -40,6 +43,7 @@ const Dashboard = () => {
       linkTo: "inventory",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
+      activeTab: "invent",
     },
     {
       icon: Assets.Danger,
@@ -48,6 +52,7 @@ const Dashboard = () => {
       linkTo: "listofmeds",
       accentColor: "#F0483E",
       bgColor: "#F0483E4D",
+      activeTab: "meds",
     },
   ];
 

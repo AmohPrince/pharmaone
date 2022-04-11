@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
@@ -10,6 +10,7 @@ import RightTab from "./Components/RightTab/RightTab";
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
 their photo and name. The status will be computed */
+export const tabContext = React.createContext();
 
 const Pharmacy = () => {
   const [onTab, setOnTab] = useState("");
@@ -193,10 +194,11 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
-
-        <div className="Pharmacy__body">
-          <Outlet />
-        </div>
+        <tabContext.Provider value={setOnTab}>
+          <div className="Pharmacy__body">
+            <Outlet />
+          </div>
+        </tabContext.Provider>
       </div>
     </div>
   );
