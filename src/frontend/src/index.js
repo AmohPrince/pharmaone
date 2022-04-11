@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Pharmacy from "./Pharmacy/Pharmacy";
 import "./index.css";
-import App from "./App";
 import {
   Dashboard,
   Inventory,
@@ -23,10 +22,11 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/pharmacy" element={<Pharmacy />}>
+      <Route path="/" element={<Pharmacy />}>
         <Route path="Dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard/reports" element={<Reports />} />
         <Route path="Inventory" element={<Inventory />} />
+        <Route path="/Dashboard/inventory" element={<Inventory />} />
         <Route path="Chat%20With%20Others" element={<Chat />} />
         <Route path="Covid-19" element={<Covid />} />
         <Route path="Reports" element={<Reports />} />

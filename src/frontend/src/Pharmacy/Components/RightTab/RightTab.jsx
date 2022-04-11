@@ -7,7 +7,7 @@ icon a name and a boolean whether or not there is a dropdown.
 */
 const RightTab = ({ data, onTab }) => {
   return (
-    <Link to={`/pharmacy/${data.name}`} style={{ textDecoration: "none" }}>
+    <Link to={`${data.name}`} style={{ textDecoration: "none" }}>
       <div className={`${onTab}${data.name}`}>
         {data.topLine ? <div className="splitter" /> : null}
         <div className="RightTab flex__container" onClick={data.onClick}>

@@ -13,7 +13,7 @@ const Dashboardgrp = ({ data }) => {
       <p className="p__poppins">{data.status}</p>
       <p className="p__poppins">{data.name}</p>
 
-      <Link to={`/pharmacy/${data.linkTo}`}>
+      <Link to={data.linkTo}>
         <div
           className="Dashboardgrp__btm flex__container"
           style={{ backgroundColor: data.bgColor }}
