@@ -46,7 +46,10 @@ const Dashboardgrp = ({ data }) => {
       <Link to={data.linkTo}>
         <div
           className="Dashboardgrp__btm flex__container"
-          style={{ backgroundColor: data.bgColor }}
+          style={{
+            backgroundColor: data.bgColor,
+            borderTop: `1px solid ${data.accentColor}`,
+          }}
           onClick={() => {
             setOnTab(data.activeTab);
             console.log(data.activeTab);

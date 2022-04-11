@@ -3,13 +3,21 @@ import "./Dashboard.css";
 import SectionName from "../../Components/SectionName/SectionName";
 import Assets from "../../../Assets/Assets";
 import Dashboardgrp from "../../Components/DashboardGroups/Dashboardgrp";
+import DashBoardLinks from "../../Components/DashboardLinks/DashBoardLinks";
 
 const Dashboard = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
-  const [revenue, setRevenue] = useState(0);
+  const [revenue, setRevenue] = useState(135540);
   const [availableMeds, setAvailableMeds] = useState(50);
-  const [medicineShortage, setMedicineShortage] = useState(0);
+  const [medicineShortage, setMedicineShortage] = useState(-1);
 
+  const [medicineGroups, setMedicineGroups] = useState(70);
+  const [soldMedicine, setSoldMedicine] = useState(45);
+  const [generatedInvoices, setGeneratedInvoices] = useState(13);
+  const [noOfSuppliers, setNoOfSuppliers] = useState(22);
+  const [noOfUsers, setNoOfUsers] = useState(44);
+  const [noOfCustomers, setNoOfCustomers] = useState(4);
+  const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
   /*
   This state values will be calculated and updated as required. The value will
   then be read from the section icon which in turn updates the boxes
@@ -61,6 +69,41 @@ const Dashboard = () => {
     sub: "A quick data overview of the inventory",
   };
 
+  const dataGroup2 = [
+    {
+      groupTitle: "Inventory",
+      linkTo: "Configuration",
+      value1: availableMeds,
+      value2: medicineGroups,
+      text1: "Total no of Medicines",
+      text2: "Medicine Groups",
+    },
+    {
+      groupTitle: "Quick Report",
+      select: true,
+      value1: soldMedicine,
+      value2: generatedInvoices,
+      text1: "Qty of Medicines Sold",
+      text2: "Invoices Generated",
+    },
+    {
+      groupTitle: "My Pharmacy",
+      linkTo: "user management",
+      value1: noOfSuppliers,
+      value2: noOfUsers,
+      text1: "Total no of Suppliers",
+      text2: "Total no of Users",
+    },
+    {
+      groupTitle: "Customers",
+      linkTo: "Customers",
+      value1: noOfCustomers,
+      value2: frequentlyBoughtItem,
+      text1: "Total no of Customers",
+      text2: "Frequently bought item",
+    },
+  ];
+
   return (
     <div className="Dashboard__container">
       <div className="Dashboard__top ">
@@ -80,7 +123,11 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
-      <div className="Dashboard__bottom"></div>
+      <div className="Dashboard__bottom flex__container">
+        {dataGroup2.map((data) => {
+          return <DashBoardLinks data={data} />;
+        })}
+      </div>
     </div>
   );
 };

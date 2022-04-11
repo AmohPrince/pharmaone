@@ -1,3 +1,6 @@
+.Date {
+  margin-left: -30px;
+}
 .Date__greeting {
   font-weight: 600;
   color: var(--black);
