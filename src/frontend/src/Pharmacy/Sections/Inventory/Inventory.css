@@ -1,0 +1,5 @@
+.Inventory__container {
+  padding: 4%;
+  height: calc(101% + 6px);
+  background-color: var(--lightGrey);
+}

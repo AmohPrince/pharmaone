@@ -14,6 +14,9 @@ export const tabContext = React.createContext();
 
 const Pharmacy = () => {
   const [onTab, setOnTab] = useState("");
+  const [arrowState, setArrowState] = useState(false);
+
+  const [inventoryOn, setInventoryOn] = useState(false);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -25,6 +28,12 @@ const Pharmacy = () => {
   };
   const handleInventoryClick = () => {
     setOnTab("invent");
+    setInventoryOn((prevState) => {
+      return !prevState;
+    });
+    setArrowState((prevState) => {
+      return !prevState;
+    });
   };
   const handleReportsClick = () => {
     setOnTab("repo");
@@ -68,6 +77,7 @@ const Pharmacy = () => {
       name: "Inventory",
       icon: Assets.Inventory,
       dropDown: true,
+      inventoryOn: inventoryOn,
       onClick: handleInventoryClick,
     },
     {
@@ -156,7 +166,12 @@ const Pharmacy = () => {
             </div>
           </div>
           {dataArray.map((data) => (
-            <RightTab data={data} key={data.name} onTab={onTab} />
+            <RightTab
+              data={data}
+              key={data.name}
+              onTab={onTab}
+              arrowState={arrowState}
+            />
           ))}
           <div className="Pharmacy__powered">
             <p className="p__poppins">Powered by Cash © 2022 </p>

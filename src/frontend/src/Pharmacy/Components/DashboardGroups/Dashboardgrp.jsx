@@ -40,7 +40,6 @@ const Dashboardgrp = ({ data }) => {
           }}
           onClick={() => {
             setOnTab(data.activeTab);
-            console.log(data.activeTab);
           }}
         >
           {data.linkTo === "reports" ? (
