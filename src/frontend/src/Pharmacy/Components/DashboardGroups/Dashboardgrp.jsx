@@ -13,23 +13,19 @@ const Dashboardgrp = ({ data }) => {
       style={{ border: `1px solid ${data.accentColor}` }}
     >
       <img src={data.icon} alt="Icon" />
-      <p className="p__poppins">
-        {data.rs === true ? (
-          <p className="p__poppins">Ksh. {data.status}</p>
-        ) : (
-          data.status
-        )}
-      </p>
-      <p className="p__poppins">
-        {data.select === true ? (
-          <div className="flex__container">
-            <p className="p__poppins">{data.name}</p>
-            <Select />
-          </div>
-        ) : (
-          data.name
-        )}
-      </p>
+      {data.rs === true ? (
+        <p className="p__poppins">Ksh. {data.status}</p>
+      ) : (
+        <p className="p__poppins">{data.status}</p>
+      )}
+      {data.select === true ? (
+        <div className="flex__container">
+          <p className="p__poppins">{data.name}</p>
+          <Select />
+        </div>
+      ) : (
+        <p className="p__poppins">{data.name}</p>
+      )}
 
       <Link to={data.linkTo}>
         <div
@@ -51,6 +47,13 @@ const Dashboardgrp = ({ data }) => {
           {data.linkTo === "listofmeds" ? (
             <p className="p__poppins">Resolve Now</p>
           ) : null}
+          {data.linkTo === "groups" ? (
+            <p className="p__poppins">View Groups</p>
+          ) : null}
+          {data.linkTo === "meds" ? (
+            <p className="p__poppins">View Full List</p>
+          ) : null}
+
           <img src={Assets.DirectionArrows} alt="Direction Arrows" />
         </div>
       </Link>

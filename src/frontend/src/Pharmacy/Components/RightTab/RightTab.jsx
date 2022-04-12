@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./RightTab.css";
 import Assets from "../../../Assets/Assets";
 import { Link } from "react-router-dom";

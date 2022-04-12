@@ -26,8 +26,10 @@ import Revenue from "./Revenue.svg";
 import Danger from "./Danger.svg";
 import AvailableMeds from "./Availablemeds.svg";
 import DirectionArrows from "./DirectionArrows.svg";
+import MedicalGreen from "./MedicalGreen.svg";
 
 export default {
+  MedicalGreen,
   DirectionArrows,
   AdobeReader,
   Excel,

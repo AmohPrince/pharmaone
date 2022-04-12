@@ -10,12 +10,30 @@ import RightTab from "./Components/RightTab/RightTab";
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
 their photo and name. The status will be computed */
+/*
+  This state values will be calculated and updated as required. The value will
+  then be read from the section icon which in turn updates the boxes
+*/
 export const tabContext = React.createContext();
+export const dataGroupContext = React.createContext();
+export const dataGroup2Context = React.createContext();
 
 const Pharmacy = () => {
+  const [inventoryStatus, setInventoryStatus] = useState("Good");
+  const [revenue, setRevenue] = useState(135540);
+  const [availableMeds, setAvailableMeds] = useState(50);
+  const [medicineShortage, setMedicineShortage] = useState(-1);
+
+  const [medicineGroups, setMedicineGroups] = useState(70);
+  const [soldMedicine, setSoldMedicine] = useState(45);
+  const [generatedInvoices, setGeneratedInvoices] = useState(13);
+  const [noOfSuppliers, setNoOfSuppliers] = useState(22);
+  const [noOfUsers, setNoOfUsers] = useState(44);
+  const [noOfCustomers, setNoOfCustomers] = useState(4);
+  const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
+
   const [onTab, setOnTab] = useState("");
   const [arrowState, setArrowState] = useState(false);
-
   const [inventoryOn, setInventoryOn] = useState(false);
 
   const toggleProfile = () => {
@@ -131,6 +149,101 @@ const Pharmacy = () => {
       onClick: handleTechnicalClick,
     },
   ];
+
+  const dataGroup = [
+    {
+      icon: Assets.Healthy,
+      status: inventoryStatus,
+      name: "Inventory Status",
+      linkTo: "reports",
+      accentColor: "#01A768",
+      bgColor: "#01A7684D",
+      activeTab: "repo",
+    },
+    {
+      icon: Assets.Revenue,
+      status: revenue,
+      name: "Revenue :",
+      select: true,
+      linkTo: "reports",
+      accentColor: "#FED600",
+      bgColor: "#FED6004D",
+      rs: true,
+      activeTab: "repo",
+    },
+    {
+      icon: Assets.AvailableMeds,
+      status: availableMeds,
+      name: "Medicines Available",
+      linkTo: "inventory",
+      accentColor: "#03A9F5",
+      bgColor: "#03A9F54D",
+      activeTab: "invent",
+    },
+    {
+      icon: Assets.Danger,
+      status: medicineShortage,
+      name: "Medicine Shortage",
+      linkTo: "listofmeds",
+      accentColor: "#F0483E",
+      bgColor: "#F0483E4D",
+      activeTab: "meds",
+    },
+    {
+      icon: Assets.MedicalGreen,
+      status: medicineGroups,
+      name: "Medicine Groups",
+      linkTo: "groups",
+      accentColor: "#01A768",
+      bgColor: "#01A7684D",
+      activeTab: "meds",
+    },
+    {
+      icon: Assets.AvailableMeds,
+      status: availableMeds,
+      name: "Medicines Available",
+      linkTo: "meds",
+      accentColor: "#03A9F5",
+      bgColor: "#03A9F54D",
+      activeTab: "invent",
+    },
+  ];
+
+  const dataGroup2 = [
+    {
+      groupTitle: "Inventory",
+      linkTo: "Configuration",
+      value1: availableMeds,
+      value2: medicineGroups,
+      text1: "Total no of Medicines",
+      text2: "Medicine Groups",
+    },
+    {
+      groupTitle: "Quick Report",
+      select: true,
+      value1: soldMedicine,
+      value2: generatedInvoices,
+      text1: "Qty of Medicines Sold",
+      text2: "Invoices Generated",
+    },
+    {
+      groupTitle: "My Pharmacy",
+      linkTo: "user management",
+      value1: noOfSuppliers,
+      value2: noOfUsers,
+      text1: "Total no of Suppliers",
+      text2: "Total no of Users",
+    },
+    {
+      groupTitle: "Customers",
+      linkTo: "Customers",
+      value1: noOfCustomers,
+      value2: frequentlyBoughtItem,
+      text1: "Total no of Customers",
+      text2: "Frequently bought item",
+    },
+  ];
+
   return (
     <div className="Pharmacy ">
       {/* Aside Section Begins Here */}
@@ -209,10 +322,15 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
+
         <tabContext.Provider value={setOnTab}>
-          <div className="Pharmacy__body">
-            <Outlet />
-          </div>
+          <dataGroupContext.Provider value={dataGroup}>
+            <dataGroup2Context.Provider value={dataGroup2}>
+              <div className="Pharmacy__body">
+                <Outlet />
+              </div>
+            </dataGroup2Context.Provider>
+          </dataGroupContext.Provider>
         </tabContext.Provider>
       </div>
     </div>
