@@ -31,6 +31,7 @@ root.render(
         <Route path="Covid-19" element={<Covid />} />
         <Route path="Reports" element={<Reports />} />
         <Route path="Configuration" element={<Configuration />} />
+        <Route path="/Dashboard/Configuration" element={<Configuration />} />
         <Route path="Contact%20Management" element={<ContactManagement />} />
         <Route path="Notifications" element={<Notifications />} />
         <Route path="Application%20Settings" element={<Settings />} />

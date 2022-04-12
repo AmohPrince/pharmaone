@@ -5,6 +5,7 @@
   padding-top: 20px;
   position: relative;
   border-radius: 4px;
+  background-color: var(--white);
 }
 .Dashboardgrp__container > img {
   margin-bottom: 30px;
@@ -28,11 +29,4 @@
   font-size: 0.8rem;
   color: var(--black);
   margin-right: 10px;
-}
-#Revenue {
-  text-align: center;
-  border: none;
-  background-color: transparent;
-  width: 90px;
-  height: 20px;
 }
