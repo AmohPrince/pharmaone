@@ -79,12 +79,15 @@
 .listofmeds.medslist {
   background-color: var(--primaryGreen);
 }
-.listofmeds.medslist p:hover {
-  color: var(--lightGrey);
-}
 .medicinegroups.groups {
   background-color: var(--primaryGreen);
 }
+.listofmeds.medslist p:hover {
+  color: var(--lightGrey);
+}
 .medicinegroups.groups p:hover {
   color: var(--lightGrey);
+}
+.medslistInventory {
+  color: var(--black);
 }

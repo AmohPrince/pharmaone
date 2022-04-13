@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboardgrp.css";
 import Assets from "../../../Assets/Assets";
-import { tabContext } from "../../Pharmacy";
+import { tabContext, inventoryClickContext } from "../../Pharmacy";
 import Select from "../Select/Select";
 
 const Dashboardgrp = ({ data }) => {
   const setOnTab = useContext(tabContext);
+  const handleInventoryClick = useContext(inventoryClickContext);
   return (
     <div
       className="Dashboardgrp__container flex__container-v"
@@ -36,6 +37,7 @@ const Dashboardgrp = ({ data }) => {
           }}
           onClick={() => {
             setOnTab(data.activeTab);
+            handleInventoryClick();
           }}
         >
           {data.linkTo === "reports" ? (

@@ -18,6 +18,7 @@ export const tabContext = React.createContext();
 export const dataGroupContext = React.createContext();
 export const dataGroup2Context = React.createContext();
 export const dataFlowContext = React.createContext();
+export const inventoryClickContext = React.createContext();
 
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
@@ -98,6 +99,9 @@ const Pharmacy = () => {
     currrentOnTab: onTab,
   };
 
+  /** This is the data that i map over to produce the right tab
+   * like the inventory dashboard bla bla bla
+   */
   const dataArray = [
     {
       name: "Dashboard",
@@ -164,6 +168,9 @@ const Pharmacy = () => {
     },
   ];
 
+  /**This is the data that i map over to produce the coloured
+   * boxes on the dashboard and the inventory
+   */
   const dataGroup = [
     {
       icon: Assets.Healthy,
@@ -201,7 +208,7 @@ const Pharmacy = () => {
       linkTo: "listofmeds",
       accentColor: "#F0483E",
       bgColor: "#F0483E4D",
-      activeTab: "meds",
+      activeTab: "medslist",
     },
     {
       icon: Assets.MedicalGreen,
@@ -210,7 +217,7 @@ const Pharmacy = () => {
       linkTo: "groups",
       accentColor: "#01A768",
       bgColor: "#01A7684D",
-      activeTab: "meds",
+      activeTab: "groups",
     },
     {
       icon: Assets.AvailableMeds,
@@ -219,10 +226,11 @@ const Pharmacy = () => {
       linkTo: "listofmeds2",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
-      activeTab: "invent",
+      activeTab: "medslist",
     },
   ];
 
+  /** This is the dashboard data on the bottom the one with four groups .*/
   const dataGroup2 = [
     {
       groupTitle: "Inventory",
@@ -292,14 +300,16 @@ const Pharmacy = () => {
               </div>
             </div>
           </div>
-          {dataArray.map((data) => (
-            <RightTab
-              data={data}
-              key={data.name}
-              onTab={onTab}
-              arrowState={arrowState}
-            />
-          ))}
+          <tabContext.Provider value={setOnTab}>
+            {dataArray.map((data) => (
+              <RightTab
+                data={data}
+                key={data.name}
+                onTab={onTab}
+                arrowState={arrowState}
+              />
+            ))}
+          </tabContext.Provider>
           <div className="Pharmacy__powered">
             <p className="p__poppins">Powered by Cash © 2022 </p>
           </div>
@@ -336,17 +346,19 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
-        <dataFlowContext.Provider value={flowingData}>
-          <tabContext.Provider value={setOnTab}>
-            <dataGroupContext.Provider value={dataGroup}>
-              <dataGroup2Context.Provider value={dataGroup2}>
-                <div className="Pharmacy__body">
-                  <Outlet />
-                </div>
-              </dataGroup2Context.Provider>
-            </dataGroupContext.Provider>
-          </tabContext.Provider>
-        </dataFlowContext.Provider>
+        <inventoryClickContext.Provider value={handleInventoryClick}>
+          <dataFlowContext.Provider value={flowingData}>
+            <tabContext.Provider value={setOnTab}>
+              <dataGroupContext.Provider value={dataGroup}>
+                <dataGroup2Context.Provider value={dataGroup2}>
+                  <div className="Pharmacy__body">
+                    <Outlet />
+                  </div>
+                </dataGroup2Context.Provider>
+              </dataGroupContext.Provider>
+            </tabContext.Provider>
+          </dataFlowContext.Provider>
+        </inventoryClickContext.Provider>
       </div>
     </div>
   );
