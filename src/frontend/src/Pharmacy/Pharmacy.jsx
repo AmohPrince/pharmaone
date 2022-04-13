@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
@@ -17,13 +17,13 @@ their photo and name. The status will be computed */
 export const tabContext = React.createContext();
 export const dataGroupContext = React.createContext();
 export const dataGroup2Context = React.createContext();
+export const dataFlowContext = React.createContext();
 
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
   const [revenue, setRevenue] = useState(135540);
   const [availableMeds, setAvailableMeds] = useState(50);
   const [medicineShortage, setMedicineShortage] = useState(-1);
-
   const [medicineGroups, setMedicineGroups] = useState(70);
   const [soldMedicine, setSoldMedicine] = useState(45);
   const [generatedInvoices, setGeneratedInvoices] = useState(13);
@@ -31,7 +31,6 @@ const Pharmacy = () => {
   const [noOfUsers, setNoOfUsers] = useState(44);
   const [noOfCustomers, setNoOfCustomers] = useState(4);
   const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
-
   const [onTab, setOnTab] = useState("");
   const [arrowState, setArrowState] = useState(false);
   const [inventoryOn, setInventoryOn] = useState(false);
@@ -82,6 +81,21 @@ const Pharmacy = () => {
 
   const handleTechnicalClick = () => {
     setOnTab("tech");
+  };
+
+  const flowingData = {
+    currentInventoryStatus: inventoryStatus,
+    currentRevenue: revenue,
+    currentAvailableMeds: availableMeds,
+    currentMedicineShortage: medicineShortage,
+    currentMedicineGroups: medicineGroups,
+    currentSoldMedicine: soldMedicine,
+    currentGeneratedInvoices: generatedInvoices,
+    currentNoOfSuppliers: noOfSuppliers,
+    currentNoOfUsers: noOfUsers,
+    currentNoOfCustomers: noOfCustomers,
+    currentFrequentlyBoughtItem: frequentlyBoughtItem,
+    currrentOnTab: onTab,
   };
 
   const dataArray = [
@@ -202,7 +216,7 @@ const Pharmacy = () => {
       icon: Assets.AvailableMeds,
       status: availableMeds,
       name: "Medicines Available",
-      linkTo: "meds",
+      linkTo: "listofmeds2",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
       activeTab: "invent",
@@ -322,16 +336,17 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
-
-        <tabContext.Provider value={setOnTab}>
-          <dataGroupContext.Provider value={dataGroup}>
-            <dataGroup2Context.Provider value={dataGroup2}>
-              <div className="Pharmacy__body">
-                <Outlet />
-              </div>
-            </dataGroup2Context.Provider>
-          </dataGroupContext.Provider>
-        </tabContext.Provider>
+        <dataFlowContext.Provider value={flowingData}>
+          <tabContext.Provider value={setOnTab}>
+            <dataGroupContext.Provider value={dataGroup}>
+              <dataGroup2Context.Provider value={dataGroup2}>
+                <div className="Pharmacy__body">
+                  <Outlet />
+                </div>
+              </dataGroup2Context.Provider>
+            </dataGroupContext.Provider>
+          </tabContext.Provider>
+        </dataFlowContext.Provider>
       </div>
     </div>
   );

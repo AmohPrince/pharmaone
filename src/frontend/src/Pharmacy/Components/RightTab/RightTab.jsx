@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RightTab.css";
 import Assets from "../../../Assets/Assets";
 import { Link } from "react-router-dom";
@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 icon a name and a boolean whether or not there is a dropdown. 
 */
 const RightTab = ({ data, onTab, arrowState }) => {
+  const [clickedLink, setClickedLink] = useState("");
+
+  const handleListClick = () => {
+    setClickedLink("medslist");
+  };
+
+  const handleGroupClick = () => {
+    setClickedLink("groups");
+  };
   return (
     <Link to={`${data.name}`} style={{ textDecoration: "none" }}>
       <div className={`${onTab}${data.name}`}>
@@ -19,18 +28,28 @@ const RightTab = ({ data, onTab, arrowState }) => {
             </div>
           ) : null}
         </div>
+
         {data.inventoryOn === true ? (
           <div className="inventoryOptions flex__container-v">
-            <Link to="listofmedicines" style={{ textDecoration: "none" }}>
-              <div className="inventoryoption">
+            <div
+              className={`inventoryoption listofmeds ${clickedLink}`}
+              onClick={handleListClick}
+            >
+              <Link
+                to="/Inventory/listofmeds"
+                style={{ textDecoration: "none" }}
+              >
                 <p className="p__poppins">List Of Medicines</p>
-              </div>
-            </Link>
-            <Link to="medicinegroups" style={{ textDecoration: "none" }}>
-              <div className="inventoryoption">
+              </Link>
+            </div>
+            <div
+              className={`inventoryoption medicinegroups ${clickedLink}`}
+              onClick={handleGroupClick}
+            >
+              <Link to="/Inventory/groups" style={{ textDecoration: "none" }}>
                 <p className="p__poppins">Medicines Groups</p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         ) : null}
         {data.spaceBelow ? <div className="space" /> : null}

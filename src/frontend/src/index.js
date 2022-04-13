@@ -14,6 +14,8 @@ import {
   Notifications,
   Settings,
   TechHelp,
+  ListOfMeds,
+  Groups,
 } from "./Pharmacy/Sections/Sections";
 
 const container = document.getElementById("root");
@@ -26,6 +28,8 @@ root.render(
         <Route path="Dashboard" element={<Dashboard />} />
         <Route path="/Dashboard/reports" element={<Reports />} />
         <Route path="Inventory" element={<Inventory />} />
+        <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
+        <Route path="/Inventory/groups" element={<Groups />} />
         <Route path="/Dashboard/inventory" element={<Inventory />} />
         <Route path="Chat%20With%20Others" element={<Chat />} />
         <Route path="Covid-19" element={<Covid />} />

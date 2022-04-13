@@ -50,7 +50,7 @@ const Dashboardgrp = ({ data }) => {
           {data.linkTo === "groups" ? (
             <p className="p__poppins">View Groups</p>
           ) : null}
-          {data.linkTo === "meds" ? (
+          {data.linkTo === "listofmeds2" ? (
             <p className="p__poppins">View Full List</p>
           ) : null}
 

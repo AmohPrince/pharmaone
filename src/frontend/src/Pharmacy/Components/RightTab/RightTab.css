@@ -56,7 +56,11 @@
 }
 .inventoryOptions {
   background-color: var(--black);
-  transition: opacity 150ms ease-in-out;
+}
+
+.inventoryoption {
+  width: 100%;
+  /* margin-top: 5px; */
 }
 
 .inventoryoption p {
@@ -71,4 +75,16 @@
 }
 .trueInventory {
   transform: rotate(180deg);
+}
+.listofmeds.medslist {
+  background-color: var(--primaryGreen);
+}
+.listofmeds.medslist p:hover {
+  color: var(--lightGrey);
+}
+.medicinegroups.groups {
+  background-color: var(--primaryGreen);
+}
+.medicinegroups.groups p:hover {
+  color: var(--lightGrey);
 }

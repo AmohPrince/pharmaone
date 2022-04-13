@@ -8,8 +8,12 @@ import Covid from "./Covid/Covid";
 import Notifications from "./Notifications/Notifications";
 import Reports from "./Reports/Reports";
 import TechHelp from "./TechHelp/TechHelp";
+import ListOfMeds from "./Inventory/ListOfMeds/ListOfMeds";
+import Groups from "./Inventory/Groups/Groups";
 
 export {
+  Groups,
+  ListOfMeds,
   Dashboard,
   Inventory,
   Settings,

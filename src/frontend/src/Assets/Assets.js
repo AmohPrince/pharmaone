@@ -27,8 +27,10 @@ import Danger from "./Danger.svg";
 import AvailableMeds from "./Availablemeds.svg";
 import DirectionArrows from "./DirectionArrows.svg";
 import MedicalGreen from "./MedicalGreen.svg";
+import LeftDirectionArrow from "./LeftDirectionArrow.svg";
 
 export default {
+  LeftDirectionArrow,
   MedicalGreen,
   DirectionArrows,
   AdobeReader,
