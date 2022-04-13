@@ -1,0 +1,20 @@
+.Inventory__container-top {
+  justify-content: space-between;
+  align-items: center;
+}
+.Inventory__container-mid {
+  justify-content: space-between;
+  margin-top: 25px;
+}
+#SearchMedicineInventoryContainer {
+  border: 1px solid var(--black);
+}
+#selectmedgroup {
+  width: 200px;
+}
+.SearchMed > :first-child {
+  margin-right: 20px;
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+}

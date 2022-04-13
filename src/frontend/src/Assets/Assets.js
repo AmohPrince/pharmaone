@@ -28,8 +28,12 @@ import AvailableMeds from "./Availablemeds.svg";
 import DirectionArrows from "./DirectionArrows.svg";
 import MedicalGreen from "./MedicalGreen.svg";
 import LeftDirectionArrow from "./LeftDirectionArrow.svg";
+import Plus from "./Plus.svg";
+import Filter from "./Filter.svg";
 
 export default {
+  Filter,
+  Plus,
   LeftDirectionArrow,
   MedicalGreen,
   DirectionArrows,

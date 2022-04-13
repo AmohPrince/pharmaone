@@ -23,7 +23,7 @@ const Dashboard = () => {
         <div className="Dashboard__top-name flex__container">
           <SectionName title={title} />
           <select name="downloadreport" id="dreport" className="p__poppins">
-            <option value="" defaultValue disabled hidden>
+            <option value="" defaultValue hidden>
               Download Report
             </option>
             <option value="excel">Excel</option>
