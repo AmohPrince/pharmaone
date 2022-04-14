@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
@@ -14,10 +14,10 @@ their photo and name. The status will be computed */
   This state values will be calculated and updated as required. The value will
   then be read from the section icon which in turn updates the boxes
 */
-export const tabContext = React.createContext();
 export const dataGroupContext = React.createContext();
 export const dataGroup2Context = React.createContext();
 export const dataFlowContext = React.createContext();
+export const rightSectionClickContext = React.createContext();
 export const inventoryClickContext = React.createContext();
 
 const Pharmacy = () => {
@@ -41,48 +41,9 @@ const Pharmacy = () => {
     profile.classList.toggle("active");
   };
 
-  const handleDashBoardClick = () => {
-    setOnTab("dash");
-  };
-  const handleInventoryClick = () => {
-    setOnTab("invent");
-    setInventoryOn((prevState) => {
-      return !prevState;
-    });
-    setArrowState((prevState) => {
-      return !prevState;
-    });
-  };
-  const handleReportsClick = () => {
-    setOnTab("repo");
-  };
-  const handleContactManagementClick = () => {
-    setOnTab("cont");
-  };
-
-  const handleConfigurationClick = () => {
-    setOnTab("conf");
-  };
-
-  const handleNotificationsClick = () => {
-    setOnTab("not");
-  };
-
-  const handleChatClick = () => {
-    setOnTab("chat");
-  };
-
-  const handleSettingsClick = () => {
-    setOnTab("set");
-  };
-
-  const handleCovidClick = () => {
-    setOnTab("cov");
-  };
-
-  const handleTechnicalClick = () => {
-    setOnTab("tech");
-  };
+  /**
+   * One Function to rule them all.
+   */
 
   const flowingData = {
     currentInventoryStatus: inventoryStatus,
@@ -97,6 +58,59 @@ const Pharmacy = () => {
     currentNoOfCustomers: noOfCustomers,
     currentFrequentlyBoughtItem: frequentlyBoughtItem,
     currrentOnTab: onTab,
+    setInventoryStatus,
+    setRevenue,
+    setAvailableMeds,
+    setMedicineShortage,
+    setMedicineGroups,
+    setSoldMedicine,
+    setGeneratedInvoices,
+    setNoOfSuppliers,
+    setNoOfUsers,
+    setNoOfCustomers,
+    setFrequentlyBoughtItem,
+    setOnTab,
+  };
+
+  const handleDashBoardClick = () => {
+    setOnTab("dash");
+  };
+
+  const handleInventoryClick = () => {
+    setOnTab("invent");
+    setInventoryOn((prevState) => {
+      return !prevState;
+    });
+    setArrowState((prevState) => {
+      return !prevState;
+    });
+  };
+
+  const handleReportsClick = () => {
+    setOnTab("repo");
+  };
+
+  const handleConfigurationClick = () => {
+    setOnTab("conf");
+  };
+
+  const handleContactManagementClick = () => {
+    setOnTab("cont");
+  };
+  const handleNotificationsClick = () => {
+    setOnTab("not");
+  };
+  const handleChatClick = () => {
+    setOnTab("chat");
+  };
+  const handleSettingsClick = () => {
+    setOnTab("set");
+  };
+  const handleCovidClick = () => {
+    setOnTab("cov");
+  };
+  const handleTechnicalClick = () => {
+    setOnTab("tech");
   };
 
   /** This is the data that i map over to produce the right tab
@@ -145,6 +159,7 @@ const Pharmacy = () => {
       name: "Chat With Others",
       icon: Assets.ChatIco,
       dropDown: false,
+      onClick: handleChatClick,
     },
     {
       name: "Application Settings",
@@ -299,7 +314,8 @@ const Pharmacy = () => {
               </div>
             </div>
           </div>
-          <tabContext.Provider value={setOnTab}>
+          {/* <rightSectionClickContext.Provider value={HandleRightSectionClick}> */}
+          <dataFlowContext.Provider value={flowingData}>
             {dataArray.map((data) => (
               <RightTab
                 data={data}
@@ -308,7 +324,8 @@ const Pharmacy = () => {
                 arrowState={arrowState}
               />
             ))}
-          </tabContext.Provider>
+          </dataFlowContext.Provider>
+          {/* </rightSectionClickContext.Provider> */}
           <div className="Pharmacy__powered">
             <p className="p__poppins">Powered by Cash © 2022 </p>
           </div>
@@ -345,19 +362,17 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
-        <inventoryClickContext.Provider value={handleInventoryClick}>
-          <dataFlowContext.Provider value={flowingData}>
-            <tabContext.Provider value={setOnTab}>
-              <dataGroupContext.Provider value={dataGroup}>
-                <dataGroup2Context.Provider value={dataGroup2}>
-                  <div className="Pharmacy__body">
-                    <Outlet />
-                  </div>
-                </dataGroup2Context.Provider>
-              </dataGroupContext.Provider>
-            </tabContext.Provider>
-          </dataFlowContext.Provider>
-        </inventoryClickContext.Provider>
+        {/* <inventoryClickContext.Provider value={handleInventoryClick}> */}
+        <dataFlowContext.Provider value={flowingData}>
+          <dataGroupContext.Provider value={dataGroup}>
+            <dataGroup2Context.Provider value={dataGroup2}>
+              <div className="Pharmacy__body">
+                <Outlet />
+              </div>
+            </dataGroup2Context.Provider>
+          </dataGroupContext.Provider>
+        </dataFlowContext.Provider>
+        {/* </inventoryClickContext.Provider> */}
       </div>
     </div>
   );
