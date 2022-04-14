@@ -3,6 +3,13 @@ import "./ListOfMeds.css";
 import { SectionName, RedButton } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
+import SingleMedicine from "./SingleMedicine/SingleMedicine";
+
+/**
+ * This component will have some form of fetch that will pull data
+ * i thinl useeffect
+ * @returns List of medicine
+ */
 
 const ListOfMeds = () => {
   const incomingData = useContext(dataFlowContext);
@@ -19,6 +26,27 @@ const ListOfMeds = () => {
     text: "Add New Item",
     icon: Assets.Plus,
   };
+
+  const mockListOfMedicines = [
+    {
+      medicineName: "Augmentin 625 Duo Tablet",
+      medicineId: "D06ID232435454",
+      groupName: "Generic Medicine",
+      stock: 350,
+    },
+    {
+      medicineName: "Augmentin 625 Duo Tablet",
+      medicineId: "D06ID232435454",
+      groupName: "Generic Medicine",
+      stock: 350,
+    },
+    {
+      medicineName: "Augmentin 625 Duo Tablet",
+      medicineId: "D06ID232435454",
+      groupName: "Generic Medicine",
+      stock: 350,
+    },
+  ];
 
   return (
     <div className="Inventory__container">
@@ -55,6 +83,32 @@ const ListOfMeds = () => {
             <option value="Group3">Group3</option>
           </select>
         </div>
+      </div>
+      <div className="Inventory__container-bottom">
+        <div className="Inventory__container-titles flex__container">
+          <div>
+            <p className="p__poppins">Medicine Name</p>
+            <img src={Assets.TopBottomArrows} alt="Arrows" />
+          </div>
+          <div>
+            <p className="p__poppins">Medicine ID</p>
+            <img src={Assets.TopBottomArrows} alt="Arrows" />
+          </div>
+          <div>
+            <p className="p__poppins">Group Name</p>
+            <img src={Assets.TopBottomArrows} alt="Arrows" />
+          </div>
+          <div>
+            <p className="p__poppins">Stock in Qty</p>
+            <img src={Assets.TopBottomArrows} alt="Arrows" />
+          </div>
+          <div>
+            <p className="p__poppins">Action</p>
+          </div>
+        </div>
+        {mockListOfMedicines.map((data) => {
+          return <SingleMedicine data={data} />;
+        })}
       </div>
     </div>
   );

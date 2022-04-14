@@ -18,3 +18,30 @@
   width: 20px;
   object-fit: cover;
 }
+.Inventory__container-bottom {
+  background-color: var(--white);
+  border: var(--lightGrey);
+  border-radius: 4px;
+  margin-top: 20px;
+}
+.Inventory__container-titles {
+  justify-content: space-around;
+}
+
+.Inventory__container-titles > * {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+  cursor: pointer;
+  width: 200px;
+}
+.Inventory__container-titles > :first-child {
+  margin-left: 50px;
+}
+.Inventory__container-titles > div > :nth-child(2) {
+  margin-left: 5px;
+}
+.Inventory__container-titles p {
+  font-weight: 600;
+  font-size: 1rem;
+}
