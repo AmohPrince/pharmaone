@@ -145,7 +145,6 @@ const Pharmacy = () => {
       name: "Chat With Others",
       icon: Assets.ChatIco,
       dropDown: false,
-      onClick: handleChatClick,
     },
     {
       name: "Application Settings",
