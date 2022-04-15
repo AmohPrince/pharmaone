@@ -33,8 +33,10 @@ import Filter from "./Filter.svg";
 import TopBottomArrows from "./TopBottomArrows.svg";
 import PageSwitcher from "./PageSwitcherIcon.svg";
 import PageSwitcherLeft from "./PageSwitcherIconLeft.svg";
+import Pen from "./Pen.svg";
 
 export default {
+  Pen,
   PageSwitcherLeft,
   PageSwitcher,
   TopBottomArrows,

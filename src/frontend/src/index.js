@@ -44,15 +44,15 @@ root.render(
         <Route path="Notifications" element={<Notifications />} />
         <Route path="Application%20Settings" element={<Settings />} />
         <Route path="Get%20Technical%20Help" element={<TechHelp />} />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
       </Route>
+      <Route
+        path="*"
+        element={
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );
