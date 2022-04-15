@@ -4,6 +4,7 @@ import { SectionName, RedButton } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleMedicine from "./SingleMedicine/SingleMedicine";
+import MedicineInfo from "./MedicineInfo/MedicineInfo";
 
 /**
  * This component will have some form of fetch that will pull data
@@ -46,7 +47,21 @@ const ListOfMeds = () => {
       groupName: "Generic Medicine",
       stock: 350,
     },
+    {
+      medicineName: "Azithral 500 Tablet",
+      medicineId: "D06ID232435451",
+      groupName: "Generic Medicine",
+      stock: 20,
+    },
   ];
+
+  const getSpecificMedicineWithId = (number) => {
+    const filteredData = mockListOfMedicines.find((medicine) => {
+      return medicine.medicineId === number;
+    });
+
+    return filteredData;
+  };
 
   return (
     <div className="Inventory__container">

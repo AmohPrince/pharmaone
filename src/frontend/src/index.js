@@ -16,6 +16,7 @@ import {
   TechHelp,
   ListOfMeds,
   Groups,
+  MedicineInfo,
 } from "./Pharmacy/Sections/Sections";
 
 const container = document.getElementById("root");
@@ -29,6 +30,11 @@ root.render(
         <Route path="/Dashboard/reports" element={<Reports />} />
         <Route path="Inventory" element={<Inventory />} />
         <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
+
+        <Route
+          path="/Inventory/listofmeds/:medicineId"
+          element={<MedicineInfo />}
+        />
         <Route path="/Inventory/groups" element={<Groups />} />
         <Route path="/Dashboard/inventory" element={<Inventory />} />
         <Route path="Chat%20With%20Others" element={<Chat />} />
@@ -40,6 +46,14 @@ root.render(
         <Route path="Notifications" element={<Notifications />} />
         <Route path="Application%20Settings" element={<Settings />} />
         <Route path="Get%20Technical%20Help" element={<TechHelp />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>

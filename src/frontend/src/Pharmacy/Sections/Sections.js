@@ -10,8 +10,10 @@ import Reports from "./Reports/Reports";
 import TechHelp from "./TechHelp/TechHelp";
 import ListOfMeds from "./Inventory/ListOfMeds/ListOfMeds";
 import Groups from "./Inventory/Groups/Groups";
+import MedicineInfo from "./Inventory/ListOfMeds/MedicineInfo/MedicineInfo";
 
 export {
+  MedicineInfo,
   Groups,
   ListOfMeds,
   Dashboard,
