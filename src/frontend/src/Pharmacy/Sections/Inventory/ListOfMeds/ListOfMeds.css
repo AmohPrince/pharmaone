@@ -45,3 +45,15 @@
   font-weight: 600;
   font-size: 1rem;
 }
+#pageswitch {
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  width: 90px;
+  height: 20px;
+}
+.listofmeds__footer {
+  margin-top: 30px;
+  justify-content: space-between;
+  padding: 0px 10px;
+}

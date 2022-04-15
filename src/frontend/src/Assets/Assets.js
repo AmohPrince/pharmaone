@@ -31,8 +31,12 @@ import LeftDirectionArrow from "./LeftDirectionArrow.svg";
 import Plus from "./Plus.svg";
 import Filter from "./Filter.svg";
 import TopBottomArrows from "./TopBottomArrows.svg";
+import PageSwitcher from "./PageSwitcherIcon.svg";
+import PageSwitcherLeft from "./PageSwitcherIconLeft.svg";
 
 export default {
+  PageSwitcherLeft,
+  PageSwitcher,
   TopBottomArrows,
   Filter,
   Plus,

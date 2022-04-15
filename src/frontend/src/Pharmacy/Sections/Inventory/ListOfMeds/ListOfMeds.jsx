@@ -110,6 +110,20 @@ const ListOfMeds = () => {
           return <SingleMedicine data={data} />;
         })}
       </div>
+      <div className="listofmeds__footer flex__container">
+        <p className="p__poppins">
+          Showing 1 - 8 results of {incomingData.currentAvailableMeds}
+        </p>
+        <div className="listofmeds__footer-pageswitch flex__container">
+          <img src={Assets.PageSwitcherLeft} alt="Change Page" />
+          <select name="pageswitch" id="pageswitch" className="p__poppins">
+            <option value="Jan2022">Page 1</option>
+            <option value="Feb2022">Page 2</option>
+            <option value="Mar2022">Page 3</option>
+          </select>
+          <img src={Assets.PageSwitcher} alt="Change Page" />
+        </div>
+      </div>
     </div>
   );
 };
