@@ -41,6 +41,29 @@ const Pharmacy = () => {
     profile.classList.toggle("active");
   };
 
+  const mockListOfMedicines = [
+    {
+      medicineName: "Augmentin 625 Duo Tablet",
+      medicineId: "D06ID232435454",
+      groupName: "Generic Medicine",
+      stock: 350,
+    },
+    {
+      medicineName: "Azithral 500 Tablet",
+      medicineId: "D06ID232435451",
+      groupName: "Generic Medicine",
+      stock: 20,
+    },
+  ];
+
+  const getSpecificMedicineWithId = (number) => {
+    const filteredData = mockListOfMedicines.find((medicine) => {
+      return medicine.medicineId === number;
+    });
+
+    return filteredData;
+  };
+
   /**
    * One Function to rule them all.
    */
@@ -70,6 +93,8 @@ const Pharmacy = () => {
     setNoOfCustomers,
     setFrequentlyBoughtItem,
     setOnTab,
+    getSpecificMedicineWithId,
+    mockListOfMedicines,
   };
 
   const handleDashBoardClick = () => {

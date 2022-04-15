@@ -26,22 +26,20 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Pharmacy />}>
-        <Route path="Dashboard" element={<Dashboard />} />
-        <Route path="/Dashboard/reports" element={<Reports />} />
-        <Route path="Inventory" element={<Inventory />} />
+        <Route path="Dashboard" element={<Dashboard />}>
+          <Route path="reports" element={<Reports />} />
+        </Route>
+        <Route path="Inventory" element={<Inventory />}></Route>
         <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
-
         <Route
           path="/Inventory/listofmeds/:medicineId"
           element={<MedicineInfo />}
         />
         <Route path="/Inventory/groups" element={<Groups />} />
-        <Route path="/Dashboard/inventory" element={<Inventory />} />
         <Route path="Chat%20With%20Others" element={<Chat />} />
         <Route path="Covid-19" element={<Covid />} />
         <Route path="Reports" element={<Reports />} />
         <Route path="Configuration" element={<Configuration />} />
-        <Route path="/Dashboard/Configuration" element={<Configuration />} />
         <Route path="Contact%20Management" element={<ContactManagement />} />
         <Route path="Notifications" element={<Notifications />} />
         <Route path="Application%20Settings" element={<Settings />} />

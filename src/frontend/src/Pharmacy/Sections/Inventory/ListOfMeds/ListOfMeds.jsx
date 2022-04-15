@@ -4,8 +4,6 @@ import { SectionName, RedButton } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleMedicine from "./SingleMedicine/SingleMedicine";
-import MedicineInfo from "./MedicineInfo/MedicineInfo";
-
 /**
  * This component will have some form of fetch that will pull data
  * i thinl useeffect
@@ -14,6 +12,8 @@ import MedicineInfo from "./MedicineInfo/MedicineInfo";
 
 const ListOfMeds = () => {
   const incomingData = useContext(dataFlowContext);
+  const medicineList = incomingData.mockListOfMedicines;
+
   const title = {
     main: "List of medicines",
     sub: "List of medicines available for sales",
@@ -26,41 +26,6 @@ const ListOfMeds = () => {
     color: "#F0483E",
     text: "Add New Item",
     icon: Assets.Plus,
-  };
-
-  const mockListOfMedicines = [
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      medicineId: "D06ID232435454",
-      groupName: "Generic Medicine",
-      stock: 350,
-    },
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      medicineId: "D06ID232435454",
-      groupName: "Generic Medicine",
-      stock: 350,
-    },
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      medicineId: "D06ID232435454",
-      groupName: "Generic Medicine",
-      stock: 350,
-    },
-    {
-      medicineName: "Azithral 500 Tablet",
-      medicineId: "D06ID232435451",
-      groupName: "Generic Medicine",
-      stock: 20,
-    },
-  ];
-
-  const getSpecificMedicineWithId = (number) => {
-    const filteredData = mockListOfMedicines.find((medicine) => {
-      return medicine.medicineId === number;
-    });
-
-    return filteredData;
   };
 
   return (
@@ -121,8 +86,8 @@ const ListOfMeds = () => {
             <p className="p__poppins">Action</p>
           </div>
         </div>
-        {mockListOfMedicines.map((data) => {
-          return <SingleMedicine data={data} />;
+        {medicineList.map((data) => {
+          return <SingleMedicine data={data} key={data.medicineId} />;
         })}
       </div>
       <div className="listofmeds__footer flex__container">
