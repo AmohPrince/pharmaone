@@ -1,3 +1,56 @@
-.Medicine__info-top {
+.Medicine__info-top > :first-child {
   justify-content: space-between;
+}
+.Medicine__info-top > .Topbar__input {
+  margin-top: 20px;
+}
+.Medicine__data {
+  border: 1px solid rgba(29, 36, 46, 0.3);
+  background-color: var(--white);
+  border-radius: 4px;
+}
+.Medicine__data-title {
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+.Medicine__info-mid > .flex__container {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.Medicine__data-a {
+  width: 49%;
+}
+.Medicine__data-a > .splitter,
+.splitter {
+  border: 1px solid rgba(29, 36, 46, 0.3);
+}
+.Medicine__data-body {
+  padding: 20px;
+  justify-content: space-between;
+}
+.Medicine__data-title > p:first-of-type {
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.Medicine__data-section :first-child {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.Medicine__data-section :nth-child(2) {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.Medicine__data-description {
+  padding: 20px;
+}
+.Medicine__data-description p {
+  font-size: 0.9rem;
+  color: var(--black);
+}
+.Medicine__data-b {
+  margin-top: 15px;
+}
+.deleteMedicine {
+  margin-top: 5px;
 }

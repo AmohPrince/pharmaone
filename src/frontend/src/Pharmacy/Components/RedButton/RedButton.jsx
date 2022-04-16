@@ -5,13 +5,27 @@ import "./RedButton.css";
 
 const RedButton = ({ buttonData }) => {
   return (
-    <div
-      className="flex__container Redbutton__container "
-      style={{ backgroundColor: buttonData.color }}
-    >
-      <img src={buttonData.icon} alt="icon" />
-      <p className="p__poppins">{buttonData.text}</p>
-    </div>
+    <>
+      {buttonData.delete === true ? (
+        <div
+          className="flex__container Redbutton__container "
+          style={{ border: `0.2px solid ${buttonData.color}` }}
+        >
+          <img src={buttonData.icon} alt="icon" />
+          <p className="p__poppins" style={{ color: buttonData.color }}>
+            {buttonData.text}
+          </p>
+        </div>
+      ) : (
+        <div
+          className="flex__container Redbutton__container "
+          style={{ backgroundColor: buttonData.color }}
+        >
+          <img src={buttonData.icon} alt="icon" />
+          <p className="p__poppins">{buttonData.text}</p>
+        </div>
+      )}
+    </>
   );
 };
 

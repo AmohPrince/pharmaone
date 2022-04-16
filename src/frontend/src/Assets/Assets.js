@@ -34,8 +34,10 @@ import TopBottomArrows from "./TopBottomArrows.svg";
 import PageSwitcher from "./PageSwitcherIcon.svg";
 import PageSwitcherLeft from "./PageSwitcherIconLeft.svg";
 import Pen from "./Pen.svg";
+import Trash from "./Trash.svg";
 
 export default {
+  Trash,
   Pen,
   PageSwitcherLeft,
   PageSwitcher,
