@@ -8,7 +8,12 @@
 .medicineaddform input {
   background-color: #e3ebf3;
   padding: 10px;
+  border: 1px solid var(--black2);
 }
+.medicineaddform input:hover {
+  border: 1px solid var(--green);
+}
+
 .medicineaddform > .flex__container input {
   border-radius: 4px;
   width: 100%;

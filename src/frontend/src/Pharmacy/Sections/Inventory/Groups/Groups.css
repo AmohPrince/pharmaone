@@ -1,0 +1,24 @@
+.Group__container-titles {
+  justify-content: space-around;
+  background-color: var(--white);
+  height: 40px;
+}
+.Group__container-titles > div {
+  display: flex;
+  width: 150px;
+}
+.Group__container-titles > div > p {
+  margin-right: 5px;
+  font-weight: 600;
+}
+.titleseparator {
+  border: 1px solid var(--lightGrey);
+}
+.Group__container {
+  border-radius: 4px;
+  margin-top: 30px;
+}
+.Group__container-top {
+  margin-bottom: 15px;
+  justify-content: space-between;
+}

@@ -1,0 +1,10 @@
+.Group__info-top {
+  justify-content: space-between;
+}
+.Group__info > * {
+  margin-bottom: 20px;
+}
+.Group__info > :nth-child(3) {
+  border-radius: 4px;
+  margin-bottom: 50px;
+}

@@ -55,12 +55,28 @@ const Pharmacy = () => {
       stock: 20,
     },
   ];
+  const mockListOfGroups = [
+    {
+      groupName: "Generic Medicine",
+      noOfMedicine: 2,
+    },
+    {
+      groupName: "Diabetes",
+      noOfMedicine: 32,
+    },
+  ];
 
   const getSpecificMedicineWithId = (number) => {
     const filteredData = mockListOfMedicines.find((medicine) => {
       return medicine.medicineId === number;
     });
 
+    return filteredData;
+  };
+  const getSpecificGroupWithName = (name) => {
+    const filteredData = mockListOfGroups.find((group) => {
+      return group.groupName === name;
+    });
     return filteredData;
   };
 
@@ -94,7 +110,9 @@ const Pharmacy = () => {
     setFrequentlyBoughtItem,
     setOnTab,
     getSpecificMedicineWithId,
+    getSpecificGroupWithName,
     mockListOfMedicines,
+    mockListOfGroups,
   };
 
   const handleDashBoardClick = () => {
