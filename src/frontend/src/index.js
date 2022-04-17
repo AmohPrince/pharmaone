@@ -17,6 +17,7 @@ import {
   ListOfMeds,
   Groups,
   MedicineInfo,
+  NewMedicine,
 } from "./Pharmacy/Sections/Sections";
 
 const container = document.getElementById("root");
@@ -35,6 +36,10 @@ root.render(
           path="/Inventory/listofmeds/:medicineId"
           element={<MedicineInfo />}
         />
+        <Route
+          path="/Inventory/listofmeds/Addnewmedicine"
+          element={<NewMedicine />}
+        />
         <Route path="/Inventory/groups" element={<Groups />} />
         <Route path="Chat%20With%20Others" element={<Chat />} />
         <Route path="Covid-19" element={<Covid />} />
@@ -49,7 +54,7 @@ root.render(
         path="*"
         element={
           <main style={{ padding: "1rem" }}>
-            <p>There's nothing here!</p>
+            <p>Not ready my friend!</p>
           </main>
         }
       />

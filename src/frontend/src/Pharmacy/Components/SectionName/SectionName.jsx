@@ -1,6 +1,7 @@
 import React from "react";
 import "./SectionName.css";
 import Assets from "../../../Assets/Assets";
+import { Link } from "react-router-dom";
 
 /* This component takes in an object as a prop that contains the name and subtitle and any other relevant data*/
 
@@ -9,7 +10,9 @@ const SectionName = ({ title }) => {
     return (
       <div className="SectionName__level1">
         <div className="level1__top flex__container">
-          <p className="p__poppins">{title.source}</p>
+          <Link to="/Inventory" style={{ textDecoration: "none" }}>
+            <p className="p__poppins">{title.source}</p>
+          </Link>
           <img
             className="sectionname__leftarrow"
             src={Assets.LeftDirectionArrow}
@@ -26,13 +29,17 @@ const SectionName = ({ title }) => {
     return (
       <div className="SectionName__level2">
         <div className="level2__top flex__container">
-          <p className="p__poppins">{title.source1}</p>
+          <Link to="/Inventory" style={{ textDecoration: "none" }}>
+            <p className="p__poppins">{title.source1}</p>
+          </Link>
           <img
             className="sectionname__leftarrow"
             src={Assets.LeftDirectionArrow}
             alt="Points to the left"
           />
-          <p className="p__poppins">{title.source2}</p>
+          <Link to="/Inventory/listofmeds" style={{ textDecoration: "none" }}>
+            <p className="p__poppins">{title.source2}</p>
+          </Link>
           <img
             className="sectionname__leftarrow"
             src={Assets.LeftDirectionArrow}

@@ -16,6 +16,7 @@
   font-weight: 800;
   font-size: 1.6rem;
   color: #1d242e80;
+  cursor: pointer;
 }
 .sectionname__leftarrow {
   margin: 0 10px;

@@ -1,0 +1,51 @@
+.medicineaddform {
+  margin: 20px 0px;
+  align-items: unset;
+}
+.medicineaddform > * {
+  margin-top: 10px;
+}
+.medicineaddform input {
+  background-color: #e3ebf3;
+  padding: 10px;
+}
+.medicineaddform > .flex__container input {
+  border-radius: 4px;
+  width: 100%;
+  height: 38px;
+}
+.medicineaddform > .flex__container > label {
+  width: 340px;
+  margin-right: 20px;
+}
+#selectFormMedicineGroup {
+  border: 0.4px solid var(--black);
+  border-radius: 4px;
+  background-color: var(--white);
+  height: 38px;
+  width: 340px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 0.9rem;
+  background-color: #e3ebf3;
+}
+.howtouse > input {
+  width: 705px;
+  height: 121px;
+  border-radius: 4px;
+}
+.sideeffects > input {
+  border-radius: 4px;
+  width: 705px;
+  height: 121px;
+}
+#submitnewmedicine {
+  border: none;
+  border-radius: 4px;
+  background-color: #f0483e;
+  color: var(--white);
+  width: 162px;
+  height: 46px;
+  cursor: pointer;
+  margin-top: 20px;
+}

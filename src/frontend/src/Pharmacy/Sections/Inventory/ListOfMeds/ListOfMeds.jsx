@@ -4,6 +4,7 @@ import { SectionName, RedButton } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleMedicine from "./SingleMedicine/SingleMedicine";
+import { Link } from "react-router-dom";
 /**
  * This component will have some form of fetch that will pull data
  * i thinl useeffect
@@ -32,7 +33,12 @@ const ListOfMeds = () => {
     <div className="Inventory__container">
       <div className="Inventory__container-top flex__container">
         <SectionName title={title} />
-        <RedButton buttonData={buttonData} />
+        <Link
+          to="/Inventory/listofmeds/Addnewmedicine"
+          style={{ textDecoration: "none" }}
+        >
+          <RedButton buttonData={buttonData} />
+        </Link>
       </div>
       <div className="Inventory__container-mid flex__container">
         <div

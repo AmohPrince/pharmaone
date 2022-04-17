@@ -11,8 +11,10 @@ import TechHelp from "./TechHelp/TechHelp";
 import ListOfMeds from "./Inventory/ListOfMeds/ListOfMeds";
 import Groups from "./Inventory/Groups/Groups";
 import MedicineInfo from "./Inventory/ListOfMeds/MedicineInfo/MedicineInfo";
+import NewMedicine from "./Inventory/ListOfMeds/NewMedicine/NewMedicine";
 
 export {
+  NewMedicine,
   MedicineInfo,
   Groups,
   ListOfMeds,
