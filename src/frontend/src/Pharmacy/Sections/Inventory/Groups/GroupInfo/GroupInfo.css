@@ -48,7 +48,23 @@
   transform: translate(-50%, -50%);
   z-index: 2;
 }
+.modal__subtitle > p {
+  margin-bottom: 10px;
+}
 .Group__overlay.true {
   z-index: 1;
   background-color: #1d242e80;
+}
+.successconfirmation {
+  background-color: #01a7684d;
+  width: 242px;
+  padding: 10px;
+  border-radius: 4px;
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translate(-50%, -50%);
+}
+.successconfirmation img {
+  margin: 3px;
 }

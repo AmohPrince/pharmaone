@@ -13,6 +13,7 @@ const GroupInfo = () => {
   let params = useParams();
   const incomingData = useContext(dataFlowContext);
   const data = incomingData.getSpecificGroupWithName(params.groupName);
+  const [successconfirmation, setSuccessconfirmation] = useState(false);
 
   useEffect(() => {
     setGroupOverlay((prevState) => !prevState);
@@ -68,6 +69,12 @@ const GroupInfo = () => {
   const handleModal = () => {
     setModalState((prevState) => !prevState);
   };
+  const handleAddToGroup = () => {
+    setSuccessconfirmation((prevState) => !prevState);
+    setTimeout(() => {
+      setSuccessconfirmation((prevState) => !prevState);
+    }, 3000);
+  };
 
   return (
     <>
@@ -113,11 +120,19 @@ const GroupInfo = () => {
                 <p className="p__poppins">Medicine</p>
                 <Searchbar data={searchBarData2} />
               </div>
-              <RedButton buttonData={buttonData3} />
+              <div className="modal__button-wrapper" onClick={handleAddToGroup}>
+                <RedButton buttonData={buttonData3} />
+              </div>
               <div className="closemodal" onClick={handleModal}>
                 <img src={Assets.Close} alt="Close" />
               </div>
             </div>
+          </div>
+        ) : null}
+        {successconfirmation === true ? (
+          <div className="successconfirmation  flex__container">
+            <img src={Assets.Tick} alt="tick" />
+            <p className="p__poppins">Medicine Added to Group</p>
           </div>
         ) : null}
       </div>
