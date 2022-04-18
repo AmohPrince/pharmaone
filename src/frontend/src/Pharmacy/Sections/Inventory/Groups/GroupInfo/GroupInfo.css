@@ -1,6 +1,11 @@
 .Group__info-top {
   justify-content: space-between;
 }
+.Group__overlay {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+}
 .Group__info {
   position: relative;
 }
@@ -19,7 +24,10 @@
   position: relative;
 }
 .modal > * {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+.modal > :nth-child(2) {
+  margin-bottom: 40px;
 }
 .modal__title > p {
   color: var(--black);
@@ -36,6 +44,11 @@
   width: 570px;
   position: absolute;
   top: 30%;
-  left: 50%;
+  left: 35%;
   transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.Group__overlay.true {
+  z-index: 1;
+  background-color: #1d242e80;
 }
