@@ -12,9 +12,7 @@ const RedButton = ({ buttonData }) => {
           style={{ border: `0.2px solid ${buttonData.color}` }}
         >
           <img src={buttonData.icon} alt="icon" />
-          <p className="p__poppins" style={{ color: buttonData.color }}>
-            {buttonData.text}
-          </p>
+          <p className="p__poppins delete__text">{buttonData.text}</p>
         </div>
       ) : (
         <div

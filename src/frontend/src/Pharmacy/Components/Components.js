@@ -6,6 +6,7 @@ import RightTab from "./RightTab/RightTab";
 import SectionName from "./SectionName/SectionName";
 import Select from "./Select/Select";
 import RedButton from "./RedButton/RedButton";
+import Searchbar from "./SearchBar/Searchbar";
 
 export {
   RedButton,
@@ -16,4 +17,5 @@ export {
   RightTab,
   SectionName,
   Select,
+  Searchbar,
 };

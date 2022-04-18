@@ -35,8 +35,10 @@ import PageSwitcher from "./PageSwitcherIcon.svg";
 import PageSwitcherLeft from "./PageSwitcherIconLeft.svg";
 import Pen from "./Pen.svg";
 import Trash from "./Trash.svg";
+import Close from "./Close.svg";
 
 export default {
+  Close,
   Trash,
   Pen,
   PageSwitcherLeft,

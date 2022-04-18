@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./GroupInfo.css";
 import { RedButton, SectionName } from "../../../../Components/Components";
 import { useParams } from "react-router-dom";
 import { dataFlowContext } from "../../../../Pharmacy";
 import Assets from "../../../../../Assets/Assets";
-import SingleMedicine from "../../ListOfMeds/SingleMedicine/SingleMedicine";
 import SingleMedicineInGroup from "../SingleMedicineInGroup/SingleMedicineInGroup";
+import { Searchbar } from "../../../../Components/Components";
 
 const GroupInfo = () => {
+  const [modalState, setModalState] = useState(false);
   let params = useParams();
   const incomingData = useContext(dataFlowContext);
   const data = incomingData.getSpecificGroupWithName(params.groupName);
@@ -32,6 +33,22 @@ const GroupInfo = () => {
     delete: true,
   };
 
+  const buttonData3 = {
+    color: "#F0483E",
+    text: "Add Medicine to Group",
+    icon: Assets.Plus,
+  };
+  //for the main search
+  const searchBarData = {
+    name: "SearchForMedicine",
+    placeholder: "Search for Medicine",
+  };
+  //for the modal search
+  const searchBarData2 = {
+    name: "modalSearchForMedicine",
+    placeholder: "Enter Medicine Name or Medicine ID",
+  };
+
   const mockGroupMedicines = [
     {
       medicineName: "Augmentin 625 Duo Tablet",
@@ -43,25 +60,19 @@ const GroupInfo = () => {
     },
   ];
 
+  const handleModal = () => {
+    setModalState((prevState) => !prevState);
+  };
+
   return (
     <div className="Inventory__container Group__info">
       <div className="flex__container Group__info-top">
         <SectionName title={title} />
-        <RedButton buttonData={buttonData} />
+        <div className="group__info-modal" onClick={handleModal}>
+          <RedButton buttonData={buttonData} />
+        </div>
       </div>
-      <div
-        className="Topbar__input flex__container"
-        id="SearchMedicineInventoryContainer"
-      >
-        <input
-          type="search"
-          name="SearchForMedicine"
-          id="SearchForMedicine"
-          placeholder="Search for Medicine"
-          className="p__poppins"
-        />
-        <img src={Assets.Search} alt="Search Icon" />
-      </div>
+      <Searchbar data={searchBarData} />
       <div>
         <div className="Group__container-titles flex__container">
           <div>
@@ -78,10 +89,27 @@ const GroupInfo = () => {
         </div>
         <div className="splitter" />
         {mockGroupMedicines.map((data) => {
-          return <SingleMedicineInGroup data={data} />;
+          return <SingleMedicineInGroup data={data} key={data.medicineName} />;
         })}
       </div>
       <RedButton buttonData={buttonData2} />
+      {modalState === true ? (
+        <div className="modal__wrapper">
+          <div className="modal">
+            <div className="modal__title">
+              <p className="p__poppins">Add Medicine</p>
+            </div>
+            <div className="modal__subtitle">
+              <p className="p__poppins">Medicine</p>
+              <Searchbar data={searchBarData2} />
+            </div>
+            <RedButton buttonData={buttonData3} />
+            <div className="closemodal" onClick={handleModal}>
+              <img src={Assets.Close} alt="Close" />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const Groups = () => {
   };
   const buttonData = {
     color: "#F0483E",
-    text: "Add New Item",
+    text: "Add New Group",
     icon: Assets.Plus,
   };
 
