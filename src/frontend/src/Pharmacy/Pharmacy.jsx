@@ -5,7 +5,6 @@ import Assets from "../Assets/Assets";
 import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
-
 /*The logo may be dynamic . Like on user upload it should change necessarilly
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
@@ -17,8 +16,8 @@ their photo and name. The status will be computed */
 export const dataGroupContext = React.createContext();
 export const dataGroup2Context = React.createContext();
 export const dataFlowContext = React.createContext();
-export const rightSectionClickContext = React.createContext();
 export const inventoryClickContext = React.createContext();
+export const dataGroup3Context = React.createContext();
 
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
@@ -35,6 +34,8 @@ const Pharmacy = () => {
   const [onTab, setOnTab] = useState("");
   const [arrowState, setArrowState] = useState(false);
   const [inventoryOn, setInventoryOn] = useState(false);
+  const [reportsOn, setReportsOn] = useState(false);
+  const [payments, setPayments] = useState(70);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -79,10 +80,6 @@ const Pharmacy = () => {
     });
     return filteredData;
   };
-
-  /**
-   * One Function to rule them all.
-   */
 
   const flowingData = {
     currentInventoryStatus: inventoryStatus,
@@ -131,6 +128,8 @@ const Pharmacy = () => {
 
   const handleReportsClick = () => {
     setOnTab("repo");
+    setInventoryOn(false);
+    setReportsOn((prevState) => !prevState);
   };
 
   const handleConfigurationClick = () => {
@@ -176,6 +175,7 @@ const Pharmacy = () => {
     {
       name: "Reports",
       icon: Assets.Reports,
+      reportsOn: reportsOn,
       dropDown: true,
       onClick: handleReportsClick,
     },
@@ -287,6 +287,28 @@ const Pharmacy = () => {
     },
   ];
 
+  const dataGroup3 = [
+    {
+      icon: Assets.Revenue,
+      status: revenue,
+      name: "Total Sales Report",
+      linkTo: "salesreport",
+      accentColor: "#FED600",
+      bgColor: "#FED6004D",
+      rs: true,
+      activeTab: "repo",
+    },
+    {
+      icon: Assets.Healthy,
+      status: payments,
+      name: "Payments Report",
+      linkTo: "paymentreport",
+      accentColor: "#01A768",
+      bgColor: "#01A7684D",
+      activeTab: "repo",
+    },
+  ];
+
   /** This is the dashboard data on the bottom the one with four groups .*/
   const dataGroup2 = [
     {
@@ -357,7 +379,6 @@ const Pharmacy = () => {
               </div>
             </div>
           </div>
-          {/* <rightSectionClickContext.Provider value={HandleRightSectionClick}> */}
           <dataFlowContext.Provider value={flowingData}>
             {dataArray.map((data) => (
               <RightTab
@@ -368,7 +389,6 @@ const Pharmacy = () => {
               />
             ))}
           </dataFlowContext.Provider>
-          {/* </rightSectionClickContext.Provider> */}
           <div className="Pharmacy__powered">
             <p className="p__poppins">Powered by Cash © 2022 </p>
           </div>
@@ -405,17 +425,17 @@ const Pharmacy = () => {
             <Date />
           </div>
         </div>
-        {/* <inventoryClickContext.Provider value={handleInventoryClick}> */}
-        <dataFlowContext.Provider value={flowingData}>
-          <dataGroupContext.Provider value={dataGroup}>
-            <dataGroup2Context.Provider value={dataGroup2}>
-              <div className="Pharmacy__body">
-                <Outlet />
-              </div>
-            </dataGroup2Context.Provider>
-          </dataGroupContext.Provider>
-        </dataFlowContext.Provider>
-        {/* </inventoryClickContext.Provider> */}
+        <dataGroup3Context.Provider value={dataGroup3}>
+          <dataFlowContext.Provider value={flowingData}>
+            <dataGroupContext.Provider value={dataGroup}>
+              <dataGroup2Context.Provider value={dataGroup2}>
+                <div className="Pharmacy__body">
+                  <Outlet />
+                </div>
+              </dataGroup2Context.Provider>
+            </dataGroupContext.Provider>
+          </dataFlowContext.Provider>
+        </dataGroup3Context.Provider>
       </div>
     </div>
   );

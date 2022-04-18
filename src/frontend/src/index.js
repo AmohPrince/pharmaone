@@ -19,6 +19,8 @@ import {
   MedicineInfo,
   NewMedicine,
   GroupInfo,
+  SalesReport,
+  PaymentsReport,
 } from "./Pharmacy/Sections/Sections";
 
 const container = document.getElementById("root");
@@ -31,6 +33,8 @@ root.render(
         <Route path="Dashboard" element={<Dashboard />}>
           <Route path="reports" element={<Reports />} />
         </Route>
+
+        {/* Inventory Routes */}
         <Route path="Inventory" element={<Inventory />}></Route>
         <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
         <Route
@@ -42,11 +46,15 @@ root.render(
           path="/Inventory/listofmeds/Addnewmedicine"
           element={<NewMedicine />}
         />
-
         <Route path="/Inventory/groups" element={<Groups />} />
+
+        {/* Report Routes */}
+        <Route path="Reports" element={<Reports />} />
+        <Route path="/Reports/salesreport" element={<SalesReport />} />
+        <Route path="/Reports/paymentreport" element={<PaymentsReport />} />
+
         <Route path="Chat%20With%20Others" element={<Chat />} />
         <Route path="Covid-19" element={<Covid />} />
-        <Route path="Reports" element={<Reports />} />
         <Route path="Configuration" element={<Configuration />} />
         <Route path="Contact%20Management" element={<ContactManagement />} />
         <Route path="Notifications" element={<Notifications />} />

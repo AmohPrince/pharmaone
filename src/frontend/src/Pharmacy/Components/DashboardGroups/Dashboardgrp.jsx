@@ -41,6 +41,12 @@ const Dashboardgrp = ({ data }) => {
           {data.linkTo === "reports" ? (
             <p className="p__poppins">View Detailed Report</p>
           ) : null}
+          {data.linkTo === "salesreport" ? (
+            <p className="p__poppins">View Detailed Report</p>
+          ) : null}
+          {data.linkTo === "paymentreport" ? (
+            <p className="p__poppins">View Detailed Report</p>
+          ) : null}
           {data.linkTo === "inventory" ? (
             <p className="p__poppins">Visit Inventory</p>
           ) : null}

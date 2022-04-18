@@ -62,7 +62,7 @@
   border-radius: 4px;
   position: absolute;
   left: 50%;
-  bottom: 80px;
+  bottom: 150px;
   transform: translate(-50%, -50%);
 }
 .successconfirmation img {

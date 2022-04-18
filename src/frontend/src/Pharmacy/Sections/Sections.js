@@ -13,8 +13,12 @@ import Groups from "./Inventory/Groups/Groups";
 import MedicineInfo from "./Inventory/ListOfMeds/MedicineInfo/MedicineInfo";
 import NewMedicine from "./Inventory/ListOfMeds/NewMedicine/NewMedicine";
 import GroupInfo from "./Inventory/Groups/GroupInfo/GroupInfo";
+import SalesReport from "./Reports/SalesReport/SalesReport";
+import PaymentsReport from "./Reports/PaymentsReport/PaymentsReport";
 
 export {
+  SalesReport,
+  PaymentsReport,
   GroupInfo,
   NewMedicine,
   MedicineInfo,

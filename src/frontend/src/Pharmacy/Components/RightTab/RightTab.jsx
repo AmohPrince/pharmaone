@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./RightTab.css";
 import Assets from "../../../Assets/Assets";
 import { Link } from "react-router-dom";
-import { dataFlowContext, rightSectionClickContext } from "../../Pharmacy";
+import { dataFlowContext } from "../../Pharmacy";
 
 /*This component is lives in the left section. It will take an object containg an 
 icon a name and a boolean whether or not there is a dropdown. 
@@ -14,7 +14,6 @@ const RightTab = ({ data, arrowState }) => {
    * contains all the state that lives in the main pharmacy component.
    */
   const incomingData = useContext(dataFlowContext);
-  const changeColor = useContext(rightSectionClickContext);
 
   const handleListClick = () => {
     incomingData.setOnTab("medslist");
@@ -22,6 +21,12 @@ const RightTab = ({ data, arrowState }) => {
 
   const handleGroupClick = () => {
     incomingData.setOnTab("groups");
+  };
+  const handleSalesClick = () => {
+    console.log("clicked sales");
+  };
+  const handlePaymentsClick = () => {
+    console.log("clicked sales");
   };
   return (
     <Link to={`${data.name}`} style={{ textDecoration: "none" }}>
@@ -60,6 +65,33 @@ const RightTab = ({ data, arrowState }) => {
             </div>
           </div>
         ) : null}
+        {data.reportsOn === true ? (
+          <div className="inventoryOptions flex__container-v">
+            <div
+              className={`inventoryoption listofmeds ${incomingData.currrentOnTab}`}
+              onClick={handleSalesClick}
+            >
+              <Link
+                to="/Reports/salesreport"
+                style={{ textDecoration: "none" }}
+              >
+                <p className="p__poppins">Sales Report</p>
+              </Link>
+            </div>
+            <div
+              className={`inventoryoption medicinegroups ${incomingData.currrentOnTab}`}
+              onClick={handlePaymentsClick}
+            >
+              <Link
+                to="/Reports/paymentreport"
+                style={{ textDecoration: "none" }}
+              >
+                <p className="p__poppins">Payments Report</p>
+              </Link>
+            </div>
+          </div>
+        ) : null}
+
         {data.spaceBelow ? <div className="space" /> : null}
       </div>
     </Link>
