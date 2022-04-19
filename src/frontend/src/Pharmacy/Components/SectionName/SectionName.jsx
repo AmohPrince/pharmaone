@@ -10,7 +10,7 @@ const SectionName = ({ title }) => {
     return (
       <div className="SectionName__level1">
         <div className="level1__top flex__container">
-          <Link to="/Inventory" style={{ textDecoration: "none" }}>
+          <Link to={`/${title.source}`} style={{ textDecoration: "none" }}>
             <p className="p__poppins">{title.source}</p>
           </Link>
           <img
@@ -41,7 +41,10 @@ const SectionName = ({ title }) => {
             src={Assets.LeftDirectionArrow}
             alt="Points to the left"
           />
-          <Link to="/Inventory/listofmeds" style={{ textDecoration: "none" }}>
+          <Link
+            to={`/Inventory/${title.source2}`}
+            style={{ textDecoration: "none" }}
+          >
             <p className="p__poppins">{title.source2}</p>
           </Link>
           <img

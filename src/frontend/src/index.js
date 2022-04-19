@@ -37,6 +37,14 @@ root.render(
         <Route path="Inventory" element={<Inventory />}></Route>
         <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
         <Route
+          path="/Inventory/List%20of%20medicines"
+          element={<ListOfMeds />}
+        />
+        <Route
+          path="/Inventory/List%20of%20medicines/:medicineId"
+          element={<MedicineInfo />}
+        />
+        <Route
           path="/Inventory/listofmeds/:medicineId"
           element={<MedicineInfo />}
         />

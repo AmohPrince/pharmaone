@@ -30,6 +30,8 @@
   text-align: center;
   background-color: transparent;
   cursor: pointer;
+  font-size: 1rem;
+  color: rgb(91, 94, 97);
 }
 #selectsalesmedgroup:hover,
 #selectsalesusername:hover {
@@ -39,6 +41,6 @@
 #selectsalesmedgroup:focus,
 #selectsalesusername:focus {
   transition: border-color 100ms ease-in;
-  border-color: rgb(25, 118, 210);
+  border-color: var(--skyBlue);
   border-width: 2px;
 }
