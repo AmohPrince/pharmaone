@@ -18,9 +18,13 @@ const SectionName = ({ title }) => {
             src={Assets.LeftDirectionArrow}
             alt="Points to the left"
           />
-          <p className="p__poppins">
-            {title.main} ({title.meds})
-          </p>
+          {title.main === "Sales Report" ? (
+            <p className="p__poppins">{title.main}</p>
+          ) : (
+            <p className="p__poppins">
+              {title.main} ({title.meds})
+            </p>
+          )}
         </div>
         <p className="p__poppins">{title.sub}</p>
       </div>

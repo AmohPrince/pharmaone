@@ -1,0 +1,44 @@
+.Salesreport__top {
+  justify-content: space-between;
+}
+.Salesreport__mid {
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.Salesreport__mid p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+/* .Salesreport__mid-date input {
+  font-family: "Poppins", sans-serif;
+  width: 340px;
+  height: 38px;
+  border-radius: 4px;
+  background-color: #e3ebf3;
+  text-align: center;
+  border: 0.2px solid #1d242e;
+  padding: 0px 20px;
+  outline: none;
+} */
+#selectsalesmedgroup,
+#selectsalesusername {
+  height: 56px;
+  width: 200px;
+  border-radius: 5px;
+  border-width: 1.5px;
+  border-color: rgb(174, 181, 187);
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+#selectsalesmedgroup:hover,
+#selectsalesusername:hover {
+  border-color: #000;
+  transition: border-color 100ms ease-in;
+}
+#selectsalesmedgroup:focus,
+#selectsalesusername:focus {
+  transition: border-color 100ms ease-in;
+  border-color: rgb(25, 118, 210);
+  border-width: 2px;
+}

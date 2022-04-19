@@ -22,7 +22,6 @@ import {
   SalesReport,
   PaymentsReport,
 } from "./Pharmacy/Sections/Sections";
-
 const container = document.getElementById("root");
 const root = createRoot(container);
 

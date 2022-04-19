@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
 import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
+
 /*The logo may be dynamic . Like on user upload it should change necessarilly
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
