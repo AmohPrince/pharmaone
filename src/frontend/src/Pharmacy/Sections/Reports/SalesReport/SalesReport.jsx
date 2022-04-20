@@ -7,6 +7,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Linechart from "../Linechart/Linechart";
 
 const SalesReport = () => {
   const title = {
@@ -82,6 +83,9 @@ const SalesReport = () => {
             <option value="Group2">User Name 2</option>
           </select>
         </div>
+      </div>
+      <div className="Salesreport__bottom">
+        <Linechart />
       </div>
     </div>
   );
