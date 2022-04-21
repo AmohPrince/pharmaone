@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
 const Linechart = () => {
@@ -24,34 +25,20 @@ const Linechart = () => {
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
   );
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+    labels: ["1 Dec", "8 Dec", "16 Dec", "31 Dec"],
     datasets: [
       {
-        label: "Sales for 2020 (M)",
-        data: [3, 2, 2, 1, 5],
-        borderColor: ["#03A9F5"],
-        fill: {
-          target: "origin",
-          above: "rgb(255, 0, 0)", // Area will be red above the origin
-          below: "rgb(0, 0, 255)", // And blue below the origin
-        },
-        // backgroundColor: ["yellow"],
-        // pointBackgroundColor: ["red"],
-      },
-      {
-        label: "Sales for 2021 (M)",
-        data: [4, 7, 7, 0, 8],
-        backgroundColor: ["#03A9F5"],
-        fill: {
-          target: "origin",
-          above: "rgb(255, 0, 0)", // Area will be red above the origin
-          below: "rgb(0, 0, 255)", // And blue below the origin
-        },
-        // backgroundColor: ["yellow"],
-        // pointBackgroundColor: ["red"],
+        label: "Sales",
+        data: [3, 7, 4, 5],
+        borderColor: "#03A9F5",
+        fill: true,
+        backgroundColor: "rgb(16, 156, 241 , 0.3)",
+        borderWidth: 2,
+        hoverBorderColor: "rgb(255,196,208)",
       },
     ],
   };
@@ -61,15 +48,21 @@ const Linechart = () => {
       display: true,
       text: "linechrt",
     },
-    scales: [
-      {
-        ticks: {
-          min: 0,
-          max: 6,
-          stepSize: 1,
+    scales: {
+      y: [
+        {
+          display: true,
+          stacked: true,
+          ticks: {
+            beginAtZero: true,
+            steps: 10,
+            stepValue: 5,
+            min: 0,
+            max: 100,
+          },
         },
-      },
-    ],
+      ],
+    },
   };
   return (
     <div>

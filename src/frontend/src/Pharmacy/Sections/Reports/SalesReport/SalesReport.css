@@ -44,3 +44,41 @@
   border-color: var(--skyBlue);
   border-width: 2px;
 }
+.Salesreport__bottom {
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.Salesreport__bottom-chart {
+  width: 526px;
+  border: 1px solid rgb(174, 181, 187);
+  background-color: var(--white);
+  padding: 0px 20px 10px 20px;
+}
+.Salesreport__bottom-chart > p {
+  color: var(--black);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 10px;
+}
+.Salesreport__bottom-orders {
+  border: 1px solid rgb(174, 181, 187);
+  background-color: var(--white);
+}
+.Orders__title {
+  justify-content: space-evenly;
+}
+.Orders__title > p {
+  color: var(--black);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 10px;
+}
+.Orders__body {
+  padding: 9px;
+}
+.Orders__body p {
+  font-weight: 400;
+  font-size: calc(1rem - 2px);
+  margin: 7.5px 20px;
+  color: var(--black);
+}

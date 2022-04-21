@@ -84,8 +84,41 @@ const SalesReport = () => {
           </select>
         </div>
       </div>
-      <div className="Salesreport__bottom">
-        <Linechart />
+      <div className="Salesreport__bottom flex__container">
+        <div className="Salesreport__bottom-chart">
+          <p className="p__poppins">Sales Made</p>
+          <div className="splitter" />
+          <Linechart />
+        </div>
+        <div className="Salesreport__bottom-orders">
+          <div className="Orders__title flex__container">
+            <p className="p__poppins">Order Id</p>
+            <p className="p__poppins">Date & Time</p>
+          </div>
+          <div className="splitter" />
+          <div className="Orders__body flex__container">
+            <div className="Orders__body-ids">
+              <p className="p__poppins">2485855848598</p>
+              <p className="p__poppins">2485855848577</p>
+              <p className="p__poppins">2485855848563</p>
+              <p className="p__poppins">2485855848563</p>
+              <p className="p__poppins">2485855848568</p>
+              <p className="p__poppins">2485855848567</p>
+              <p className="p__poppins">2485855848564</p>
+              <p className="p__poppins">2485855848544</p>
+            </div>
+            <div className="Orders__body-dates">
+              <p className="p__poppins">01 Dec 2021 10:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+              <p className="p__poppins">02 Dec 2021 18:25</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
