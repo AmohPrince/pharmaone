@@ -91,3 +91,30 @@
 .medslistInventory {
   color: var(--black);
 }
+.reportsOption {
+  width: 100%;
+  text-align: center;
+}
+.reportsOptions {
+  background-color: var(--black);
+}
+.reportsOption p {
+  padding: 20px;
+  color: var(--white);
+}
+.reportsOption p:hover {
+  color: var(--primaryGreen);
+  transition: color 0.3s ease-in-out;
+}
+.paymentreport.payments {
+  background-color: var(--primaryGreen);
+}
+.paymentreport.payments p:hover {
+  color: var(--lightGrey);
+}
+.salesreport.sales {
+  background-color: var(--primaryGreen);
+}
+.salesreport.sales p:hover {
+  color: var(--lightGrey);
+}

@@ -8,11 +8,12 @@ import { dataFlowContext } from "../../Pharmacy";
 icon a name and a boolean whether or not there is a dropdown. 
 */
 
+/**
+ * This incoming data is the global state . Is the one that
+ * contains all the state that lives in the main pharmacy component.
+ */
+
 const RightTab = ({ data, arrowState }) => {
-  /**
-   * This incoming data is the global state . Is the one that
-   * contains all the state that lives in the main pharmacy component.
-   */
   const incomingData = useContext(dataFlowContext);
 
   const handleListClick = () => {
@@ -23,10 +24,10 @@ const RightTab = ({ data, arrowState }) => {
     incomingData.setOnTab("groups");
   };
   const handleSalesClick = () => {
-    console.log("clicked sales");
+    incomingData.setOnTab("sales");
   };
   const handlePaymentsClick = () => {
-    console.log("clicked sales");
+    incomingData.setOnTab("payments");
   };
   return (
     <Link to={`${data.name}`} style={{ textDecoration: "none" }}>
@@ -66,9 +67,9 @@ const RightTab = ({ data, arrowState }) => {
           </div>
         ) : null}
         {data.reportsOn === true ? (
-          <div className="inventoryOptions flex__container-v">
+          <div className="reportsOptions flex__container-v">
             <div
-              className={`inventoryoption listofmeds ${incomingData.currrentOnTab}`}
+              className={`reportsOption salesreport ${incomingData.currrentOnTab}`}
               onClick={handleSalesClick}
             >
               <Link
@@ -79,7 +80,7 @@ const RightTab = ({ data, arrowState }) => {
               </Link>
             </div>
             <div
-              className={`inventoryoption medicinegroups ${incomingData.currrentOnTab}`}
+              className={`reportsOption paymentreport ${incomingData.currrentOnTab}`}
               onClick={handlePaymentsClick}
             >
               <Link

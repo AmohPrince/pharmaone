@@ -66,7 +66,7 @@ const Linechart = () => {
   };
   return (
     <div>
-      <Line data={data} options={options} />
+      <Line data={data} options={options} draggable={true} />
     </div>
   );
 };
