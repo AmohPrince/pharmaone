@@ -92,9 +92,8 @@ const RightTab = ({ data, arrowState }) => {
             </div>
           </div>
         ) : null}
-
-        {data.spaceBelow ? <div className="space" /> : null}
       </div>
+      {data.spaceBelow ? <div className="space" /> : null}
     </Link>
   );
 };

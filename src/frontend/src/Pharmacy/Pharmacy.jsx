@@ -115,6 +115,8 @@ const Pharmacy = () => {
 
   const handleDashBoardClick = () => {
     setOnTab("dash");
+    setInventoryOn(false);
+    setReportsOn(false);
   };
 
   const handleInventoryClick = () => {
@@ -135,6 +137,8 @@ const Pharmacy = () => {
 
   const handleConfigurationClick = () => {
     setOnTab("conf");
+    setInventoryOn(false);
+    setReportsOn(false);
   };
 
   const handleContactManagementClick = () => {
@@ -211,6 +215,7 @@ const Pharmacy = () => {
       dropDown: false,
       onClick: handleSettingsClick,
       spaceBelow: true,
+      topLine: true,
     },
     {
       name: "Covid-19",

@@ -52,17 +52,28 @@
   width: 526px;
   border: 1px solid rgb(174, 181, 187);
   background-color: var(--white);
-  padding: 0px 20px 10px 20px;
+}
+.Salesreport__bottom-chart:hover {
+  border: 1px solid var(--skyBlue);
+}
+.Salesreport__bottom-chart:hover > .Configuration__container-splitter {
+  background-color: var(--skyBlue);
 }
 .Salesreport__bottom-chart > p {
   color: var(--black);
   font-size: 0.9rem;
   font-weight: 600;
-  margin: 10px;
+  padding: 10px 20px 10px 20px;
 }
 .Salesreport__bottom-orders {
   border: 1px solid rgb(174, 181, 187);
   background-color: var(--white);
+}
+.Salesreport__bottom-orders:hover {
+  border: 1px solid var(--skyBlue);
+}
+.Salesreport__bottom-orders:hover > .Configuration__container-splitter {
+  background-color: var(--skyBlue);
 }
 .Orders__title {
   justify-content: space-evenly;

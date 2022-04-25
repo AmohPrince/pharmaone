@@ -16,7 +16,7 @@ const Reports = () => {
       <SectionName title={title} />
       <div className="flex__container">
         {data.map((data) => (
-          <Dashboardgrp data={data} />
+          <Dashboardgrp data={data} key={data.name} />
         ))}
       </div>
     </div>

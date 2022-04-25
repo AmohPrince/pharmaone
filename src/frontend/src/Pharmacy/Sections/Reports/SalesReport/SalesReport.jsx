@@ -87,7 +87,7 @@ const SalesReport = () => {
       <div className="Salesreport__bottom flex__container">
         <div className="Salesreport__bottom-chart">
           <p className="p__poppins">Sales Made</p>
-          <div className="splitter" />
+          <div className="Configuration__container-splitter" />
           <Linechart />
         </div>
         <div className="Salesreport__bottom-orders">
@@ -95,7 +95,7 @@ const SalesReport = () => {
             <p className="p__poppins">Order Id</p>
             <p className="p__poppins">Date & Time</p>
           </div>
-          <div className="splitter" />
+          <div className="Configuration__container-splitter" />
           <div className="Orders__body flex__container">
             <div className="Orders__body-ids">
               <p className="p__poppins">2485855848598</p>

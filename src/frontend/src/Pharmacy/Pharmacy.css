@@ -38,13 +38,18 @@
   border-radius: 4px;
 }
 .Topbar__input > input {
-  background-color: var(--lightGrey);
+  background-color: transparent;
   border: none;
   margin-left: 10px;
   width: 90%;
-  height: 70%;
+  height: 80%;
   font-size: 1.2rem;
-  padding: 2px;
+  padding: 10px;
+}
+.Topbar__input > input:focus {
+  outline: none;
+  border: 2px solid var(--skyBlue);
+  border-radius: 4px;
 }
 .Topbar__input > img {
   margin-right: 10px;
@@ -60,9 +65,9 @@
 }
 #Search::-webkit-search-cancel-button {
   position: relative;
-  right: 20px;
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 .Topbar__changelang {
   width: 15%;

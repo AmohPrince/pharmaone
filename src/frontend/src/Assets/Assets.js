@@ -34,11 +34,13 @@ import TopBottomArrows from "./TopBottomArrows.svg";
 import PageSwitcher from "./PageSwitcherIcon.svg";
 import PageSwitcherLeft from "./PageSwitcherIconLeft.svg";
 import Pen from "./Pen.svg";
+import PenBlue from "./Penblue.svg";
 import Trash from "./Trash.svg";
 import Close from "./Close.svg";
 import Tick from "./Tick.svg";
 
 export default {
+  PenBlue,
   Tick,
   Close,
   Trash,

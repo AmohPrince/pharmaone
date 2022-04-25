@@ -1,5 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import "./LineChart.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -65,7 +66,7 @@ const Linechart = () => {
     },
   };
   return (
-    <div>
+    <div className="linechart__container">
       <Line data={data} options={options} draggable={true} />
     </div>
   );
