@@ -74,31 +74,6 @@ const Pharmacy = () => {
     setMedicineGroups(groupsList.length);
   }, [groupsList]);
 
-  // const mockListOfMedicines = [
-  //   {
-  //     medicineName: "Augmentin 625 Duo Tablet",
-  //     medicineId: "D06ID232435454",
-  //     groupName: "Generic Medicine",
-  //     stock: 350,
-  //   },
-  //   {
-  //     medicineName: "Azithral 500 Tablet",
-  //     medicineId: "D06ID232435451",
-  //     groupName: "Generic Medicine",
-  //     stock: 20,
-  //   },
-  // ];
-  // const mockListOfGroups = [
-  //   {
-  //     groupName: "Generic Medicine",
-  //     noOfMedicine: 2,
-  //   },
-  //   {
-  //     groupName: "Diabetes",
-  //     noOfMedicine: 32,
-  //   },
-  // ];
-
   const getSpecificMedicineWithId = (number) => {
     const filteredData = medicineList.find((medicine) => {
       return medicine.medicineId === number;
