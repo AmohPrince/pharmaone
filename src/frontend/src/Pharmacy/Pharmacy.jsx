@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
@@ -23,9 +23,9 @@ export const dataGroup3Context = React.createContext();
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
   const [revenue, setRevenue] = useState(135540);
-  const [availableMeds, setAvailableMeds] = useState(50);
+  const [availableMeds, setAvailableMeds] = useState(0);
   const [medicineShortage, setMedicineShortage] = useState(-1);
-  const [medicineGroups, setMedicineGroups] = useState(70);
+  const [medicineGroups, setMedicineGroups] = useState(0);
   const [soldMedicine, setSoldMedicine] = useState(45);
   const [generatedInvoices, setGeneratedInvoices] = useState(13);
   const [noOfSuppliers, setNoOfSuppliers] = useState(22);
@@ -37,46 +37,77 @@ const Pharmacy = () => {
   const [inventoryOn, setInventoryOn] = useState(false);
   const [reportsOn, setReportsOn] = useState(false);
   const [payments, setPayments] = useState(70);
+  const [medicineList, setMedicineList] = useState([]);
+  const [groupsList, setGroupsList] = useState([]);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
     profile.classList.toggle("active");
   };
 
-  const mockListOfMedicines = [
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      medicineId: "D06ID232435454",
-      groupName: "Generic Medicine",
-      stock: 350,
-    },
-    {
-      medicineName: "Azithral 500 Tablet",
-      medicineId: "D06ID232435451",
-      groupName: "Generic Medicine",
-      stock: 20,
-    },
-  ];
-  const mockListOfGroups = [
-    {
-      groupName: "Generic Medicine",
-      noOfMedicine: 2,
-    },
-    {
-      groupName: "Diabetes",
-      noOfMedicine: 32,
-    },
-  ];
+  const fetchMedicine = () => {
+    fetch("http://localhost:8080/getallmedicine")
+      .then((res) => res.json())
+      .then((data) => {
+        return setMedicineList(data);
+      });
+  };
+
+  const fetchGroups = () => {
+    fetch("http://localhost:8080/getallgroups")
+      .then((res) => res.json())
+      .then((data) => {
+        return setGroupsList(data);
+      });
+  };
+
+  useEffect(() => {
+    fetchMedicine();
+    fetchGroups();
+  }, []);
+
+  useEffect(() => {
+    setAvailableMeds(medicineList.length);
+  }, [medicineList]);
+
+  useEffect(() => {
+    setMedicineGroups(groupsList.length);
+  }, [groupsList]);
+
+  // const mockListOfMedicines = [
+  //   {
+  //     medicineName: "Augmentin 625 Duo Tablet",
+  //     medicineId: "D06ID232435454",
+  //     groupName: "Generic Medicine",
+  //     stock: 350,
+  //   },
+  //   {
+  //     medicineName: "Azithral 500 Tablet",
+  //     medicineId: "D06ID232435451",
+  //     groupName: "Generic Medicine",
+  //     stock: 20,
+  //   },
+  // ];
+  // const mockListOfGroups = [
+  //   {
+  //     groupName: "Generic Medicine",
+  //     noOfMedicine: 2,
+  //   },
+  //   {
+  //     groupName: "Diabetes",
+  //     noOfMedicine: 32,
+  //   },
+  // ];
 
   const getSpecificMedicineWithId = (number) => {
-    const filteredData = mockListOfMedicines.find((medicine) => {
+    const filteredData = medicineList.find((medicine) => {
       return medicine.medicineId === number;
     });
 
     return filteredData;
   };
   const getSpecificGroupWithName = (name) => {
-    const filteredData = mockListOfGroups.find((group) => {
+    const filteredData = groupsList.find((group) => {
       return group.groupName === name;
     });
     return filteredData;
@@ -109,8 +140,8 @@ const Pharmacy = () => {
     setOnTab,
     getSpecificMedicineWithId,
     getSpecificGroupWithName,
-    mockListOfMedicines,
-    mockListOfGroups,
+    medicineList,
+    groupsList,
   };
 
   const handleDashBoardClick = () => {

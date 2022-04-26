@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const ListOfMeds = () => {
   const incomingData = useContext(dataFlowContext);
-  const medicineList = incomingData.mockListOfMedicines;
+  const medicineList = incomingData.medicineList;
 
   const title = {
     main: "List of medicines",

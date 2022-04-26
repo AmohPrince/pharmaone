@@ -55,8 +55,8 @@ const Groups = () => {
           </div>
         </div>
         <div className="titleseparator" />
-        {incomingData.mockListOfGroups.map((data) => (
-          <SingleGroup data={data} key={data.name} />
+        {incomingData.groupsList.map((data) => (
+          <SingleGroup data={data} key={data.groupName} />
         ))}
       </div>
     </div>
