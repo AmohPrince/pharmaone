@@ -25,4 +25,10 @@ public class MedicineController {
         return medicineService.addMedicine(medicine);
     }
 
+    @PutMapping("/modifymedicine")
+    public String modifyMedicine(@RequestBody Medicine medicine){
+        return medicineService.modifyMedicine(medicine);
+
+    }
+
 }

@@ -10,6 +10,10 @@ public class Medicine {
     String medicineName;
     String groupName;
     int inStock;
+    String lifetimeSupply;
+    String lifetimeSales;
+    String howToUse;
+    String sideEffects;
 
     public String getMedicineName() {
         return medicineName;
@@ -41,5 +45,37 @@ public class Medicine {
 
     public void setInStock(int inStock) {
         this.inStock = inStock;
+    }
+
+    public String getLifetimeSupply() {
+        return lifetimeSupply;
+    }
+
+    public void setLifetimeSupply(String lifetimeSupply) {
+        this.lifetimeSupply = lifetimeSupply;
+    }
+
+    public String getLifetimeSales() {
+        return lifetimeSales;
+    }
+
+    public void setLifetimeSales(String lifetimeSales) {
+        this.lifetimeSales = lifetimeSales;
+    }
+
+    public String getHowToUse() {
+        return howToUse;
+    }
+
+    public void setHowToUse(String howToUse) {
+        this.howToUse = howToUse;
+    }
+
+    public String getSideEffects() {
+        return sideEffects;
+    }
+
+    public void setSideEffects(String sideEffects) {
+        this.sideEffects = sideEffects;
     }
 }

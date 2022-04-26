@@ -10,4 +10,6 @@ public interface MedicineService {
     public List getAllMedicines(Medicine medicine);
 
     String addMedicine(Medicine medicine);
+
+    String modifyMedicine(Medicine medicine);
 }
