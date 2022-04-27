@@ -20,6 +20,10 @@ public class MedicineController {
 
         return medicineService.getAllMedicines(medicine);
     }
+    @GetMapping("/getsinglemedicine/{medicineId}")
+    public Medicine getSingleMedicine(@PathVariable String medicineId){
+        return medicineService.getSingleMedicine(medicineId);
+    }
     @PostMapping("/addMedicine")
     public String addMedicine (@RequestBody Medicine medicine){
         return medicineService.addMedicine(medicine);

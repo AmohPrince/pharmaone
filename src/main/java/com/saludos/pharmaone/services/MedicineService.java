@@ -12,4 +12,6 @@ public interface MedicineService {
     String addMedicine(Medicine medicine);
 
     String modifyMedicine(Medicine medicine);
+
+    Medicine getSingleMedicine(String medicineId);
 }

@@ -54,3 +54,77 @@
 .deleteMedicine {
   margin-top: 5px;
 }
+.medicnedatasplitter {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+}
+.edit__modal {
+  width: 500px;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+}
+.edit__modal-header {
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.edit__modal-header > p {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.edit__modal-input {
+  align-items: unset;
+}
+label {
+  font-family: "Poppins", sans-serif;
+}
+.edit__modal label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #87898e;
+}
+.edit__modal-input > div {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#savebutton {
+  width: 90%;
+  height: 56px;
+  align-self: center;
+  cursor: pointer;
+  background-color: var(--skyBlue);
+  border: none;
+  color: var(--white);
+  border-radius: 50px;
+  font-size: 1rem;
+}
+#savebutton:hover {
+  background-color: rgb(3, 169, 245, 0.9);
+  transition: background-color 300ms ease-in;
+}
+.edit__modal-input input {
+  border: 1px solid var(--border);
+  height: 35px;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+.edit__modal-input input:hover {
+  border: 1px solid var(--black);
+}
+.edit__modal-input input:focus {
+  border: 1px solid var(--skyBlue);
+  outline: none;
+}
+.Medicine__info-container {
+  position: relative;
+}
+.edit__modal {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  /* transform: translate(-50%, -50%); */
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { dataFlowContext } from "../../../../Pharmacy";
 import { SectionName, RedButton } from "../../../../Components/Components";
@@ -16,6 +16,17 @@ const MedicineInfo = () => {
   let params = useParams();
   let incomingData = useContext(dataFlowContext);
   const data = incomingData.getSpecificMedicineWithId(params.medicineId);
+  const [medicineData, setMedicineData] = useState([]);
+
+  const fetchMedicineData = () => {
+    fetch(`http://localhost:8080/getsinglemedicine/${params.medicineId}`)
+      .then((res) => res.json())
+      .then((data) => setMedicineData(data));
+  };
+
+  useEffect(() => {
+    fetchMedicineData();
+  }, []);
 
   const title = {
     main: data.medicineName,
@@ -38,7 +49,7 @@ const MedicineInfo = () => {
   };
 
   return (
-    <div className="Inventory__container ">
+    <div className="Inventory__container Medicine__info-container ">
       <div className="Medicine__info-top ">
         <div className="flex__container">
           <SectionName title={title} />
@@ -64,14 +75,14 @@ const MedicineInfo = () => {
             <div className="Medicine__data-title">
               <p className="p__poppins">Medicine</p>
             </div>
-            <div className="splitter" />
+            <div className="medicnedatasplitter" />
             <div className="Medicine__data-body flex__container">
               <div className="Medicine__data-section">
-                <p className="p__poppins">298</p>
+                <p className="p__poppins">{medicineData.medicineId}</p>
                 <p className="p__poppins">Medicine ID</p>
               </div>
               <div className="Medicine__data-section">
-                <p className="p__poppins">24</p>
+                <p className="p__poppins">{medicineData.groupName}</p>
                 <p className="p__poppins">Medicine Group</p>
               </div>
             </div>
@@ -84,18 +95,18 @@ const MedicineInfo = () => {
                 <img src={Assets.DirectionArrows} alt="Direction Arrows" />
               </Link>
             </div>
-            <div className="splitter" />
+            <div className="medicnedatasplitter" />
             <div className="Medicine__data-body flex__container">
               <div className="Medicine__data-section">
-                <p className="p__poppins">298</p>
+                <p className="p__poppins">{medicineData.lifetimeSupply}</p>
                 <p className="p__poppins">Lifetime Supply</p>
               </div>
               <div className="Medicine__data-section">
-                <p className="p__poppins">298</p>
+                <p className="p__poppins">{medicineData.lifetimeSales}</p>
                 <p className="p__poppins">Lifetime Sales</p>
               </div>
               <div className="Medicine__data-section">
-                <p className="p__poppins">08</p>
+                <p className="p__poppins">{medicineData.inStock}</p>
                 <p className="p__poppins">Stock Left</p>
               </div>
             </div>
@@ -106,11 +117,10 @@ const MedicineInfo = () => {
           <div className="Medicine__data-title">
             <p className="p__poppins">How To Use</p>
           </div>
-          <div className="splitter" />
+          <div className="medicnedatasplitter" />
           <div className="Medicine__data-description">
             <p className="p__poppins">
-              Take this medication by mouth with or without food as directed by
-              your doctor, usually once daily.
+              {medicineData.howToUse === "" ? "Unset" : medicineData.howToUse}
             </p>
           </div>
         </div>
@@ -118,19 +128,75 @@ const MedicineInfo = () => {
           <div className="Medicine__data-title">
             <p className="p__poppins">Side Effects</p>
           </div>
-          <div className="splitter" />
+          <div className="medicnedatasplitter" />
           <div className="Medicine__data-description">
             <p className="p__poppins">
-              Dizziness, lightheadedness, drowsiness, nausea, vomiting,
-              tiredness, excess saliva/drooling, blurred vision, weight gain,
-              constipation, headache, and trouble sleeping may occur. If any of
-              these effects persist or worsen, consult your doctor.
+              {medicineData.sideEffects === ""
+                ? "Unset"
+                : medicineData.sideEffects}
             </p>
           </div>
         </div>
       </div>
       <div className="deleteMedicine">
         <RedButton buttonData={buttonData2} />
+      </div>
+      <div className="edit__modal">
+        <div className="edit__modal-header flex__container">
+          <p className="p__poppins">Edit {data.medicineName}</p>
+          <img src={Assets.Close} alt="Close button" />
+        </div>
+        <div className="edit__modal-input flex__container-v">
+          <div>
+            <label htmlFor="medicineidinput">MedicineId</label>
+            <input
+              type="text"
+              id="medicineidinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <div>
+            <label htmlFor="medicinegroupinput">Medicine Group</label>
+            <input
+              type="text"
+              id="medicinegroupinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <div>
+            <label htmlFor="medicinelifetimesupplyinput">Lifetime Supply</label>
+            <input
+              type="text"
+              id="medicinelifetimesupplyinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <div>
+            <label htmlFor="medicinelifetimesalesinput">Lifetime Sales</label>
+            <input
+              type="text"
+              id="medicinelifetimesalesinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <div>
+            <label htmlFor="medicinehowtouseinput">How To Use</label>
+            <input
+              type="text"
+              id="medicinehowtouseinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <div>
+            <label htmlFor="medicinesideeffectsinput">Side Effects</label>
+            <input
+              type="text"
+              id="medicinesideeffectsinput"
+              className="medicineeditinput"
+            />
+          </div>
+          <input type="submit" value="Save Details" id="savebutton" />
+        </div>
       </div>
     </div>
   );

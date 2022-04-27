@@ -13,7 +13,7 @@ public class MedicineServiceImplementation  implements MedicineService{
     MedicineRepository medicineRepository;
 
     @Override
-    public List getAllMedicines(Medicine medicine) {
+    public List<Medicine> getAllMedicines(Medicine medicine) {
         return medicineRepository.findAll();
     }
 
@@ -29,5 +29,10 @@ public class MedicineServiceImplementation  implements MedicineService{
         medicineRepository.save(medicine);
 
         return "Modified " + medicine.getMedicineName();
+    }
+
+    @Override
+    public Medicine getSingleMedicine(String medicineId) {
+        return medicineRepository.findById(medicineId).get();
     }
 }
