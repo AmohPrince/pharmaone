@@ -98,7 +98,8 @@ const ListOfMeds = () => {
       </div>
       <div className="listofmeds__footer flex__container">
         <p className="p__poppins">
-          Showing 1 - 8 results of {incomingData.currentAvailableMeds}
+          Showing 1 - {incomingData.currentAvailableMeds} results of{" "}
+          {incomingData.currentAvailableMeds}
         </p>
         <div className="listofmeds__footer-pageswitch flex__container">
           <img src={Assets.PageSwitcherLeft} alt="Change Page" />

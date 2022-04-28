@@ -84,7 +84,7 @@ label {
   font-size: 1rem;
   color: #87898e;
 }
-.edit__modal-input > div {
+.edit__modal-input div {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -104,18 +104,21 @@ label {
   background-color: rgb(3, 169, 245, 0.9);
   transition: background-color 300ms ease-in;
 }
-.edit__modal-input input {
+.edit__modal-input input,
+textarea {
   border: 1px solid var(--border);
   height: 35px;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 5px;
   font-size: 1rem;
   outline: none;
 }
-.edit__modal-input input:hover {
+.edit__modal-input input:hover,
+textarea:hover {
   border: 1px solid var(--black);
 }
-.edit__modal-input input:focus {
+.edit__modal-input input:focus,
+textarea:focus {
   border: 1px solid var(--skyBlue);
   outline: none;
 }
@@ -124,7 +127,26 @@ label {
 }
 .edit__modal {
   position: absolute;
-  top: 5%;
+  top: 2%;
   left: 25%;
-  /* transform: translate(-50%, -50%); */
+  z-index: 3;
+}
+.edit__modal-header > img {
+  cursor: pointer;
+}
+.editmedicinebutton {
+  cursor: pointer;
+}
+#medicinehowtouseinput,
+#medicinesideeffectsinput {
+  height: 100px;
+  border-radius: 8px;
+}
+.Medicine__info-overlay {
+  position: absolute;
+  height: 120%;
+  width: 75%;
+  z-index: 2;
+  background-color: rgba(29, 36, 46, 0.5);
+  transition: background-color 200s ease-in-out;
 }
