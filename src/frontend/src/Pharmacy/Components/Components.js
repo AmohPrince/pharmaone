@@ -7,8 +7,10 @@ import SectionName from "./SectionName/SectionName";
 import Select from "./Select/Select";
 import RedButton from "./RedButton/RedButton";
 import Searchbar from "./SearchBar/Searchbar";
+import Spinner from "./Spinner/Spinner";
 
 export {
+  Spinner,
   RedButton,
   DashBoardLinks,
   Dashboardgrp,

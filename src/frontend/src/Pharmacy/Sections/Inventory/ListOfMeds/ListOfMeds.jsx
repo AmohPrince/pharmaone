@@ -5,6 +5,7 @@ import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleMedicine from "./SingleMedicine/SingleMedicine";
 import { Link } from "react-router-dom";
+import { Spinner } from "../../../Components/Components";
 /**
  * This component will have some form of fetch that will pull data
  * i thinl useeffect
@@ -92,9 +93,13 @@ const ListOfMeds = () => {
             <p className="p__poppins">Action</p>
           </div>
         </div>
-        {medicineList.map((data) => {
-          return <SingleMedicine data={data} key={data.medicineId} />;
-        })}
+        {medicineList.length === 0 ? (
+          <Spinner />
+        ) : (
+          medicineList.map((data) => {
+            return <SingleMedicine data={data} key={data.medicineId} />;
+          })
+        )}
       </div>
       <div className="listofmeds__footer flex__container">
         <p className="p__poppins">
