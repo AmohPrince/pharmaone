@@ -10,7 +10,6 @@ import "./SingleMedicine.css";
 const SingleMedicine = ({ data }) => {
   return (
     <div className="SingleMedicine__container flex__container-v">
-      <div className="medicinesplitter" />
       <div className="SingleMedicine__body flex__container">
         <p className="p__poppins">{data.medicineName}</p>
         <p className="p__poppins">{data.medicineId}</p>

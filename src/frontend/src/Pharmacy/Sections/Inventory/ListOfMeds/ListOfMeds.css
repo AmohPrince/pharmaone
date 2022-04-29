@@ -20,7 +20,7 @@
 }
 .Inventory__container-bottom {
   background-color: var(--white);
-  border: var(--lightGrey);
+  border: 2px solid var(--border);
   border-radius: 4px;
   margin-top: 20px;
   position: relative;
@@ -57,4 +57,12 @@
   margin-top: 30px;
   justify-content: space-between;
   padding: 0px 10px;
+}
+/* .Inventory__container-body {
+  
+} */
+.containersplitter {
+  width: 100%;
+  height: 2px;
+  background-color: var(--border);
 }

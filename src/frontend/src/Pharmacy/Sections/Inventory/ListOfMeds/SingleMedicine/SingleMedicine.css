@@ -1,9 +1,8 @@
 .medicinesplitter {
   width: 100%;
   height: 0.5px;
-  background-color: var(--lightGrey);
+  background-color: var(--border);
 }
-
 .SingleMedicine__body {
   width: 100%;
   justify-content: space-around;

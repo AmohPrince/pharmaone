@@ -29,7 +29,7 @@ public class MedicineController {
         return medicineService.addMedicine(medicine);
     }
 
-    @PutMapping("/modifymedicine")
+    @PutMapping("/modifymedicine/{medicineId}")
     public String modifyMedicine(@RequestBody Medicine medicine){
         return medicineService.modifyMedicine(medicine);
 

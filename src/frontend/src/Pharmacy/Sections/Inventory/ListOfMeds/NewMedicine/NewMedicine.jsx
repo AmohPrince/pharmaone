@@ -5,7 +5,15 @@ import { useForm } from "react-hook-form";
 
 const NewMedicine = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    fetch("http://localhost:8080/addMedicine", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
   const title = {
     main: "Add New Medicine",
     sub: "*All fields are mandatory, except mentioned as (optional).",
@@ -39,24 +47,24 @@ const NewMedicine = () => {
               name="selectFormMedicineGroup"
               id="selectFormMedicineGroup"
               className="p__poppins"
-              {...register("medicineGroup")}
+              {...register("groupName")}
             >
               <option value="" defaultValue hidden>
                 -Select Group-
               </option>
-              <option value="Group1">Group1</option>
-              <option value="Group2">Group2</option>
-              <option value="Group3">Group3</option>
+              <option value="Diabetes">Diabetes</option>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Malaria">Malaria</option>
             </select>
           </label>
           <label htmlFor="medicineQuantity">
             <p className="p__poppins">Quantity in Number</p>
-            <input {...register("medicineQuantity")} />
+            <input {...register("inStock")} />
           </label>
         </div>
         <label htmlFor="howtouse" className="howtouse">
           <p className="p__poppins">How to Use</p>
-          <input {...register("howtouse")} />
+          <input {...register("howToUse")} />
         </label>
         <label htmlFor="sideEffects" className="sideeffects">
           <p className="p__poppins">Side Efects</p>

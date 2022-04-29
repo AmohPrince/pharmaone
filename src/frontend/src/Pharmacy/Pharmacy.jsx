@@ -50,7 +50,8 @@ const Pharmacy = () => {
       .then((res) => res.json())
       .then((data) => {
         return setMedicineList(data);
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   const fetchGroups = () => {

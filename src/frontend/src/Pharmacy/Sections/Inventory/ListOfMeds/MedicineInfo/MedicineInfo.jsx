@@ -35,6 +35,13 @@ const MedicineInfo = () => {
   };
 
   const onSubmit = (data) => {
+    fetch(`http://localhost:8080/modifymedicine/${data.medicineidinput}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     console.log(data);
   };
 

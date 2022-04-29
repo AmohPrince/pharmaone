@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ListOfMeds.css";
 import { SectionName, RedButton } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
@@ -15,6 +15,28 @@ import { Spinner } from "../../../Components/Components";
 const ListOfMeds = () => {
   const incomingData = useContext(dataFlowContext);
   const medicineList = incomingData.medicineList;
+  const medicineListLength = medicineList.length;
+  const [filteredMedicineList, setFilteredMedicineList] = useState([]);
+  const [beginIndex, setBeginIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(8);
+
+  useEffect(() => {
+    filterMedicineList();
+  }, [medicineListLength, beginIndex, endIndex]);
+
+  const filterMedicineList = () => {
+    setFilteredMedicineList(medicineList.slice(beginIndex, endIndex));
+  };
+
+  const switchPage = (direction) => {
+    if (direction === "back") {
+      setBeginIndex((prevIndex) => prevIndex - 8);
+      setEndIndex((prevIndex) => prevIndex - 8);
+    } else {
+      setEndIndex((prevIndex) => prevIndex + 8);
+      setBeginIndex((prevIndex) => prevIndex + 8);
+    }
+  };
 
   const title = {
     main: "List of medicines",
@@ -93,27 +115,39 @@ const ListOfMeds = () => {
             <p className="p__poppins">Action</p>
           </div>
         </div>
-        {medicineList.length === 0 ? (
-          <Spinner />
-        ) : (
-          medicineList.map((data) => {
-            return <SingleMedicine data={data} key={data.medicineId} />;
-          })
-        )}
+        <div className="containersplitter" />
+        <div className="Inventory__container-body">
+          {medicineList.length === 0 ? (
+            <Spinner />
+          ) : (
+            filteredMedicineList.map((data) => {
+              return <SingleMedicine data={data} key={data.medicineId} />;
+            })
+          )}
+        </div>
       </div>
       <div className="listofmeds__footer flex__container">
         <p className="p__poppins">
-          Showing 1 - {incomingData.currentAvailableMeds} results of{" "}
-          {incomingData.currentAvailableMeds}
+          Showing {beginIndex + 1} -{" "}
+          {endIndex > medicineListLength ? medicineListLength : endIndex}{" "}
+          results of {medicineListLength}
         </p>
         <div className="listofmeds__footer-pageswitch flex__container">
-          <img src={Assets.PageSwitcherLeft} alt="Change Page" />
+          <img
+            src={Assets.PageSwitcherLeft}
+            alt="Change Page"
+            onClick={() => switchPage("back")}
+          />
           <select name="pageswitch" id="pageswitch" className="p__poppins">
             <option value="Jan2022">Page 1</option>
             <option value="Feb2022">Page 2</option>
             <option value="Mar2022">Page 3</option>
           </select>
-          <img src={Assets.PageSwitcher} alt="Change Page" />
+          <img
+            src={Assets.PageSwitcher}
+            alt="Change Page"
+            onClick={() => switchPage("front")}
+          />
         </div>
       </div>
     </div>
