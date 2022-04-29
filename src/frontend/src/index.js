@@ -50,7 +50,7 @@ root.render(
         />
         <Route path="/Inventory/groups/:groupName" element={<GroupInfo />} />
         <Route
-          path="/Inventory/listofmeds/Addnewmedicine"
+          path="/Inventory/listofmeds/addnewmedicine"
           element={<NewMedicine />}
         />
         <Route path="/Inventory/groups" element={<Groups />} />

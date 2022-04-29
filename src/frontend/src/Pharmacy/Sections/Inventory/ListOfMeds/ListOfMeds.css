@@ -58,11 +58,11 @@
   justify-content: space-between;
   padding: 0px 10px;
 }
-/* .Inventory__container-body {
-  
-} */
 .containersplitter {
   width: 100%;
   height: 2px;
   background-color: var(--border);
+}
+.listofmeds__footer-pageswitch > img {
+  cursor: pointer;
 }
