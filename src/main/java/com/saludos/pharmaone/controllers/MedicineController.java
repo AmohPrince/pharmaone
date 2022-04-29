@@ -34,5 +34,10 @@ public class MedicineController {
         return medicineService.modifyMedicine(medicine);
 
     }
+    @DeleteMapping("/deletemedicine/{medicineId}")
+    public String deleteMedicine (@PathVariable String medicineId){
+        return medicineService.deleteMedicine(medicineId);
+    }
+
 
 }

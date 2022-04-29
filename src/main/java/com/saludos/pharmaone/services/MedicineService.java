@@ -14,4 +14,6 @@ public interface MedicineService {
     String modifyMedicine(Medicine medicine);
 
     Medicine getSingleMedicine(String medicineId);
+
+    String deleteMedicine(String medicineId);
 }

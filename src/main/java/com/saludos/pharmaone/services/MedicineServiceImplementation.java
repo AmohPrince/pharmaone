@@ -27,12 +27,17 @@ public class MedicineServiceImplementation  implements MedicineService{
     @Override
     public String modifyMedicine(Medicine medicine) {
         medicineRepository.save(medicine);
-
         return "Modified " + medicine.getMedicineName();
     }
 
     @Override
     public Medicine getSingleMedicine(String medicineId) {
         return medicineRepository.findById(medicineId).get();
+    }
+
+    @Override
+    public String deleteMedicine(String medicineId) {
+        medicineRepository.deleteById(medicineId);
+        return "Deleted Medicine with id " + medicineId;
     }
 }
