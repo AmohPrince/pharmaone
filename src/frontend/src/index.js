@@ -29,44 +29,44 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Pharmacy />}>
-        <Route path="Dashboard" element={<Dashboard />}>
+        <Route path="dashboard" element={<Dashboard />}>
           <Route path="reports" element={<Reports />} />
         </Route>
 
         {/* Inventory Routes */}
-        <Route path="Inventory" element={<Inventory />}></Route>
-        <Route path="/Inventory/listofmeds" element={<ListOfMeds />} />
+        <Route path="inventory" element={<Inventory />}></Route>
+        <Route path="/inventory/listofmeds" element={<ListOfMeds />} />
         <Route
-          path="/Inventory/List%20of%20medicines"
+          path="/inventory/list%20of%20medicines"
           element={<ListOfMeds />}
         />
         <Route
-          path="/Inventory/List%20of%20medicines/:medicineId"
+          path="/inventory/list%20of%20medicines/:medicineId"
           element={<MedicineInfo />}
         />
         <Route
-          path="/Inventory/listofmeds/:medicineId"
+          path="/inventory/listofmeds/:medicineId"
           element={<MedicineInfo />}
         />
-        <Route path="/Inventory/groups/:groupName" element={<GroupInfo />} />
+        <Route path="/inventory/groups/:groupName" element={<GroupInfo />} />
         <Route
-          path="/Inventory/listofmeds/addnewmedicine"
+          path="/inventory/listofmeds/addnewmedicine"
           element={<NewMedicine />}
         />
-        <Route path="/Inventory/groups" element={<Groups />} />
+        <Route path="/inventory/groups" element={<Groups />} />
 
         {/* Report Routes */}
-        <Route path="Reports" element={<Reports />} />
-        <Route path="/Reports/salesreport" element={<SalesReport />} />
-        <Route path="/Reports/paymentreport" element={<PaymentsReport />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="/reports/salesreport" element={<SalesReport />} />
+        <Route path="/reports/paymentreport" element={<PaymentsReport />} />
 
-        <Route path="Chat%20With%20Others" element={<Chat />} />
-        <Route path="Covid-19" element={<Covid />} />
-        <Route path="Configuration" element={<Configuration />} />
-        <Route path="Contact%20Management" element={<ContactManagement />} />
-        <Route path="Notifications" element={<Notifications />} />
-        <Route path="Application%20Settings" element={<Settings />} />
-        <Route path="Get%20Technical%20Help" element={<TechHelp />} />
+        <Route path="chat%20With%20Others" element={<Chat />} />
+        <Route path="covid-19" element={<Covid />} />
+        <Route path="configuration" element={<Configuration />} />
+        <Route path="contact%20Management" element={<ContactManagement />} />
+        <Route path="notifications" element={<Notifications />} />
+        <Route path="application%20Settings" element={<Settings />} />
+        <Route path="get%20Technical%20Help" element={<TechHelp />} />
       </Route>
       <Route
         path="*"

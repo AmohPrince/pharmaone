@@ -150,20 +150,55 @@ textarea:focus {
   background-color: rgba(29, 36, 46, 0.5);
   transition: background-color 200s ease-in-out;
 }
-.deletemedicine__container {
-  border: 1px solid var(--red);
-  border-radius: 4px;
-  width: 179px;
-  height: 46px;
-  cursor: pointer;
-  justify-content: center;
+.deleteMedicine {
   margin-top: 30px;
 }
-.deletemedicine__container > input {
-  border: none;
-  color: var(--red);
+.deletemodal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 350px;
+  width: 350px;
+  border-radius: 8px;
+  background-color: var(--white);
+  text-align: center;
+  z-index: 2;
+}
+.deletemodal__container {
+  position: relative;
+  padding: 50px 0px;
+}
+.deletemodal__container > img:first-of-type {
+  position: absolute;
+  right: 20px;
+  top: 20px;
   cursor: pointer;
 }
-.deletemedicine__container > img {
-  margin-right: 10px;
+.deletemodal__container > *:not(img) {
+  margin: 20px 0;
+}
+.deletemodal__container > :last-child {
+  width: 100%;
+  padding: 0px 10px;
+  justify-content: space-between;
+}
+.choices > p {
+  border: 1px solid var(--skyBlue);
+  width: 150px;
+  cursor: pointer;
+  padding: 0.4em 0;
+  border-radius: 4px;
+  color: var(--skyBlue);
+}
+.choices > input {
+  padding: 0.4em 0;
+  width: 150px;
+  font-size: 1rem;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: var(--red);
+  color: var(--white);
 }

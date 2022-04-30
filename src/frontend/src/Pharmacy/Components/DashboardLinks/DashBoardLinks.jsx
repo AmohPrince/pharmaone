@@ -13,7 +13,7 @@ const DashBoardLinks = ({ data }) => {
         {data.select === true ? (
           <Select />
         ) : (
-          <Link to={`${data.linkTo}`} style={{ textDecoration: "none" }}>
+          <Link to={`/${data.linkTo}`} style={{ textDecoration: "none" }}>
             <div className="Dashboard__links-link flex__container">
               <p className="p__poppins">Go to {data.linkTo}</p>
               <img src={Assets.DirectionArrows} alt="Direction Arrows" />

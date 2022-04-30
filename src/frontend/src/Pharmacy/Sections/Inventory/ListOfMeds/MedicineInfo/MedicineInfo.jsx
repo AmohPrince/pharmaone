@@ -19,6 +19,8 @@ const MedicineInfo = () => {
   const data = incomingData.getSpecificMedicineWithId(params.medicineId);
   const [medicineData, setMedicineData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState("");
+  const [deleteModal, setDeleteModal] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -46,6 +48,7 @@ const MedicineInfo = () => {
   };
 
   //Delete
+  // prettier-ignore
   const onDelete = () => {
     const editingId = params.medicineId;
     const editingObject = {
@@ -56,9 +59,12 @@ const MedicineInfo = () => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        // "Accept": "application/json",
       },
       body: JSON.stringify(editingObject),
-    });
+    })
+      .then((res) => res.text())
+      .then((resBody) => setDeleteMessage(resBody));
   };
 
   useEffect(() => {
@@ -78,10 +84,16 @@ const MedicineInfo = () => {
     icon: Assets.Pen,
     text: "Edit Details",
   };
+  const buttonData2 = {
+    delete: true,
+    color: "#f0483e",
+    text: "Delete Medicine",
+    icon: Assets.Trash,
+  };
 
   return (
     <>
-      {modalOpen === true ? (
+      {modalOpen === true || deleteModal === true ? (
         <div className="Medicine__info-overlay"></div>
       ) : null}
       <div className="Inventory__container Medicine__info-container ">
@@ -179,12 +191,40 @@ const MedicineInfo = () => {
           </div>
         </div>
         <div className="deleteMedicine">
-          <form onSubmit={handleSubmit(onDelete)}>
-            <div className="deletemedicine__container flex__container">
-              <img src={Assets.Trash} alt="Delete Medicine Icon" />
-              <input type="submit" value="Delete Medicine" />
+          {deleteModal === true ? (
+            <div className="deletemodal">
+              <form onSubmit={handleSubmit(onDelete)}>
+                <div className="deletemodal__container flex__container-v">
+                  <img
+                    src={Assets.Close}
+                    alt="Close Icon"
+                    onClick={() => {
+                      setDeleteModal(false);
+                    }}
+                  />
+                  <img src={Assets.Danger} alt="Danger" />
+                  <p>Are you sure you want to delete {data.medicineName} ?</p>
+                  <div className="choices flex__container">
+                    <input type="submit" value="Yes, Delete" />
+                    <p
+                      onClick={() => {
+                        setDeleteModal(false);
+                      }}
+                    >
+                      Cancel
+                    </p>
+                  </div>
+                </div>
+              </form>
             </div>
-          </form>
+          ) : null}
+          <div
+            onClick={() => {
+              setDeleteModal(true);
+            }}
+          >
+            <RedButton buttonData={buttonData2} />
+          </div>
         </div>
         {modalOpen === true ? (
           <div className="edit__modal">

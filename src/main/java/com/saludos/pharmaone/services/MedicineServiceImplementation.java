@@ -38,6 +38,6 @@ public class MedicineServiceImplementation  implements MedicineService{
     @Override
     public String deleteMedicine(String medicineId) {
         medicineRepository.deleteById(medicineId);
-        return "Deleted Medicine with id " + medicineId;
+        return "Deleted Medicine with Id " + medicineId;
     }
 }
