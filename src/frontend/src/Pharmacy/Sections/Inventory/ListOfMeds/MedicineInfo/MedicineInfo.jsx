@@ -34,6 +34,7 @@ const MedicineInfo = () => {
     }
   };
 
+  //Put
   const onSubmit = (data) => {
     fetch(`http://localhost:8080/modifymedicine/${data.medicineidinput}`, {
       method: "PUT",
@@ -42,7 +43,22 @@ const MedicineInfo = () => {
       },
       body: JSON.stringify(data),
     });
-    console.log(data);
+  };
+
+  //Delete
+  const onDelete = () => {
+    const editingId = params.medicineId;
+    const editingObject = {
+      medicineId: editingId,
+    };
+
+    fetch(`http://localhost:8080/deletemedicine/${params.medicineId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editingObject),
+    });
   };
 
   useEffect(() => {
@@ -61,12 +77,6 @@ const MedicineInfo = () => {
     color: "#03A9F5",
     icon: Assets.Pen,
     text: "Edit Details",
-  };
-  const buttonData2 = {
-    color: "#F0483E",
-    icon: Assets.Trash,
-    text: "Delete Medicine",
-    delete: true,
   };
 
   return (
@@ -169,7 +179,12 @@ const MedicineInfo = () => {
           </div>
         </div>
         <div className="deleteMedicine">
-          <RedButton buttonData={buttonData2} />
+          <form onSubmit={handleSubmit(onDelete)}>
+            <div className="deletemedicine__container flex__container">
+              <img src={Assets.Trash} alt="Delete Medicine Icon" />
+              <input type="submit" value="Delete Medicine" />
+            </div>
+          </form>
         </div>
         {modalOpen === true ? (
           <div className="edit__modal">

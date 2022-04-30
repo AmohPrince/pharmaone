@@ -150,3 +150,20 @@ textarea:focus {
   background-color: rgba(29, 36, 46, 0.5);
   transition: background-color 200s ease-in-out;
 }
+.deletemedicine__container {
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  width: 179px;
+  height: 46px;
+  cursor: pointer;
+  justify-content: center;
+  margin-top: 30px;
+}
+.deletemedicine__container > input {
+  border: none;
+  color: var(--red);
+  cursor: pointer;
+}
+.deletemedicine__container > img {
+  margin-right: 10px;
+}
