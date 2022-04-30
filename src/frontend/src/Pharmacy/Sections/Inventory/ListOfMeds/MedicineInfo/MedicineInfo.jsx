@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { dataFlowContext } from "../../../../Pharmacy";
-import { SectionName, RedButton } from "../../../../Components/Components";
+import {
+  SectionName,
+  RedButton,
+  Spinner,
+} from "../../../../Components/Components";
 import Assets from "../../../../../Assets/Assets";
 import "./MedicineInfo.css";
 import { useForm } from "react-hook-form";
@@ -21,6 +25,8 @@ const MedicineInfo = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
+  const [confrimationMessage, setConfrimationMessage] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -48,13 +54,11 @@ const MedicineInfo = () => {
   };
 
   //Delete
-  // prettier-ignore
   const onDelete = () => {
     const editingId = params.medicineId;
     const editingObject = {
       medicineId: editingId,
     };
-
     fetch(`http://localhost:8080/deletemedicine/${params.medicineId}`, {
       method: "DELETE",
       headers: {
@@ -65,6 +69,15 @@ const MedicineInfo = () => {
     })
       .then((res) => res.text())
       .then((resBody) => setDeleteMessage(resBody));
+    showDeleteConfirmationMessage();
+  };
+
+  const showDeleteConfirmationMessage = () => {
+    setSpinner(true);
+    setTimeout(() => {
+      setSpinner(false);
+      setConfrimationMessage(true);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -142,7 +155,11 @@ const MedicineInfo = () => {
             <div className="Medicine__data Medicine__data-a">
               <div className="Medicine__data-title flex__container">
                 <p className="p__poppins">Inventory in Qty</p>
-                <Link to="/medicinesupplier" className="flex__container">
+                <Link
+                  to="/medicinesupplier"
+                  className="flex__container"
+                  style={{ textDecoration: "none" }}
+                >
                   <p className="p__poppins">Send Stock Request</p>
                   <img src={Assets.DirectionArrows} alt="Direction Arrows" />
                 </Link>
@@ -203,7 +220,14 @@ const MedicineInfo = () => {
                     }}
                   />
                   <img src={Assets.Danger} alt="Danger" />
-                  <p>Are you sure you want to delete {data.medicineName} ?</p>
+
+                  {spinner === true ? (
+                    <Spinner context="delete" />
+                  ) : confrimationMessage === true ? (
+                    <p className="deletemessage">{deleteMessage}</p>
+                  ) : (
+                    <p>Are you sure you want to delete {data.medicineName} ?</p>
+                  )}
                   <div className="choices flex__container">
                     <input type="submit" value="Yes, Delete" />
                     <p

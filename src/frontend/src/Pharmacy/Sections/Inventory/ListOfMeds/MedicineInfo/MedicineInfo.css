@@ -158,8 +158,8 @@ textarea:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 350px;
-  width: 350px;
+  height: 250px;
+  width: 400px;
   border-radius: 8px;
   background-color: var(--white);
   text-align: center;
@@ -167,7 +167,7 @@ textarea:focus {
 }
 .deletemodal__container {
   position: relative;
-  padding: 50px 0px;
+  padding: 50px 20px;
 }
 .deletemodal__container > img:first-of-type {
   position: absolute;
@@ -175,13 +175,21 @@ textarea:focus {
   top: 20px;
   cursor: pointer;
 }
-.deletemodal__container > *:not(img) {
+/* .deletemodal__container > *:not(img) {
   margin: 20px 0;
+} */
+.deletemodal__container > img:not(:first-of-type) {
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 .deletemodal__container > :last-child {
   width: 100%;
   padding: 0px 10px;
   justify-content: space-between;
+}
+.choices {
+  position: absolute;
+  bottom: -50px;
 }
 .choices > p {
   border: 1px solid var(--skyBlue);
@@ -201,4 +209,7 @@ textarea:focus {
   cursor: pointer;
   background-color: var(--red);
   color: var(--white);
+}
+.deletemessage {
+  margin-top: 25px;
 }

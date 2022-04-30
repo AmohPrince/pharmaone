@@ -133,7 +133,7 @@ const ListOfMeds = () => {
         <div className="containersplitter" />
         <div className="Inventory__container-body">
           {medicineList.length === 0 ? (
-            <Spinner />
+            <Spinner context="spinner__wrapper" />
           ) : (
             filteredMedicineList.map((data) => {
               return <SingleMedicine data={data} key={data.medicineId} />;

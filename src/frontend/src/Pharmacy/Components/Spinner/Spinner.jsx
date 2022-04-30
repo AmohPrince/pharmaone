@@ -1,9 +1,10 @@
 import React from "react";
 import "./Spinner.css";
 
-const Spinner = () => {
+const Spinner = ({ context }) => {
+  console.log(context);
   return (
-    <div className="spinner__wrapper">
+    <div className={context}>
       <div className="spinner"></div>
     </div>
   );
