@@ -37,6 +37,7 @@
   height: 48px;
   border-radius: 4px;
 }
+
 .Topbar__input > input {
   background-color: transparent;
   border: none;
@@ -48,7 +49,7 @@
 }
 .Topbar__input > input:focus {
   outline: none;
-  border: 2px solid var(--skyBlue);
+  border: 1px solid var(--skyBlue);
   border-radius: 4px;
 }
 .Topbar__input > img {

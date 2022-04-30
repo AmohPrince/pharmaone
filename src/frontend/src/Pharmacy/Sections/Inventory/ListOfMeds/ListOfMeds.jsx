@@ -20,13 +20,23 @@ const ListOfMeds = () => {
   const [filteredMedicineList, setFilteredMedicineList] = useState([]);
   const [beginIndex, setBeginIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(8);
+  const [groupNames, setGroupNames] = useState([]);
 
   useEffect(() => {
     filterMedicineList();
+    getGroupOptions();
   }, [medicineListLength, beginIndex, endIndex]);
 
   const filterMedicineList = () => {
     setFilteredMedicineList(medicineList.slice(beginIndex, endIndex));
+  };
+
+  const getGroupOptions = () => {
+    const groupsList = incomingData.groupsList;
+    const groupNames = groupsList.map((group) => {
+      return group.groupName;
+    });
+    setGroupNames(groupNames);
   };
 
   const switchPage = (direction) => {
@@ -88,9 +98,13 @@ const ListOfMeds = () => {
             <option value="" defaultValue hidden>
               -Select Group-
             </option>
-            <option value="Group1">Group1</option>
-            <option value="Group2">Group2</option>
-            <option value="Group3">Group3</option>
+            {groupNames.map((group) => {
+              return (
+                <option value={group} key={group.id}>
+                  {group}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>

@@ -18,7 +18,7 @@ const SingleGroup = ({ data }) => {
           <img src={Assets.DirectionArrows} alt="Left Directions" />
         </Link>
       </div>
-      <div className="medicinesplitter" />
+      <div className="groupsplitter" />
     </>
   );
 };

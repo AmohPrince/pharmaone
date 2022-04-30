@@ -11,7 +11,16 @@
 }
 #selectmedgroup {
   width: 200px;
+  border: 1px solid var(--black);
+  padding: 10px;
 }
+#selectmedgroup:hover,
+#selectmedgroup:focus,
+#selectmedgroup:focus-visible {
+  border: 1px solid var(--skyBlue);
+  outline: none;
+}
+
 .SearchMed > :first-child {
   margin-right: 20px;
   height: 20px;

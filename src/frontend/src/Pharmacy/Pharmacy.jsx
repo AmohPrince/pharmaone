@@ -60,6 +60,7 @@ const Pharmacy = () => {
       .then((data) => {
         return setGroupsList(data);
       });
+    console.log("Groups were fetched");
   };
 
   useEffect(() => {

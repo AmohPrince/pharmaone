@@ -22,7 +22,7 @@ const Groups = () => {
   };
 
   return (
-    <div className="Inventory__container">
+    <div className="Inventory__container ">
       <div className="Group__container-top flex__container">
         <SectionName title={title} />
         <RedButton buttonData={buttonData} />
