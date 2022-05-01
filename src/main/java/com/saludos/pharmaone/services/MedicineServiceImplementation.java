@@ -22,7 +22,7 @@ public class MedicineServiceImplementation  implements MedicineService{
     public String addMedicine(Medicine medicine) {
         medicineRepository.save(medicine);
         System.out.println("Added medicine "+ medicine.getMedicineName());
-        return "Added medicine "+ medicine.getMedicineName() ;
+        return "added medicine "+ medicine.getMedicineName() ;
     }
 
     @Override
