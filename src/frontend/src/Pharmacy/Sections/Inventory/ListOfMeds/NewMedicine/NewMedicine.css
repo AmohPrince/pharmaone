@@ -1,6 +1,7 @@
 .medicineaddform {
   margin: 20px 0px;
   align-items: unset;
+  position: relative;
 }
 .medicineaddform > * {
   margin-top: 10px;
@@ -63,4 +64,36 @@
   height: 46px;
   cursor: pointer;
   margin-top: 20px;
+}
+.Success__modal {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  top: 2%;
+  left: 33%;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 4px;
+  text-align: center;
+}
+.Success__modal > :first-child {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.Success__modal > p {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.Success__modal > img {
+  position: absolute;
+  top: 0px;
+  left: 40%;
+}
+.Success__modal > div {
+  cursor: pointer;
+}
+.medicineaddform textarea {
+  width: 705px;
+  height: 110px;
+  background-color: transparent;
 }

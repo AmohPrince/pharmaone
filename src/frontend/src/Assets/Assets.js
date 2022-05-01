@@ -38,8 +38,12 @@ import PenBlue from "./Penblue.svg";
 import Trash from "./Trash.svg";
 import Close from "./Close.svg";
 import Tick from "./Tick.svg";
+import Success from "./Success.svg";
+import Errorsuccess from "./Errorsuccess.svg";
 
 export default {
+  Errorsuccess,
+  Success,
   PenBlue,
   Tick,
   Close,

@@ -19,7 +19,9 @@ const RedButton = ({ buttonData }) => {
           className="flex__container Redbutton__container "
           style={{ backgroundColor: buttonData.color }}
         >
-          <img src={buttonData.icon} alt="icon" />
+          {buttonData.icon === null ? null : (
+            <img src={buttonData.icon} alt="icon" />
+          )}
           <p className="p__poppins">{buttonData.text}</p>
         </div>
       )}
