@@ -3,6 +3,7 @@ package com.saludos.pharmaone.services;
 import com.saludos.pharmaone.entities.Medicine;
 import com.saludos.pharmaone.repositories.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,7 +38,14 @@ public class MedicineServiceImplementation  implements MedicineService{
 
     @Override
     public String deleteMedicine(String medicineId) {
-        medicineRepository.deleteById(medicineId);
-        return "Deleted Medicine with Id " + medicineId;
+        String returnMessage;
+        try{
+            medicineRepository.deleteById(medicineId);
+            returnMessage = "Deleted Successfully.";
+        } catch (EmptyResultDataAccessException e){
+            returnMessage = "Medicine already deleted.";
+        }
+
+        return returnMessage;
     }
 }
