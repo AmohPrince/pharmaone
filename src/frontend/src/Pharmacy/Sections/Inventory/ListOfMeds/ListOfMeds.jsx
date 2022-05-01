@@ -68,7 +68,7 @@ const ListOfMeds = () => {
       <div className="Inventory__container-top flex__container">
         <SectionName title={title} />
         <Link
-          to="/Inventory/listofmeds/Addnewmedicine"
+          to="/Inventory/listofmeds/addnewmedicine"
           style={{ textDecoration: "none" }}
         >
           <RedButton buttonData={buttonData} />

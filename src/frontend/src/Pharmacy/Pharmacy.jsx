@@ -45,13 +45,24 @@ const Pharmacy = () => {
     profile.classList.toggle("active");
   };
 
+  //Get all Medicine
   const fetchMedicine = () => {
     fetch("http://localhost:8080/getallmedicine")
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
         return setMedicineList(data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => failedFetchRetrying(error));
+  };
+
+  const failedFetchRetrying = (error) => {
+    console.log("Retrying fetch");
+    console.log(error);
+    setTimeout(() => {
+      fetchMedicine();
+    }, 500);
   };
 
   const fetchGroups = () => {
@@ -59,8 +70,8 @@ const Pharmacy = () => {
       .then((res) => res.json())
       .then((data) => {
         return setGroupsList(data);
-      });
-    console.log("Groups were fetched");
+      })
+      .catch((error) => failedFetchRetrying(error));
   };
 
   useEffect(() => {

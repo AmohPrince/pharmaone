@@ -60,7 +60,7 @@
   background-color: var(--border);
 }
 .edit__modal {
-  width: 500px;
+  width: 900px;
   background-color: var(--white);
   padding: 20px;
   border-radius: 10px;
@@ -84,13 +84,13 @@ label {
   font-size: 1rem;
   color: #87898e;
 }
-.edit__modal-input div {
+.edit__modal-input div:not(.medicineIdnGroup) {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 #savebutton {
-  width: 90%;
+  width: 30%;
   height: 56px;
   align-self: center;
   cursor: pointer;
@@ -128,7 +128,6 @@ textarea:focus {
 .edit__modal {
   position: absolute;
   top: 2%;
-  left: 25%;
   z-index: 3;
 }
 .edit__modal-header > img {
@@ -175,14 +174,11 @@ textarea:focus {
   top: 20px;
   cursor: pointer;
 }
-/* .deletemodal__container > *:not(img) {
-  margin: 20px 0;
-} */
 .deletemodal__container > img:not(:first-of-type) {
   margin-top: -20px;
   margin-bottom: 20px;
 }
-.deletemodal__container > :last-child {
+.deletemodal__container > :last-child:not(.confirmbutton) {
   width: 100%;
   padding: 0px 10px;
   justify-content: space-between;
@@ -191,7 +187,8 @@ textarea:focus {
   position: absolute;
   bottom: -50px;
 }
-.choices > p {
+.choices > p,
+.confirmbutton {
   border: 1px solid var(--skyBlue);
   width: 150px;
   cursor: pointer;
@@ -199,6 +196,14 @@ textarea:focus {
   border-radius: 4px;
   color: var(--skyBlue);
 }
+.confirmbutton {
+  color: var(--white);
+  background-color: var(--skyBlue);
+  margin-top: 60px;
+  position: absolute;
+  left: 130px;
+}
+
 .choices > input {
   padding: 0.4em 0;
   width: 150px;
@@ -212,4 +217,8 @@ textarea:focus {
 }
 .deletemessage {
   margin-top: 25px;
+}
+.medicineIdnGroup {
+  flex-direction: row;
+  justify-content: space-between;
 }

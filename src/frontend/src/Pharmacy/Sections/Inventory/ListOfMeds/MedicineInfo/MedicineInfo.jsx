@@ -9,7 +9,6 @@ import {
 import Assets from "../../../../../Assets/Assets";
 import "./MedicineInfo.css";
 import { useForm } from "react-hook-form";
-
 /**
  * This component takes a param from the url that i will use to fetch data
  * from the server
@@ -228,16 +227,32 @@ const MedicineInfo = () => {
                   ) : (
                     <p>Are you sure you want to delete {data.medicineName} ?</p>
                   )}
-                  <div className="choices flex__container">
-                    <input type="submit" value="Yes, Delete" />
-                    <p
-                      onClick={() => {
-                        setDeleteModal(false);
-                      }}
+                  {confrimationMessage === true ? (
+                    <Link
+                      to="/inventory/listofmeds"
+                      style={{ textDecoration: "none" }}
                     >
-                      Cancel
-                    </p>
-                  </div>
+                      <p
+                        className="confirmbutton"
+                        onClick={() => {
+                          setDeleteModal(false);
+                        }}
+                      >
+                        Cool
+                      </p>
+                    </Link>
+                  ) : (
+                    <div className="choices flex__container">
+                      <input type="submit" value="Yes, Delete" />
+                      <p
+                        onClick={() => {
+                          setDeleteModal(false);
+                        }}
+                      >
+                        Cancel
+                      </p>
+                    </div>
+                  )}
                 </div>
               </form>
             </div>
@@ -263,50 +278,53 @@ const MedicineInfo = () => {
             <div className="edit__modal-input flex__container-v">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                  <div>
-                    <label htmlFor="medicineidinput">MedicineId</label>
-                    <input
-                      type="text"
-                      id="medicineidinput"
-                      className="medicineeditinput"
-                      defaultValue={medicineData.medicineId}
-                      {...register("medicineidinput")}
-                    />
+                  <div className="flex__container medicineIdnGroup">
+                    <div>
+                      <label htmlFor="medicineidinput">MedicineId</label>
+                      <input
+                        type="text"
+                        id="medicineidinput"
+                        className="medicineeditinput"
+                        defaultValue={medicineData.medicineId}
+                        {...register("medicineidinput")}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="medicinegroupinput">Medicine Group</label>
+                      <input
+                        type="text"
+                        id="medicinegroupinput"
+                        className="medicineeditinput"
+                        defaultValue={medicineData.groupName}
+                        {...register("medicinegroupinput")}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="medicinelifetimesupplyinput">
+                        Lifetime Supply
+                      </label>
+                      <input
+                        type="text"
+                        id="medicinelifetimesupplyinput"
+                        className="medicineeditinput"
+                        defaultValue={medicineData.lifetimeSupply}
+                        {...register("medicinelifetimesupplyinput")}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="medicinelifetimesalesinput">
+                        Lifetime Sales
+                      </label>
+                      <input
+                        type="text"
+                        id="medicinelifetimesalesinput"
+                        className="medicineeditinput"
+                        defaultValue={medicineData.lifetimeSales}
+                        {...register("medicinelifetimesalesinput")}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor="medicinegroupinput">Medicine Group</label>
-                    <input
-                      type="text"
-                      id="medicinegroupinput"
-                      className="medicineeditinput"
-                      defaultValue={medicineData.groupName}
-                      {...register("medicinegroupinput")}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="medicinelifetimesupplyinput">
-                      Lifetime Supply
-                    </label>
-                    <input
-                      type="text"
-                      id="medicinelifetimesupplyinput"
-                      className="medicineeditinput"
-                      defaultValue={medicineData.lifetimeSupply}
-                      {...register("medicinelifetimesupplyinput")}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="medicinelifetimesalesinput">
-                      Lifetime Sales
-                    </label>
-                    <input
-                      type="text"
-                      id="medicinelifetimesalesinput"
-                      className="medicineeditinput"
-                      defaultValue={medicineData.lifetimeSales}
-                      {...register("medicinelifetimesalesinput")}
-                    />
-                  </div>
+
                   <div>
                     <label htmlFor="medicinehowtouseinput">How To Use</label>
                     <textarea
