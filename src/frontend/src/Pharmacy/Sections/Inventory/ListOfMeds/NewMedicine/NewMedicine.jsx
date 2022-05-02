@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./NewMedicine.css";
 import { RedButton, SectionName } from "../../../../Components/Components";
 import { useForm } from "react-hook-form";
 import Assets from "../../../../../Assets/Assets";
+import { dataFlowContext } from "../../../../Pharmacy";
 
 const NewMedicine = () => {
+  const incomingData = useContext(dataFlowContext);
+  const groupNames = incomingData.groupNames;
   const { register, handleSubmit } = useForm();
   const [openModal, setOpenModal] = useState(false);
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
+
+  //Submit new medicine to the server.
   const onSubmit = (data) => {
     fetch("http://localhost:8080/addMedicine", {
       method: "POST",
@@ -83,9 +88,13 @@ const NewMedicine = () => {
                 <option value="" defaultValue hidden>
                   -Select Group-
                 </option>
-                <option value="Diabetes">Diabetes</option>
-                <option value="General Medicine">General Medicine</option>
-                <option value="Malaria">Malaria</option>
+                {groupNames.map((group) => {
+                  return (
+                    <option value={group} key={group.id}>
+                      {group}
+                    </option>
+                  );
+                })}
               </select>
             </label>
             <label htmlFor="medicineQuantity">

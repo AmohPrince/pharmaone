@@ -33,9 +33,13 @@ p,
   justify-content: center;
 }
 input,
-textarea {
+textarea,
+select {
   font-family: "Poppins", sans-serif;
 }
 select {
   cursor: pointer;
+}
+select {
+  text-align: center;
 }

@@ -15,18 +15,17 @@ import { Spinner } from "../../../Components/Components";
 
 const ListOfMeds = () => {
   const incomingData = useContext(dataFlowContext);
+  const groupNames = incomingData.groupNames;
   const medicineList = incomingData.medicineList;
   const medicineListLength = medicineList.length;
   const [filteredMedicineList, setFilteredMedicineList] = useState([]);
   const [beginIndex, setBeginIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(8);
-  const [groupNames, setGroupNames] = useState([]);
   const [buttonLeftDisabled, setButtonLeftDisabled] = useState(false);
   const [buttonRightDisabled, setButtonRightDisabled] = useState(false);
 
   useEffect(() => {
     filterMedicineList();
-    getGroupOptions();
   }, [medicineListLength, beginIndex, endIndex]);
 
   useEffect(() => {
@@ -35,14 +34,6 @@ const ListOfMeds = () => {
 
   const filterMedicineList = () => {
     setFilteredMedicineList(medicineList.slice(beginIndex, endIndex));
-  };
-
-  const getGroupOptions = () => {
-    const groupsList = incomingData.groupsList;
-    const groupNames = groupsList.map((group) => {
-      return group.groupName;
-    });
-    setGroupNames(groupNames);
   };
 
   const switchPage = (direction) => {
@@ -106,17 +97,12 @@ const ListOfMeds = () => {
             name="SearchMedicineInventory"
             id="SearchMedicineInventory"
             placeholder="Search Medicine Inventory.."
-            className="p__poppins"
           />
           <img src={Assets.Search} alt="Search Icon" />
         </div>
         <div className="SearchMed flex__container">
           <img src={Assets.Filter} alt="Filter Icon" />
-          <select
-            name="selectmedgroup"
-            id="selectmedgroup"
-            className="p__poppins"
-          >
+          <select name="selectmedgroup" id="selectmedgroup">
             <option value="" defaultValue hidden>
               -Select Group-
             </option>
@@ -133,23 +119,23 @@ const ListOfMeds = () => {
       <div className="Inventory__container-bottom">
         <div className="Inventory__container-titles flex__container">
           <div>
-            <p className="p__poppins">Medicine Name</p>
+            <p>Medicine Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">Medicine ID</p>
+            <p>Medicine ID</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">Group Name</p>
+            <p>Group Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">Stock in Qty</p>
+            <p>Stock in Qty</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">Action</p>
+            <p>Action</p>
           </div>
         </div>
         <div className="containersplitter" />
@@ -164,7 +150,7 @@ const ListOfMeds = () => {
         </div>
       </div>
       <div className="listofmeds__footer flex__container">
-        <p className="p__poppins">
+        <p>
           Showing {beginIndex + 1} -{" "}
           {endIndex > medicineListLength ? medicineListLength : endIndex}{" "}
           results of {medicineListLength}
@@ -181,7 +167,7 @@ const ListOfMeds = () => {
             )}
           </button>
 
-          <select name="pageswitch" id="pageswitch" className="p__poppins">
+          <select name="pageswitch" id="pageswitch">
             <option value="Jan2022">Page 1</option>
             <option value="Feb2022">Page 2</option>
             <option value="Mar2022">Page 3</option>

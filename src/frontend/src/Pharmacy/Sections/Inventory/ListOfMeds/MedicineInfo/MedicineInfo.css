@@ -13,6 +13,9 @@
   padding: 10px 20px;
   justify-content: space-between;
 }
+.sendStockRequest {
+  margin-right: 10px;
+}
 .Medicine__info-mid > .flex__container {
   justify-content: space-between;
   margin-top: 20px;
@@ -75,6 +78,7 @@
 }
 .edit__modal-input {
   align-items: unset;
+  position: relative;
 }
 label {
   font-family: "Poppins", sans-serif;
@@ -157,7 +161,7 @@ textarea:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 250px;
+  min-height: 250px;
   width: 400px;
   border-radius: 8px;
   background-color: var(--white);
@@ -185,7 +189,7 @@ textarea:focus {
 }
 .choices {
   position: absolute;
-  bottom: -50px;
+  bottom: -40px;
 }
 .choices > p,
 .confirmbutton {
@@ -221,4 +225,31 @@ textarea:focus {
 .medicineIdnGroup {
   flex-direction: row;
   justify-content: space-between;
+}
+#invincibleName {
+  display: none;
+}
+.editConfirmed {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0px 0px 20px 5px currentColor;
+  color: var(--green);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+.editConfirmed > img {
+  height: 100px;
+  width: 100px;
+  margin-left: 24px;
+}
+.editConfirmed > p {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--green);
+  margin-top: 10px;
 }

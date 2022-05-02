@@ -39,6 +39,7 @@ const Pharmacy = () => {
   const [payments, setPayments] = useState(70);
   const [medicineList, setMedicineList] = useState([]);
   const [groupsList, setGroupsList] = useState([]);
+  const [groupNames, setGroupNames] = useState([]);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -57,6 +58,7 @@ const Pharmacy = () => {
       .catch((error) => failedFetchRetrying(error));
   };
 
+  //Runs only on fail
   const failedFetchRetrying = (error) => {
     console.log("Retrying fetch");
     console.log(error);
@@ -65,6 +67,7 @@ const Pharmacy = () => {
     }, 500);
   };
 
+  //fetch groups
   const fetchGroups = () => {
     fetch("http://localhost:8080/getallgroups")
       .then((res) => res.json())
@@ -85,6 +88,7 @@ const Pharmacy = () => {
 
   useEffect(() => {
     setMedicineGroups(groupsList.length);
+    getGroupOptions();
   }, [groupsList]);
 
   const getSpecificMedicineWithId = (number) => {
@@ -99,6 +103,15 @@ const Pharmacy = () => {
       return group.groupName === name;
     });
     return filteredData;
+  };
+
+  //Fetch group names for group options
+  const getGroupOptions = () => {
+    const groupNames = groupsList.map((group) => {
+      return group.groupName;
+    });
+    setGroupNames(groupNames);
+    console.log(groupNames);
   };
 
   const flowingData = {
@@ -129,6 +142,7 @@ const Pharmacy = () => {
     getSpecificMedicineWithId,
     getSpecificGroupWithName,
     medicineList,
+    groupNames,
     groupsList,
   };
 
@@ -377,7 +391,7 @@ const Pharmacy = () => {
         <div className="Logo__container flex__container">
           <img src={Assets.Logo} alt="Logo" />
           <div className="logo__name">
-            <p className="p__poppins">Pharma One</p>
+            <p>Pharma One</p>
           </div>
         </div>
 
@@ -390,8 +404,8 @@ const Pharmacy = () => {
                 <img src={Assets.OnlineIcon} alt="Online /Offline" />
               </div>
               <div className="User__details-names">
-                <p className="p__poppins">Subash</p>
-                <p className="p__poppins">Super Admin</p>
+                <p>Subash</p>
+                <p>Super Admin</p>
               </div>
             </div>
             <div
@@ -415,7 +429,7 @@ const Pharmacy = () => {
             ))}
           </dataFlowContext.Provider>
           <div className="Pharmacy__powered">
-            <p className="p__poppins">Powered by Cash © 2022 </p>
+            <p>Powered by Cash © 2022 </p>
           </div>
         </div>
       </aside>
@@ -428,14 +442,13 @@ const Pharmacy = () => {
               name="Search"
               id="Search"
               placeholder="Search for anything here."
-              className="p__poppins"
             />
             <img src={Assets.Search} alt="Search Icon" />
           </div>
 
           <div className="Topbar__changelang flex__container ">
             <img src={Assets.Lang} alt="Language Translate Icon" />
-            <select name="ChangeLang" id="ChangeLang" className="p__poppins">
+            <select name="ChangeLang" id="ChangeLang">
               <optgroup className="optgroup ">
                 <option value="English" className="Option">
                   English (US)

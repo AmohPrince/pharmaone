@@ -55,6 +55,7 @@ root.render(
         />
         <Route path="/inventory/groups" element={<Groups />} />
         <Route path="/listofmeds" element={<ListOfMeds />} />
+        <Route path="/listofmeds/:medicineId" element={<MedicineInfo />} />
 
         {/* Report Routes */}
         <Route path="reports" element={<Reports />} />

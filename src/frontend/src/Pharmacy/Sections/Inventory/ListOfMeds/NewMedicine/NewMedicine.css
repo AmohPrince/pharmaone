@@ -30,14 +30,11 @@
 #selectFormMedicineGroup {
   border: 0.4px solid rgb(174, 181, 187);
   border-radius: 4px;
-  background-color: var(--white);
   height: 38px;
   width: 340px;
-  text-align: left;
   font-weight: 400;
   font-size: 0.9rem;
   background-color: #e3ebf3;
-  cursor: pointer;
 }
 #selectFormMedicineGroup:hover {
   border: 1px solid var(--black);
@@ -68,7 +65,7 @@
 .Success__modal {
   position: absolute;
   width: 300px;
-  min-height: 250px;
+  height: 250px;
   top: 2%;
   left: 33%;
   z-index: 2;

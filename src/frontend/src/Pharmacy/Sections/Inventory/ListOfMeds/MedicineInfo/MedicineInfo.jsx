@@ -22,10 +22,12 @@ const MedicineInfo = () => {
   const data = incomingData.getSpecificMedicineWithId(params.medicineId);
   const [medicineData, setMedicineData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [deleteMessage, setDeleteMessage] = useState("");
+  const [deleteMessage, setDeleteMessage] = useState(" ");
   const [deleteModal, setDeleteModal] = useState(false);
-  const [confrimationMessage, setConfrimationMessage] = useState(false);
+  const [confirmationMessage, setConfirmationMessage] = useState(false);
   const [spinner, setSpinner] = useState(false);
+  const [editMessage, setEditMessage] = useState(" ");
+  const [editConfirmationModal, setEditConfirmationModal] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -43,13 +45,18 @@ const MedicineInfo = () => {
 
   //Put
   const onSubmit = (data) => {
-    fetch(`http://localhost:8080/modifymedicine/${data.medicineidinput}`, {
+    fetch(`http://localhost:8080/modifymedicine/${data.medicineId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then((res) => res.text())
+      .then((message) => {
+        setEditMessage(message);
+        showEditConfirmationMessage();
+      });
   };
 
   //Delete
@@ -62,7 +69,6 @@ const MedicineInfo = () => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        // "Accept": "application/json",
       },
       body: JSON.stringify(editingObject),
     })
@@ -75,8 +81,15 @@ const MedicineInfo = () => {
     setSpinner(true);
     setTimeout(() => {
       setSpinner(false);
-      setConfrimationMessage(true);
+      setConfirmationMessage(true);
     }, 1000);
+  };
+
+  const showEditConfirmationMessage = () => {
+    setEditConfirmationModal(true);
+    setTimeout(() => {
+      setEditConfirmationModal(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -128,7 +141,6 @@ const MedicineInfo = () => {
               name="SearchMedicineDetails"
               id="SearchMedicineDetails"
               placeholder="Search in Medicine Details"
-              className="p__poppins"
             />
             <img src={Assets.Search} alt="Search Icon" />
           </div>
@@ -137,45 +149,47 @@ const MedicineInfo = () => {
           <div className="flex__container">
             <div className="Medicine__data Medicine__data-a ">
               <div className="Medicine__data-title">
-                <p className="p__poppins">Medicine</p>
+                <p>Medicine</p>
               </div>
               <div className="medicnedatasplitter" />
               <div className="Medicine__data-body flex__container">
                 <div className="Medicine__data-section">
-                  <p className="p__poppins">{medicineData.medicineId}</p>
-                  <p className="p__poppins">Medicine ID</p>
+                  <p>{medicineData.medicineId}</p>
+                  <p>Medicine ID</p>
                 </div>
                 <div className="Medicine__data-section">
-                  <p className="p__poppins">{medicineData.groupName}</p>
-                  <p className="p__poppins">Medicine Group</p>
+                  <p>{medicineData.groupName}</p>
+                  <p>Medicine Group</p>
                 </div>
               </div>
             </div>
             <div className="Medicine__data Medicine__data-a">
               <div className="Medicine__data-title flex__container">
-                <p className="p__poppins">Inventory in Qty</p>
+                <p>Inventory in Qty</p>
                 <Link
                   to="/medicinesupplier"
                   className="flex__container"
                   style={{ textDecoration: "none" }}
                 >
-                  <p className="p__poppins">Send Stock Request</p>
+                  <p className="p__poppins sendStockRequest">
+                    Send Stock Request
+                  </p>
                   <img src={Assets.DirectionArrows} alt="Direction Arrows" />
                 </Link>
               </div>
               <div className="medicnedatasplitter" />
               <div className="Medicine__data-body flex__container">
                 <div className="Medicine__data-section">
-                  <p className="p__poppins">{medicineData.lifetimeSupply}</p>
-                  <p className="p__poppins">Lifetime Supply</p>
+                  <p>{medicineData.lifetimeSupply}</p>
+                  <p>Lifetime Supply</p>
                 </div>
                 <div className="Medicine__data-section">
-                  <p className="p__poppins">{medicineData.lifetimeSales}</p>
-                  <p className="p__poppins">Lifetime Sales</p>
+                  <p>{medicineData.lifetimeSales}</p>
+                  <p>Lifetime Sales</p>
                 </div>
                 <div className="Medicine__data-section">
-                  <p className="p__poppins">{medicineData.inStock}</p>
-                  <p className="p__poppins">Stock Left</p>
+                  <p>{medicineData.inStock}</p>
+                  <p>Stock Left</p>
                 </div>
               </div>
             </div>
@@ -183,22 +197,22 @@ const MedicineInfo = () => {
 
           <div className="Medicine__data Medicine__data-b">
             <div className="Medicine__data-title">
-              <p className="p__poppins">How To Use</p>
+              <p>How To Use</p>
             </div>
             <div className="medicnedatasplitter" />
             <div className="Medicine__data-description">
-              <p className="p__poppins">
+              <p>
                 {medicineData.howToUse === "" ? "Unset" : medicineData.howToUse}
               </p>
             </div>
           </div>
           <div className="Medicine__data Medicine__data-b">
             <div className="Medicine__data-title">
-              <p className="p__poppins">Side Effects</p>
+              <p>Side Effects</p>
             </div>
             <div className="medicnedatasplitter" />
             <div className="Medicine__data-description">
-              <p className="p__poppins">
+              <p>
                 {medicineData.sideEffects === ""
                   ? "Unset"
                   : medicineData.sideEffects}
@@ -222,12 +236,12 @@ const MedicineInfo = () => {
 
                   {spinner === true ? (
                     <Spinner context="delete" />
-                  ) : confrimationMessage === true ? (
+                  ) : confirmationMessage === true ? (
                     <p className="deletemessage">{deleteMessage}</p>
                   ) : (
                     <p>Are you sure you want to delete {data.medicineName} ?</p>
                   )}
-                  {confrimationMessage === true ? (
+                  {confirmationMessage === true ? (
                     <Link
                       to="/inventory/listofmeds"
                       style={{ textDecoration: "none" }}
@@ -268,7 +282,7 @@ const MedicineInfo = () => {
         {modalOpen === true ? (
           <div className="edit__modal">
             <div className="edit__modal-header flex__container">
-              <p className="p__poppins">Edit {data.medicineName}</p>
+              <p>Edit {data.medicineName}</p>
               <img
                 src={Assets.Close}
                 alt="Close button"
@@ -276,9 +290,21 @@ const MedicineInfo = () => {
               />
             </div>
             <div className="edit__modal-input flex__container-v">
+              {editConfirmationModal === true ? (
+                <div className="editConfirmed flex__container-v">
+                  <img src={Assets.Success} alt="Success" />
+                  <p>Success</p>
+                </div>
+              ) : null}
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <div className="flex__container medicineIdnGroup">
+                    <input
+                      type="text"
+                      id="invincibleName"
+                      defaultValue={medicineData.medicineName}
+                      {...register("medicineName")}
+                    />
                     <div>
                       <label htmlFor="medicineidinput">MedicineId</label>
                       <input
@@ -286,7 +312,7 @@ const MedicineInfo = () => {
                         id="medicineidinput"
                         className="medicineeditinput"
                         defaultValue={medicineData.medicineId}
-                        {...register("medicineidinput")}
+                        {...register("medicineId")}
                       />
                     </div>
                     <div>
@@ -296,7 +322,7 @@ const MedicineInfo = () => {
                         id="medicinegroupinput"
                         className="medicineeditinput"
                         defaultValue={medicineData.groupName}
-                        {...register("medicinegroupinput")}
+                        {...register("groupName")}
                       />
                     </div>
                     <div>
@@ -308,7 +334,7 @@ const MedicineInfo = () => {
                         id="medicinelifetimesupplyinput"
                         className="medicineeditinput"
                         defaultValue={medicineData.lifetimeSupply}
-                        {...register("medicinelifetimesupplyinput")}
+                        {...register("lifetimeSupply")}
                       />
                     </div>
                     <div>
@@ -320,7 +346,7 @@ const MedicineInfo = () => {
                         id="medicinelifetimesalesinput"
                         className="medicineeditinput"
                         defaultValue={medicineData.lifetimeSales}
-                        {...register("medicinelifetimesalesinput")}
+                        {...register("lifetimeSales")}
                       />
                     </div>
                   </div>
@@ -332,7 +358,7 @@ const MedicineInfo = () => {
                       id="medicinehowtouseinput"
                       className="medicineeditinput"
                       defaultValue={medicineData.howToUse}
-                      {...register("medicinehowtouseinput")}
+                      {...register("howToUse")}
                     />
                   </div>
                   <div>
@@ -344,7 +370,7 @@ const MedicineInfo = () => {
                       id="medicinesideeffectsinput"
                       className="medicineeditinput"
                       defaultValue={medicineData.sideEffects}
-                      {...register("medicinesideeffectsinput")}
+                      {...register("sideEffects")}
                     />
                   </div>
                   <input type="submit" value="Save Details" id="savebutton" />
