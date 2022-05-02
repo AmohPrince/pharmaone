@@ -72,6 +72,14 @@
   height: 2px;
   background-color: var(--border);
 }
-.listofmeds__footer-pageswitch > img {
+.listofmeds__footer-pageswitch > button {
   cursor: pointer;
+  width: 27px;
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid var(--black);
+}
+.listofmeds__footer-pageswitch > button:disabled {
+  border: 1px solid var(--border);
+  cursor: text;
 }

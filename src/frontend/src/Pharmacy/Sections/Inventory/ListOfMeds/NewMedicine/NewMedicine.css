@@ -68,7 +68,7 @@
 .Success__modal {
   position: absolute;
   width: 300px;
-  height: 250px;
+  min-height: 250px;
   top: 2%;
   left: 33%;
   z-index: 2;

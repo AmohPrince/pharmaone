@@ -40,8 +40,12 @@ import Close from "./Close.svg";
 import Tick from "./Tick.svg";
 import Success from "./Success.svg";
 import Errorsuccess from "./Errorsuccess.svg";
+import PageSwitcherLeftDisabled from "./PageSwitcherIconLeftDisabled.svg";
+import PageSwitcherRightDisabled from "./PageSwitcherIconRightDisabled.svg";
 
 export default {
+  PageSwitcherLeftDisabled,
+  PageSwitcherRightDisabled,
   Errorsuccess,
   Success,
   PenBlue,

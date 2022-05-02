@@ -21,11 +21,17 @@ const ListOfMeds = () => {
   const [beginIndex, setBeginIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(8);
   const [groupNames, setGroupNames] = useState([]);
+  const [buttonLeftDisabled, setButtonLeftDisabled] = useState(false);
+  const [buttonRightDisabled, setButtonRightDisabled] = useState(false);
 
   useEffect(() => {
     filterMedicineList();
     getGroupOptions();
   }, [medicineListLength, beginIndex, endIndex]);
+
+  useEffect(() => {
+    handleDisablingButtons();
+  }, [beginIndex, []]);
 
   const filterMedicineList = () => {
     setFilteredMedicineList(medicineList.slice(beginIndex, endIndex));
@@ -46,6 +52,22 @@ const ListOfMeds = () => {
     } else {
       setEndIndex((prevIndex) => prevIndex + 8);
       setBeginIndex((prevIndex) => prevIndex + 8);
+    }
+    handleDisablingButtons();
+  };
+
+  const handleDisablingButtons = () => {
+    if (beginIndex <= 0) {
+      setButtonLeftDisabled(true);
+    }
+    if (beginIndex > 0) {
+      setButtonLeftDisabled(false);
+    }
+    if (endIndex >= medicineList.length) {
+      setButtonRightDisabled(true);
+    }
+    if (endIndex < medicineList.length) {
+      setButtonRightDisabled(false);
     }
   };
 
@@ -148,21 +170,33 @@ const ListOfMeds = () => {
           results of {medicineListLength}
         </p>
         <div className="listofmeds__footer-pageswitch flex__container">
-          <img
-            src={Assets.PageSwitcherLeft}
-            alt="Change Page"
+          <button
             onClick={() => switchPage("back")}
-          />
+            disabled={buttonLeftDisabled}
+          >
+            {buttonLeftDisabled === true ? (
+              <img src={Assets.PageSwitcherLeftDisabled} alt="Change Page" />
+            ) : (
+              <img src={Assets.PageSwitcherLeft} alt="Change Page" />
+            )}
+          </button>
+
           <select name="pageswitch" id="pageswitch" className="p__poppins">
             <option value="Jan2022">Page 1</option>
             <option value="Feb2022">Page 2</option>
             <option value="Mar2022">Page 3</option>
           </select>
-          <img
-            src={Assets.PageSwitcher}
-            alt="Change Page"
+
+          <button
             onClick={() => switchPage("front")}
-          />
+            disabled={buttonRightDisabled}
+          >
+            {buttonRightDisabled === true ? (
+              <img src={Assets.PageSwitcherRightDisabled} alt="Change Page" />
+            ) : (
+              <img src={Assets.PageSwitcher} alt="Change Page" />
+            )}
+          </button>
         </div>
       </div>
     </div>
