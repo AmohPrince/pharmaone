@@ -36,6 +36,19 @@ const ListOfMeds = () => {
     setFilteredMedicineList(medicineList.slice(beginIndex, endIndex));
   };
 
+  const [selectedGroupValue, setSelectedGroupValue] = useState();
+
+  const filterOnSelectChange = () => {
+    const filteredGroupMedicineList = medicineList.filter(
+      (medicine) => medicine.groupName === selectedGroupValue
+    );
+    setFilteredMedicineList(filteredGroupMedicineList);
+  };
+
+  useEffect(() => {
+    filterOnSelectChange();
+  }, [selectedGroupValue]);
+
   const switchPage = (direction) => {
     if (direction === "back") {
       setBeginIndex((prevIndex) => prevIndex - 8);
@@ -102,10 +115,16 @@ const ListOfMeds = () => {
         </div>
         <div className="SearchMed flex__container">
           <img src={Assets.Filter} alt="Filter Icon" />
-          <select name="selectmedgroup" id="selectmedgroup">
-            <option value="" defaultValue hidden>
-              -Select Group-
-            </option>
+          <select
+            name="selectmedgroup"
+            id="selectmedgroup"
+            value={selectedGroupValue}
+            onChange={(e) => {
+              setSelectedGroupValue(e.target.value);
+            }}
+          >
+            <option hidden>-Select Group-</option>
+
             {groupNames.map((group) => {
               return (
                 <option value={group} key={group.id}>

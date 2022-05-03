@@ -111,7 +111,7 @@ const Pharmacy = () => {
       return group.groupName;
     });
     setGroupNames(groupNames);
-    console.log(groupNames);
+    console.log(groupsList);
   };
 
   const flowingData = {
