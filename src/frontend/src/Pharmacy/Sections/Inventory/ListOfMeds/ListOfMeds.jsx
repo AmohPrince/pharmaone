@@ -49,6 +49,14 @@ const ListOfMeds = () => {
     filterOnSelectChange();
   }, [selectedGroupValue]);
 
+  const filterOnSearch = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    const visibleMedicines = medicineList.filter((medicine) =>
+      medicine.medicineName.toLowerCase().includes(searchValue)
+    );
+    setFilteredMedicineList(visibleMedicines);
+  };
+
   const switchPage = (direction) => {
     if (direction === "back") {
       setBeginIndex((prevIndex) => prevIndex - 8);
@@ -110,6 +118,9 @@ const ListOfMeds = () => {
             name="SearchMedicineInventory"
             id="SearchMedicineInventory"
             placeholder="Search Medicine Inventory.."
+            onChange={(e) => {
+              filterOnSearch(e);
+            }}
           />
           <img src={Assets.Search} alt="Search Icon" />
         </div>
@@ -171,8 +182,10 @@ const ListOfMeds = () => {
       <div className="listofmeds__footer flex__container">
         <p>
           Showing {beginIndex + 1} -{" "}
-          {endIndex > medicineListLength ? medicineListLength : endIndex}{" "}
-          results of {medicineListLength}
+          {endIndex > filteredMedicineList.length
+            ? filteredMedicineList.length
+            : endIndex}{" "}
+          results of {filteredMedicineList.length}
         </p>
         <div className="listofmeds__footer-pageswitch flex__container">
           <button
