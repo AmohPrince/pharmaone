@@ -28,6 +28,8 @@ const MedicineInfo = () => {
   const [spinner, setSpinner] = useState(false);
   const [editMessage, setEditMessage] = useState(" ");
   const [editConfirmationModal, setEditConfirmationModal] = useState(false);
+  const [ErrorEditConfirmationModal, setErrorEditConfirmationModal] =
+    useState(false);
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -45,6 +47,7 @@ const MedicineInfo = () => {
 
   //Put
   const onSubmit = (data) => {
+    setSpinner(true);
     fetch(`http://localhost:8080/modifymedicine/${data.medicineId}`, {
       method: "PUT",
       headers: {
@@ -55,7 +58,10 @@ const MedicineInfo = () => {
       .then((res) => res.text())
       .then((message) => {
         setEditMessage(message);
-        showEditConfirmationMessage();
+        showEditConfirmationMessage("success");
+      })
+      .catch(() => {
+        showEditConfirmationMessage("error");
       });
   };
 
@@ -85,11 +91,23 @@ const MedicineInfo = () => {
     }, 1000);
   };
 
-  const showEditConfirmationMessage = () => {
-    setEditConfirmationModal(true);
-    setTimeout(() => {
-      setEditConfirmationModal(false);
-    }, 2000);
+  const showEditConfirmationMessage = (message) => {
+    if (message === "success") {
+      setSpinner(false);
+      setEditConfirmationModal(true);
+
+      setTimeout(() => {
+        setEditConfirmationModal(false);
+      }, 2000);
+    }
+    if (message === "error") {
+      setSpinner(false);
+      setErrorEditConfirmationModal(true);
+
+      setTimeout(() => {
+        setErrorEditConfirmationModal(false);
+      }, 2000);
+    }
   };
 
   useEffect(() => {
@@ -290,10 +308,17 @@ const MedicineInfo = () => {
               />
             </div>
             <div className="edit__modal-input flex__container-v">
+              <div className="loadingSpinner">
+                {spinner === true ? <Spinner /> : null}
+              </div>
               {editConfirmationModal === true ? (
                 <div className="editConfirmed flex__container-v">
-                  <img src={Assets.Success} alt="Success" />
-                  <p>Success</p>
+                  <img src={Assets.TickRound} alt="Success" />
+                </div>
+              ) : null}
+              {ErrorEditConfirmationModal === true ? (
+                <div className="editConfirmed flex__container-v">
+                  <img src={Assets.CloudError} alt="Error" />
                 </div>
               ) : null}
               <form onSubmit={handleSubmit(onSubmit)}>

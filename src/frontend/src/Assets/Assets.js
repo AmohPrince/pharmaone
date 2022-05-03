@@ -42,8 +42,12 @@ import Success from "./Success.svg";
 import Errorsuccess from "./Errorsuccess.svg";
 import PageSwitcherLeftDisabled from "./PageSwitcherIconLeftDisabled.svg";
 import PageSwitcherRightDisabled from "./PageSwitcherIconRightDisabled.svg";
+import TickRound from "./TickIconRound.svg";
+import CloudError from "./CloudError.svg";
 
 export default {
+  CloudError,
+  TickRound,
   PageSwitcherLeftDisabled,
   PageSwitcherRightDisabled,
   Errorsuccess,
