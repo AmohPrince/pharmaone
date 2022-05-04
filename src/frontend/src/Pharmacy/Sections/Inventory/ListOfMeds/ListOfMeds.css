@@ -9,6 +9,14 @@
 #SearchMedicineInventoryContainer {
   border: 1px solid var(--black);
 }
+#SearchMedicineInventory::-webkit-search-cancel-button {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background-image: url("../../../../Assets/CancelSearch.svg");
+  background-size: 16px 16px;
+  cursor: pointer;
+}
 #selectmedgroup {
   width: 200px;
   border: 1px solid var(--black);

@@ -179,7 +179,6 @@ textarea:focus {
   cursor: pointer;
 }
 .deletemodal__container > img:not(:first-of-type) {
-  margin-top: -20px;
   margin-bottom: 20px;
 }
 .deletemodal__container > :last-child:not(.confirmbutton) {

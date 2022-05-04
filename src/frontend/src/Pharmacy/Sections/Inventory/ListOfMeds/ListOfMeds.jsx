@@ -39,10 +39,14 @@ const ListOfMeds = () => {
   const [selectedGroupValue, setSelectedGroupValue] = useState();
 
   const filterOnSelectChange = () => {
-    const filteredGroupMedicineList = medicineList.filter(
-      (medicine) => medicine.groupName === selectedGroupValue
-    );
-    setFilteredMedicineList(filteredGroupMedicineList);
+    if (selectedGroupValue === undefined) {
+      return null;
+    } else {
+      const filteredGroupMedicineList = medicineList.filter(
+        (medicine) => medicine.groupName === selectedGroupValue
+      );
+      setFilteredMedicineList(filteredGroupMedicineList);
+    }
   };
 
   useEffect(() => {
@@ -138,7 +142,7 @@ const ListOfMeds = () => {
 
             {groupNames.map((group) => {
               return (
-                <option value={group} key={group.id}>
+                <option value={group} key={group}>
                   {group}
                 </option>
               );

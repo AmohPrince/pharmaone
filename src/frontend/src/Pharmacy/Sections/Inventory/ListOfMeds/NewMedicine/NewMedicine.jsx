@@ -8,13 +8,24 @@ import { dataFlowContext } from "../../../../Pharmacy";
 const NewMedicine = () => {
   const incomingData = useContext(dataFlowContext);
   const groupNames = incomingData.groupNames;
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [openModal, setOpenModal] = useState(false);
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
+  const [numberError, setNumberError] = useState(false);
 
   //Submit new medicine to the server.
   const onSubmit = (data) => {
+    // console.log(data);
+    // if (data.inStock == NaN) {
+    //   setNumberError(true);
+    // } else {
+    //   console.log(data);
+    // }
     fetch("http://localhost:8080/addMedicine", {
       method: "POST",
       headers: {
@@ -70,6 +81,9 @@ const NewMedicine = () => {
             <label htmlFor="medicineName">
               <p className="p__poppins">Medicine Name</p>
               <input {...register("medicineName", { required: true })} />
+              {errors.medicineName && (
+                <p className="input-error">Medicine name is required.</p>
+              )}
             </label>
             <label htmlFor="medicineId">
               <p className="p__poppins">Medicine Id</p>
@@ -83,7 +97,7 @@ const NewMedicine = () => {
                 name="selectFormMedicineGroup"
                 id="selectFormMedicineGroup"
                 className="p__poppins"
-                {...register("groupName")}
+                {...register("groupName", { required: true })}
               >
                 <option value="" defaultValue hidden>
                   -Select Group-
@@ -96,10 +110,14 @@ const NewMedicine = () => {
                   );
                 })}
               </select>
+              {errors.groupName && (
+                <p className="input-error"> Please select a group.</p>
+              )}
             </label>
             <label htmlFor="medicineQuantity">
               <p className="p__poppins">Quantity in Number</p>
-              <input {...register("inStock")} />
+              <input {...register("inStock", { valueAsNumber: true })} />
+              {numberError === true ? <p>Please enter a number</p> : null}
             </label>
           </div>
           <label htmlFor="howtouse" className="howtouse">

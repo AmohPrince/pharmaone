@@ -19,7 +19,14 @@ import { useForm } from "react-hook-form";
 const MedicineInfo = () => {
   let params = useParams();
   let incomingData = useContext(dataFlowContext);
-  const data = incomingData.getSpecificMedicineWithId(params.medicineId);
+
+  const [medicineName, setMedicineName] = useState(" ");
+
+  const fetchMedicineName = () => {
+    const data = incomingData.getSpecificMedicineWithId(params.medicineId);
+    setMedicineName(data.medicineName);
+  };
+
   const [medicineData, setMedicineData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(" ");
@@ -28,7 +35,7 @@ const MedicineInfo = () => {
   const [spinner, setSpinner] = useState(false);
   const [editMessage, setEditMessage] = useState(" ");
   const [editConfirmationModal, setEditConfirmationModal] = useState(false);
-  const [ErrorEditConfirmationModal, setErrorEditConfirmationModal] =
+  const [errorEditConfirmationModal, setErrorEditConfirmationModal] =
     useState(false);
   const { register, handleSubmit } = useForm();
 
@@ -112,10 +119,11 @@ const MedicineInfo = () => {
 
   useEffect(() => {
     fetchMedicineData();
+    fetchMedicineName();
   }, []);
 
   const title = {
-    main: data.medicineName,
+    main: medicineName,
     sub: "List of medicines available for sales",
     complex: "level2",
     source1: "Inventory",
@@ -257,7 +265,7 @@ const MedicineInfo = () => {
                   ) : confirmationMessage === true ? (
                     <p className="deletemessage">{deleteMessage}</p>
                   ) : (
-                    <p>Are you sure you want to delete {data.medicineName} ?</p>
+                    <p>Are you sure you want to delete {medicineName} ?</p>
                   )}
                   {confirmationMessage === true ? (
                     <Link
@@ -300,7 +308,7 @@ const MedicineInfo = () => {
         {modalOpen === true ? (
           <div className="edit__modal">
             <div className="edit__modal-header flex__container">
-              <p>Edit {data.medicineName}</p>
+              <p>Edit {medicineName}</p>
               <img
                 src={Assets.Close}
                 alt="Close button"
@@ -316,7 +324,7 @@ const MedicineInfo = () => {
                   <img src={Assets.TickRound} alt="Success" />
                 </div>
               ) : null}
-              {ErrorEditConfirmationModal === true ? (
+              {errorEditConfirmationModal === true ? (
                 <div className="editConfirmed flex__container-v">
                   <img src={Assets.CloudError} alt="Error" />
                 </div>
