@@ -68,7 +68,7 @@ const NewMedicine = () => {
   return (
     <>
       {openModal === true || errorModal === true ? (
-        <div className="Medicine__info-overlay"></div>
+        <div className="Medicine__info-overlay" />
       ) : null}
       <div className="Inventory__container">
         <SectionName title={title} />
@@ -104,7 +104,7 @@ const NewMedicine = () => {
                 </option>
                 {groupNames.map((group) => {
                   return (
-                    <option value={group} key={group.id}>
+                    <option value={group} key={group}>
                       {group}
                     </option>
                   );

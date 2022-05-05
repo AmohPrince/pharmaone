@@ -15,8 +15,10 @@ import NewMedicine from "./Inventory/ListOfMeds/NewMedicine/NewMedicine";
 import GroupInfo from "./Inventory/Groups/GroupInfo/GroupInfo";
 import SalesReport from "./Reports/SalesReport/SalesReport";
 import PaymentsReport from "./Reports/PaymentsReport/PaymentsReport";
+import NewGroup from "./Inventory/Groups/NewGroup/NewGroup";
 
 export {
+  NewGroup,
   SalesReport,
   PaymentsReport,
   GroupInfo,

@@ -21,6 +21,7 @@ import {
   GroupInfo,
   SalesReport,
   PaymentsReport,
+  NewGroup,
 } from "./Pharmacy/Sections/Sections";
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -53,7 +54,10 @@ root.render(
           path="/inventory/listofmeds/addnewmedicine"
           element={<NewMedicine />}
         />
+
         <Route path="/inventory/groups" element={<Groups />} />
+        <Route path="/inventory/Medicine%20Groups" element={<Groups />} />
+        <Route path="/inventory/groups/addnewgroup" element={<NewGroup />} />
         <Route path="/listofmeds" element={<ListOfMeds />} />
         <Route path="/listofmeds/:medicineId" element={<MedicineInfo />} />
 

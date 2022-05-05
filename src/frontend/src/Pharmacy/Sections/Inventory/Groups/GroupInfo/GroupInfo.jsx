@@ -9,15 +9,15 @@ import { Searchbar } from "../../../../Components/Components";
 
 const GroupInfo = () => {
   const [modalState, setModalState] = useState(false);
-  const [groupOverlay, setGroupOverlay] = useState(true);
+  const [groupOverlay, setGroupOverlay] = useState(false);
   let params = useParams();
   const incomingData = useContext(dataFlowContext);
   const data = incomingData.getSpecificGroupWithName(params.groupName);
   const [successconfirmation, setSuccessconfirmation] = useState(false);
 
-  useEffect(() => {
-    setGroupOverlay((prevState) => !prevState);
-  }, [modalState]);
+  // useEffect(() => {
+  //   setGroupOverlay((prevState) => !prevState);
+  // }, [modalState]);
 
   const title = {
     main: `${data.groupName}(${data.noOfMedicine})`,
@@ -68,6 +68,7 @@ const GroupInfo = () => {
 
   const handleModal = () => {
     setModalState((prevState) => !prevState);
+    setGroupOverlay((prevState) => !prevState);
   };
   const handleAddToGroup = () => {
     setSuccessconfirmation((prevState) => !prevState);

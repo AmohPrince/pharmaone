@@ -4,6 +4,7 @@ import { RedButton, SectionName } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleGroup from "./SingleGroups/SingleGroup";
+import { Link } from "react-router-dom";
 
 const Groups = () => {
   const incomingData = useContext(dataFlowContext);
@@ -25,7 +26,12 @@ const Groups = () => {
     <div className="Inventory__container ">
       <div className="Group__container-top flex__container">
         <SectionName title={title} />
-        <RedButton buttonData={buttonData} />
+        <Link
+          to="/inventory/groups/addnewgroup"
+          style={{ textDecoration: "none" }}
+        >
+          <RedButton buttonData={buttonData} />
+        </Link>
       </div>
       <div
         className="Topbar__input flex__container"
