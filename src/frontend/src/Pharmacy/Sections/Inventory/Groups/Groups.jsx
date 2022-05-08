@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Groups.css";
 import { RedButton, SectionName } from "../../../Components/Components";
 import { dataFlowContext } from "../../../Pharmacy";
@@ -8,7 +8,12 @@ import { Link } from "react-router-dom";
 
 const Groups = () => {
   const incomingData = useContext(dataFlowContext);
+  const groupList = incomingData.groupsList;
 
+  const [filteredGroupsList, setFilteredGroupsList] = useState([]);
+  // useEffect(() => {
+  //   setGroupList(incomingData.groupsList);
+  // }, []);
   const title = {
     main: "Medicine Groups",
     sub: "List of medicines groups",
@@ -20,6 +25,14 @@ const Groups = () => {
     color: "#F0483E",
     text: "Add New Group",
     icon: Assets.Plus,
+  };
+
+  const searchOnInputChange = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    const filteredList = groupList.filter((group) =>
+      group.groupName.toLowerCase().includes(searchValue)
+    );
+    console.log(filteredList);
   };
 
   return (
@@ -43,6 +56,7 @@ const Groups = () => {
           id="SearchMedicineGroups"
           placeholder="Search Medicine Groups"
           className="p__poppins"
+          onChange={searchOnInputChange}
         />
         <img src={Assets.Search} alt="Search Icon" />
       </div>
@@ -61,7 +75,7 @@ const Groups = () => {
           </div>
         </div>
         <div className="titleseparator" />
-        {incomingData.groupsList.map((data) => (
+        {groupList.map((data) => (
           <SingleGroup data={data} key={data.groupName} />
         ))}
       </div>
