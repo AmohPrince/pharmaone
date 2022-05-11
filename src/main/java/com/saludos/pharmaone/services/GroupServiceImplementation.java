@@ -15,7 +15,7 @@ public class GroupServiceImplementation implements GroupService{
     GroupRepository groupRepository;
 
     @Override
-    public List findAllGroups() {
+    public List<MedicineGroup> findAllGroups() {
         return groupRepository.findAll();
     }
 

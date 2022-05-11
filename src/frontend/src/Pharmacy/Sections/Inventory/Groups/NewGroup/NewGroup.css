@@ -36,3 +36,13 @@
 .form__container input[type="submit"] {
   margin-top: 20px;
 }
+.successconfirmation {
+  position: absolute;
+  bottom: 25%;
+  left: 30%;
+  width: 350px;
+  background-color: #01a7684d;
+  border-radius: 4px;
+  padding: 10px;
+  justify-content: space-around;
+}

@@ -32,8 +32,10 @@ const NewGroup = () => {
         setSpinner(false);
         setSuccessConfirmation(true);
       });
+    setTimeout(() => {
+      setSuccessConfirmation(false);
+    }, 3000);
   };
-  console.log(successMessage);
 
   return (
     <>
@@ -44,12 +46,6 @@ const NewGroup = () => {
               <Spinner />
             </div>
           </>
-        ) : null}
-        {successConfirmation === true ? (
-          <div className="successconfirmation  flex__container">
-            <img src={Assets.Tick} alt="tick" />
-            <p>{successMessage}</p>
-          </div>
         ) : null}
         <SectionName title={title} />
         <form className="form__container" onSubmit={handleSubmit(addGroup)}>
@@ -67,6 +63,12 @@ const NewGroup = () => {
             <input type="submit" />
           </div>
         </form>
+        {successConfirmation === true ? (
+          <div className="successconfirmation  flex__container">
+            <img src={Assets.Tick} alt="tick" />
+            <p>{successMessage}</p>
+          </div>
+        ) : null}
       </div>
     </>
   );

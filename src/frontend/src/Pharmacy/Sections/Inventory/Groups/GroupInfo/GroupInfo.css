@@ -102,7 +102,8 @@
 }
 .deleteMessage {
   position: absolute;
-  bottom: -50%;
+  bottom: 25%;
+  left: 35%;
   z-index: 3;
   background-color: #01a7684d;
   border-radius: 4px;

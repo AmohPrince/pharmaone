@@ -90,7 +90,6 @@ const GroupInfo = () => {
     setGroupOverlay((prevState) => !prevState);
   };
   const onDelete = () => {
-    console.log(data);
     fetch(`http://localhost:8080/deletegroup/${data.groupId}`, {
       method: "DELETE",
       headers: {
@@ -99,6 +98,12 @@ const GroupInfo = () => {
     })
       .then((res) => res.text())
       .then((resBody) => setDeleteMessage(resBody));
+    setDeleteModal((prevState) => !prevState);
+    setGroupOverlay((prevState) => !prevState);
+
+    setTimeout(() => {
+      setDeleteMessage(" ");
+    }, 2000);
   };
 
   return (
@@ -167,16 +172,16 @@ const GroupInfo = () => {
                     Cancel
                   </p>
                 </div>
-                {deleteMessage !== " " ? (
-                  <div className="deleteMessage flex__container">
-                    <img src={Assets.Tick} alt="Tick" />
-                    <p>{deleteMessage}</p>
-                  </div>
-                ) : null}
               </div>
             </div>
           ) : null}
         </div>
+        {deleteMessage !== " " ? (
+          <div className="deleteMessage flex__container">
+            <img src={Assets.Tick} alt="Tick" />
+            <p>{deleteMessage}</p>
+          </div>
+        ) : null}
 
         {modalState === true ? (
           <div className="modal__wrapper">
