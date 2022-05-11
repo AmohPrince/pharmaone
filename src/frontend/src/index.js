@@ -56,6 +56,7 @@ root.render(
         />
 
         <Route path="/inventory/groups" element={<Groups />} />
+        <Route path="/groups" element={<Groups />} />
         <Route path="/inventory/Medicine%20Groups" element={<Groups />} />
         <Route path="/inventory/groups/addnewgroup" element={<NewGroup />} />
         <Route path="/listofmeds" element={<ListOfMeds />} />

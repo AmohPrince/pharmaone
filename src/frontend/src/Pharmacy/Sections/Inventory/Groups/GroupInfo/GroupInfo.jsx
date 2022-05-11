@@ -6,6 +6,7 @@ import { dataFlowContext } from "../../../../Pharmacy";
 import Assets from "../../../../../Assets/Assets";
 import SingleMedicineInGroup from "../SingleMedicineInGroup/SingleMedicineInGroup";
 import { Searchbar } from "../../../../Components/Components";
+import { useForm } from "react-hook-form";
 
 const GroupInfo = () => {
   const [modalState, setModalState] = useState(false);
@@ -13,11 +14,10 @@ const GroupInfo = () => {
   let params = useParams();
   const incomingData = useContext(dataFlowContext);
   const data = incomingData.getSpecificGroupWithName(params.groupName);
-  const [successconfirmation, setSuccessconfirmation] = useState(false);
-
-  // useEffect(() => {
-  //   setGroupOverlay((prevState) => !prevState);
-  // }, [modalState]);
+  const [successConfirmation, setSuccessConfirmation] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const { handleSubmit } = useForm();
+  const [mockGroupMedicines, setMockGroupMedicines] = useState([]);
 
   const title = {
     main: `${data.groupName}(${data.noOfMedicine})`,
@@ -25,6 +25,24 @@ const GroupInfo = () => {
     complex: "level2",
     source1: "Inventory",
     source2: "Medicine Groups",
+  };
+  useEffect(() => {
+    setMockGroupMedicines([
+      {
+        medicineName: "Augmentin 625 Duo Tablet",
+        noOfMedicines: 22,
+      },
+      {
+        medicineName: "Azithral 500 Tablet",
+        noOfMedicines: 8,
+      },
+    ]);
+  }, []);
+  const searchMedicines = (e) => {
+    const filteredMedicine = mockGroupMedicines.filter((medicine) =>
+      medicine.medicineName.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    // setMockGroupMedicines(filteredMedicine);
   };
 
   const buttonData = {
@@ -55,26 +73,22 @@ const GroupInfo = () => {
     placeholder: "Enter Medicine Name or Medicine ID",
   };
 
-  const mockGroupMedicines = [
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      noOfMedicines: 22,
-    },
-    {
-      medicineName: "Azithral 500 Tablet",
-      noOfMedicines: 8,
-    },
-  ];
-
   const handleModal = () => {
     setModalState((prevState) => !prevState);
     setGroupOverlay((prevState) => !prevState);
   };
   const handleAddToGroup = () => {
-    setSuccessconfirmation((prevState) => !prevState);
+    setSuccessConfirmation((prevState) => !prevState);
     setTimeout(() => {
-      setSuccessconfirmation((prevState) => !prevState);
+      setSuccessConfirmation((prevState) => !prevState);
     }, 3000);
+  };
+  const handleDeleteGroup = () => {
+    setDeleteModal((prevState) => !prevState);
+    setGroupOverlay((prevState) => !prevState);
+  };
+  const onDelete = () => {
+    console.log(data.groupName);
   };
 
   return (
@@ -87,7 +101,20 @@ const GroupInfo = () => {
             <RedButton buttonData={buttonData} />
           </div>
         </div>
-        <Searchbar data={searchBarData} />
+        <div
+          className="Searchbar flex__container"
+          id="SearchMedicineInventoryContainer"
+        >
+          <input
+            type="search"
+            name={searchBarData.name}
+            id={searchBarData.name}
+            placeholder={searchBarData.placeholder}
+            className="p__poppins"
+            onChange={searchMedicines}
+          />
+          <img src={Assets.Search} alt="Search Icon" />
+        </div>
         <div>
           <div className="Group__container-titles flex__container">
             <div>
@@ -109,8 +136,32 @@ const GroupInfo = () => {
             );
           })}
         </div>
+        <div>
+          <div onClick={handleDeleteGroup}>
+            <RedButton buttonData={buttonData2} />
+          </div>
+          {deleteModal === true ? (
+            <div className="deleteModal-wrapper">
+              <div className="deleteGroupModal flex__container-v">
+                <img
+                  src={Assets.Close}
+                  alt="Close"
+                  onClick={handleDeleteGroup}
+                />
+                <p>Are you sure you want to delete group {data.groupName} ?</p>
+                <div className="deleteGroup__choices flex__container">
+                  <form onSubmit={handleSubmit(onDelete)}>
+                    <input type="submit" value="Yes" />
+                  </form>
+                  <p className="cancel" onClick={handleDeleteGroup}>
+                    Cancel
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
 
-        <RedButton buttonData={buttonData2} />
         {modalState === true ? (
           <div className="modal__wrapper">
             <div className="modal">
@@ -130,8 +181,8 @@ const GroupInfo = () => {
             </div>
           </div>
         ) : null}
-        {successconfirmation === true ? (
-          <div className="successconfirmation  flex__container">
+        {successConfirmation === true ? (
+          <div className="successConfirmation  flex__container">
             <img src={Assets.Tick} alt="tick" />
             <p className="p__poppins">Medicine Added to Group</p>
           </div>

@@ -195,7 +195,7 @@ textarea:focus {
   border: 1px solid var(--skyBlue);
   width: 150px;
   cursor: pointer;
-  padding: 0.4em 0;
+  padding: 12px;
   border-radius: 4px;
   color: var(--skyBlue);
 }

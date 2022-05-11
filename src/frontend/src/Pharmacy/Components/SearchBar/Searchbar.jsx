@@ -2,7 +2,7 @@ import React from "react";
 import "./SearchBar.css";
 import Assets from "../../../Assets/Assets";
 
-const Searchbar = ({ data }) => {
+const SearchBar = ({ data }) => {
   return (
     <div
       className="Searchbar flex__container"
@@ -20,4 +20,4 @@ const Searchbar = ({ data }) => {
   );
 };
 
-export default Searchbar;
+export default SearchBar;

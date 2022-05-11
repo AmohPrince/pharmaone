@@ -11,9 +11,11 @@ const Groups = () => {
   const groupList = incomingData.groupsList;
 
   const [filteredGroupsList, setFilteredGroupsList] = useState([]);
-  // useEffect(() => {
-  //   setGroupList(incomingData.groupsList);
-  // }, []);
+
+  useEffect(() => {
+    setFilteredGroupsList(groupList);
+  }, []);
+
   const title = {
     main: "Medicine Groups",
     sub: "List of medicines groups",
@@ -32,7 +34,7 @@ const Groups = () => {
     const filteredList = groupList.filter((group) =>
       group.groupName.toLowerCase().includes(searchValue)
     );
-    console.log(filteredList);
+    setFilteredGroupsList(filteredList);
   };
 
   return (
@@ -75,8 +77,8 @@ const Groups = () => {
           </div>
         </div>
         <div className="titleseparator" />
-        {groupList.map((data) => (
-          <SingleGroup data={data} key={data.groupName} />
+        {filteredGroupsList.map((data, index) => (
+          <SingleGroup data={data} key={index} />
         ))}
       </div>
     </div>

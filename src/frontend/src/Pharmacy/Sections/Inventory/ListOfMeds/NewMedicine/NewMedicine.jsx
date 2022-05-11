@@ -102,9 +102,9 @@ const NewMedicine = () => {
                 <option value="" defaultValue hidden>
                   -Select Group-
                 </option>
-                {groupNames.map((group) => {
+                {groupNames.map((group, index) => {
                   return (
-                    <option value={group} key={group}>
+                    <option value={group} key={index}>
                       {group}
                     </option>
                   );
