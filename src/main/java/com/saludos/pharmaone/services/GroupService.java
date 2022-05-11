@@ -10,4 +10,6 @@ public interface GroupService {
     public List findAllGroups();
 
     String addNewGroup(MedicineGroup group);
+
+    String deleteGroup(int groupId);
 }

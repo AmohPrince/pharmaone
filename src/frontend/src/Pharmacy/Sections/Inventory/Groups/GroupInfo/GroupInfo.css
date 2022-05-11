@@ -79,7 +79,7 @@
   z-index: 3;
   text-align: center;
 }
-.deleteGroupModal img {
+.deleteGroupModal > img {
   cursor: pointer;
   position: absolute;
   top: 10px;
@@ -99,4 +99,15 @@
 }
 .deleteGroup__choices > :first-child {
   margin-right: 60px;
+}
+.deleteMessage {
+  position: absolute;
+  bottom: -50%;
+  z-index: 3;
+  background-color: #01a7684d;
+  border-radius: 4px;
+  text-align: left;
+  padding: 10px;
+  width: 242px;
+  justify-content: space-around;
 }

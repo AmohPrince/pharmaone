@@ -18,6 +18,7 @@ const GroupInfo = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const { handleSubmit } = useForm();
   const [groupMedicines, setGroupMedicines] = useState([]);
+  const [deleteMessage, setDeleteMessage] = useState(" ");
 
   const title = {
     main: `${data.groupName}(${data.noOfMedicine})`,
@@ -89,7 +90,15 @@ const GroupInfo = () => {
     setGroupOverlay((prevState) => !prevState);
   };
   const onDelete = () => {
-    console.log(data.groupName);
+    console.log(data);
+    fetch(`http://localhost:8080/deletegroup/${data.groupId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.text())
+      .then((resBody) => setDeleteMessage(resBody));
   };
 
   return (
@@ -158,6 +167,12 @@ const GroupInfo = () => {
                     Cancel
                   </p>
                 </div>
+                {deleteMessage !== " " ? (
+                  <div className="deleteMessage flex__container">
+                    <img src={Assets.Tick} alt="Tick" />
+                    <p>{deleteMessage}</p>
+                  </div>
+                ) : null}
               </div>
             </div>
           ) : null}

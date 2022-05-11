@@ -24,4 +24,9 @@ public class GroupController {
     public String addNewGroup(@RequestBody MedicineGroup group){
         return groupService.addNewGroup(group);
     }
+
+    @DeleteMapping("/deletegroup/{groupId}")
+    public String deleteGroup(@PathVariable int groupId){
+        return groupService.deleteGroup(groupId);
+    }
 }
