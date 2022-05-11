@@ -17,7 +17,7 @@ const GroupInfo = () => {
   const [successConfirmation, setSuccessConfirmation] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const { handleSubmit } = useForm();
-  const [mockGroupMedicines, setMockGroupMedicines] = useState([]);
+  const [groupMedicines, setGroupMedicines] = useState([]);
 
   const title = {
     main: `${data.groupName}(${data.noOfMedicine})`,
@@ -26,23 +26,24 @@ const GroupInfo = () => {
     source1: "Inventory",
     source2: "Medicine Groups",
   };
+  const mockGroupMedicines = [
+    {
+      medicineName: "Augmentin 625 Duo Tablet",
+      noOfMedicines: 22,
+    },
+    {
+      medicineName: "Azithral 500 Tablet",
+      noOfMedicines: 8,
+    },
+  ];
   useEffect(() => {
-    setMockGroupMedicines([
-      {
-        medicineName: "Augmentin 625 Duo Tablet",
-        noOfMedicines: 22,
-      },
-      {
-        medicineName: "Azithral 500 Tablet",
-        noOfMedicines: 8,
-      },
-    ]);
+    setGroupMedicines(mockGroupMedicines);
   }, []);
   const searchMedicines = (e) => {
     const filteredMedicine = mockGroupMedicines.filter((medicine) =>
       medicine.medicineName.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    setMockGroupMedicines(filteredMedicine);
+    setGroupMedicines(filteredMedicine);
   };
 
   const buttonData = {
@@ -130,7 +131,7 @@ const GroupInfo = () => {
             </div>
           </div>
           <div className="splitter" />
-          {mockGroupMedicines.map((data) => {
+          {groupMedicines.map((data) => {
             return (
               <SingleMedicineInGroup data={data} key={data.medicineName} />
             );
