@@ -64,7 +64,7 @@ const NewGroup = () => {
           </div>
         </form>
         {successConfirmation === true ? (
-          <div className="successconfirmation  flex__container">
+          <div className="success-confirmation  flex__container">
             <img src={Assets.Tick} alt="tick" />
             <p>{successMessage}</p>
           </div>

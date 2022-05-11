@@ -4,6 +4,7 @@
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 5px;
+  background-color: transparent;
 }
 #groupName:hover {
   border-color: var(--black);
@@ -15,6 +16,7 @@
 #groupDescription {
   height: 100px;
   width: 500px;
+  background-color: transparent;
 }
 .form__container {
   margin-top: 50px;
@@ -36,7 +38,7 @@
 .form__container input[type="submit"] {
   margin-top: 20px;
 }
-.successconfirmation {
+.success-confirmation {
   position: absolute;
   bottom: 25%;
   left: 30%;
