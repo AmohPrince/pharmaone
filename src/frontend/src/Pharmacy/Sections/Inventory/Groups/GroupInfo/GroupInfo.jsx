@@ -42,7 +42,7 @@ const GroupInfo = () => {
     const filteredMedicine = mockGroupMedicines.filter((medicine) =>
       medicine.medicineName.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    // setMockGroupMedicines(filteredMedicine);
+    setMockGroupMedicines(filteredMedicine);
   };
 
   const buttonData = {

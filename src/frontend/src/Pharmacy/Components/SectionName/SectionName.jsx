@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 /* This component takes in an object as a prop that contains the name and subtitle and any other relevant data*/
 
 const SectionName = ({ title }) => {
+  console.log(title);
   if (title.complex === "level1") {
     return (
       <div className="SectionName__level1">
@@ -42,7 +43,7 @@ const SectionName = ({ title }) => {
             alt="Points to the left"
           />
           <Link
-            to={`/Inventory/${title.source2}`}
+            to={`/Inventory/${title.source2.toLowerCase().split(" ").join("")}`}
             style={{ textDecoration: "none" }}
           >
             <p className="p__poppins">{title.source2}</p>
