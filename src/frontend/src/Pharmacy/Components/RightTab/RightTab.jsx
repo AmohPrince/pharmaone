@@ -30,7 +30,10 @@ const RightTab = ({ data, arrowState }) => {
     incomingData.setOnTab("payments");
   };
   return (
-    <Link to={`${data.name}`} style={{ textDecoration: "none" }}>
+    <Link
+      to={`${data.name.toLowerCase().split(" ").join("")}`}
+      style={{ textDecoration: "none" }}
+    >
       <div className={`${incomingData.currrentOnTab}${data.name}`}>
         {data.topLine ? <div className="splitter" /> : null}
         <div className="RightTab flex__container" onClick={data.onClick}>
@@ -50,7 +53,7 @@ const RightTab = ({ data, arrowState }) => {
               onClick={handleListClick}
             >
               <Link
-                to="/Inventory/listofmeds"
+                to="/inventory/listofmedicines"
                 style={{ textDecoration: "none" }}
               >
                 <p className="p__poppins">List Of Medicines</p>
@@ -60,7 +63,10 @@ const RightTab = ({ data, arrowState }) => {
               className={`inventoryoption medicinegroups ${incomingData.currrentOnTab}`}
               onClick={handleGroupClick}
             >
-              <Link to="/Inventory/groups" style={{ textDecoration: "none" }}>
+              <Link
+                to="/inventory/medicinegroups"
+                style={{ textDecoration: "none" }}
+              >
                 <p className="p__poppins">Medicines Groups</p>
               </Link>
             </div>
@@ -73,7 +79,7 @@ const RightTab = ({ data, arrowState }) => {
               onClick={handleSalesClick}
             >
               <Link
-                to="/Reports/salesreport"
+                to="/reports/salesreport"
                 style={{ textDecoration: "none" }}
               >
                 <p className="p__poppins">Sales Report</p>
@@ -84,7 +90,7 @@ const RightTab = ({ data, arrowState }) => {
               onClick={handlePaymentsClick}
             >
               <Link
-                to="/Reports/paymentreport"
+                to="/reports/paymentreport"
                 style={{ textDecoration: "none" }}
               >
                 <p className="p__poppins">Payments Report</p>

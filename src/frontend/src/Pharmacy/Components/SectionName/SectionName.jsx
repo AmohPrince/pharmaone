@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 /* This component takes in an object as a prop that contains the name and subtitle and any other relevant data*/
 
 const SectionName = ({ title }) => {
-  console.log(title);
   if (title.complex === "level1") {
     return (
       <div className="SectionName__level1">
         <div className="level1__top flex__container">
-          <Link to={`/${title.source}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/${title.source.toLowerCase()}`}
+            style={{ textDecoration: "none" }}
+          >
             <p className="p__poppins">{title.source}</p>
           </Link>
           <img
@@ -34,7 +36,7 @@ const SectionName = ({ title }) => {
     return (
       <div className="SectionName__level2">
         <div className="level2__top flex__container">
-          <Link to="/Inventory" style={{ textDecoration: "none" }}>
+          <Link to="/inventory" style={{ textDecoration: "none" }}>
             <p className="p__poppins">{title.source1}</p>
           </Link>
           <img
@@ -43,7 +45,7 @@ const SectionName = ({ title }) => {
             alt="Points to the left"
           />
           <Link
-            to={`/Inventory/${title.source2.toLowerCase().split(" ").join("")}`}
+            to={`/inventory/${title.source2.toLowerCase().split(" ").join("")}`}
             style={{ textDecoration: "none" }}
           >
             <p className="p__poppins">{title.source2}</p>

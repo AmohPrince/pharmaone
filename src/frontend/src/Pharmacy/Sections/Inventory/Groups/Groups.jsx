@@ -42,7 +42,7 @@ const Groups = () => {
       <div className="Group__container-top flex__container">
         <SectionName title={title} />
         <Link
-          to="/inventory/groups/addnewgroup"
+          to="/inventory/medicinegroups/addnewgroup"
           style={{ textDecoration: "none" }}
         >
           <RedButton buttonData={buttonData} />

@@ -10,7 +10,7 @@ const SingleGroup = ({ data }) => {
         <p className="p__poppins">{data.groupName}</p>
         <p className="p__poppins">{data.noOfMedicine}</p>
         <Link
-          to={data.groupName}
+          to={`/inventory/groups/${data.groupName}`}
           className="flex__container"
           style={{ textDecoration: "none" }}
         >

@@ -36,29 +36,22 @@ root.render(
 
         {/* Inventory Routes */}
         <Route path="inventory" element={<Inventory />}></Route>
-        <Route path="/inventory/listofmeds" element={<ListOfMeds />} />
+        <Route path="/inventory/listofmedicines" element={<ListOfMeds />} />
         <Route
-          path="/inventory/list%20of%20medicines"
-          element={<ListOfMeds />}
-        />
-        <Route
-          path="/inventory/list%20of%20medicines/:medicineId"
-          element={<MedicineInfo />}
-        />
-        <Route
-          path="/inventory/listofmeds/:medicineId"
+          path="/inventory/listofmedicines/:medicineId"
           element={<MedicineInfo />}
         />
         <Route path="/inventory/groups/:groupName" element={<GroupInfo />} />
         <Route
-          path="/inventory/listofmeds/addnewmedicine"
+          path="/inventory/listofmedicines/addnewmedicine"
           element={<NewMedicine />}
         />
 
-        <Route path="/inventory/groups" element={<Groups />} />
-        <Route path="/groups" element={<Groups />} />
-        <Route path="/inventory/Medicine%20Groups" element={<Groups />} />
-        <Route path="/inventory/groups/addnewgroup" element={<NewGroup />} />
+        <Route path="/inventory/MedicineGroups" element={<Groups />} />
+        <Route
+          path="/inventory/medicinegroups/addnewgroup"
+          element={<NewGroup />}
+        />
         <Route path="/listofmeds" element={<ListOfMeds />} />
         <Route path="/listofmeds/:medicineId" element={<MedicineInfo />} />
 
@@ -67,13 +60,13 @@ root.render(
         <Route path="/reports/salesreport" element={<SalesReport />} />
         <Route path="/reports/paymentreport" element={<PaymentsReport />} />
 
-        <Route path="chat%20With%20Others" element={<Chat />} />
+        <Route path="chatWithOthers" element={<Chat />} />
         <Route path="covid-19" element={<Covid />} />
         <Route path="configuration" element={<Configuration />} />
-        <Route path="contact%20Management" element={<ContactManagement />} />
+        <Route path="contactManagement" element={<ContactManagement />} />
         <Route path="notifications" element={<Notifications />} />
-        <Route path="application%20Settings" element={<Settings />} />
-        <Route path="get%20Technical%20Help" element={<TechHelp />} />
+        <Route path="applicationSettings" element={<Settings />} />
+        <Route path="getTechnicalHelp" element={<TechHelp />} />
       </Route>
       <Route
         path="*"
