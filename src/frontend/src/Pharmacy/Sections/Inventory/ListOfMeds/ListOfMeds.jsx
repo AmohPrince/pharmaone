@@ -101,17 +101,16 @@ const ListOfMeds = () => {
     icon: Assets.Plus,
   };
 
-  const compareFunction = (a, b) => {
-    if (a.medicineName < b.medicineName) {
-      return -1;
-    }
-    if (a.medicineName > b.medicineName) {
-      return -1;
-    }
-    return 0;
-  };
-
   const handleSort = (sortBy) => {
+    const compareFunction = (a, b) => {
+      if (a[sortBy] < b[sortBy]) {
+        return -1;
+      }
+      if (a[sortBy] > b[sortBy]) {
+        return 1;
+      }
+      return 0;
+    };
     setFilteredMedicineList((prevFilteredMedicineList) => {
       const copyOfPrevFilteredMedicineList = [...prevFilteredMedicineList];
       copyOfPrevFilteredMedicineList.sort(compareFunction);
@@ -177,15 +176,27 @@ const ListOfMeds = () => {
             <p>Medicine Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
-          <div>
+          <div
+            onClick={() => {
+              handleSort("medicineId");
+            }}
+          >
             <p>Medicine ID</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
-          <div>
+          <div
+            onClick={() => {
+              handleSort("groupName");
+            }}
+          >
             <p>Group Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
-          <div>
+          <div
+            onClick={() => {
+              handleSort("inStock");
+            }}
+          >
             <p>Stock in Qty</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>

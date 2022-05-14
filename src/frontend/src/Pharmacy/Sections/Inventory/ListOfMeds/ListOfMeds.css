@@ -59,6 +59,9 @@
 .Inventory__container-titles > div > :nth-child(2) {
   margin-left: 5px;
 }
+.Inventory__container-titles > :last-child {
+  cursor: text;
+}
 .Inventory__container-titles p {
   font-weight: 600;
   font-size: 1rem;
@@ -90,4 +93,8 @@
 .listofmeds__footer-pageswitch > button:disabled {
   border: 1px solid var(--border);
   cursor: text;
+}
+.Inventory__container-titles > *:not(:last-child) > p:hover {
+  font-size: calc(1rem - 1px);
+  transition: font-size 200ms ease-in;
 }
