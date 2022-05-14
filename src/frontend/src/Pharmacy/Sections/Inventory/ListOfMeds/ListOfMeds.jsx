@@ -9,7 +9,7 @@ import { Spinner } from "../../../Components/Components";
 
 /**
  * This component will have some form of fetch that will pull data
- * i thinl useeffect
+ * i think use effect
  * @returns List of medicine
  */
 
@@ -101,6 +101,24 @@ const ListOfMeds = () => {
     icon: Assets.Plus,
   };
 
+  const compareFunction = (a, b) => {
+    if (a.medicineName < b.medicineName) {
+      return -1;
+    }
+    if (a.medicineName > b.medicineName) {
+      return -1;
+    }
+    return 0;
+  };
+
+  const handleSort = (sortBy) => {
+    setFilteredMedicineList((prevFilteredMedicineList) => {
+      const copyOfPrevFilteredMedicineList = [...prevFilteredMedicineList];
+      copyOfPrevFilteredMedicineList.sort(compareFunction);
+      return copyOfPrevFilteredMedicineList;
+    });
+  };
+
   return (
     <div className="Inventory__container">
       <div className="Inventory__container-top flex__container">
@@ -151,7 +169,11 @@ const ListOfMeds = () => {
       </div>
       <div className="Inventory__container-bottom">
         <div className="Inventory__container-titles flex__container">
-          <div>
+          <div
+            onClick={() => {
+              handleSort("medicineName");
+            }}
+          >
             <p>Medicine Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
