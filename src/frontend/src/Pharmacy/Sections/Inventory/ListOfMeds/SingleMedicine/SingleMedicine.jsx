@@ -13,7 +13,7 @@ const SingleMedicine = ({ data }) => {
       <div className="SingleMedicine__body flex__container">
         <p className="p__poppins">{data.medicineName}</p>
         <p className="p__poppins">{data.medicineId}</p>
-        <p className="p__poppins">{data.groupName}</p>
+        <p className="p__poppins">{data.medicineGroup.groupName}</p>
         <p className="p__poppins">{data.inStock}</p>
         <Link to={data.medicineId} style={{ textDecoration: "none" }}>
           <div className="SingleMedicine__body-link flex__container">

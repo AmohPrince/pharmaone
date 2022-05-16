@@ -1,11 +1,13 @@
 .Group__container-titles {
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: var(--white);
   height: 40px;
+  padding: 10px;
 }
 .Group__container-titles > div {
   display: flex;
-  width: 150px;
+  width: 30%;
+  justify-content: center;
 }
 .Group__container-titles > div > p {
   margin-right: 5px;

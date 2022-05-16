@@ -43,7 +43,7 @@ const ListOfMeds = () => {
       return null;
     } else {
       const filteredGroupMedicineList = medicineList.filter(
-        (medicine) => medicine.groupName === selectedGroupValue
+        (medicine) => medicine.medicineGroup.groupName === selectedGroupValue
       );
       setFilteredMedicineList(filteredGroupMedicineList);
     }

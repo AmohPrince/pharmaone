@@ -27,24 +27,30 @@ const GroupInfo = () => {
     source1: "Inventory",
     source2: "Medicine Groups",
   };
-  const mockGroupMedicines = [
-    {
-      medicineName: "Augmentin 625 Duo Tablet",
-      noOfMedicines: 22,
-    },
-    {
-      medicineName: "Azithral 500 Tablet",
-      noOfMedicines: 8,
-    },
-  ];
+
   useEffect(() => {
-    setGroupMedicines(mockGroupMedicines);
+    fetchMedicineInGroup();
   }, []);
+
   const searchMedicines = (e) => {
-    const filteredMedicine = mockGroupMedicines.filter((medicine) =>
-      medicine.medicineName.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setGroupMedicines(filteredMedicine);
+    if (e.target.value === "") {
+      fetchMedicineInGroup();
+    } else {
+      const filteredMedicine = groupMedicines.filter((medicine) =>
+        medicine.medicineName
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
+      );
+      setGroupMedicines(filteredMedicine);
+    }
+  };
+
+  const fetchMedicineInGroup = () => {
+    fetch(`http://localhost:8080/getbygroupid/${data.groupId}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((resBody) => setGroupMedicines(resBody));
   };
 
   const buttonData = {
@@ -137,7 +143,7 @@ const GroupInfo = () => {
               <img src={Assets.TopBottomArrows} alt="Arrows" />
             </div>
             <div>
-              <p className="p__poppins">No Of Medicines</p>
+              <p className="p__poppins">In Stock</p>
               <img src={Assets.TopBottomArrows} alt="Arrows" />
             </div>
             <div>
@@ -152,7 +158,7 @@ const GroupInfo = () => {
           })}
         </div>
         <div>
-          <div onClick={handleDeleteGroup}>
+          <div onClick={handleDeleteGroup} className="test">
             <RedButton buttonData={buttonData2} />
           </div>
           {deleteModal === true ? (

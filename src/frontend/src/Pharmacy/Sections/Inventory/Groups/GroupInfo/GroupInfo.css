@@ -112,3 +112,7 @@
   width: 242px;
   justify-content: space-around;
 }
+.test {
+  min-width: 162px;
+  max-width: 250px;
+}

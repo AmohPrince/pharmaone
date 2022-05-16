@@ -7,7 +7,7 @@ const SingleMedicineInGroup = ({ data }) => {
     <>
       <div className="flex__container Singlemedicinegroup">
         <p className="p__poppins">{data.medicineName}</p>
-        <p className="p__poppins">{data.noOfMedicines}</p>
+        <p className="p__poppins">{data.inStock}</p>
         <div className="flex__container">
           <img src={Assets.Trash} alt="Dustbin Icon" />
           <p className="p__poppins">Remove From Group</p>
