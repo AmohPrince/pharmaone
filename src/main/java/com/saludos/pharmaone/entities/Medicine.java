@@ -2,18 +2,36 @@ package com.saludos.pharmaone.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Medicine {
     @Id
     String medicineId;
     String medicineName;
-    String groupName;
     int inStock;
     String lifetimeSupply;
     String lifetimeSales;
     String howToUse;
     String sideEffects;
+
+    @OneToOne
+    MedicineGroup medicineGroup;
+
+    public Medicine (){
+
+    }
+
+    public Medicine(String medicineId, String medicineName, int inStock, String lifetimeSupply, String lifetimeSales, String howToUse, String sideEffects, int groupId) {
+        this.medicineId = medicineId;
+        this.medicineName = medicineName;
+        this.inStock = inStock;
+        this.lifetimeSupply = lifetimeSupply;
+        this.lifetimeSales = lifetimeSales;
+        this.howToUse = howToUse;
+        this.sideEffects = sideEffects;
+        this.medicineGroup = new MedicineGroup( groupId, "" ,"");
+    }
 
     public String getMedicineName() {
         return medicineName;
@@ -29,14 +47,6 @@ public class Medicine {
 
     public void setMedicineId(String medicineId) {
         this.medicineId = medicineId;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
     }
 
     public int getInStock() {
@@ -77,5 +87,13 @@ public class Medicine {
 
     public void setSideEffects(String sideEffects) {
         this.sideEffects = sideEffects;
+    }
+
+    public MedicineGroup getMedicineGroup() {
+        return medicineGroup;
+    }
+
+    public void setMedicineGroup(MedicineGroup medicineGroup) {
+        this.medicineGroup = medicineGroup;
     }
 }

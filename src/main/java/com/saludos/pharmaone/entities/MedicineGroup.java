@@ -14,6 +14,16 @@ public class MedicineGroup {
     String groupName;
     String groupDescription;
 
+    public MedicineGroup () {
+
+    }
+
+    public MedicineGroup(int groupId, String groupName, String groupDescription) {
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.groupDescription = groupDescription;
+    }
+
     public int getGroupId() {
         return groupId;
     }

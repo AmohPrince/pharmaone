@@ -14,6 +14,10 @@ public class MedicineController {
    @Autowired
     MedicineService medicineService;
 
+   @GetMapping("/getbygroupid/{groupId}")
+   public List<Medicine> getByGroupId(@PathVariable String groupId){
+       return medicineService.getByGroupId(Integer.parseInt(groupId));
+   }
 
     @GetMapping("/getallmedicine")
     public List<Medicine> getAllMedicine(Medicine medicine){

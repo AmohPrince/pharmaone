@@ -19,6 +19,12 @@ public class MedicineServiceImplementation  implements MedicineService{
     }
 
     @Override
+    public List<Medicine> getByGroupId(int groupId) {
+        return medicineRepository.findByMedicineGroupGroupId(groupId);
+    }
+
+
+    @Override
     public String addMedicine(Medicine medicine) {
         medicineRepository.save(medicine);
         System.out.println("Added medicine "+ medicine.getMedicineName());
