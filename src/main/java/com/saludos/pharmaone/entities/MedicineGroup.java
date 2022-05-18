@@ -13,6 +13,7 @@ public class MedicineGroup {
     int groupId;
     String groupName;
     String groupDescription;
+    
 
     public MedicineGroup () {
 

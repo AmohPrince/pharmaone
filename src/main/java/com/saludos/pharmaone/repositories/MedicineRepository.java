@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MedicineRepository  extends JpaRepository<Medicine , String> {
     public List<Medicine> findByMedicineGroupGroupId(int groupId);
+
+    public long countByMedicineGroupGroupId(int groupId);
 }

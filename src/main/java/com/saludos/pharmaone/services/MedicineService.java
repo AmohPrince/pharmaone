@@ -11,6 +11,8 @@ public interface MedicineService {
 
     public List<Medicine> getByGroupId(int groupId);
 
+    public Long getNumberOfMedicine(int groupId);
+
     String addMedicine(Medicine medicine);
 
     String modifyMedicine(Medicine medicine);

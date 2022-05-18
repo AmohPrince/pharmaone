@@ -23,6 +23,11 @@ public class MedicineServiceImplementation  implements MedicineService{
         return medicineRepository.findByMedicineGroupGroupId(groupId);
     }
 
+    @Override
+    public Long getNumberOfMedicine(int groupId) {
+        return medicineRepository.countByMedicineGroupGroupId(groupId);
+    }
+
 
     @Override
     public String addMedicine(Medicine medicine) {

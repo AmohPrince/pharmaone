@@ -184,7 +184,7 @@ const MedicineInfo = () => {
                   <p>Medicine ID</p>
                 </div>
                 <div className="Medicine__data-section">
-                  <p>{medicineData.groupName}</p>
+                  <p>{medicineData.medicineGroup.groupName}</p>
                   <p>Medicine Group</p>
                 </div>
               </div>
