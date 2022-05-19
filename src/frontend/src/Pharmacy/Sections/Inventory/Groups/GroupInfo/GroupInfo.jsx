@@ -19,9 +19,22 @@ const GroupInfo = () => {
   const { handleSubmit } = useForm();
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState(" ");
+  const [noOfMedicine, setNoOfMedicine] = useState(0);
+  const [deleteFromGroup, setDeleteFromGroup] = useState(false);
+  const [medicineToBeRemovedFromGroup, setMedicineToBeRemovedFromGroup] =
+    useState("");
+
+  useEffect(() => {
+    fetchNoOfMedicinesInGroup();
+  }, []);
+  const fetchNoOfMedicinesInGroup = () => {
+    fetch(`http://localhost:8080/getnumberofmedicineingroup/${data.groupId}`)
+      .then((res) => res.json())
+      .then((resBody) => setNoOfMedicine(resBody));
+  };
 
   const title = {
-    main: `${data.groupName}(${data.noOfMedicine})`,
+    main: `${data.groupName}(${noOfMedicine})`,
     sub: "Detailed view of a medicine group.",
     complex: "level2",
     source1: "Inventory",
@@ -112,6 +125,12 @@ const GroupInfo = () => {
     }, 2000);
   };
 
+  const handleDeleteFromGroup = (medicineName) => {
+    setGroupOverlay((prevState) => !prevState);
+    setMedicineToBeRemovedFromGroup(medicineName);
+    setDeleteFromGroup((prevState) => !prevState);
+  };
+
   return (
     <>
       <div className={`Group__overlay ${groupOverlay}`}></div>
@@ -153,7 +172,11 @@ const GroupInfo = () => {
           <div className="splitter" />
           {groupMedicines.map((data) => {
             return (
-              <SingleMedicineInGroup data={data} key={data.medicineName} />
+              <SingleMedicineInGroup
+                data={data}
+                key={data.medicineName}
+                handleDeleteFromGroup={handleDeleteFromGroup}
+              />
             );
           })}
         </div>
@@ -182,6 +205,30 @@ const GroupInfo = () => {
             </div>
           ) : null}
         </div>
+        {deleteFromGroup === true ? (
+          <div className="deleteModal-wrapper">
+            <div className="deleteGroupModal flex__container-v">
+              <img
+                src={Assets.Close}
+                alt="Close"
+                onClick={handleDeleteFromGroup}
+              />
+              <p>
+                Are you sure you want to remove {medicineToBeRemovedFromGroup}{" "}
+                from group {data.groupName} ?
+              </p>
+              <div className="deleteGroup__choices flex__container">
+                <form>
+                  <input type="submit" value="Yes" />
+                </form>
+                <p className="cancel" onClick={handleDeleteFromGroup}>
+                  Cancel
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         {deleteMessage !== " " ? (
           <div className="deleteMessage flex__container">
             <img src={Assets.Tick} alt="Tick" />

@@ -354,7 +354,7 @@ const MedicineInfo = () => {
                         type="text"
                         id="medicinegroupinput"
                         className="medicineeditinput"
-                        defaultValue={medicineData.groupName}
+                        defaultValue={medicineData.medicineGroup.groupName}
                         {...register("groupName")}
                       />
                     </div>
