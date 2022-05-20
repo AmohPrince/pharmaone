@@ -142,6 +142,10 @@ const MedicineInfo = () => {
     icon: Assets.Trash,
   };
 
+  {
+    console.log(medicineData);
+  }
+
   return (
     <>
       {modalOpen === true || deleteModal === true ? (
@@ -184,7 +188,13 @@ const MedicineInfo = () => {
                   <p>Medicine ID</p>
                 </div>
                 <div className="Medicine__data-section">
-                  <p>{medicineData.medicineGroup.groupName}</p>
+                  {/* {medicineData.medicineGroup === null ? (
+                    <p className="p__poppins">Unset</p>
+                  ) : (
+                    <p className="p__poppins">
+                      {medicineData.medicineGroup.groupName}
+                    </p>
+                  )} */}
                   <p>Medicine Group</p>
                 </div>
               </div>

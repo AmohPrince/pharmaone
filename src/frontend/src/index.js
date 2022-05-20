@@ -37,6 +37,7 @@ root.render(
         {/* Inventory Routes */}
         <Route path="inventory" element={<Inventory />}></Route>
         <Route path="/inventory/listofmedicines" element={<ListOfMeds />} />
+        <Route path="/inventory/listofmeds" element={<ListOfMeds />} />
         <Route
           path="/inventory/listofmedicines/:medicineId"
           element={<MedicineInfo />}
@@ -48,6 +49,7 @@ root.render(
         />
 
         <Route path="/inventory/MedicineGroups" element={<Groups />} />
+        <Route path="/inventory/groups" element={<Groups />} />
         <Route
           path="/inventory/medicinegroups/addnewgroup"
           element={<NewGroup />}

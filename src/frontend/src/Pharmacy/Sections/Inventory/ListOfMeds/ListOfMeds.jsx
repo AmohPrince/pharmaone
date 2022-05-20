@@ -24,8 +24,6 @@ const ListOfMeds = () => {
   const [buttonLeftDisabled, setButtonLeftDisabled] = useState(false);
   const [buttonRightDisabled, setButtonRightDisabled] = useState(false);
 
-  console.log(medicineList);
-
   useEffect(() => {
     filterMedicineList();
   }, [medicineListLength, beginIndex, endIndex]);

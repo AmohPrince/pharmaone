@@ -27,7 +27,7 @@ const Dashboardgrp = ({ data }) => {
         <p className="p__poppins">{data.name}</p>
       )}
 
-      <Link to={`/${data.linkTo}`}>
+      <Link to={`/inventory/${data.linkTo}`}>
         <div
           className="Dashboardgrp__btm flex__container"
           style={{
