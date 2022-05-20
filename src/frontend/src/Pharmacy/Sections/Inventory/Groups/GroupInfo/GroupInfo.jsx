@@ -28,7 +28,9 @@ const GroupInfo = () => {
     fetchNoOfMedicinesInGroup();
   }, []);
   const fetchNoOfMedicinesInGroup = () => {
-    fetch(`http://localhost:8080/getnumberofmedicineingroup/${data.groupId}`)
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/getnumberofmedicineingroup/${data.groupId}`
+    )
       .then((res) => res.json())
       .then((resBody) => setNoOfMedicine(resBody));
   };
@@ -59,7 +61,7 @@ const GroupInfo = () => {
   };
 
   const fetchMedicineInGroup = () => {
-    fetch(`http://localhost:8080/getbygroupid/${data.groupId}`)
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getbygroupid/${data.groupId}`)
       .then((res) => {
         return res.json();
       })
@@ -109,7 +111,7 @@ const GroupInfo = () => {
     setGroupOverlay((prevState) => !prevState);
   };
   const onDelete = () => {
-    fetch(`http://localhost:8080/deletegroup/${data.groupId}`, {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/deletegroup/${data.groupId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

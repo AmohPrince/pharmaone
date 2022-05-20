@@ -48,7 +48,7 @@ const Pharmacy = () => {
 
   //Get all Medicine
   const fetchMedicine = () => {
-    fetch("http://localhost:8080/getallmedicine")
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getallmedicine`)
       .then((res) => {
         return res.json();
       })
@@ -69,7 +69,7 @@ const Pharmacy = () => {
 
   //fetch groups
   const fetchGroups = () => {
-    fetch("http://localhost:8080/getallgroups")
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getallgroups`)
       .then((res) => res.json())
       .then((data) => {
         return setGroupsList(data);

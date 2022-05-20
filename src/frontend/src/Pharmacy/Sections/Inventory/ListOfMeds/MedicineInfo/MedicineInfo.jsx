@@ -40,7 +40,9 @@ const MedicineInfo = () => {
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
-    fetch(`http://localhost:8080/getsinglemedicine/${params.medicineId}`)
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/getsinglemedicine/${params.medicineId}`
+    )
       .then((res) => res.json())
       .then((data) => setMedicineData(data));
   };
@@ -55,13 +57,16 @@ const MedicineInfo = () => {
   //Put
   const onSubmit = (data) => {
     setSpinner(true);
-    fetch(`http://localhost:8080/modifymedicine/${data.medicineId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/modifymedicine/${data.medicineId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.text())
       .then((message) => {
         setEditMessage(message);
@@ -78,13 +83,16 @@ const MedicineInfo = () => {
     const editingObject = {
       medicineId: editingId,
     };
-    fetch(`http://localhost:8080/deletemedicine/${params.medicineId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editingObject),
-    })
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/deletemedicine/${params.medicineId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editingObject),
+      }
+    )
       .then((res) => res.text())
       .then((resBody) => setDeleteMessage(resBody));
     showDeleteConfirmationMessage();

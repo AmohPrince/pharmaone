@@ -9,7 +9,9 @@ const SingleGroup = ({ data }) => {
     fetchNoOfMedicinesInGroup();
   }, []);
   const fetchNoOfMedicinesInGroup = () => {
-    fetch(`http://localhost:8080/getnumberofmedicineingroup/${data.groupId}`)
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/getnumberofmedicineingroup/${data.groupId}`
+    )
       .then((res) => res.json())
       .then((resBody) => setNoOfMedicine(resBody));
   };

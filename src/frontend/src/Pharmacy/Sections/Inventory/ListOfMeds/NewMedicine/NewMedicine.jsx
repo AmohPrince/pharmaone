@@ -26,7 +26,7 @@ const NewMedicine = () => {
     // } else {
     //   console.log(data);
     // }
-    fetch("http://localhost:8080/addMedicine", {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/addMedicine`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
