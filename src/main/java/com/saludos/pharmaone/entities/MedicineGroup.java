@@ -1,11 +1,9 @@
 package com.saludos.pharmaone.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "medicine_group")
 public class MedicineGroup {
 
     @Id
