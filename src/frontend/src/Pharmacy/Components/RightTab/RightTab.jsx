@@ -4,7 +4,7 @@ import Assets from "../../../Assets/Assets";
 import { Link } from "react-router-dom";
 import { dataFlowContext } from "../../Pharmacy";
 
-/*This component is lives in the left section. It will take an object containg an 
+/*This component is lives in the left section. It will take an object containing an 
 icon a name and a boolean whether or not there is a dropdown. 
 */
 

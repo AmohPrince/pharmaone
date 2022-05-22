@@ -42,9 +42,14 @@ const ListOfMeds = () => {
     if (selectedGroupValue === undefined) {
       return null;
     } else {
-      const filteredGroupMedicineList = medicineList.filter(
-        (medicine) => medicine.medicineGroup.groupName === selectedGroupValue
-      );
+      console.log(medicineList);
+      const filteredGroupMedicineList = medicineList.filter((medicine) => {
+        if (medicine.medicineGroup === null) {
+          return;
+        } else {
+          return medicine.medicineGroup.groupName === selectedGroupValue;
+        }
+      });
       setFilteredMedicineList(filteredGroupMedicineList);
     }
   };
