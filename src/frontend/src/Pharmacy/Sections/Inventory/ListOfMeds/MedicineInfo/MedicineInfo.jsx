@@ -37,6 +37,7 @@ const MedicineInfo = () => {
   const [editConfirmationModal, setEditConfirmationModal] = useState(false);
   const [errorEditConfirmationModal, setErrorEditConfirmationModal] =
     useState(false);
+
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -53,6 +54,8 @@ const MedicineInfo = () => {
       setModalOpen(false);
     }
   };
+
+  console.log(medicineData);
 
   //Put
   const onSubmit = (data) => {
@@ -149,10 +152,6 @@ const MedicineInfo = () => {
     text: "Delete Medicine",
     icon: Assets.Trash,
   };
-
-  {
-    console.log(medicineData);
-  }
 
   return (
     <>

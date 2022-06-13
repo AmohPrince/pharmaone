@@ -9,6 +9,7 @@ import java.util.List;
 public interface MedicineService {
     public List getAllMedicines(Medicine medicine);
 
+
     public List<Medicine> getByGroupId(int groupId);
 
     public Long getNumberOfMedicine(int groupId);

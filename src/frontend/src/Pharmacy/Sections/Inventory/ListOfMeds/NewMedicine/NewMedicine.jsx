@@ -21,7 +21,7 @@ const NewMedicine = () => {
   //Submit new medicine to the server.
   const onSubmit = (data) => {
     // console.log(data);
-    // if (data.inStock == NaN) {
+    // if (data.inStock === NaN) {
     //   setNumberError(true);
     // } else {
     //   console.log(data);

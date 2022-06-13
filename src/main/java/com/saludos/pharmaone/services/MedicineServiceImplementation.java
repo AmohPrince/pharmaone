@@ -18,6 +18,7 @@ public class MedicineServiceImplementation  implements MedicineService{
         return medicineRepository.findAll();
     }
 
+
     @Override
     public List<Medicine> getByGroupId(int groupId) {
         return medicineRepository.findByMedicineGroupGroupId(groupId);

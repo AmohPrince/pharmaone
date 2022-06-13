@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Assets from "../../../../../Assets/Assets";
 import "./SingleMedicine.css";
 /***
- * This component is the horzontal data on the list of meds component
- * dont confuse
+ * This component is the horizontal data on the list of meds component
+ * don't confuse
  */
 
 const SingleMedicine = ({ data }) => {
