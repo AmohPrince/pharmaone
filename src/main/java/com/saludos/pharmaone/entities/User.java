@@ -14,6 +14,16 @@ public class User {
     String userName;
     String branch;
 
+    public User(){
+
+    }
+
+    public User(int userId, String userName, String branch) {
+        this.userId = userId;
+        this.userName = userName;
+        this.branch = branch;
+    }
+
     public int getUserId() {
         return userId;
     }

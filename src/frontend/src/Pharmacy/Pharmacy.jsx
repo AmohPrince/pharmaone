@@ -22,7 +22,7 @@ export const dataGroup3Context = React.createContext();
 
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
-  const [revenue, setRevenue] = useState(135540);
+  const [revenue, setRevenue] = useState(0);
   const [availableMeds, setAvailableMeds] = useState(0);
   const [medicineShortage, setMedicineShortage] = useState(-1);
   const [medicineGroups, setMedicineGroups] = useState(0);
@@ -40,11 +40,31 @@ const Pharmacy = () => {
   const [medicineList, setMedicineList] = useState([]);
   const [groupsList, setGroupsList] = useState([]);
   const [groupNames, setGroupNames] = useState([]);
+  const [salesList, setSalesList] = useState([]);
+  const [amountSold, setAmountSold] = useState(0);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
     profile.classList.toggle("active");
   };
+
+  //fetch sales
+  const fetchSales = () => {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getListOfSales`)
+      .then((res) => res.json())
+      .then((data) => setSalesList(data))
+      .catch((error) => failedFetchRetrying(error));
+  };
+
+  const calculateTotalRevenue = () => {
+    salesList.forEach((sale) => {
+      setAmountSold((prevSaleValue) => prevSaleValue + sale.amount);
+    });
+  };
+
+  useEffect(() => {
+    calculateTotalRevenue();
+  }, [salesList]);
 
   //Get all Medicine
   const fetchMedicine = () => {
@@ -80,6 +100,7 @@ const Pharmacy = () => {
   useEffect(() => {
     fetchMedicine();
     fetchGroups();
+    fetchSales();
   }, []);
 
   useEffect(() => {
@@ -143,6 +164,8 @@ const Pharmacy = () => {
     medicineList,
     groupNames,
     groupsList,
+    salesList,
+    amountSold,
   };
 
   const handleDashBoardClick = () => {

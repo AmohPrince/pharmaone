@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SalesReport.css";
 import { SectionName } from "../../../Components/Components";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Linechart from "../Linechart/Linechart";
+import { dataFlowContext } from "../../../Pharmacy";
 
 const SalesReport = () => {
   const title = {
@@ -16,6 +17,9 @@ const SalesReport = () => {
     complex: "level1",
     source: "Reports",
   };
+
+  const { salesList } = useContext(dataFlowContext);
+
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);

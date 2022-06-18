@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboardgrp.css";
 import Assets from "../../../Assets/Assets";
 import { dataFlowContext } from "../../Pharmacy";
 import Select from "../Select/Select";
+import { useEffect } from "react";
 
 const Dashboardgrp = ({ data }) => {
-  const incomingData = useContext(dataFlowContext);
+  const { amountSold, setOnTab } = useContext(dataFlowContext);
+
   return (
     <div
       className="Dashboardgrp__container flex__container-v"
@@ -14,7 +16,7 @@ const Dashboardgrp = ({ data }) => {
     >
       <img src={data.icon} alt="Icon" />
       {data.rs === true ? (
-        <p className="p__poppins">Ksh. {data.status}</p>
+        <p className="p__poppins">Ksh. {amountSold}</p>
       ) : (
         <p className="p__poppins">{data.status}</p>
       )}
@@ -35,7 +37,7 @@ const Dashboardgrp = ({ data }) => {
             borderTop: `1px solid ${data.accentColor}`,
           }}
           onClick={() => {
-            incomingData.setOnTab(data.activeTab);
+            setOnTab(data.activeTab);
           }}
         >
           {data.linkTo === "reports" ? (
