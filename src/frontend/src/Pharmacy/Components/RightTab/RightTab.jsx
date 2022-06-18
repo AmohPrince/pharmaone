@@ -16,6 +16,8 @@ icon a name and a boolean whether or not there is a dropdown.
 const RightTab = () => {
   const [activeTab, setActiveTab] = useState("");
   const [activeChildTab, setActiveChildTab] = useState("");
+  const [inventoryOn, setInventoryOn] = useState(false);
+  const [reportsOn, setReportsOn] = useState(false);
 
   return (
     <>
@@ -35,7 +37,11 @@ const RightTab = () => {
       <Link to="inventory" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex inventory ${activeTab} ${activeChildTab}`}
-          onClick={() => setActiveTab("inventory-active")}
+          onClick={() => {
+            setActiveTab("inventory-active");
+            setInventoryOn((prevState) => !prevState);
+            setActiveChildTab("none");
+          }}
         >
           <img
             src={Assets.Inventory}
@@ -46,11 +52,11 @@ const RightTab = () => {
           <img
             src={Assets.Arrow}
             alt="Arrow"
-            className={`drop-down-icon inventory-arrow ${activeTab}`}
+            className={`drop-down-icon inventory-arrow ${inventoryOn}`}
           />
         </div>
       </Link>
-      {activeTab === "inventory-active" ? (
+      {inventoryOn === true ? (
         <>
           <Link
             to="/inventory/listofmedicines"
@@ -83,18 +89,22 @@ const RightTab = () => {
       <Link to="reports" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex reports ${activeTab} ${activeChildTab}`}
-          onClick={() => setActiveTab("reports-active")}
+          onClick={() => {
+            setActiveTab("reports-active");
+            setReportsOn((prevState) => !prevState);
+            setActiveChildTab("none");
+          }}
         >
           <img src={Assets.Reports} alt="Reports icon" className="tab-icon" />
           <p className="tab-name">Reports</p>
           <img
             src={Assets.Arrow}
             alt="Arrow"
-            className={`drop-down-icon reports-arrow ${activeTab}`}
+            className={`drop-down-icon reports-arrow ${reportsOn}`}
           />
         </div>
       </Link>
-      {activeTab === "reports-active" ? (
+      {reportsOn === true ? (
         <>
           <Link to="/reports/salesreport" style={{ textDecoration: "none" }}>
             <div

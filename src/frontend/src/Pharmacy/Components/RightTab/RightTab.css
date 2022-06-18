@@ -10,7 +10,7 @@
 }
 .drop-down-icon {
   margin-left: auto;
-  transition: transform 500ms ease;
+  transition: transform 0.8s ease-in-out;
 }
 .notification-counter {
   margin-left: auto;
@@ -24,9 +24,8 @@
   background: #1d242e;
   text-align: center;
 }
-.contact-arrow.contact-management-active,
-.reports-arrow.reports-active,
-.inventory-arrow.inventory-active {
+.reports-arrow.true,
+.inventory-arrow.true {
   transform: rotate(180deg);
 }
 
