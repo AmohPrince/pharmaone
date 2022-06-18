@@ -59,3 +59,6 @@ input[type="submit"] {
   height: 46px;
   cursor: pointer;
 }
+.flex {
+  display: flex;
+}

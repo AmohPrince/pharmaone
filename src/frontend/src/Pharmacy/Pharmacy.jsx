@@ -32,10 +32,6 @@ const Pharmacy = () => {
   const [noOfUsers, setNoOfUsers] = useState(44);
   const [noOfCustomers, setNoOfCustomers] = useState(4);
   const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
-  const [onTab, setOnTab] = useState("");
-  const [arrowState, setArrowState] = useState(false);
-  const [inventoryOn, setInventoryOn] = useState(false);
-  const [reportsOn, setReportsOn] = useState(false);
   const [payments, setPayments] = useState(70);
   const [medicineList, setMedicineList] = useState([]);
   const [groupsList, setGroupsList] = useState([]);
@@ -146,7 +142,6 @@ const Pharmacy = () => {
     currentNoOfUsers: noOfUsers,
     currentNoOfCustomers: noOfCustomers,
     currentFrequentlyBoughtItem: frequentlyBoughtItem,
-    currrentOnTab: onTab,
     setInventoryStatus,
     setRevenue,
     setAvailableMeds,
@@ -158,7 +153,6 @@ const Pharmacy = () => {
     setNoOfUsers,
     setNoOfCustomers,
     setFrequentlyBoughtItem,
-    setOnTab,
     getSpecificMedicineWithId,
     getSpecificGroupWithName,
     medicineList,
@@ -167,124 +161,6 @@ const Pharmacy = () => {
     salesList,
     amountSold,
   };
-
-  const handleDashBoardClick = () => {
-    setOnTab("dash");
-    setInventoryOn(false);
-    setReportsOn(false);
-  };
-
-  const handleInventoryClick = () => {
-    setOnTab("invent");
-    setInventoryOn((prevState) => {
-      return !prevState;
-    });
-    setArrowState((prevState) => {
-      return !prevState;
-    });
-  };
-
-  const handleReportsClick = () => {
-    setOnTab("repo");
-    setInventoryOn(false);
-    setReportsOn((prevState) => !prevState);
-  };
-
-  const handleConfigurationClick = () => {
-    setOnTab("conf");
-    setInventoryOn(false);
-    setReportsOn(false);
-  };
-
-  const handleContactManagementClick = () => {
-    setOnTab("cont");
-  };
-  const handleNotificationsClick = () => {
-    setOnTab("not");
-  };
-  const handleChatClick = () => {
-    setOnTab("chat");
-  };
-  const handleSettingsClick = () => {
-    setOnTab("set");
-  };
-  const handleCovidClick = () => {
-    setOnTab("cov");
-  };
-  const handleTechnicalClick = () => {
-    setOnTab("tech");
-  };
-
-  /** This is the data that i map over to produce the right tab
-   * like the inventory dashboard bla bla bla
-   */
-  const dataArray = [
-    {
-      name: "Dashboard",
-      icon: Assets.Dashboard,
-      dropDown: false,
-      onClick: handleDashBoardClick,
-    },
-    {
-      name: "Inventory",
-      icon: Assets.Inventory,
-      dropDown: true,
-      inventoryOn: inventoryOn,
-      onClick: handleInventoryClick,
-    },
-    {
-      name: "Reports",
-      icon: Assets.Reports,
-      reportsOn: reportsOn,
-      dropDown: true,
-      onClick: handleReportsClick,
-    },
-    {
-      name: "Configuration",
-      icon: Assets.Configuration,
-      dropDown: false,
-      onClick: handleConfigurationClick,
-    },
-    {
-      name: "Contact Management",
-      icon: Assets.ContactIco,
-      dropDown: true,
-      onClick: handleContactManagementClick,
-      topLine: true,
-    },
-    {
-      name: "Notifications",
-      icon: Assets.Bell,
-      dropDown: false,
-      onClick: handleNotificationsClick,
-    },
-    {
-      name: "Chat With Others",
-      icon: Assets.ChatIco,
-      dropDown: false,
-      onClick: handleChatClick,
-    },
-    {
-      name: "Application Settings",
-      icon: Assets.SettingsIco,
-      dropDown: false,
-      onClick: handleSettingsClick,
-      spaceBelow: true,
-      topLine: true,
-    },
-    {
-      name: "Covid-19",
-      icon: Assets.CovidIco,
-      dropDown: false,
-      onClick: handleCovidClick,
-    },
-    {
-      name: "Get Technical Help",
-      icon: Assets.QuestionIco,
-      dropDown: false,
-      onClick: handleTechnicalClick,
-    },
-  ];
 
   /**This is the data that i map over to produce the coloured
    * boxes on the dashboard and the inventory
@@ -440,16 +316,7 @@ const Pharmacy = () => {
               </div>
             </div>
           </div>
-          <dataFlowContext.Provider value={flowingData}>
-            {dataArray.map((data) => (
-              <RightTab
-                data={data}
-                key={data.name}
-                onTab={onTab}
-                arrowState={arrowState}
-              />
-            ))}
-          </dataFlowContext.Provider>
+          <RightTab />
           <div className="Pharmacy__powered">
             <p>Powered by Cash © 2022 </p>
           </div>

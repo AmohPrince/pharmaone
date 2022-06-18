@@ -51,7 +51,7 @@ root.render(
           path="/inventory/listofmeds/addnewmedicine"
           element={<NewMedicine />}
         />
-        <Route path="/inventory/MedicineGroups" element={<Groups />} />
+        <Route path="/inventory/medicineGroups" element={<Groups />} />
         <Route path="/inventory/groups" element={<Groups />} />
         <Route
           path="/inventory/medicinegroups/addnewgroup"
@@ -65,10 +65,10 @@ root.render(
         <Route path="/reports/salesreport" element={<SalesReport />} />
         <Route path="/reports/paymentreport" element={<PaymentsReport />} />
 
-        <Route path="chatWithOthers" element={<Chat />} />
+        <Route path="chatwithothers" element={<Chat />} />
         <Route path="covid-19" element={<Covid />} />
         <Route path="configuration" element={<Configuration />} />
-        <Route path="contactManagement" element={<ContactManagement />} />
+        <Route path="contactmanagement" element={<ContactManagement />} />
         <Route path="notifications" element={<Notifications />} />
         <Route path="applicationSettings" element={<Settings />} />
         <Route path="getTechnicalHelp" element={<TechHelp />} />
