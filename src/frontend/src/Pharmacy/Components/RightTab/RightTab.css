@@ -55,3 +55,9 @@
 .inventory.inventory-active.medicinegroups {
   background-color: #1d242e;
 }
+
+.tab-splitter {
+  width: 100%;
+  height: 1px;
+  background-color: var(--lightGrey);
+}

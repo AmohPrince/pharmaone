@@ -141,6 +141,7 @@ const RightTab = () => {
           <p className="tab-name">Configuration</p>
         </div>
       </Link>
+      <div className="tab-splitter" />
       <Link to="contactmanagement" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex contact-management ${activeTab}`}
@@ -174,6 +175,7 @@ const RightTab = () => {
           <p className="tab-name">Chat With Others</p>
         </div>
       </Link>
+      <div className="tab-splitter" />
       <Link to="applicationSettings" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex settings ${activeTab}`}
