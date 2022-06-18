@@ -1,0 +1,20 @@
+.Singlemedicinegroup {
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 10px;
+}
+.Singlemedicinegroup > * {
+  width: 30%;
+  text-align: center;
+}
+.Singlemedicinegroup div > p {
+  color: var(--red);
+  margin-left: 10px;
+}
+.Singlemedicinegroup div {
+  cursor: pointer;
+}
+.divider {
+  height: 2px;
+  background-color: var(--lightGrey);
+}

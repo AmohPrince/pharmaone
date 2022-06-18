@@ -1,0 +1,33 @@
+.SectionName__container > :first-child {
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--black);
+}
+
+.SectionName__level1 > :nth-child(3),
+.SectionName__container > :nth-child(2) {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--black);
+}
+.level2__top > :first-child,
+.level2__top > :nth-child(3),
+.level1__top > :first-child {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #1d242e80;
+  cursor: pointer;
+}
+.sectionname__leftarrow {
+  margin: 0 10px;
+}
+.level1__top > :nth-child(3) {
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--black);
+}
+.level2__top > :nth-child(5) {
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: var(--black);
+}
