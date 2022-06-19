@@ -1,2 +1,4 @@
-package com.saludos.pharmaone.services;public interface UserService {
+package com.saludos.pharmaone.services;
+
+public interface UserService {
 }
