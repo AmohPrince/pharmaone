@@ -41,6 +41,7 @@ const RightTab = () => {
             setActiveTab("inventory-active");
             setInventoryOn((prevState) => !prevState);
             setActiveChildTab("none");
+            setReportsOn(false);
           }}
         >
           <img
@@ -93,6 +94,7 @@ const RightTab = () => {
             setActiveTab("reports-active");
             setReportsOn((prevState) => !prevState);
             setActiveChildTab("none");
+            setInventoryOn(false);
           }}
         >
           <img src={Assets.Reports} alt="Reports icon" className="tab-icon" />

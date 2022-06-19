@@ -18,12 +18,8 @@ const SalesReport = () => {
     source: "Reports",
   };
 
-  const { salesList } = useContext(dataFlowContext);
+  const { salesList, groupsList } = useContext(dataFlowContext);
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   const [value, setValue] = React.useState([null, null]);
   return (
     <div className="Inventory__container">
@@ -68,9 +64,9 @@ const SalesReport = () => {
             <option value="" defaultValue hidden>
               -Select Group-
             </option>
-            <option value="Group1">Group1</option>
-            <option value="Group2">Group2</option>
-            <option value="Group3">Group3</option>
+            {groupsList.map((group) => (
+              <option value={group.groupName}>{group.groupName}</option>
+            ))}
           </select>
         </div>
         <div className="Salesreport__mid-username">
@@ -96,31 +92,20 @@ const SalesReport = () => {
         </div>
         <div className="Salesreport__bottom-orders">
           <div className="Orders__title flex__container">
-            <p className="p__poppins">Order Id</p>
-            <p className="p__poppins">Date & Time</p>
+            <p>Order Id</p>
+            <p>Date & Time</p>
           </div>
           <div className="Configuration__container-splitter" />
-          <div className="Orders__body flex__container">
-            <div className="Orders__body-ids">
-              <p className="p__poppins">2485855848598</p>
-              <p className="p__poppins">2485855848577</p>
-              <p className="p__poppins">2485855848563</p>
-              <p className="p__poppins">2485855848563</p>
-              <p className="p__poppins">2485855848568</p>
-              <p className="p__poppins">2485855848567</p>
-              <p className="p__poppins">2485855848564</p>
-              <p className="p__poppins">2485855848544</p>
-            </div>
-            <div className="Orders__body-dates">
-              <p className="p__poppins">01 Dec 2021 10:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-              <p className="p__poppins">02 Dec 2021 18:25</p>
-            </div>
+          <div className="Orders__body">
+            {salesList.map((sale) => (
+              <div className="flex">
+                <p>{sale.salesId}</p>
+                <div className="flex">
+                  <p>{sale.saleDate}</p>
+                  <p>{sale.saleTime}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

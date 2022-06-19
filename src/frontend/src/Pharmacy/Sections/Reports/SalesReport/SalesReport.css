@@ -76,20 +76,46 @@
   background-color: var(--skyBlue);
 }
 .Orders__title {
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .Orders__title > p {
   color: var(--black);
   font-size: 0.9rem;
   font-weight: 600;
-  margin: 10px;
+  margin: 10px 0;
+}
+.Orders__title > p:first-child {
+  width: 25%;
+  text-align: center;
+}
+.Orders__title > p:last-child {
+  text-align: left;
+  width: 75%;
+  padding-left: 18%;
 }
 .Orders__body {
   padding: 9px;
+  height: 255px;
+  overflow-y: scroll;
+}
+.Orders__body > .flex {
+  justify-content: space-between;
+  padding: 4%;
+  padding-right: 0;
+  width: 300px;
+  text-align: left;
+}
+.Orders__body > .flex > p {
+  width: 35%;
+}
+
+.Orders__body > .flex > .flex > p,
+.Orders__body > .flex > .flex > p {
+  width: 100px;
 }
 .Orders__body p {
   font-weight: 400;
   font-size: calc(1rem - 2px);
-  margin: 7.5px 20px;
   color: var(--black);
+  font-weight: 500;
 }

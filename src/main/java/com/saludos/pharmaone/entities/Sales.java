@@ -10,7 +10,12 @@ public class Sales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int salesId;
-    Date date;
+
+    @Temporal(TemporalType.DATE)
+    Date saleDate;
+
+    @Temporal(TemporalType.TIME)
+    Date saleTime;
 
     @OneToOne
     User user;
@@ -27,12 +32,20 @@ public class Sales {
         this.salesId = salesId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getSaleDate() {
+        return saleDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setSaleDate(Date saleDate) {
+        this.saleDate = saleDate;
+    }
+
+    public Date getSaleTime() {
+        return saleTime;
+    }
+
+    public void setSaleTime(Date saleTime) {
+        this.saleTime = saleTime;
     }
 
     public User getUser() {
