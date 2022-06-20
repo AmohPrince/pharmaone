@@ -1,6 +1,7 @@
 package com.saludos.pharmaone.services;
 
 import com.saludos.pharmaone.entities.Medicine;
+import com.saludos.pharmaone.entities.MedicineGroup;
 import com.saludos.pharmaone.repositories.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -13,11 +14,12 @@ public class MedicineServiceImplementation  implements MedicineService{
     @Autowired
     MedicineRepository medicineRepository;
 
+    MedicineGroup medicineGroup;
+
     @Override
     public List<Medicine> getAllMedicines(Medicine medicine) {
         return medicineRepository.findAll();
     }
-
 
     @Override
     public List<Medicine> getByGroupId(int groupId) {

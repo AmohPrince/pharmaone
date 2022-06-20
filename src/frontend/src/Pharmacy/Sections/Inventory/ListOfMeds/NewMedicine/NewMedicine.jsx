@@ -6,8 +6,7 @@ import Assets from "../../../../../Assets/Assets";
 import { dataFlowContext } from "../../../../Pharmacy";
 
 const NewMedicine = () => {
-  const incomingData = useContext(dataFlowContext);
-  const groupNames = incomingData.groupNames;
+  const { groupsList, groupNames } = useContext(dataFlowContext);
   const {
     register,
     handleSubmit,
@@ -18,14 +17,14 @@ const NewMedicine = () => {
   const [errorModal, setErrorModal] = useState(false);
   const [numberError, setNumberError] = useState(false);
 
-  //Submit new medicine to the server.
   const onSubmit = (data) => {
-    // console.log(data);
-    // if (data.inStock === NaN) {
-    //   setNumberError(true);
-    // } else {
-    //   console.log(data);
-    // }
+    const submittingGroup = groupsList.find(
+      (group) => group.groupName === data.groupName
+    );
+    delete data.groupName;
+    data.medicineGroup = {
+      groupId: submittingGroup.groupId,
+    };
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/addMedicine`, {
       method: "POST",
       headers: {
