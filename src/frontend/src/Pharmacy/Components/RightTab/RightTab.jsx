@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./RightTab.css";
 import Assets from "../../../Assets/Assets";
 import { Link } from "react-router-dom";
@@ -14,17 +14,26 @@ icon a name and a boolean whether or not there is a dropdown.
  */
 
 const RightTab = () => {
-  const [activeTab, setActiveTab] = useState("");
-  const [activeChildTab, setActiveChildTab] = useState("");
-  const [inventoryOn, setInventoryOn] = useState(false);
-  const [reportsOn, setReportsOn] = useState(false);
-
+  const {
+    activeTab,
+    setActiveTab,
+    activeChildTab,
+    inventoryOn,
+    setInventoryOn,
+    setActiveChildTab,
+    setReportsOn,
+    reportsOn,
+  } = useContext(dataFlowContext);
   return (
     <>
       <Link to="dashboard" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex dashboard ${activeTab}`}
-          onClick={() => setActiveTab("dashboard-active")}
+          onClick={() => {
+            setActiveTab("dashboard-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img
             src={Assets.Dashboard}
@@ -133,7 +142,11 @@ const RightTab = () => {
       <Link to="configuration" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex configuration ${activeTab}`}
-          onClick={() => setActiveTab("configuration-active")}
+          onClick={() => {
+            setActiveTab("configuration-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img
             src={Assets.Configuration}
@@ -147,7 +160,11 @@ const RightTab = () => {
       <Link to="contactmanagement" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex contact-management ${activeTab}`}
-          onClick={() => setActiveTab("contact-management-active")}
+          onClick={() => {
+            setActiveTab("contact-management-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img
             src={Assets.ContactIco}
@@ -161,7 +178,11 @@ const RightTab = () => {
       <Link to="notifications" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex notification ${activeTab}`}
-          onClick={() => setActiveTab("notification-active")}
+          onClick={() => {
+            setInventoryOn(false);
+            setReportsOn(false);
+            setActiveTab("notification-active");
+          }}
         >
           <img src={Assets.Bell} alt="Notification icon" className="tab-icon" />
           <p className="tab-name">Notification</p>
@@ -171,7 +192,11 @@ const RightTab = () => {
       <Link to="chatwithothers" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex chat ${activeTab}`}
-          onClick={() => setActiveTab("chat-active")}
+          onClick={() => {
+            setActiveTab("chat-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img src={Assets.ChatIco} alt="Chat icon" className="tab-icon" />
           <p className="tab-name">Chat With Others</p>
@@ -181,7 +206,11 @@ const RightTab = () => {
       <Link to="applicationSettings" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex settings ${activeTab}`}
-          onClick={() => setActiveTab("settings-active")}
+          onClick={() => {
+            setActiveTab("settings-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img
             src={Assets.SettingsIco}
@@ -194,7 +223,11 @@ const RightTab = () => {
       <Link to="covid-19" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex covid ${activeTab}`}
-          onClick={() => setActiveTab("covid-active")}
+          onClick={() => {
+            setActiveTab("covid-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img src={Assets.CovidIco} alt="Covid-19 icon" className="tab-icon" />
           <p className="tab-name">Covid-19</p>
@@ -203,7 +236,11 @@ const RightTab = () => {
       <Link to="getTechnicalHelp" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex technical ${activeTab}`}
-          onClick={() => setActiveTab("technical-active")}
+          onClick={() => {
+            setActiveTab("technical-active");
+            setInventoryOn(false);
+            setReportsOn(false);
+          }}
         >
           <img
             src={Assets.QuestionIco}

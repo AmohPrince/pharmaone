@@ -5,7 +5,7 @@ import { dataGroupContext } from "../../Pharmacy";
 
 const Inventory = () => {
   const contextData = useContext(dataGroupContext);
-  const data = contextData.slice(3, 6);
+  const data = contextData.slice(4, 6);
 
   const title = {
     main: "Inventory",

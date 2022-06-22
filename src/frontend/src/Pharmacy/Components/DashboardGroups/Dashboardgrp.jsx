@@ -1,13 +1,45 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboardgrp.css";
 import Assets from "../../../Assets/Assets";
 import { dataFlowContext } from "../../Pharmacy";
 import Select from "../Select/Select";
-import { useEffect } from "react";
 
 const Dashboardgrp = ({ data }) => {
-  const { amountSold, setOnTab } = useContext(dataFlowContext);
+  const {
+    amountSold,
+    setReportsOn,
+    setActiveTab,
+    setInventoryOn,
+    setActiveChildTab,
+  } = useContext(dataFlowContext);
+
+  const handleTabChange = (tabToBeSet) => {
+    console.log(tabToBeSet);
+    if (tabToBeSet === "medslist") {
+      setInventoryOn(true);
+      setActiveChildTab("listofmedicine");
+      setActiveTab("inventory-active");
+    } else if (tabToBeSet === "groups") {
+      setInventoryOn(true);
+      setActiveChildTab("medicinegroups");
+      setActiveTab("inventory-active");
+    } else if (tabToBeSet === "inventory-active") {
+      setActiveTab(tabToBeSet);
+      setInventoryOn(true);
+    } else if (tabToBeSet === "reports-active") {
+      setReportsOn(true);
+      setActiveTab(tabToBeSet);
+    } else if (tabToBeSet === "sales-report") {
+      setReportsOn(true);
+      setActiveChildTab(tabToBeSet);
+    } else if (tabToBeSet === "payment-report") {
+      setReportsOn(true);
+      setActiveChildTab(tabToBeSet);
+    } else {
+      setActiveTab(tabToBeSet);
+    }
+  };
 
   return (
     <div
@@ -29,7 +61,7 @@ const Dashboardgrp = ({ data }) => {
         <p className="p__poppins">{data.name}</p>
       )}
 
-      <Link to={`/inventory/${data.linkTo}`}>
+      <Link to={`/${data.linkTo}`}>
         <div
           className="Dashboardgrp__btm flex__container"
           style={{
@@ -37,16 +69,16 @@ const Dashboardgrp = ({ data }) => {
             borderTop: `1px solid ${data.accentColor}`,
           }}
           onClick={() => {
-            setOnTab(data.activeTab);
+            handleTabChange(data.activeTab);
           }}
         >
           {data.linkTo === "reports" ? (
             <p className="p__poppins">View Detailed Report</p>
           ) : null}
-          {data.linkTo === "salesreport" ? (
+          {data.linkTo === "reports/salesreport" ? (
             <p className="p__poppins">View Detailed Report</p>
           ) : null}
-          {data.linkTo === "paymentreport" ? (
+          {data.linkTo === "reports/paymentreport" ? (
             <p className="p__poppins">View Detailed Report</p>
           ) : null}
           {data.linkTo === "inventory" ? (
@@ -55,10 +87,10 @@ const Dashboardgrp = ({ data }) => {
           {data.linkTo === "listofmeds" ? (
             <p className="p__poppins">Resolve Now</p>
           ) : null}
-          {data.linkTo === "groups" ? (
+          {data.linkTo === "inventory/groups" ? (
             <p className="p__poppins">View Groups</p>
           ) : null}
-          {data.linkTo === "listofmeds2" ? (
+          {data.linkTo === "inventory/listofmeds" ? (
             <p className="p__poppins">View Full List</p>
           ) : null}
 

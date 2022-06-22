@@ -55,8 +55,6 @@ const MedicineInfo = () => {
     }
   };
 
-  console.log(medicineData);
-
   //Put
   const onSubmit = (data) => {
     setSpinner(true);
