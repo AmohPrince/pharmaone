@@ -4,3 +4,4 @@ A pharmacy erp system in React and SpringBoot. The App is hosted in an Amazon El
 
 http://pharmaone-env.eba-xipakmdh.us-east-1.elasticbeanstalk.com/
 
+I have also attached a bash script to run the application on your local development environment
