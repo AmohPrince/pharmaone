@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Line } from "react-chartjs-2";
 import "./LineChart.css";
 import {
@@ -12,8 +12,23 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import { dataFlowContext } from "../../../Pharmacy";
+import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 
 const Linechart = () => {
+  const { salesList } = useContext(dataFlowContext);
+
+  const amountValuesForChart = () =>
+    salesList.map((sale) => {
+      return sale.amount;
+    });
+
+  const saleDatesForChart = () => {
+    return salesList.map((sale) => sale.saleDate);
+  };
+
+  useUpdateLogger(saleDatesForChart());
+
   /**
    * Labels-> An array of strings on the x axis.
    * Dataset - > The data you are working with .
@@ -30,11 +45,11 @@ const Linechart = () => {
     Filler
   );
   const data = {
-    labels: ["1 Dec", "8 Dec", "16 Dec", "31 Dec"],
+    labels: saleDatesForChart(),
     datasets: [
       {
         label: "Sales",
-        data: [3, 7, 4, 5],
+        data: amountValuesForChart(),
         borderColor: "#03A9F5",
         fill: true,
         backgroundColor: "rgb(16, 156, 241 , 0.3)",
@@ -47,7 +62,7 @@ const Linechart = () => {
     tension: 0.4,
     title: {
       display: true,
-      text: "linechrt",
+      text: "linechart",
     },
     scales: {
       y: [
