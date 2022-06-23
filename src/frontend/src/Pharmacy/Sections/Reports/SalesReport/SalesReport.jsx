@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./SalesReport.css";
 import { SectionName } from "../../../Components/Components";
-import { useForm } from "react-hook-form";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -18,9 +17,9 @@ const SalesReport = () => {
     source: "Reports",
   };
 
-  const { salesList, groupsList } = useContext(dataFlowContext);
-
+  const { usersList, salesList, groupsList } = useContext(dataFlowContext);
   const [value, setValue] = React.useState([null, null]);
+
   return (
     <div className="Inventory__container">
       <div className="Salesreport__top flex__container">
@@ -79,8 +78,9 @@ const SalesReport = () => {
             <option value="" defaultValue hidden>
               -Select User Name-
             </option>
-            <option value="Group1">User Name 1</option>
-            <option value="Group2">User Name 2</option>
+            {usersList.map((user) => (
+              <option value={user.userName}>{user.userName}</option>
+            ))}
           </select>
         </div>
       </div>

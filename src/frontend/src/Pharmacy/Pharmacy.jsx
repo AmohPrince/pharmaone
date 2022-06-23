@@ -6,7 +6,7 @@ import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
 
-/*The logo may be dynamic . Like on user upload it should change necessarilly
+/*The logo may be dynamic . Like on user upload it should change necessarily
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
 their photo and name. The status will be computed */
@@ -42,12 +42,22 @@ const Pharmacy = () => {
   const [activeChildTab, setActiveChildTab] = useState("");
   const [inventoryOn, setInventoryOn] = useState(false);
   const [reportsOn, setReportsOn] = useState(false);
+  const [usersList, setUsersList] = useState([]);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
     profile.classList.toggle("active");
   };
 
+  //fetch users
+  const fetchUsers = () => {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getAllUsers`)
+      .then((res) => res.json())
+      .then((data) => setUsersList(data))
+      .catch((error) => failedFetchRetrying(error));
+  };
+
+  console.log(usersList);
   //fetch sales
   const fetchSales = () => {
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/getListOfSales`)
@@ -101,6 +111,7 @@ const Pharmacy = () => {
     fetchMedicine();
     fetchGroups();
     fetchSales();
+    fetchUsers();
   }, []);
 
   useEffect(() => {
@@ -172,6 +183,7 @@ const Pharmacy = () => {
     setInventoryOn,
     setActiveChildTab,
     setReportsOn,
+    usersList,
   };
 
   const dataGroup = [
@@ -264,6 +276,7 @@ const Pharmacy = () => {
       value2: medicineGroups,
       text1: "Total no of Medicines",
       text2: "Medicine Groups",
+      activeTab: "configuration-active",
     },
     {
       groupTitle: "Quick Report",

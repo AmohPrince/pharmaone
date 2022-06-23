@@ -1,24 +1,26 @@
 package com.saludos.pharmaone.controllers;
 
+import java.util.List;
 
-import com.saludos.pharmaone.entities.Sales;
-import com.saludos.pharmaone.services.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.saludos.pharmaone.entities.User;
+import com.saludos.pharmaone.services.UserService;
+
 
 @RestController
 @CrossOrigin
-public class SalesController {
-
+public class UserController {
     @Autowired
-    SalesService salesService;
-
-    @GetMapping("/getListOfSales")
-    public List<Sales> getListOfSales (){
-        return salesService.findListOfSales();
+    UserService userService;
+    
+    @GetMapping("/getAllUsers")
+    public List<User> getAllPharmacyUsers(){
+        return userService.getListOfUsers();
     }
+
+    
 }
