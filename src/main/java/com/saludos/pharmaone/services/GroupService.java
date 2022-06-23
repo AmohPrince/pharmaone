@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface GroupService {
-    public List findAllGroups();
+    public List<MedicineGroup> findAllGroups();
 
     String addNewGroup(MedicineGroup group);
 
