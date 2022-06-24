@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 import "./LineChart.css";
 import {
   Chart as ChartJS,
@@ -13,21 +14,44 @@ import {
   Filler,
 } from "chart.js";
 import { dataFlowContext } from "../../../Pharmacy";
-import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 
-const Linechart = () => {
+const Linechart = ({ selectedUserName, selectedGroup }) => {
   const { salesList } = useContext(dataFlowContext);
+  const [labels, setLabels] = useState([]);
+  const [amountValues, setAmountValues] = useState([]);
 
   const amountValuesForChart = () =>
-    salesList.map((sale) => {
-      return sale.amount;
-    });
+    setAmountValues(salesList.map((sale) => sale.amount));
 
-  const saleDatesForChart = () => {
-    return salesList.map((sale) => sale.saleDate);
+  const saleDatesForChart = () =>
+    setLabels(salesList.map((sale) => sale.saleDate));
+
+  const filterByGroups = () => {
+    if (selectedGroup === "All Groups") {
+      return;
+    } else {
+      const filteredSalesList = salesList.filter(
+        (sale) => sale.medicine.medicineGroup.groupName === selectedGroup
+      );
+      setLabels(filteredSalesList.map((sale) => sale.saleDate));
+      setAmountValues(filteredSalesList.map((sale) => sale.amount));
+    }
   };
 
-  useUpdateLogger(saleDatesForChart());
+  useUpdateLogger(salesList);
+
+  useEffect(() => {
+    if (selectedUserName === "All Users") {
+      amountValuesForChart();
+      saleDatesForChart();
+    } else {
+      const filteredSalesList = salesList.filter(
+        (sale) => sale.user.userName === selectedUserName
+      );
+      setLabels(filteredSalesList.map((sale) => sale.saleDate));
+      setAmountValues(filteredSalesList.map((sale) => sale.amount));
+    }
+  }, [selectedUserName]);
 
   /**
    * Labels-> An array of strings on the x axis.
@@ -45,11 +69,11 @@ const Linechart = () => {
     Filler
   );
   const data = {
-    labels: saleDatesForChart(),
+    labels: labels,
     datasets: [
       {
         label: "Sales",
-        data: amountValuesForChart(),
+        data: amountValues,
         borderColor: "#03A9F5",
         fill: true,
         backgroundColor: "rgb(16, 156, 241 , 0.3)",
