@@ -57,7 +57,6 @@ const Pharmacy = () => {
       .catch((error) => failedFetchRetrying(error));
   };
 
-  console.log(usersList);
   //fetch sales
   const fetchSales = () => {
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/getListOfSales`)

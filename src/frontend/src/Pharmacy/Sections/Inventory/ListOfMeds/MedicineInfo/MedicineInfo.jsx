@@ -9,6 +9,7 @@ import {
 import Assets from "../../../../../Assets/Assets";
 import "./MedicineInfo.css";
 import { useForm } from "react-hook-form";
+import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 /**
  * This component takes a param from the url that i will use to fetch data
  * from the server
@@ -38,6 +39,8 @@ const MedicineInfo = () => {
   const [errorEditConfirmationModal, setErrorEditConfirmationModal] =
     useState(false);
 
+  useUpdateLogger(medicineData);
+
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
@@ -58,6 +61,7 @@ const MedicineInfo = () => {
   //Put
   const onSubmit = (data) => {
     setSpinner(true);
+    console.log(data);
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/modifymedicine/${data.medicineId}`,
       {
@@ -193,13 +197,13 @@ const MedicineInfo = () => {
                   <p>Medicine ID</p>
                 </div>
                 <div className="Medicine__data-section">
-                  {/* {medicineData.medicineGroup === null ? (
-                    <p className="p__poppins">Unset</p>
+                  {medicineData.medicineGroup === undefined ? (
+                    <p className="p__poppins"> </p>
                   ) : (
                     <p className="p__poppins">
                       {medicineData.medicineGroup.groupName}
                     </p>
-                  )} */}
+                  )}
                   <p>Medicine Group</p>
                 </div>
               </div>
@@ -369,7 +373,11 @@ const MedicineInfo = () => {
                         type="text"
                         id="medicinegroupinput"
                         className="medicineeditinput"
-                        defaultValue={medicineData.medicineGroup.groupName}
+                        defaultValue={
+                          medicineData.medicineGroup === undefined
+                            ? ""
+                            : medicineData.medicineGroup.groupName
+                        }
                         {...register("groupName")}
                       />
                     </div>

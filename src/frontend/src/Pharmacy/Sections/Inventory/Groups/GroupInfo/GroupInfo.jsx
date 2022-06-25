@@ -16,7 +16,7 @@ const GroupInfo = () => {
   const data = incomingData.getSpecificGroupWithName(params.groupName);
   const [successConfirmation, setSuccessConfirmation] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const { handleSubmit } = useForm();
+  const { handleSubmit, register } = useForm();
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState(" ");
   const [noOfMedicine, setNoOfMedicine] = useState(0);
@@ -220,9 +220,7 @@ const GroupInfo = () => {
                 from group {data.groupName} ?
               </p>
               <div className="deleteGroup__choices flex__container">
-                <form>
-                  <input type="submit" value="Yes" />
-                </form>
+                <input type="submit" value="Yes" />
                 <p className="cancel" onClick={handleDeleteFromGroup}>
                   Cancel
                 </p>
