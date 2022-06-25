@@ -40,3 +40,16 @@
   font-weight: 500;
   font-size: calc(1rem - 2px);
 }
+.configuration-inputs {
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  color: var(--black);
+}
+.configuration-inputs::-webkit-input-placeholder {
+  color: var(--black);
+}
+.configuration-inputs:focus {
+  border: var(--skyBlue);
+  outline: none;
+}
