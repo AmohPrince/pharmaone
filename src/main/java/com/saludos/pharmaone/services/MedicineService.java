@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface MedicineService {
-    public List getAllMedicines(Medicine medicine);
+    public List<Medicine> getAllMedicines(Medicine medicine);
 
 
     public List<Medicine> getByGroupId(int groupId);

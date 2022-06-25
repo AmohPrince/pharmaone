@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Assets from "../../../Assets/Assets";
+import { dataFlowContext } from "../../Pharmacy";
 import Select from "../Select/Select";
 import "./DashBoardLinks.css";
 
 const DashBoardLinks = ({ data }) => {
+  const { setActiveTab } = useContext(dataFlowContext);
+
   return (
     <div className="DashBoardLinks__container">
       <div className="Dashboard__links-top flex__container">
@@ -14,7 +17,12 @@ const DashBoardLinks = ({ data }) => {
           <Select />
         ) : (
           <Link to={`/${data.linkTo}`} style={{ textDecoration: "none" }}>
-            <div className="Dashboard__links-link flex__container">
+            <div
+              className="Dashboard__links-link flex__container"
+              onClick={() => {
+                setActiveTab(data.activeTab);
+              }}
+            >
               <p className="p__poppins">Go to {data.linkTo}</p>
               <img src={Assets.DirectionArrows} alt="Direction Arrows" />
             </div>

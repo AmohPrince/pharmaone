@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 import "./LineChart.css";
 import {
   Chart as ChartJS,
@@ -12,8 +13,46 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import { dataFlowContext } from "../../../Pharmacy";
 
-const Linechart = () => {
+const Linechart = ({ selectedUserName, selectedGroup }) => {
+  const { salesList } = useContext(dataFlowContext);
+  const [labels, setLabels] = useState([]);
+  const [amountValues, setAmountValues] = useState([]);
+
+  const amountValuesForChart = () =>
+    setAmountValues(salesList.map((sale) => sale.amount));
+
+  const saleDatesForChart = () =>
+    setLabels(salesList.map((sale) => sale.saleDate));
+
+  const filterByGroups = () => {
+    if (selectedGroup === "All Groups") {
+      return;
+    } else {
+      const filteredSalesList = salesList.filter(
+        (sale) => sale.medicine.medicineGroup.groupName === selectedGroup
+      );
+      setLabels(filteredSalesList.map((sale) => sale.saleDate));
+      setAmountValues(filteredSalesList.map((sale) => sale.amount));
+    }
+  };
+
+  useUpdateLogger(salesList);
+
+  useEffect(() => {
+    if (selectedUserName === "All Users") {
+      amountValuesForChart();
+      saleDatesForChart();
+    } else {
+      const filteredSalesList = salesList.filter(
+        (sale) => sale.user.userName === selectedUserName
+      );
+      setLabels(filteredSalesList.map((sale) => sale.saleDate));
+      setAmountValues(filteredSalesList.map((sale) => sale.amount));
+    }
+  }, [selectedUserName]);
+
   /**
    * Labels-> An array of strings on the x axis.
    * Dataset - > The data you are working with .
@@ -30,11 +69,11 @@ const Linechart = () => {
     Filler
   );
   const data = {
-    labels: ["1 Dec", "8 Dec", "16 Dec", "31 Dec"],
+    labels: labels,
     datasets: [
       {
         label: "Sales",
-        data: [3, 7, 4, 5],
+        data: amountValues,
         borderColor: "#03A9F5",
         fill: true,
         backgroundColor: "rgb(16, 156, 241 , 0.3)",
@@ -47,7 +86,7 @@ const Linechart = () => {
     tension: 0.4,
     title: {
       display: true,
-      text: "linechrt",
+      text: "linechart",
     },
     scales: {
       y: [

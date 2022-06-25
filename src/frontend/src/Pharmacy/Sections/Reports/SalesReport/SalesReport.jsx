@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./SalesReport.css";
 import { SectionName } from "../../../Components/Components";
-import { useForm } from "react-hook-form";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -18,9 +17,11 @@ const SalesReport = () => {
     source: "Reports",
   };
 
-  const { salesList, groupsList } = useContext(dataFlowContext);
-
+  const { usersList, salesList, groupsList } = useContext(dataFlowContext);
   const [value, setValue] = React.useState([null, null]);
+  const [selectedUserName, setSelectedUserName] = useState("All Users");
+  const [selectedGroup, setSelectedGroup] = useState("All Groups");
+
   return (
     <div className="Inventory__container">
       <div className="Salesreport__top flex__container">
@@ -60,10 +61,12 @@ const SalesReport = () => {
             name="selectsalesmedgroup"
             id="selectsalesmedgroup"
             className="p__poppins"
+            onChange={(e) => setSelectedGroup(e.target.value)}
           >
             <option value="" defaultValue hidden>
               -Select Group-
             </option>
+            <option value="All Groups">All Groups</option>
             {groupsList.map((group) => (
               <option value={group.groupName}>{group.groupName}</option>
             ))}
@@ -75,12 +78,15 @@ const SalesReport = () => {
             name="selectsalesusername"
             id="selectsalesusername"
             className="p__poppins"
+            onChange={(e) => setSelectedUserName(e.target.value)}
           >
             <option value="" defaultValue hidden>
               -Select User Name-
             </option>
-            <option value="Group1">User Name 1</option>
-            <option value="Group2">User Name 2</option>
+            <option value="All Users">All Users</option>
+            {usersList.map((user) => (
+              <option value={user.userName}>{user.userName}</option>
+            ))}
           </select>
         </div>
       </div>
@@ -88,7 +94,10 @@ const SalesReport = () => {
         <div className="Salesreport__bottom-chart">
           <p className="p__poppins">Sales Made</p>
           <div className="Configuration__container-splitter" />
-          <Linechart />
+          <Linechart
+            selectedUserName={selectedUserName}
+            selectedGroup={selectedGroup}
+          />
         </div>
         <div className="Salesreport__bottom-orders">
           <div className="Orders__title flex__container">

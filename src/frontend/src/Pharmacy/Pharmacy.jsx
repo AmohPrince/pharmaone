@@ -6,7 +6,7 @@ import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
 
-/*The logo may be dynamic . Like on user upload it should change necessarilly
+/*The logo may be dynamic . Like on user upload it should change necessarily
 same as the name*/
 /* This user details are going to be dynamic. Find a way for the user to upload
 their photo and name. The status will be computed */
@@ -38,12 +38,26 @@ const Pharmacy = () => {
   const [groupNames, setGroupNames] = useState([]);
   const [salesList, setSalesList] = useState([]);
   const [amountSold, setAmountSold] = useState(0);
+  const [activeTab, setActiveTab] = useState("");
+  const [activeChildTab, setActiveChildTab] = useState("");
+  const [inventoryOn, setInventoryOn] = useState(false);
+  const [reportsOn, setReportsOn] = useState(false);
+  const [usersList, setUsersList] = useState([]);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
     profile.classList.toggle("active");
   };
 
+  //fetch users
+  const fetchUsers = () => {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/getAllUsers`)
+      .then((res) => res.json())
+      .then((data) => setUsersList(data))
+      .catch((error) => failedFetchRetrying(error));
+  };
+
+  console.log(usersList);
   //fetch sales
   const fetchSales = () => {
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/getListOfSales`)
@@ -97,6 +111,7 @@ const Pharmacy = () => {
     fetchMedicine();
     fetchGroups();
     fetchSales();
+    fetchUsers();
   }, []);
 
   useEffect(() => {
@@ -160,11 +175,17 @@ const Pharmacy = () => {
     groupsList,
     salesList,
     amountSold,
+    activeTab,
+    activeChildTab,
+    inventoryOn,
+    reportsOn,
+    setActiveTab,
+    setInventoryOn,
+    setActiveChildTab,
+    setReportsOn,
+    usersList,
   };
 
-  /**This is the data that i map over to produce the coloured
-   * boxes on the dashboard and the inventory
-   */
   const dataGroup = [
     {
       icon: Assets.Healthy,
@@ -173,7 +194,7 @@ const Pharmacy = () => {
       linkTo: "reports",
       accentColor: "#01A768",
       bgColor: "#01A7684D",
-      activeTab: "repo",
+      activeTab: "reports-active",
     },
     {
       icon: Assets.Revenue,
@@ -184,7 +205,7 @@ const Pharmacy = () => {
       accentColor: "#FED600",
       bgColor: "#FED6004D",
       rs: true,
-      activeTab: "repo",
+      activeTab: "reports-active",
     },
     {
       icon: Assets.AvailableMeds,
@@ -193,7 +214,7 @@ const Pharmacy = () => {
       linkTo: "inventory",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
-      activeTab: "invent",
+      activeTab: "inventory-active",
     },
     {
       icon: Assets.Danger,
@@ -208,7 +229,7 @@ const Pharmacy = () => {
       icon: Assets.MedicalGreen,
       status: medicineGroups,
       name: "Medicine Groups",
-      linkTo: "groups",
+      linkTo: "inventory/groups",
       accentColor: "#01A768",
       bgColor: "#01A7684D",
       activeTab: "groups",
@@ -217,7 +238,7 @@ const Pharmacy = () => {
       icon: Assets.AvailableMeds,
       status: availableMeds,
       name: "Medicines Available",
-      linkTo: "listofmeds2",
+      linkTo: "inventory/listofmeds",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
       activeTab: "medslist",
@@ -229,20 +250,20 @@ const Pharmacy = () => {
       icon: Assets.Revenue,
       status: revenue,
       name: "Total Sales Report",
-      linkTo: "salesreport",
+      linkTo: "reports/salesreport",
       accentColor: "#FED600",
       bgColor: "#FED6004D",
       rs: true,
-      activeTab: "repo",
+      activeTab: "sales-report",
     },
     {
       icon: Assets.Healthy,
       status: payments,
       name: "Payments Report",
-      linkTo: "paymentreport",
+      linkTo: "reports/paymentreport",
       accentColor: "#01A768",
       bgColor: "#01A7684D",
-      activeTab: "repo",
+      activeTab: "payment-report",
     },
   ];
 
@@ -255,6 +276,7 @@ const Pharmacy = () => {
       value2: medicineGroups,
       text1: "Total no of Medicines",
       text2: "Medicine Groups",
+      activeTab: "configuration-active",
     },
     {
       groupTitle: "Quick Report",
@@ -316,7 +338,9 @@ const Pharmacy = () => {
               </div>
             </div>
           </div>
-          <RightTab />
+          <dataFlowContext.Provider value={flowingData}>
+            <RightTab />
+          </dataFlowContext.Provider>
           <div className="Pharmacy__powered">
             <p>Powered by Cash © 2022 </p>
           </div>
