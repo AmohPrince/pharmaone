@@ -46,7 +46,7 @@
   top: 30%;
   left: 35%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 6;
 }
 .modal__subtitle > p {
   margin-bottom: 10px;
@@ -76,7 +76,7 @@
   position: absolute;
   top: 25%;
   right: 25%;
-  z-index: 3;
+  z-index: 6;
   text-align: center;
 }
 .deleteGroupModal > img {

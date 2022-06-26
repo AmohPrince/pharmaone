@@ -1,9 +1,18 @@
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  background: rgba(29, 36, 46, 0.5);
+}
 .Pharmacy {
   width: 100%;
+  /* height: 100%; */
   display: flex;
 }
 .Pharmacy__right {
   width: 75%;
+  /* height: 100%; */
 }
 .Pharmacy__sidebar {
   height: 100%;

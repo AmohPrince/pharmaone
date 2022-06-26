@@ -19,12 +19,12 @@ import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 
 const MedicineInfo = () => {
   let params = useParams();
-  let incomingData = useContext(dataFlowContext);
+  let { getSpecificMedicineWithId, setOverlay } = useContext(dataFlowContext);
 
   const [medicineName, setMedicineName] = useState(" ");
 
   const fetchMedicineName = () => {
-    const data = incomingData.getSpecificMedicineWithId(params.medicineId);
+    const data = getSpecificMedicineWithId(params.medicineId);
     setMedicineName(data.medicineName);
   };
 
@@ -52,8 +52,10 @@ const MedicineInfo = () => {
   };
   const handleModal = (choice) => {
     if (choice === "open") {
+      setOverlay(true);
       setModalOpen(true);
     } else {
+      setOverlay(false);
       setModalOpen(false);
     }
   };
@@ -157,9 +159,6 @@ const MedicineInfo = () => {
 
   return (
     <>
-      {modalOpen === true || deleteModal === true ? (
-        <div className="Medicine__info-overlay"></div>
-      ) : null}
       <div className="Inventory__container Medicine__info-container ">
         <div className="Medicine__info-top ">
           <div className="flex__container">
@@ -275,6 +274,7 @@ const MedicineInfo = () => {
                     alt="Close Icon"
                     onClick={() => {
                       setDeleteModal(false);
+                      setOverlay(false);
                     }}
                   />
                   <img src={Assets.Danger} alt="Danger" />
@@ -295,6 +295,7 @@ const MedicineInfo = () => {
                         className="confirmbutton"
                         onClick={() => {
                           setDeleteModal(false);
+                          setOverlay(false);
                         }}
                       >
                         Cool
@@ -306,6 +307,7 @@ const MedicineInfo = () => {
                       <p
                         onClick={() => {
                           setDeleteModal(false);
+                          setOverlay(false);
                         }}
                       >
                         Cancel
@@ -319,6 +321,7 @@ const MedicineInfo = () => {
           <div
             onClick={() => {
               setDeleteModal(true);
+              setOverlay(true);
             }}
           >
             <RedButton buttonData={buttonData2} />

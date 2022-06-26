@@ -132,7 +132,7 @@ textarea:focus {
 .edit__modal {
   position: absolute;
   top: 2%;
-  z-index: 3;
+  z-index: 6;
 }
 .edit__modal-header > img {
   cursor: pointer;
@@ -166,12 +166,13 @@ textarea:focus {
   border-radius: 8px;
   background-color: var(--white);
   text-align: center;
-  z-index: 2;
+  z-index: 6;
 }
 .deletemodal__container {
   position: relative;
   padding: 50px 20px;
 }
+
 .deletemodal__container > img:first-of-type {
   position: absolute;
   right: 20px;
