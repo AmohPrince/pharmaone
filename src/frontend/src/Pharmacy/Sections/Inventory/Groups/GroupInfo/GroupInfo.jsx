@@ -16,7 +16,7 @@ const GroupInfo = () => {
   const data = incomingData.getSpecificGroupWithName(params.groupName);
   const [successConfirmation, setSuccessConfirmation] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit } = useForm();
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState(" ");
   const [noOfMedicine, setNoOfMedicine] = useState(0);
