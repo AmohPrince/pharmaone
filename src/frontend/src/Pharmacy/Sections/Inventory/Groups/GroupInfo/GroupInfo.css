@@ -1,11 +1,6 @@
 .Group__info-top {
   justify-content: space-between;
 }
-.Group__overlay {
-  position: absolute;
-  height: 100%;
-  width: 75%;
-}
 .Group__info {
   position: relative;
 }
@@ -46,14 +41,10 @@
   top: 30%;
   left: 35%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 6;
 }
 .modal__subtitle > p {
   margin-bottom: 10px;
-}
-.Group__overlay.true {
-  z-index: 1;
-  background-color: #1d242e80;
 }
 .successConfirmation {
   background-color: #01a7684d;
@@ -76,7 +67,7 @@
   position: absolute;
   top: 25%;
   right: 25%;
-  z-index: 3;
+  z-index: 6;
   text-align: center;
 }
 .deleteGroupModal > img {
@@ -111,8 +102,4 @@
   padding: 10px;
   width: 242px;
   justify-content: space-around;
-}
-.test {
-  min-width: 162px;
-  max-width: 250px;
 }

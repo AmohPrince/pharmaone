@@ -43,6 +43,7 @@ const Pharmacy = () => {
   const [inventoryOn, setInventoryOn] = useState(false);
   const [reportsOn, setReportsOn] = useState(false);
   const [usersList, setUsersList] = useState([]);
+  const [overlay, setOverlay] = useState(false);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -184,6 +185,7 @@ const Pharmacy = () => {
     setActiveChildTab,
     setReportsOn,
     usersList,
+    setOverlay,
   };
 
   const dataGroup = [
@@ -305,90 +307,93 @@ const Pharmacy = () => {
   ];
 
   return (
-    <div className="Pharmacy ">
-      {/* Aside Section Begins Here */}
-      <aside className="Pharmacy__sidebar">
-        <div className="Logo__container flex__container">
-          <img src={Assets.Logo} alt="Logo" />
-          <div className="logo__name">
-            <p>Pharma One</p>
-          </div>
-        </div>
-
-        <div className="Pharmacy__sidebar-body">
-          {/* User Details */}
-          <div className="User__details flex__container">
-            <div className="User__details-right flex__container">
-              <div className="User__details-img">
-                <img src={Assets.Photo} alt="Profile Pic" />
-                <img src={Assets.OnlineIcon} alt="Online /Offline" />
-              </div>
-              <div className="User__details-names">
-                <p>Subash</p>
-                <p>Super Admin</p>
-              </div>
-            </div>
-            <div
-              className="User__details-icons flex__container"
-              onClick={toggleProfile}
-            >
-              <img src={Assets.ThreeDots} alt="Dots Icon" />
-              <div className="User__details-showprofile ">
-                <ProfileOn />
-              </div>
+    <>
+      {overlay === true ? (
+        <div className="gray-overlay" onClick={() => setOverlay(false)} />
+      ) : null}
+      <div className="Pharmacy ">
+        <aside className="Pharmacy__sidebar">
+          <div className="Logo__container flex__container">
+            <img src={Assets.Logo} alt="Logo" />
+            <div className="logo__name">
+              <p>Pharma One</p>
             </div>
           </div>
-          <dataFlowContext.Provider value={flowingData}>
-            <RightTab />
-          </dataFlowContext.Provider>
-          <div className="Pharmacy__powered">
-            <p>Powered by Cash © 2022 </p>
-          </div>
-        </div>
-      </aside>
-      {/* Right section begins here */}
-      <div className="Pharmacy__right">
-        <div className="Pharmacy__topbar flex__container">
-          <div className="Topbar__input flex__container">
-            <input
-              type="search"
-              name="Search"
-              id="Search"
-              placeholder="Search for anything here."
-            />
-            <img src={Assets.Search} alt="Search Icon" />
-          </div>
 
-          <div className="Topbar__changelang flex__container ">
-            <img src={Assets.Lang} alt="Language Translate Icon" />
-            <select name="ChangeLang" id="ChangeLang">
-              <optgroup className="optgroup ">
-                <option value="English" className="Option">
-                  English (US)
-                </option>
-                <option value="French" className="Option">
-                  French
-                </option>
-              </optgroup>
-            </select>
-          </div>
-          <div className="Topbar__date">
-            <Date />
-          </div>
-        </div>
-        <dataGroup3Context.Provider value={dataGroup3}>
-          <dataFlowContext.Provider value={flowingData}>
-            <dataGroupContext.Provider value={dataGroup}>
-              <dataGroup2Context.Provider value={dataGroup2}>
-                <div className="Pharmacy__body">
-                  <Outlet />
+          <div className="Pharmacy__sidebar-body">
+            <div className="User__details flex__container">
+              <div className="User__details-right flex__container">
+                <div className="User__details-img">
+                  <img src={Assets.Photo} alt="Profile Pic" />
+                  <img src={Assets.OnlineIcon} alt="Online /Offline" />
                 </div>
-              </dataGroup2Context.Provider>
-            </dataGroupContext.Provider>
-          </dataFlowContext.Provider>
-        </dataGroup3Context.Provider>
+                <div className="User__details-names">
+                  <p>Subash</p>
+                  <p>Super Admin</p>
+                </div>
+              </div>
+              <div
+                className="User__details-icons flex__container"
+                onClick={toggleProfile}
+              >
+                <img src={Assets.ThreeDots} alt="Dots Icon" />
+                <div className="User__details-showprofile ">
+                  <ProfileOn />
+                </div>
+              </div>
+            </div>
+            <dataFlowContext.Provider value={flowingData}>
+              <RightTab />
+            </dataFlowContext.Provider>
+            <div className="Pharmacy__powered">
+              <p>Powered by Cash © 2022 </p>
+            </div>
+          </div>
+        </aside>
+        {/* Right section begins here */}
+        <div className="Pharmacy__right">
+          <div className="Pharmacy__topbar flex__container">
+            <div className="Topbar__input flex__container">
+              <input
+                type="search"
+                name="Search"
+                id="Search"
+                placeholder="Search for anything here."
+              />
+              <img src={Assets.Search} alt="Search Icon" />
+            </div>
+
+            <div className="Topbar__changelang flex__container ">
+              <img src={Assets.Lang} alt="Language Translate Icon" />
+              <select name="ChangeLang" id="ChangeLang">
+                <optgroup className="optgroup ">
+                  <option value="English" className="Option">
+                    English (US)
+                  </option>
+                  <option value="French" className="Option">
+                    French
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+            <div className="Topbar__date">
+              <Date />
+            </div>
+          </div>
+          <dataGroup3Context.Provider value={dataGroup3}>
+            <dataFlowContext.Provider value={flowingData}>
+              <dataGroupContext.Provider value={dataGroup}>
+                <dataGroup2Context.Provider value={dataGroup2}>
+                  <div className="Pharmacy__body">
+                    <Outlet />
+                  </div>
+                </dataGroup2Context.Provider>
+              </dataGroupContext.Provider>
+            </dataFlowContext.Provider>
+          </dataGroup3Context.Provider>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
