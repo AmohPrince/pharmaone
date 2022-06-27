@@ -154,9 +154,9 @@ const RightTab = () => {
             className="tab-icon"
           />
           <p className="tab-name">Configuration</p>
+          <div className="tab-splitter" />
         </div>
       </Link>
-      <div className="tab-splitter" />
       <Link to="contactmanagement" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex contact-management ${activeTab}`}
@@ -200,9 +200,9 @@ const RightTab = () => {
         >
           <img src={Assets.ChatIco} alt="Chat icon" className="tab-icon" />
           <p className="tab-name">Chat With Others</p>
+          <div className="tab-splitter" />
         </div>
       </Link>
-      <div className="tab-splitter" />
       <Link to="applicationSettings" style={{ textDecoration: "none" }}>
         <div
           className={`tab flex settings ${activeTab}`}

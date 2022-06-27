@@ -1,6 +1,6 @@
 .Inventory__container {
   padding: 4%;
-  height: calc(101% + 6px);
+  height: 100%;
   background-color: var(--lightGrey);
 }
 .Inventory__body {

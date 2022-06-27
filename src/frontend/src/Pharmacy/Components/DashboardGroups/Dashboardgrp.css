@@ -1,6 +1,6 @@
 .Dashboardgrp__container {
   width: 212px;
-  height: 202px;
+  height: 180px;
   justify-content: unset;
   padding-top: 20px;
   position: relative;
@@ -8,7 +8,7 @@
   background-color: var(--white);
 }
 .Dashboardgrp__container > img {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   height: 37px;
 }
 .Dashboardgrp__container > p:first-of-type {

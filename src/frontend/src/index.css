@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 :root {
-  --black: #1d242e;
+  --black: #0b0d1f;
   --black2: #283342;
   --red: #f0483e;
   --green: #01a768;
@@ -17,6 +17,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+*::-webkit-scrollbar {
+  width: 7px;
+  /* background: rgba(98, 108, 122, 1); */
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--black2);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(98, 108, 122, 1);
+  border-radius: 20px;
 }
 p,
 .p__poppins {
@@ -32,11 +44,7 @@ p,
   align-items: center;
   justify-content: center;
 }
-input,
-textarea,
-select {
-  font-family: "Poppins", sans-serif;
-}
+
 select {
   cursor: pointer;
   text-align: center;
@@ -61,4 +69,17 @@ input[type="submit"] {
 }
 .flex {
   display: flex;
+  align-items: center;
+}
+.flex-v {
+  display: flex;
+  flex-direction: column;
+}
+.padding-around {
+  padding: 4%;
+  background-color: var(--lightGrey);
+  height: 100%;
+}
+.space-between {
+  justify-content: space-between;
 }

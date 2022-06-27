@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { Outlet } from "react-router-dom";
 import "./Pharmacy.css";
 import Assets from "../Assets/Assets";
@@ -6,19 +6,11 @@ import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
 
-/*The logo may be dynamic . Like on user upload it should change necessarily
-same as the name*/
-/* This user details are going to be dynamic. Find a way for the user to upload
-their photo and name. The status will be computed */
-/*
-  This state values will be calculated and updated as required. The value will
-  then be read from the section icon which in turn updates the boxes
-*/
-export const dataGroupContext = React.createContext();
-export const dataGroup2Context = React.createContext();
-export const dataFlowContext = React.createContext();
-export const inventoryClickContext = React.createContext();
-export const dataGroup3Context = React.createContext();
+export const dataGroupContext = createContext();
+export const dataGroup2Context = createContext();
+export const dataFlowContext = createContext();
+export const inventoryClickContext = createContext();
+export const dataGroup3Context = createContext();
 
 const Pharmacy = () => {
   const [inventoryStatus, setInventoryStatus] = useState("Good");
@@ -313,48 +305,44 @@ const Pharmacy = () => {
       <div className="Pharmacy ">
         {/* Aside Section Begins Here */}
         <aside className="Pharmacy__sidebar">
-          <div className="Logo__container flex__container">
+          <div className="Logo__container flex">
             <img src={Assets.Logo} alt="Logo" />
             <div className="logo__name">
               <p>Pharma One</p>
             </div>
           </div>
-
-          <div className="Pharmacy__sidebar-body">
-            {/* User Details */}
-            <div className="User__details flex__container">
-              <div className="User__details-right flex__container">
-                <div className="User__details-img">
-                  <img src={Assets.Photo} alt="Profile Pic" />
-                  <img src={Assets.OnlineIcon} alt="Online /Offline" />
-                </div>
-                <div className="User__details-names">
-                  <p>Subash</p>
-                  <p>Super Admin</p>
-                </div>
+          <div className="User__details flex">
+            <div className="User__details-right flex">
+              <div className="User__details-img">
+                <img src={Assets.Photo} alt="Profile Pic" />
+                <img src={Assets.OnlineIcon} alt="Online /Offline" />
               </div>
-              <div
-                className="User__details-icons flex__container"
-                onClick={toggleProfile}
-              >
-                <img src={Assets.ThreeDots} alt="Dots Icon" />
-                <div className="User__details-showprofile ">
-                  <ProfileOn />
-                </div>
+              <div className="User__details-names">
+                <p>Subash</p>
+                <p>Super Admin</p>
               </div>
             </div>
+            <div className="User__details-icons flex" onClick={toggleProfile}>
+              <img src={Assets.ThreeDots} alt="Dots Icon" />
+              <div className="User__details-showprofile ">
+                <ProfileOn />
+              </div>
+            </div>
+          </div>
+          <div className="Pharmacy__sidebar-body">
             <dataFlowContext.Provider value={flowingData}>
               <RightTab />
             </dataFlowContext.Provider>
-            <div className="Pharmacy__powered">
-              <p>Powered by Cash © 2022 </p>
-            </div>
+          </div>
+          <div className="Pharmacy__powered flex space-between">
+            <p>Powered by Cash © 2022 </p>
+            <p>v1.12</p>
           </div>
         </aside>
         {/* Right section begins here */}
         <div className="Pharmacy__right">
-          <div className="Pharmacy__topbar flex__container">
-            <div className="Topbar__input flex__container">
+          <div className="Pharmacy__topbar flex">
+            <div className="Topbar__input flex">
               <input
                 type="search"
                 name="Search"
@@ -364,7 +352,7 @@ const Pharmacy = () => {
               <img src={Assets.Search} alt="Search Icon" />
             </div>
 
-            <div className="Topbar__changelang flex__container ">
+            <div className="Topbar__changelang flex ">
               <img src={Assets.Lang} alt="Language Translate Icon" />
               <select name="ChangeLang" id="ChangeLang">
                 <optgroup className="optgroup ">

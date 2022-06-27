@@ -133,17 +133,14 @@ const GroupInfo = () => {
   };
 
   return (
-    <div className="Inventory__container Group__info">
-      <div className="flex__container Group__info-top">
+    <div className="padding-around Group__info">
+      <div className="flex Group__info-top">
         <SectionName title={title} />
         <div className="group__info-modal" onClick={handleModal}>
           <RedButton buttonData={buttonData} />
         </div>
       </div>
-      <div
-        className="Searchbar flex__container"
-        id="SearchMedicineInventoryContainer"
-      >
+      <div className="Searchbar flex" id="SearchMedicineInventoryContainer">
         <input
           type="search"
           name={searchBarData.name}
@@ -155,7 +152,7 @@ const GroupInfo = () => {
         <img src={Assets.Search} alt="Search Icon" />
       </div>
       <div>
-        <div className="Group__container-titles flex__container">
+        <div className="Group__container-titles flex">
           <div>
             <p className="p__poppins">Medicine Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
@@ -180,74 +177,70 @@ const GroupInfo = () => {
         })}
       </div>
       <div>
-        <div onClick={handleDeleteGroup} className="test">
+        <div onClick={handleDeleteGroup}>
           <RedButton buttonData={buttonData2} />
         </div>
-        {deleteModal === true ? (
-          <div className="deleteModal-wrapper">
-            <div className="deleteGroupModal flex__container-v">
-              <img src={Assets.Close} alt="Close" onClick={handleDeleteGroup} />
-              <p>Are you sure you want to delete group {data.groupName} ?</p>
-              <div className="deleteGroup__choices flex__container">
-                <form onSubmit={handleSubmit(onDelete)}>
-                  <input type="submit" value="Yes" />
-                </form>
-                <p className="cancel" onClick={handleDeleteGroup}>
-                  Cancel
-                </p>
-              </div>
+        {deleteModal && (
+          <div className="deleteGroupModal flex-v">
+            <img src={Assets.Close} alt="Close" onClick={handleDeleteGroup} />
+            <p>Are you sure you want to delete group {data.groupName} ?</p>
+            <div className="deleteGroup__choices flex">
+              <form onSubmit={handleSubmit(onDelete)}>
+                <input type="submit" value="Yes" />
+              </form>
+              <p className="cancel" onClick={handleDeleteGroup}>
+                Cancel
+              </p>
             </div>
           </div>
-        ) : null}
+        )}
       </div>
-      {deleteFromGroup === true ? (
-        <div className="deleteGroupModal flex__container-v">
+      {deleteFromGroup && (
+        <div className="deleteGroupModal flex-v">
           <img src={Assets.Close} alt="Close" onClick={handleDeleteFromGroup} />
           <p>
             Are you sure you want to remove {medicineToBeRemovedFromGroup} from
             group {data.groupName} ?
           </p>
-          <div className="deleteGroup__choices flex__container">
+          <div className="deleteGroup__choices flex">
             <input type="submit" value="Yes" />
             <p className="cancel" onClick={handleDeleteFromGroup}>
               Cancel
             </p>
           </div>
         </div>
-      ) : null}
+      )}
 
       {deleteMessage !== " " ? (
-        <div className="deleteMessage flex__container">
+        <div className="deleteMessage flex">
           <img src={Assets.Tick} alt="Tick" />
           <p>{deleteMessage}</p>
         </div>
       ) : null}
 
-      {modalState === true ? (
-        <div className="modal__wrapper">
-          <div className="modal">
-            <div className="modal__title">
-              <p className="p__poppins">Add Medicine</p>
-            </div>
-            <div className="modal__subtitle">
-              <p className="p__poppins">Medicine</p>
-              <Searchbar data={searchBarData2} />
-            </div>
-            <div className="modal__button-wrapper" onClick={handleAddToGroup}>
-              <RedButton buttonData={buttonData3} />
-            </div>
-            <div className="closemodal" onClick={handleModal}>
-              <img src={Assets.Close} alt="Close" />
-            </div>
+      {modalState && (
+        <div className="modal">
+          <div className="modal__title">
+            <p className="p__poppins">Add Medicine</p>
+          </div>
+          <div className="modal__subtitle">
+            <p className="p__poppins">Medicine</p>
+            <Searchbar data={searchBarData2} />
+          </div>
+          <div className="modal__button-wrapper" onClick={handleAddToGroup}>
+            <RedButton buttonData={buttonData3} />
+          </div>
+          <div className="closemodal" onClick={handleModal}>
+            <img src={Assets.Close} alt="Close" />
           </div>
         </div>
-      ) : null}
-      {successConfirmation === true ? (
-        <div className="successConfirmation  flex__container">
+      )}
+      {successConfirmation && (
+        <div className="successConfirmation  flex">
           <img src={Assets.Tick} alt="tick" />
           <p className="p__poppins">Medicine Added to Group</p>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

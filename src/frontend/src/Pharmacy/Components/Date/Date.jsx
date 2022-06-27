@@ -27,21 +27,21 @@ const Date = () => {
   }, []);
 
   return (
-    <div className="Date flex__container-v">
+    <div className="date flex-v">
       {amOrPm === "pm" ? (
-        <div className="Moon__icon flex__container">
+        <div className="moon flex">
           <img src={Assets.Moon} alt="Moon Icon" />
-          <p className="p__poppins Date__greeting">Good Evening</p>
+          <p className="p__poppins date__greeting">Good Evening</p>
         </div>
       ) : (
-        <div className="Sun__icon flex__container">
+        <div className="sun flex">
           <img src={Assets.Sun} alt="Sun Icon" />
-          <p className="p__poppins Date__greeting">Good Morning</p>
+          <p className="p__poppins date__greeting">Good Morning</p>
         </div>
       )}
-      <div className="Date__btm flex__container">
-        <p className="p__poppins">{currentDate}</p>
-        <p className="p__poppins">{currentTime}</p>
+      <div className="date__btm flex">
+        <p>{currentDate}</p>
+        <p>{currentTime}</p>
       </div>
     </div>
   );
