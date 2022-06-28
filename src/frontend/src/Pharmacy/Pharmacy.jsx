@@ -311,32 +311,36 @@ const Pharmacy = () => {
               <p>Pharma One</p>
             </div>
           </div>
-          <div className="User__details flex">
-            <div className="User__details-right flex">
-              <div className="User__details-img">
-                <img src={Assets.Photo} alt="Profile Pic" />
-                <img src={Assets.OnlineIcon} alt="Online /Offline" />
-              </div>
-              <div className="User__details-names">
-                <p>Subash</p>
-                <p>Super Admin</p>
-              </div>
-            </div>
-            <div className="User__details-icons flex" onClick={toggleProfile}>
-              <img src={Assets.ThreeDots} alt="Dots Icon" />
-              <div className="User__details-showprofile ">
-                <ProfileOn />
-              </div>
-            </div>
-          </div>
+
           <div className="Pharmacy__sidebar-body">
             <dataFlowContext.Provider value={flowingData}>
+              <div className="User__details flex">
+                <div className="User__details-right flex">
+                  <div className="User__details-img">
+                    <img src={Assets.Photo} alt="Profile Pic" />
+                    <img src={Assets.OnlineIcon} alt="Online /Offline" />
+                  </div>
+                  <div className="User__details-names flex-v">
+                    <p>Subash</p>
+                    <p>Super Admin</p>
+                  </div>
+                </div>
+                <div
+                  className="User__details-icons flex"
+                  onClick={toggleProfile}
+                >
+                  <img src={Assets.ThreeDots} alt="Dots Icon" />
+                  <div className="User__details-showprofile ">
+                    <ProfileOn />
+                  </div>
+                </div>
+              </div>
               <RightTab />
+              <div className="Pharmacy__powered flex space-between">
+                <p>Powered by Cash © 2022 </p>
+                <p>v1.12</p>
+              </div>
             </dataFlowContext.Provider>
-          </div>
-          <div className="Pharmacy__powered flex space-between">
-            <p>Powered by Cash © 2022 </p>
-            <p>v1.12</p>
           </div>
         </aside>
         {/* Right section begins here */}
