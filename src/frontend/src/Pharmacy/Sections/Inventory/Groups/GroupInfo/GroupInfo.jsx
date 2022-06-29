@@ -9,9 +9,9 @@ import { Searchbar } from "../../../../Components/Components";
 import { useForm } from "react-hook-form";
 
 const GroupInfo = () => {
+  const { setOverlay, getSpecificGroupWithName } = useContext(dataFlowContext);
   const [modalState, setModalState] = useState(false);
   let params = useParams();
-  const { setOverlay, getSpecificGroupWithName } = useContext(dataFlowContext);
   const data = getSpecificGroupWithName(params.groupName);
   const [successConfirmation, setSuccessConfirmation] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -19,9 +19,6 @@ const GroupInfo = () => {
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [deleteMessage, setDeleteMessage] = useState(" ");
   const [noOfMedicine, setNoOfMedicine] = useState(0);
-  const [deleteFromGroup, setDeleteFromGroup] = useState(false);
-  const [medicineToBeRemovedFromGroup, setMedicineToBeRemovedFromGroup] =
-    useState("");
 
   useEffect(() => {
     fetchNoOfMedicinesInGroup();
@@ -126,12 +123,6 @@ const GroupInfo = () => {
     }, 2000);
   };
 
-  const handleDeleteFromGroup = (medicineName) => {
-    setOverlay((prevState) => !prevState);
-    setMedicineToBeRemovedFromGroup(medicineName);
-    setDeleteFromGroup((prevState) => !prevState);
-  };
-
   return (
     <div className="padding-around Group__info">
       <div className="flex Group__info-top">
@@ -146,7 +137,6 @@ const GroupInfo = () => {
           name={searchBarData.name}
           id={searchBarData.name}
           placeholder={searchBarData.placeholder}
-          className="p__poppins"
           onChange={searchMedicines}
         />
         <img src={Assets.Search} alt="Search Icon" />
@@ -154,26 +144,20 @@ const GroupInfo = () => {
       <div>
         <div className="Group__container-titles flex">
           <div>
-            <p className="p__poppins">Medicine Name</p>
+            <p>Medicine Name</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">In Stock</p>
+            <p>In Stock</p>
             <img src={Assets.TopBottomArrows} alt="Arrows" />
           </div>
           <div>
-            <p className="p__poppins">Action</p>
+            <p>Action</p>
           </div>
         </div>
         <div className="splitter" />
         {groupMedicines.map((data) => {
-          return (
-            <SingleMedicineInGroup
-              data={data}
-              key={data.medicineName}
-              handleDeleteFromGroup={handleDeleteFromGroup}
-            />
-          );
+          return <SingleMedicineInGroup data={data} key={data.medicineName} />;
         })}
       </div>
       <div>
@@ -195,21 +179,6 @@ const GroupInfo = () => {
           </div>
         )}
       </div>
-      {deleteFromGroup && (
-        <div className="deleteGroupModal flex-v">
-          <img src={Assets.Close} alt="Close" onClick={handleDeleteFromGroup} />
-          <p>
-            Are you sure you want to remove {medicineToBeRemovedFromGroup} from
-            group {data.groupName} ?
-          </p>
-          <div className="deleteGroup__choices flex">
-            <input type="submit" value="Yes" />
-            <p className="cancel" onClick={handleDeleteFromGroup}>
-              Cancel
-            </p>
-          </div>
-        </div>
-      )}
 
       {deleteMessage !== " " ? (
         <div className="deleteMessage flex">
@@ -221,10 +190,10 @@ const GroupInfo = () => {
       {modalState && (
         <div className="modal">
           <div className="modal__title">
-            <p className="p__poppins">Add Medicine</p>
+            <p>Add Medicine</p>
           </div>
           <div className="modal__subtitle">
-            <p className="p__poppins">Medicine</p>
+            <p>Medicine</p>
             <Searchbar data={searchBarData2} />
           </div>
           <div className="modal__button-wrapper" onClick={handleAddToGroup}>
@@ -238,7 +207,7 @@ const GroupInfo = () => {
       {successConfirmation && (
         <div className="successConfirmation  flex">
           <img src={Assets.Tick} alt="tick" />
-          <p className="p__poppins">Medicine Added to Group</p>
+          <p>Medicine Added to Group</p>
         </div>
       )}
     </div>

@@ -83,3 +83,6 @@ input[type="submit"] {
 .space-between {
   justify-content: space-between;
 }
+.cursor {
+  cursor: pointer;
+}

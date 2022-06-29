@@ -36,6 +36,7 @@ const Pharmacy = () => {
   const [reportsOn, setReportsOn] = useState(false);
   const [usersList, setUsersList] = useState([]);
   const [overlay, setOverlay] = useState(false);
+  const [modals, setModals] = useState(false);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -177,6 +178,8 @@ const Pharmacy = () => {
     setReportsOn,
     usersList,
     setOverlay,
+    modals,
+    setModals,
   };
 
   const dataGroup = [
@@ -300,7 +303,13 @@ const Pharmacy = () => {
   return (
     <>
       {overlay === true ? (
-        <div className="overlay" onClick={() => setOverlay(false)} />
+        <div
+          className="overlay"
+          onClick={() => {
+            setOverlay(false);
+            setModals(false);
+          }}
+        />
       ) : null}
       <div className="Pharmacy ">
         {/* Aside Section Begins Here */}
