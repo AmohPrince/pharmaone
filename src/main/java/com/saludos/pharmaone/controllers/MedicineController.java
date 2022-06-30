@@ -1,5 +1,8 @@
 package com.saludos.pharmaone.controllers;
 
+import com.saludos.pharmaone.entities.MedicineGroup;
+import com.saludos.pharmaone.repositories.GroupRepository;
+import com.saludos.pharmaone.repositories.MedicineRepository;
 import com.saludos.pharmaone.services.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,12 @@ public class MedicineController {
 
    @Autowired
     MedicineService medicineService;
+
+   @Autowired
+   MedicineRepository medicineRepository;
+
+   @Autowired
+    GroupRepository groupRepository;
 
    @GetMapping("/getbygroupid/{groupId}")
    public List<Medicine> getByGroupId(@PathVariable String groupId){
@@ -46,6 +55,21 @@ public class MedicineController {
     @DeleteMapping("/deletemedicine/{medicineId}")
     public String deleteMedicine (@PathVariable String medicineId){
         return medicineService.deleteMedicine(medicineId);
+    }
+
+    @PatchMapping("/changeMedicineGroup/{medicineId}/{groupId}")
+    public String changeMedicineGroup (@PathVariable String medicineId , @PathVariable String groupId){
+       Medicine medicine = medicineRepository.getById(medicineId);
+       MedicineGroup medicineGroup = groupRepository.getById(Integer.parseInt(groupId));
+       medicine.setMedicineGroup(medicineGroup);
+
+       try {
+       medicineRepository.save(medicine);
+            return "Success!!";
+       }catch (Exception e){
+           return e.getLocalizedMessage();
+       }
+
     }
 
 

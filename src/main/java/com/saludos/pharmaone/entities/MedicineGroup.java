@@ -46,4 +46,13 @@ public class MedicineGroup {
     public void setGroupDescription(String groupDescription) {
         this.groupDescription = groupDescription;
     }
+
+    @Override
+    public String toString() {
+        return "MedicineGroup{" +
+                "groupId=" + groupId +
+                ", groupName='" + groupName + '\'' +
+                ", groupDescription='" + groupDescription + '\'' +
+                '}';
+    }
 }

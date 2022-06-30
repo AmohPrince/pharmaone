@@ -21,4 +21,6 @@ public interface MedicineService {
     Medicine getSingleMedicine(String medicineId);
 
     String deleteMedicine(String medicineId);
+
+    String changeMedicineGroup(Medicine medicine);
 }

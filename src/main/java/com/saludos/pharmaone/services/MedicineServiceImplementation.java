@@ -62,4 +62,10 @@ public class MedicineServiceImplementation  implements MedicineService{
 
         return returnMessage;
     }
+
+    @Override
+    public String changeMedicineGroup(Medicine medicine) {
+       medicineRepository.save(medicine);
+        return "success";
+    }
 }

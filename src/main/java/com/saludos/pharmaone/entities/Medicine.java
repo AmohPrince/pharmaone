@@ -98,4 +98,18 @@ public class Medicine {
     public void setMedicineGroup(MedicineGroup medicineGroup) {
         this.medicineGroup = medicineGroup;
     }
+
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "medicineId='" + medicineId + '\'' +
+                ", medicineName='" + medicineName + '\'' +
+                ", inStock=" + inStock +
+                ", lifetimeSupply='" + lifetimeSupply + '\'' +
+                ", lifetimeSales='" + lifetimeSales + '\'' +
+                ", howToUse='" + howToUse + '\'' +
+                ", sideEffects='" + sideEffects + '\'' +
+                ", medicineGroup=" + medicineGroup +
+                '}';
+    }
 }

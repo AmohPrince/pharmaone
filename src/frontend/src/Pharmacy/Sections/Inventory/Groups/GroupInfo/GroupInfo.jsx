@@ -172,7 +172,7 @@ const GroupInfo = () => {
               <form onSubmit={handleSubmit(onDelete)}>
                 <input type="submit" value="Yes" />
               </form>
-              <p className="cancel" onClick={handleDeleteGroup}>
+              <p className="cancel cursor" onClick={handleDeleteGroup}>
                 Cancel
               </p>
             </div>
