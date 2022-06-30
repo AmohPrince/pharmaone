@@ -2,16 +2,39 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import Assets from "../../../../../Assets/Assets";
 import { dataFlowContext } from "../../../../Pharmacy";
+import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 import "./SingleMedicineInGroup.css";
 
 const SingleMedicineInGroup = ({ data }) => {
-  const [removeFromGroup, setRemoveFromGroup] = useState(false);
+  const [removeFromGroupModal, setRemoveFromGroupModal] = useState(false);
   const { setOverlay, modals, setModals } = useContext(dataFlowContext);
 
-  const handleRemovingFromGroupModal = () => {
-    setRemoveFromGroup((prevState) => !prevState);
-    setOverlay((prevState) => !prevState);
-    setModals((prevState) => !prevState);
+  const showModal = () => {
+    setRemoveFromGroupModal(true);
+    setOverlay(true);
+    setModals(true);
+  };
+
+  const removeModal = () => {
+    setOverlay(false);
+    setRemoveFromGroupModal(false);
+    setModals(false);
+  };
+
+  useUpdateLogger(data);
+
+  const removeMedicineFromGroup = () => {
+    fetch(
+      `${process.env.REACT_APP_API_ROOT_URL}/changeMedicineGroup/${data.medicineId}/24`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.text())
+      .then((responseText) => console.log(responseText));
   };
 
   return (
@@ -19,27 +42,31 @@ const SingleMedicineInGroup = ({ data }) => {
       <div className="flex__container Singlemedicinegroup">
         <p className="p__poppins">{data.medicineName}</p>
         <p className="p__poppins">{data.inStock}</p>
-        <div className="flex__container" onClick={handleRemovingFromGroupModal}>
+        <div className="flex__container" onClick={showModal}>
           <img src={Assets.Trash} alt="Dustbin Icon" />
           <p className="p__poppins">Remove From Group</p>
         </div>
       </div>
       <div className="divider" />
-      {removeFromGroup && modals && (
+      {removeFromGroupModal && modals && (
         <div className="remove-from-group flex-v">
           <img
             src={Assets.Close}
             alt="Close"
-            onClick={handleRemovingFromGroupModal}
+            onClick={removeModal}
             className="cursor"
           />
           <p className="confirmation-text">
             Are you sure you want to remove {data.medicineName} from group{" "}
-            {data.medicineGroup.groupName} ?
+            {data.medicineGroup.groupName} ? The Medicine's group will be Unset.
           </p>
           <div className="flex space-between">
-            <input type="submit" value="Yes" />
-            <p className="cancel cursor" onClick={handleRemovingFromGroupModal}>
+            <input
+              type="submit"
+              value="Yes"
+              onClick={removeMedicineFromGroup}
+            />
+            <p className="cancel cursor" onClick={removeModal}>
               Cancel
             </p>
           </div>

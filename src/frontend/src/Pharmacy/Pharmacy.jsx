@@ -5,6 +5,7 @@ import Assets from "../Assets/Assets";
 import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
+import { useUpdateLogger } from "./Utilities/Updatelogger";
 
 export const dataGroupContext = createContext();
 export const dataGroup2Context = createContext();
