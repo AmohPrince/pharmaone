@@ -93,3 +93,10 @@
   width: 242px;
   justify-content: space-around;
 }
+.empty-group {
+  text-align: center;
+  padding: 20px 0;
+}
+.open-delete-modal-button {
+  width: fit-content;
+}

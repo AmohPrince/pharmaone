@@ -15,7 +15,6 @@ const Dashboardgrp = ({ data }) => {
   } = useContext(dataFlowContext);
 
   const handleTabChange = (tabToBeSet) => {
-    console.log(tabToBeSet);
     if (tabToBeSet === "medslist") {
       setInventoryOn(true);
       setActiveChildTab("listofmedicine");

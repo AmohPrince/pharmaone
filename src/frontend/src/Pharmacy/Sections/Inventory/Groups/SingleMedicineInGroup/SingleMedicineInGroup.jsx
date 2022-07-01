@@ -21,8 +21,6 @@ const SingleMedicineInGroup = ({ data }) => {
     setModals(false);
   };
 
-  useUpdateLogger(data);
-
   const removeMedicineFromGroup = () => {
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/changeMedicineGroup/${data.medicineId}/24`,

@@ -65,7 +65,7 @@ public class MedicineController {
 
        try {
        medicineRepository.save(medicine);
-            return "Success!!";
+            return "Successfully changed " + medicine.getMedicineName()+"'s group to " + medicineGroup.getGroupName();
        }catch (Exception e){
            return e.getLocalizedMessage();
        }

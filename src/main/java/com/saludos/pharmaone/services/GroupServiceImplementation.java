@@ -30,7 +30,7 @@ public class GroupServiceImplementation implements GroupService{
         String returnMessage = "";
         try{
             groupRepository.deleteById(groupId);
-            returnMessage = "Successfully deleted";
+            returnMessage = "Successfully deleted group with id " + groupId;
         }catch (EmptyResultDataAccessException e){
             returnMessage = "Already deleted!";
         }
