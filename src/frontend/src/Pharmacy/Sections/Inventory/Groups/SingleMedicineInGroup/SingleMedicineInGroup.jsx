@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import Assets from "../../../../../Assets/Assets";
 import { dataFlowContext } from "../../../../Pharmacy";
-import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 import "./SingleMedicineInGroup.css";
 
-const SingleMedicineInGroup = ({ data }) => {
+const SingleMedicineInGroup = ({ data, setRefetchRequired }) => {
   const [removeFromGroupModal, setRemoveFromGroupModal] = useState(false);
-  const { setOverlay, modals, setModals } = useContext(dataFlowContext);
+  const { setOverlay, modals, setModals, setLoading } =
+    useContext(dataFlowContext);
 
   const showModal = () => {
     setRemoveFromGroupModal(true);
@@ -22,6 +22,8 @@ const SingleMedicineInGroup = ({ data }) => {
   };
 
   const removeMedicineFromGroup = () => {
+    setLoading(true);
+    removeModal();
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/changeMedicineGroup/${data.medicineId}/24`,
       {
@@ -32,12 +34,16 @@ const SingleMedicineInGroup = ({ data }) => {
       }
     )
       .then((res) => res.text())
-      .then((responseText) => console.log(responseText));
+      .then((responseText) => {
+        console.log(responseText);
+        setLoading(false);
+        setRefetchRequired(true);
+      });
   };
 
   return (
     <>
-      <div className="flex__container Singlemedicinegroup">
+      <div className="flex Singlemedicinegroup">
         <p className="p__poppins">{data.medicineName}</p>
         <p className="p__poppins">{data.inStock}</p>
         <div className="flex__container" onClick={showModal}>

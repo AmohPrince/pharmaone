@@ -19,7 +19,8 @@ import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 
 const MedicineInfo = () => {
   let params = useParams();
-  let { getSpecificMedicineWithId, setOverlay } = useContext(dataFlowContext);
+  let { getSpecificMedicineWithId, setOverlay, setLoading } =
+    useContext(dataFlowContext);
 
   const [medicineName, setMedicineName] = useState(" ");
 
@@ -44,11 +45,15 @@ const MedicineInfo = () => {
   const { register, handleSubmit } = useForm();
 
   const fetchMedicineData = () => {
+    setLoading(true);
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/getsinglemedicine/${params.medicineId}`
     )
       .then((res) => res.json())
-      .then((data) => setMedicineData(data));
+      .then((data) => {
+        setMedicineData(data);
+        setLoading(false);
+      });
   };
   const handleModal = (choice) => {
     if (choice === "open") {

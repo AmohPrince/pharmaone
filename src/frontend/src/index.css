@@ -11,6 +11,7 @@
   --primaryGreen: #009099;
   --lightGrey: #e3ebf3;
   --border: rgb(174, 181, 187);
+  --primary: #f0483e;
 }
 
 * {
@@ -21,7 +22,6 @@
 }
 *::-webkit-scrollbar {
   width: 7px;
-  /* background: rgba(98, 108, 122, 1); */
 }
 *::-webkit-scrollbar-track {
   background-color: var(--black2);
@@ -29,10 +29,6 @@
 *::-webkit-scrollbar-thumb {
   background-color: rgba(98, 108, 122, 1);
   border-radius: 20px;
-}
-p,
-.p__poppins {
-  font-family: "Poppins", sans-serif;
 }
 .flex__container {
   display: flex;

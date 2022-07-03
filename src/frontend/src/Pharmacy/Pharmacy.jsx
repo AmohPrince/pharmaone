@@ -5,6 +5,7 @@ import Assets from "../Assets/Assets";
 import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
+import Chase from "./Components/Pill/Chase";
 
 export const dataGroupContext = createContext();
 export const dataGroup2Context = createContext();
@@ -17,7 +18,7 @@ const Pharmacy = () => {
   const [revenue, setRevenue] = useState(0);
   const [availableMeds, setAvailableMeds] = useState(0);
   const [medicineShortage, setMedicineShortage] = useState(-1);
-  const [medicineGroups, setMedicineGroups] = useState(0);
+  const [noOfGroups, setNoOfGroups] = useState(0);
   const [soldMedicine, setSoldMedicine] = useState(45);
   const [generatedInvoices, setGeneratedInvoices] = useState(13);
   const [noOfSuppliers, setNoOfSuppliers] = useState(22);
@@ -37,6 +38,7 @@ const Pharmacy = () => {
   const [usersList, setUsersList] = useState([]);
   const [overlay, setOverlay] = useState(false);
   const [modals, setModals] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -112,7 +114,7 @@ const Pharmacy = () => {
   }, [medicineList]);
 
   useEffect(() => {
-    setMedicineGroups(groupsList.length);
+    setNoOfGroups(groupsList.length);
     getGroupOptions();
   }, [groupsList]);
 
@@ -139,22 +141,21 @@ const Pharmacy = () => {
   };
 
   const flowingData = {
-    currentInventoryStatus: inventoryStatus,
-    currentRevenue: revenue,
-    currentAvailableMeds: availableMeds,
-    currentMedicineShortage: medicineShortage,
-    currentMedicineGroups: medicineGroups,
-    currentSoldMedicine: soldMedicine,
-    currentGeneratedInvoices: generatedInvoices,
-    currentNoOfSuppliers: noOfSuppliers,
-    currentNoOfUsers: noOfUsers,
-    currentNoOfCustomers: noOfCustomers,
-    currentFrequentlyBoughtItem: frequentlyBoughtItem,
+    inventoryStatus,
+    revenue,
+    availableMeds,
+    medicineShortage,
+    noOfGroups,
+    soldMedicine,
+    generatedInvoices,
+    noOfSuppliers,
+    noOfUsers,
+    noOfCustomers,
+    frequentlyBoughtItem,
     setInventoryStatus,
     setRevenue,
     setAvailableMeds,
     setMedicineShortage,
-    setMedicineGroups,
     setSoldMedicine,
     setGeneratedInvoices,
     setNoOfSuppliers,
@@ -176,10 +177,11 @@ const Pharmacy = () => {
     setInventoryOn,
     setActiveChildTab,
     setReportsOn,
-    usersList,
-    setOverlay,
-    modals,
     setModals,
+    setOverlay,
+    setLoading,
+    usersList,
+    modals,
   };
 
   const dataGroup = [
@@ -223,7 +225,7 @@ const Pharmacy = () => {
     },
     {
       icon: Assets.MedicalGreen,
-      status: medicineGroups,
+      status: noOfGroups,
       name: "Medicine Groups",
       linkTo: "inventory/groups",
       accentColor: "#01A768",
@@ -269,7 +271,7 @@ const Pharmacy = () => {
       groupTitle: "Inventory",
       linkTo: "Configuration",
       value1: availableMeds,
-      value2: medicineGroups,
+      value2: noOfGroups,
       text1: "Total no of Medicines",
       text2: "Medicine Groups",
       activeTab: "configuration-active",
@@ -311,6 +313,11 @@ const Pharmacy = () => {
           }}
         />
       ) : null}
+      {loading && (
+        <div className="overlay loading">
+          <Chase />
+        </div>
+      )}
       <div className="Pharmacy ">
         {/* Aside Section Begins Here */}
         <aside className="Pharmacy__sidebar">

@@ -6,11 +6,18 @@ import { dataFlowContext } from "../../../../Pharmacy";
 import Assets from "../../../../../Assets/Assets";
 import SingleMedicineInGroup from "../SingleMedicineInGroup/SingleMedicineInGroup";
 import { Searchbar } from "../../../../Components/Components";
+import { useNavigate } from "react-router-dom";
 
 const GroupInfo = () => {
-  const { setOverlay, getSpecificGroupWithName, setModals, modals } =
-    useContext(dataFlowContext);
+  const {
+    setOverlay,
+    getSpecificGroupWithName,
+    setModals,
+    modals,
+    setLoading,
+  } = useContext(dataFlowContext);
 
+  let navigate = useNavigate();
   let params = useParams();
   const data = getSpecificGroupWithName(params.groupName);
 
@@ -18,6 +25,7 @@ const GroupInfo = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [noOfMedicine, setNoOfMedicine] = useState(0);
+  const [refetchRequired, setRefetchRequired] = useState(false);
 
   const title = {
     main: `${data.groupName}(${noOfMedicine})`,
@@ -55,10 +63,6 @@ const GroupInfo = () => {
     placeholder: "Enter Medicine Name or Medicine ID",
   };
 
-  useEffect(() => {
-    fetchNoOfMedicinesInGroup();
-  }, []);
-
   const fetchNoOfMedicinesInGroup = () => {
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/getnumberofmedicineingroup/${data.groupId}`
@@ -69,7 +73,8 @@ const GroupInfo = () => {
 
   useEffect(() => {
     fetchMedicineInGroup();
-  }, []);
+    fetchNoOfMedicinesInGroup();
+  }, [[], refetchRequired]);
 
   const searchMedicines = (e) => {
     if (e.target.value === "") {
@@ -120,7 +125,7 @@ const GroupInfo = () => {
     console.log("Added medicine to group!");
   };
 
-  const deleteGroup = () => {
+  const deleteGroup = () =>
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/deletegroup/${data.groupId}`, {
       method: "DELETE",
       headers: {
@@ -129,7 +134,6 @@ const GroupInfo = () => {
     })
       .then((res) => res.text())
       .then((response) => console.log(response));
-  };
 
   const changeMedicineGroup = (medicineId, groupIdToChangeTo) => {
     return fetch(
@@ -146,11 +150,15 @@ const GroupInfo = () => {
   };
 
   const removeMedicinesFromGroup = async () => {
+    closeDeleteModal();
+    setLoading(true);
     let unSetGroupId = 24;
     for (const medicine of groupMedicines) {
       await changeMedicineGroup(medicine.medicineId, unSetGroupId);
     }
-    deleteGroup();
+    await deleteGroup();
+    await setLoading(false);
+    navigate("/inventory/groups");
   };
 
   return (
@@ -191,7 +199,11 @@ const GroupInfo = () => {
         ) : (
           groupMedicines.map((data) => {
             return (
-              <SingleMedicineInGroup data={data} key={data.medicineName} />
+              <SingleMedicineInGroup
+                data={data}
+                key={data.medicineName}
+                setRefetchRequired={setRefetchRequired}
+              />
             );
           })
         )}

@@ -14,9 +14,7 @@ import { Spinner } from "../../../Components/Components";
  */
 
 const ListOfMeds = () => {
-  const incomingData = useContext(dataFlowContext);
-  const groupNames = incomingData.groupNames;
-  const medicineList = incomingData.medicineList;
+  const { groupNames, medicineList } = useContext(dataFlowContext);
   const medicineListLength = medicineList.length;
   const [filteredMedicineList, setFilteredMedicineList] = useState([]);
   const [beginIndex, setBeginIndex] = useState(0);
@@ -97,7 +95,7 @@ const ListOfMeds = () => {
     sub: "List of medicines available for sales",
     complex: "level1",
     source: "Inventory",
-    meds: incomingData.currentAvailableMeds,
+    meds: medicineList.length,
   };
 
   const buttonData = {

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const Groups = () => {
   const incomingData = useContext(dataFlowContext);
   const groupList = incomingData.groupsList;
+  const { noOfGroups } = useContext(dataFlowContext);
 
   const [filteredGroupsList, setFilteredGroupsList] = useState([]);
 
@@ -21,7 +22,7 @@ const Groups = () => {
     sub: "List of medicines groups",
     complex: "level1",
     source: "Inventory",
-    meds: incomingData.currentMedicineGroups,
+    meds: noOfGroups,
   };
   const buttonData = {
     color: "#F0483E",

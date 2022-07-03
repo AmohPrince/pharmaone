@@ -69,14 +69,14 @@ const NewMedicine = () => {
       {openModal === true || errorModal === true ? (
         <div className="Medicine__info-overlay" />
       ) : null}
-      <div className="Inventory__container">
+      <div className="padding-around">
         <SectionName title={title} />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="medicineaddform flex__container-v "
         >
-          <div className="flex__container">
+          <div className="flex__container space-between medicineName">
             <label htmlFor="medicineName">
               <p className="p__poppins">Medicine Name</p>
               <input {...register("medicineName", { required: true })} />
@@ -89,7 +89,7 @@ const NewMedicine = () => {
               <input {...register("medicineId")} />
             </label>
           </div>
-          <div className="flex__container medicineGroup">
+          <div className="flex__container space-between medicineGroup">
             <label htmlFor="medicineGroup">
               <p className="p__poppins">Medicine Group</p>
               <select
