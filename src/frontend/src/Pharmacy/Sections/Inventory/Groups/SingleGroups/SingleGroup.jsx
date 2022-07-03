@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Assets from "../../../../../Assets/Assets";
+import { dataFlowContext } from "../../../../Pharmacy";
 import "./SingleGroup.css";
 
 const SingleGroup = ({ data }) => {
+  const { setLoading } = useContext(dataFlowContext);
   const [noOfMedicine, setNoOfMedicine] = useState(0);
   useEffect(() => {
     fetchNoOfMedicinesInGroup();
   }, []);
   const fetchNoOfMedicinesInGroup = () => {
+    setLoading(true);
     fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/getnumberofmedicineingroup/${data.groupId}`
     )
       .then((res) => res.json())
-      .then((resBody) => setNoOfMedicine(resBody));
+      .then((resBody) => {
+        setNoOfMedicine(resBody);
+        setLoading(false);
+      });
   };
   return (
     <>

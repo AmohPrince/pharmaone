@@ -73,12 +73,14 @@ const Pharmacy = () => {
 
   //Get all Medicine
   const fetchMedicine = () => {
+    setLoading(true);
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/getallmedicine`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        return setMedicineList(data);
+        setMedicineList(data);
+        setLoading(false);
       })
       .catch((error) => failedFetchRetrying(error));
   };

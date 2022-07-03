@@ -91,9 +91,7 @@ const GroupInfo = () => {
 
   const fetchMedicineInGroup = () => {
     fetch(`${process.env.REACT_APP_API_ROOT_URL}/getbygroupid/${data.groupId}`)
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((resBody) => setGroupMedicines(resBody));
   };
 

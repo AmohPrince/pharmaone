@@ -22,6 +22,14 @@ const ListOfMeds = () => {
   const [buttonLeftDisabled, setButtonLeftDisabled] = useState(false);
   const [buttonRightDisabled, setButtonRightDisabled] = useState(false);
 
+  const title = {
+    main: "List of medicines",
+    sub: "List of medicines available for sales",
+    complex: "level1",
+    source: "Inventory",
+    meds: medicineList.length,
+  };
+
   useEffect(() => {
     filterMedicineList();
   }, [medicineListLength, beginIndex, endIndex]);
@@ -90,14 +98,6 @@ const ListOfMeds = () => {
     }
   };
 
-  const title = {
-    main: "List of medicines",
-    sub: "List of medicines available for sales",
-    complex: "level1",
-    source: "Inventory",
-    meds: medicineList.length,
-  };
-
   const buttonData = {
     color: "#F0483E",
     text: "Add New Item",
@@ -122,7 +122,7 @@ const ListOfMeds = () => {
   };
 
   return (
-    <div className="Inventory__container">
+    <div className="padding-around">
       <div className="Inventory__container-top flex__container">
         <SectionName title={title} />
         <Link
@@ -209,13 +209,9 @@ const ListOfMeds = () => {
         </div>
         <div className="containersplitter" />
         <div className="Inventory__container-body">
-          {medicineList.length === 0 ? (
-            <Spinner context="spinner__wrapper" />
-          ) : (
-            filteredMedicineList.map((data) => {
-              return <SingleMedicine data={data} key={data.medicineId} />;
-            })
-          )}
+          {filteredMedicineList.map((data) => (
+            <SingleMedicine data={data} key={data.medicineId} />
+          ))}
         </div>
       </div>
       <div className="listofmeds__footer flex__container">
