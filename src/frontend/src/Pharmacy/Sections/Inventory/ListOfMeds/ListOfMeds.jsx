@@ -5,7 +5,6 @@ import { dataFlowContext } from "../../../Pharmacy";
 import Assets from "../../../../Assets/Assets";
 import SingleMedicine from "./SingleMedicine/SingleMedicine";
 import { Link } from "react-router-dom";
-import { Spinner } from "../../../Components/Components";
 
 /**
  * This component will have some form of fetch that will pull data
@@ -122,8 +121,8 @@ const ListOfMeds = () => {
   };
 
   return (
-    <div className="padding-around">
-      <div className="Inventory__container-top flex__container">
+    <div className="list-of-medicine padding-around flex-v">
+      <div className="Inventory__container-top flex">
         <SectionName title={title} />
         <Link
           to="/Inventory/listofmeds/addnewmedicine"
@@ -132,9 +131,9 @@ const ListOfMeds = () => {
           <RedButton buttonData={buttonData} />
         </Link>
       </div>
-      <div className="Inventory__container-mid flex__container">
+      <div className="Inventory__container-mid flex">
         <div
-          className="Topbar__input flex__container"
+          className="Topbar__input flex"
           id="SearchMedicineInventoryContainer"
         >
           <input
@@ -148,7 +147,7 @@ const ListOfMeds = () => {
           />
           <img src={Assets.Search} alt="Search Icon" />
         </div>
-        <div className="SearchMed flex__container">
+        <div className="SearchMed flex">
           <img src={Assets.Filter} alt="Filter Icon" />
           <select
             name="selectmedgroup"
@@ -170,7 +169,7 @@ const ListOfMeds = () => {
         </div>
       </div>
       <div className="Inventory__container-bottom">
-        <div className="Inventory__container-titles flex__container">
+        <div className="Inventory__container-titles flex">
           <div
             onClick={() => {
               handleSort("medicineName");
@@ -214,7 +213,7 @@ const ListOfMeds = () => {
           ))}
         </div>
       </div>
-      <div className="listofmeds__footer flex__container">
+      <div className="listofmeds__footer flex">
         <p>
           Showing {beginIndex + 1} -{" "}
           {endIndex > filteredMedicineList.length
@@ -222,7 +221,7 @@ const ListOfMeds = () => {
             : endIndex}{" "}
           results of {filteredMedicineList.length}
         </p>
-        <div className="listofmeds__footer-pageswitch flex__container">
+        <div className="listofmeds__footer-pageswitch flex">
           <button
             onClick={() => switchPage("back")}
             disabled={buttonLeftDisabled}

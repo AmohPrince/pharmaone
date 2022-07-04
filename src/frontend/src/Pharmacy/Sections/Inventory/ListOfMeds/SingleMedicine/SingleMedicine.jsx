@@ -11,23 +11,23 @@ const SingleMedicine = ({ data }) => {
   return (
     <div className="SingleMedicine__container flex__container-v">
       <div className="SingleMedicine__body flex__container">
-        <p className="p__poppins">{data.medicineName}</p>
-        <p className="p__poppins">{data.medicineId}</p>
+        <p>{data.medicineName}</p>
+        <p>{data.medicineId}</p>
         {data.medicineGroup === null ? (
-          <p className="p__poppins">Unset</p>
+          <p>Unset</p>
         ) : (
-          <p className="p__poppins">{data.medicineGroup.groupName}</p>
+          <p>{data.medicineGroup.groupName}</p>
         )}
 
-        <p className="p__poppins">{data.inStock}</p>
+        <p>{data.inStock}</p>
         <Link to={data.medicineId} style={{ textDecoration: "none" }}>
           <div className="SingleMedicine__body-link flex__container">
-            <p className="p__poppins">View Full Detail</p>
+            <p>View Full Detail</p>
             <img src={Assets.DirectionArrows} alt="Directions" />
           </div>
         </Link>
       </div>
-      <div className="medicinesplitter" />
+      <div className="medicine-splitter" />
     </div>
   );
 };

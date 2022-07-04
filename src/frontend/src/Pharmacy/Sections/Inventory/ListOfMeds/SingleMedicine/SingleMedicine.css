@@ -1,7 +1,13 @@
-.medicinesplitter {
+.SingleMedicine__container {
+  position: relative;
+  height: calc(100% / 6);
+}
+.medicine-splitter {
   width: 100%;
   height: 0.5px;
   background-color: var(--border);
+  position: absolute;
+  bottom: 0;
 }
 .SingleMedicine__body {
   width: 100%;

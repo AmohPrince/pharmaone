@@ -1,3 +1,7 @@
+.Medicine__info-container {
+  position: relative;
+  padding: 2% 4%;
+}
 .Medicine__info-top > :first-child {
   justify-content: space-between;
 }
@@ -16,7 +20,7 @@
 .sendStockRequest {
   margin-right: 10px;
 }
-.Medicine__info-mid > .flex__container {
+.Medicine__info-mid > .flex {
   justify-content: space-between;
   margin-top: 20px;
 }
@@ -45,7 +49,9 @@
   font-size: 0.9rem;
 }
 .Medicine__data-description {
-  padding: 20px;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 45px;
 }
 .Medicine__data-description p {
   font-size: 0.9rem;
@@ -53,9 +59,6 @@
 }
 .Medicine__data-b {
   margin-top: 15px;
-}
-.deleteMedicine {
-  margin-top: 5px;
 }
 .medicnedatasplitter {
   width: 100%;
@@ -126,9 +129,7 @@ textarea:focus {
   border: 1px solid var(--skyBlue);
   outline: none;
 }
-.Medicine__info-container {
-  position: relative;
-}
+
 .edit__modal {
   position: absolute;
   top: 2%;
@@ -154,7 +155,7 @@ textarea:focus {
   transition: background-color 200s ease-in-out;
 }
 .deleteMedicine {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 .deletemodal {
   position: absolute;
@@ -171,6 +172,7 @@ textarea:focus {
 .deletemodal__container {
   position: relative;
   padding: 50px 20px;
+  align-items: center;
 }
 
 .deletemodal__container > img:first-of-type {
