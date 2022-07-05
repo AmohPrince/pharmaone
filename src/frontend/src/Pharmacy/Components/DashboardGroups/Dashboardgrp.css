@@ -24,7 +24,7 @@
   left: 0;
   justify-content: center;
 }
-.Dashboardgrp__btm > .p__poppins {
+.Dashboardgrp__btm > p {
   font-weight: 400;
   font-size: 0.8rem;
   color: var(--black);

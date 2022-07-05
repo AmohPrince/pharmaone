@@ -238,7 +238,7 @@ const Pharmacy = () => {
       icon: Assets.AvailableMeds,
       status: availableMeds,
       name: "Medicines Available",
-      linkTo: "inventory/listofmeds",
+      linkTo: "inventory/listofmedicines",
       accentColor: "#03A9F5",
       bgColor: "#03A9F54D",
       activeTab: "medslist",

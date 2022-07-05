@@ -46,18 +46,14 @@ const Dashboardgrp = ({ data }) => {
       style={{ border: `1px solid ${data.accentColor}` }}
     >
       <img src={data.icon} alt="Icon" />
-      {data.rs === true ? (
-        <p className="p__poppins">Ksh. {amountSold}</p>
-      ) : (
-        <p className="p__poppins">{data.status}</p>
-      )}
+      {data.rs === true ? <p>Ksh. {amountSold}</p> : <p>{data.status}</p>}
       {data.select === true ? (
         <div className="flex__container">
-          <p className="p__poppins">{data.name}</p>
+          <p>{data.name}</p>
           <Select />
         </div>
       ) : (
-        <p className="p__poppins">{data.name}</p>
+        <p>{data.name}</p>
       )}
 
       <Link to={`/${data.linkTo}`}>
@@ -71,26 +67,18 @@ const Dashboardgrp = ({ data }) => {
             handleTabChange(data.activeTab);
           }}
         >
-          {data.linkTo === "reports" ? (
-            <p className="p__poppins">View Detailed Report</p>
-          ) : null}
+          {data.linkTo === "reports" ? <p>View Detailed Report</p> : null}
           {data.linkTo === "reports/salesreport" ? (
-            <p className="p__poppins">View Detailed Report</p>
+            <p>View Detailed Report</p>
           ) : null}
           {data.linkTo === "reports/paymentreport" ? (
-            <p className="p__poppins">View Detailed Report</p>
+            <p>View Detailed Report</p>
           ) : null}
-          {data.linkTo === "inventory" ? (
-            <p className="p__poppins">Visit Inventory</p>
-          ) : null}
-          {data.linkTo === "listofmeds" ? (
-            <p className="p__poppins">Resolve Now</p>
-          ) : null}
-          {data.linkTo === "inventory/groups" ? (
-            <p className="p__poppins">View Groups</p>
-          ) : null}
-          {data.linkTo === "inventory/listofmeds" ? (
-            <p className="p__poppins">View Full List</p>
+          {data.linkTo === "inventory" ? <p>Visit Inventory</p> : null}
+          {data.linkTo === "listofmeds" ? <p>Resolve Now</p> : null}
+          {data.linkTo === "inventory/groups" ? <p>View Groups</p> : null}
+          {data.linkTo === "inventory/listofmedicines" ? (
+            <p>View Full List</p>
           ) : null}
 
           <img src={Assets.DirectionArrows} alt="Direction Arrows" />
