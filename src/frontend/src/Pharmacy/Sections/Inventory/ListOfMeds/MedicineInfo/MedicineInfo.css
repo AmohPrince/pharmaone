@@ -256,3 +256,6 @@ textarea:focus {
   top: -70px;
   right: 40px;
 }
+#inStock {
+  display: none;
+}

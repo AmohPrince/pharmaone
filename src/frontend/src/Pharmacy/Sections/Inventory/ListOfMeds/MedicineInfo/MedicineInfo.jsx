@@ -15,7 +15,7 @@ import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 
 const MedicineInfo = () => {
   let params = useParams();
-  let { getSpecificMedicineWithId, setOverlay, setLoading } =
+  let { getSpecificMedicineWithId, setOverlay, setLoading, groupsList } =
     useContext(dataFlowContext);
 
   const [medicineName, setMedicineName] = useState(" ");
@@ -30,8 +30,6 @@ const MedicineInfo = () => {
   const { register, handleSubmit } = useForm();
 
   let navigate = useNavigate();
-
-  useUpdateLogger(medicineData);
 
   const title = {
     main: medicineName,
@@ -85,6 +83,14 @@ const MedicineInfo = () => {
 
   //Put
   const onUpdate = (data) => {
+    const submittingGroup = groupsList.find(
+      (group) => group.groupName === data.groupName
+    );
+    delete data.groupName;
+    data.medicineGroup = {
+      groupId: submittingGroup.groupId,
+    };
+
     console.log(data);
     closeEditModal();
     setLoading(true);
@@ -302,6 +308,13 @@ const MedicineInfo = () => {
                         {...register("medicineId")}
                       />
                     </div>
+                    <div id="inStock">
+                      <input
+                        type="text"
+                        defaultValue={medicineData.inStock}
+                        {...register("inStock")}
+                      />
+                    </div>
                     <div>
                       <label htmlFor="medicinegroupinput">Medicine Group</label>
                       <input
@@ -326,6 +339,7 @@ const MedicineInfo = () => {
                         className="medicineeditinput"
                         defaultValue={medicineData.lifetimeSupply}
                         {...register("lifetimeSupply")}
+                        required
                       />
                     </div>
                     <div>
@@ -338,6 +352,7 @@ const MedicineInfo = () => {
                         className="medicineeditinput"
                         defaultValue={medicineData.lifetimeSales}
                         {...register("lifetimeSales")}
+                        required
                       />
                     </div>
                   </div>
