@@ -1,5 +1,5 @@
 .Dashboardgrp__container {
-  width: 212px;
+  width: 23%;
   height: 180px;
   justify-content: unset;
   padding-top: 20px;
@@ -29,4 +29,10 @@
   font-size: 0.8rem;
   color: var(--black);
   margin-right: 10px;
+}
+@media screen and (max-width: 650px) {
+  .Dashboardgrp__container {
+    width: 80%;
+    margin-bottom: 20px;
+  }
 }

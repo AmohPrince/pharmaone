@@ -14,11 +14,16 @@
 .date__btm > :first-child {
   margin-right: 15px;
 }
-.date__btm > * {
+.date__btm {
+  justify-content: flex-end;
   font-size: 0.8rem;
   color: var(--black);
 }
 .date__btm > :last-child {
   width: 50px;
-  text-align: right;
+}
+@media screen and (max-width: 650px) {
+  .date {
+    margin-right: unset;
+  }
 }

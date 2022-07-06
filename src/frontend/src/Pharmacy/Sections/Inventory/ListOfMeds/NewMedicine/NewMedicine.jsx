@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./NewMedicine.css";
-import { RedButton, SectionName } from "../../../../Components/Components";
+import { SectionName } from "../../../../Components/Components";
 import { useForm } from "react-hook-form";
-import Assets from "../../../../../Assets/Assets";
 import { dataFlowContext } from "../../../../Pharmacy";
 
 const NewMedicine = () => {

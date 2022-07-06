@@ -1,5 +1,5 @@
 .DashBoardLinks__container {
-  width: 456px;
+  width: 48%;
   border: 1px solid var(--border);
   background: var(--white);
   border-radius: 4px;
@@ -40,4 +40,10 @@
   font-weight: 500;
   font-size: 0.9rem;
   color: var(--black);
+}
+
+@media screen and (max-width: 650px) {
+  .DashBoardLinks__container {
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@
   background-color: var(--lightGrey);
   padding: 1% 4%;
   padding-bottom: 2%;
-  height: 53%;
+  min-height: 53%;
 }
 .Dashboard__top-name {
   justify-content: space-between;

@@ -23,6 +23,7 @@ import {
   PaymentsReport,
   NewGroup,
 } from "./Pharmacy/Sections/Sections";
+import ErrorPage from "./Pharmacy/Components/ErrorPage/ErrorPage";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
@@ -68,14 +69,7 @@ root.render(
         <Route path="applicationSettings" element={<Settings />} />
         <Route path="getTechnicalHelp" element={<TechHelp />} />
       </Route>
-      <Route
-        path="*"
-        element={
-          <main style={{ padding: "1rem" }}>
-            <p>Not ready my friend!</p>
-          </main>
-        }
-      />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   </BrowserRouter>
 );

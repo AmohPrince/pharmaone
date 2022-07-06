@@ -79,6 +79,10 @@ aside {
 .Topbar__changelang {
   width: 15%;
 }
+.Topbar__date {
+  width: 35%;
+}
+
 .Topbar__changelang :first-child {
   width: 20px;
   height: 20px;

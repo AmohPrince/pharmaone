@@ -6,6 +6,7 @@ import Date from "./Components/Date/Date";
 import ProfileOn from "./Components/ProfileOn/ProfileOn";
 import RightTab from "./Components/RightTab/RightTab";
 import Chase from "./Components/Pill/Chase";
+import { useUpdateLogger } from "./Utilities/Updatelogger";
 
 export const dataGroupContext = createContext();
 export const dataGroup2Context = createContext();
@@ -25,7 +26,7 @@ const Pharmacy = () => {
   const [noOfUsers, setNoOfUsers] = useState(44);
   const [noOfCustomers, setNoOfCustomers] = useState(4);
   const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
-  const [payments, setPayments] = useState(70);
+  const [payments, setPayments] = useState(0);
   const [medicineList, setMedicineList] = useState([]);
   const [groupsList, setGroupsList] = useState([]);
   const [groupNames, setGroupNames] = useState([]);
@@ -69,6 +70,7 @@ const Pharmacy = () => {
 
   useEffect(() => {
     calculateTotalRevenue();
+    setPayments(salesList.length);
   }, [salesList]);
 
   //Get all Medicine
@@ -141,6 +143,18 @@ const Pharmacy = () => {
     });
     setGroupNames(groupNames);
   };
+
+  useUpdateLogger(medicineList);
+
+  const getMedicinesWithShortage = () => {
+    setMedicineShortage(
+      medicineList.filter((medicine) => medicine.inStock === 0).length
+    );
+  };
+
+  useEffect(() => {
+    getMedicinesWithShortage();
+  }, [medicineList]);
 
   const flowingData = {
     inventoryStatus,
@@ -218,7 +232,7 @@ const Pharmacy = () => {
     },
     {
       icon: Assets.Danger,
-      status: medicineShortage,
+      status: -Math.abs(medicineShortage),
       name: "Medicine Shortage",
       linkTo: "listofmeds",
       accentColor: "#F0483E",
