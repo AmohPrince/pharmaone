@@ -6,7 +6,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "medicine")
+@Table
 public class Medicine {
     @Id
     String medicineId;

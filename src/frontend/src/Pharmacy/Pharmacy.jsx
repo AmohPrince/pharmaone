@@ -40,10 +40,19 @@ const Pharmacy = () => {
   const [overlay, setOverlay] = useState(false);
   const [modals, setModals] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [suppliers, setSuppliers] = useState([]);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
     profile.classList.toggle("active");
+  };
+
+  const fetchSuppliers = () => {
+    fetch(`${process.env.REACT_APP_API_ROOT_URL}/suppliers/getAllSuppliers`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSuppliers(data);
+      });
   };
 
   //fetch users
@@ -111,6 +120,7 @@ const Pharmacy = () => {
     fetchGroups();
     fetchSales();
     fetchUsers();
+    fetchSuppliers();
   }, []);
 
   useEffect(() => {
@@ -198,6 +208,7 @@ const Pharmacy = () => {
     setLoading,
     usersList,
     modals,
+    suppliers,
   };
 
   const dataGroup = [

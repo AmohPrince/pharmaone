@@ -6,28 +6,34 @@ import Assets from "../../../../../Assets/Assets";
 import "./MedicineInfo.css";
 import { useForm } from "react-hook-form";
 import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
-/**
- * This component takes a param from the url that i will use to fetch data
- * from the server
- * For now i might have to hard code the data.
- * @returns
- */
 
 const MedicineInfo = () => {
   let params = useParams();
-  let { getSpecificMedicineWithId, setOverlay, setLoading, groupsList } =
-    useContext(dataFlowContext);
+  let {
+    getSpecificMedicineWithId,
+    setOverlay,
+    setLoading,
+    groupsList,
+    suppliers,
+    setActiveTab,
+    setInventoryOn,
+    setReportsOn,
+  } = useContext(dataFlowContext);
 
   const [medicineName, setMedicineName] = useState(" ");
   const fetchMedicineName = () => {
     const data = getSpecificMedicineWithId(params.medicineId);
     setMedicineName(data.medicineName);
   };
-
   const [medicineData, setMedicineData] = useState([]);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const { register, handleSubmit } = useForm();
+  const [supplier, setSupplier] = useState([
+    {
+      supplierId: "temp",
+    },
+  ]);
 
   let navigate = useNavigate();
 
@@ -69,9 +75,9 @@ const MedicineInfo = () => {
     setOverlay(false);
   };
 
-  const fetchMedicineData = () => {
+  const fetchMedicineData = async () => {
     setLoading(true);
-    fetch(
+    await fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/getsinglemedicine/${params.medicineId}`
     )
       .then((res) => res.json())
@@ -80,6 +86,12 @@ const MedicineInfo = () => {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (medicineData.length === undefined) {
+      fetchMedicineSupplier();
+    }
+  }, [medicineData]);
 
   //Put
   const onUpdate = (data) => {
@@ -140,6 +152,15 @@ const MedicineInfo = () => {
       });
   };
 
+  const fetchMedicineSupplier = () => {
+    setSupplier(
+      suppliers.filter(
+        (supplier) =>
+          supplier.medicineGroup.groupId === medicineData.medicineGroup.groupId
+      )
+    );
+  };
+
   useEffect(() => {
     fetchMedicineData();
     fetchMedicineName();
@@ -194,11 +215,18 @@ const MedicineInfo = () => {
               <div className="Medicine__data-title flex">
                 <p>Inventory in Qty</p>
                 <Link
-                  to="/medicinesupplier"
+                  to={`/contactmanagement/suppliers/${supplier[0].supplierId}`}
                   className="flex"
                   style={{ textDecoration: "none" }}
                 >
-                  <p className="p__poppins sendStockRequest">
+                  <p
+                    className="p__poppins sendStockRequest"
+                    onClick={() => {
+                      setActiveTab("contact-management-active");
+                      setInventoryOn(false);
+                      setReportsOn(false);
+                    }}
+                  >
                     Send Stock Request
                   </p>
                   <img src={Assets.DirectionArrows} alt="Direction Arrows" />

@@ -2,8 +2,9 @@ package com.saludos.pharmaone.entities;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "medicine_group")
+@Table
 public class MedicineGroup {
 
     @Id

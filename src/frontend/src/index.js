@@ -24,6 +24,7 @@ import {
   NewGroup,
 } from "./Pharmacy/Sections/Sections";
 import ErrorPage from "./Pharmacy/Components/ErrorPage/ErrorPage";
+import Suppliers from "./Pharmacy/Sections/ContactManagement/Suppliers/Suppliers";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
@@ -65,6 +66,11 @@ root.render(
         <Route path="covid-19" element={<Covid />} />
         <Route path="configuration" element={<Configuration />} />
         <Route path="contactmanagement" element={<ContactManagement />} />
+        <Route
+          path="contactmanagement/suppliers/:supplierId"
+          element={<Suppliers />}
+        />
+
         <Route path="notifications" element={<Notifications />} />
         <Route path="applicationSettings" element={<Settings />} />
         <Route path="getTechnicalHelp" element={<TechHelp />} />
