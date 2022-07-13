@@ -7,6 +7,7 @@ import Assets from "../../../../../Assets/Assets";
 import SingleMedicineInGroup from "../SingleMedicineInGroup/SingleMedicineInGroup";
 import { Searchbar } from "../../../../Components/Components";
 import { useNavigate } from "react-router-dom";
+import SearchItem from "./SearchItems/SearchItem";
 
 const GroupInfo = () => {
   const {
@@ -15,6 +16,7 @@ const GroupInfo = () => {
     setModals,
     modals,
     setLoading,
+    medicineList,
   } = useContext(dataFlowContext);
 
   let navigate = useNavigate();
@@ -26,6 +28,9 @@ const GroupInfo = () => {
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [noOfMedicine, setNoOfMedicine] = useState(0);
   const [refetchRequired, setRefetchRequired] = useState(false);
+  const [medicineNames, setMedicineNames] = useState(
+    medicineList.map((medicine) => medicine.medicineName)
+  );
 
   const title = {
     main: `${data.groupName}(${noOfMedicine})`,
@@ -56,6 +61,15 @@ const GroupInfo = () => {
   const searchBarData = {
     name: "SearchForMedicine",
     placeholder: "Search for Medicine",
+  };
+
+  const handleInputChange = (e) => {
+    const medicines = medicineList.map((medicine) => medicine.medicineName);
+    setMedicineNames(
+      medicines.filter((medicine) =>
+        medicine.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
   };
   //for the modal search
   const searchBarData2 = {
@@ -235,7 +249,21 @@ const GroupInfo = () => {
           </div>
           <div className="modal__subtitle">
             <p>Medicine</p>
-            <Searchbar data={searchBarData2} />
+            <div className="add-to-group-search-bar">
+              <input
+                type="search"
+                name={searchBarData2.name}
+                id={searchBarData2.name}
+                placeholder={searchBarData2.placeholder}
+                onChange={handleInputChange}
+              />
+              <img src={Assets.Search} alt="Search Icon" />
+            </div>
+            <div className="search-items">
+              {medicineNames.map((medicineName) => (
+                <SearchItem medicineNames={medicineName} />
+              ))}
+            </div>
           </div>
           <div className="modal__button-wrapper" onClick={addMedicineToGroup}>
             <RedButton buttonData={buttonData3} />
