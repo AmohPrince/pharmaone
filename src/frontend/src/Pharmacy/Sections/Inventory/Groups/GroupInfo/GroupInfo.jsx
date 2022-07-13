@@ -8,6 +8,7 @@ import SingleMedicineInGroup from "../SingleMedicineInGroup/SingleMedicineInGrou
 import { Searchbar } from "../../../../Components/Components";
 import { useNavigate } from "react-router-dom";
 import SearchItem from "./SearchItems/SearchItem";
+import { useUpdateLogger } from "../../../../Utilities/Updatelogger";
 
 const GroupInfo = () => {
   const {
@@ -28,9 +29,9 @@ const GroupInfo = () => {
   const [groupMedicines, setGroupMedicines] = useState([]);
   const [noOfMedicine, setNoOfMedicine] = useState(0);
   const [refetchRequired, setRefetchRequired] = useState(false);
-  const [medicineNames, setMedicineNames] = useState(
-    medicineList.map((medicine) => medicine.medicineName)
-  );
+  const [filteredMedicineList, setFilteredMedicineList] =
+    useState(medicineList);
+  const [medicinesToBeChanged, setMedicinesToBeChanged] = useState([]);
 
   const title = {
     main: `${data.groupName}(${noOfMedicine})`,
@@ -64,10 +65,11 @@ const GroupInfo = () => {
   };
 
   const handleInputChange = (e) => {
-    const medicines = medicineList.map((medicine) => medicine.medicineName);
-    setMedicineNames(
-      medicines.filter((medicine) =>
-        medicine.toLowerCase().includes(e.target.value.toLowerCase())
+    setFilteredMedicineList(
+      medicineList.filter((medicine) =>
+        medicine.medicineName
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
       )
     );
   };
@@ -133,8 +135,11 @@ const GroupInfo = () => {
     setModals(false);
   };
 
-  const addMedicineToGroup = () => {
-    console.log("Added medicine to group!");
+  const addMedicineToGroup = async () => {
+    closeAddToGroupModal();
+    for (const medicine of medicinesToBeChanged) {
+      await changeMedicineGroup(medicine.medicineId, data.groupId);
+    }
   };
 
   const deleteGroup = () =>
@@ -148,6 +153,7 @@ const GroupInfo = () => {
       .then((response) => console.log(response));
 
   const changeMedicineGroup = (medicineId, groupIdToChangeTo) => {
+    setLoading(true);
     return fetch(
       `${process.env.REACT_APP_API_ROOT_URL}/changeMedicineGroup/${medicineId}/${groupIdToChangeTo}`,
       {
@@ -157,7 +163,10 @@ const GroupInfo = () => {
         },
       }
     )
-      .then((res) => res.text())
+      .then((res) => {
+        setLoading(false);
+        return res.text();
+      })
       .then((response) => console.log(response));
   };
 
@@ -260,8 +269,11 @@ const GroupInfo = () => {
               <img src={Assets.Search} alt="Search Icon" />
             </div>
             <div className="search-items">
-              {medicineNames.map((medicineName) => (
-                <SearchItem medicineNames={medicineName} />
+              {filteredMedicineList.map((medicine) => (
+                <SearchItem
+                  medicine={medicine}
+                  medicinesToBeChanged={medicinesToBeChanged}
+                />
               ))}
             </div>
           </div>

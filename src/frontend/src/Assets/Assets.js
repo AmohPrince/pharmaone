@@ -46,8 +46,10 @@ import PageSwitcherRightDisabled from "./PageSwitcherIconRightDisabled.svg";
 import TickRound from "./TickIconRound.svg";
 import CloudError from "./CloudError.svg";
 import FourOFour from "./HTML-404-Error-Page.gif";
+import TickBox from "./icons8-tick-box.svg";
 
 export default {
+  TickBox,
   FourOFour,
   CloudError,
   TickRound,
