@@ -10,6 +10,7 @@ public class Suppliers {
     @Id
     String supplierId;
     String supplierName;
+    String supplierEmail;
 
     @OneToOne
     MedicineGroup medicineGroup;
@@ -18,9 +19,10 @@ public class Suppliers {
 
     }
 
-    public Suppliers(String supplierId, String supplierName, MedicineGroup medicineGroup) {
+    public Suppliers(String supplierId, String supplierName, String supplierEmail, MedicineGroup medicineGroup) {
         this.supplierId = supplierId;
         this.supplierName = supplierName;
+        this.supplierEmail = supplierEmail;
         this.medicineGroup = medicineGroup;
     }
 
@@ -54,5 +56,13 @@ public class Suppliers {
 
     public void setMedicineGroup(MedicineGroup medicineGroup) {
         this.medicineGroup = medicineGroup;
+    }
+
+    public String getSupplierEmail() {
+        return supplierEmail;
+    }
+
+    public void setSupplierEmail(String supplierEmail) {
+        this.supplierEmail = supplierEmail;
     }
 }

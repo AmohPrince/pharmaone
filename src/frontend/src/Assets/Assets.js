@@ -47,8 +47,10 @@ import TickRound from "./TickIconRound.svg";
 import CloudError from "./CloudError.svg";
 import FourOFour from "./HTML-404-Error-Page.gif";
 import TickBox from "./icons8-tick-box.svg";
+import Mail from "./icons8-mail-64.png";
 
 export default {
+  Mail,
   TickBox,
   FourOFour,
   CloudError,
