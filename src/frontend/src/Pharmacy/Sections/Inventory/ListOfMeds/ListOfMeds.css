@@ -53,6 +53,7 @@
 }
 .Inventory__container-body {
   height: 85%;
+  overflow-y: scroll;
 }
 .Inventory__container-titles > * {
   display: flex;
