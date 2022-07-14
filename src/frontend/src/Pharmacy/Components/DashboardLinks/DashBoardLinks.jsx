@@ -11,7 +11,7 @@ const DashBoardLinks = ({ data }) => {
   return (
     <div className="DashBoardLinks__container">
       <div className="Dashboard__links-top flex__container">
-        <p className="p__poppins">{data.groupTitle}</p>
+        <p>{data.groupTitle}</p>
 
         {data.select === true ? (
           <Select />
@@ -23,7 +23,7 @@ const DashBoardLinks = ({ data }) => {
                 setActiveTab(data.activeTab);
               }}
             >
-              <p className="p__poppins">Go to {data.linkTo}</p>
+              <p>Go to {data.linkTo}</p>
               <img src={Assets.DirectionArrows} alt="Direction Arrows" />
             </div>
           </Link>
@@ -32,12 +32,12 @@ const DashBoardLinks = ({ data }) => {
       <div className="splitterlinks" />
       <div className="Dashboard__links-bottom flex__container">
         <div className="links-bottomleft">
-          <p className="p__poppins">{data.value1}</p>
-          <p className="p__poppins">{data.text1}</p>
+          <p>{data.value1}</p>
+          <p>{data.text1}</p>
         </div>
         <div className="links-bottomright">
-          <p className="p__poppins">{data.value2}</p>
-          <p className="p__poppins">{data.text2}</p>
+          <p>{data.value2}</p>
+          <p>{data.text2}</p>
         </div>
       </div>
     </div>

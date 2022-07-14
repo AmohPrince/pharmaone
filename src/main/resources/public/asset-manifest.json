@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.f1ddce9b.css",
-    "main.js": "/static/js/main.39e92c74.js",
+    "main.css": "/static/css/main.cce2b11e.css",
+    "main.js": "/static/js/main.850e7131.js",
+    "static/media/HTML-404-Error-Page.gif": "/static/media/HTML-404-Error-Page.ef269a1054bc08e1291e.gif",
     "static/media/ManLaptop.jpeg": "/static/media/ManLaptop.9f537975c00d08d055ad.jpeg",
     "static/media/Covid.svg": "/static/media/Covid.0e62da6fa4b05da051ea1b127853be96.svg",
     "static/media/AdobeReader.svg": "/static/media/AdobeReader.8b5be759fc991568da93ec67ee858cef.svg",
@@ -45,15 +46,17 @@
     "static/media/DashboardIcon.svg": "/static/media/DashboardIcon.45629a34c7100eb48e74067422d63433.svg",
     "static/media/ChatIcon.svg": "/static/media/ChatIcon.e0fdfc01b0af59efaf67c237ec1306bc.svg",
     "static/media/Danger.svg": "/static/media/Danger.0a69713e21bf3c44b084a8e963aa593a.svg",
+    "static/media/icons8-tick-box.svg": "/static/media/icons8-tick-box.a1f3099a4ff7698915d7d7eda91124da.svg",
+    "static/media/Plus-two.svg": "/static/media/Plus-two.6dc63e8dd9c86f5f546000d5f0142491.svg",
     "static/media/Plus.svg": "/static/media/Plus.963fe5cc606008509c273107d94a0a20.svg",
     "static/media/OnlineIcon.svg": "/static/media/OnlineIcon.281fd672f244c25651769862e2cc96dc.svg",
     "static/media/Moon.svg": "/static/media/Moon.6c2ccd9cc5647dcbe9d438e06c09059e.svg",
     "static/media/Sun.svg": "/static/media/Sun.c1aa92a53bd8892c7f9cc08d62c13c12.svg",
-    "main.f1ddce9b.css.map": "/static/css/main.f1ddce9b.css.map",
-    "main.39e92c74.js.map": "/static/js/main.39e92c74.js.map"
+    "main.cce2b11e.css.map": "/static/css/main.cce2b11e.css.map",
+    "main.850e7131.js.map": "/static/js/main.850e7131.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1ddce9b.css",
-    "static/js/main.39e92c74.js"
+    "static/css/main.cce2b11e.css",
+    "static/js/main.850e7131.js"
   ]
 }

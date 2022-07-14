@@ -25,7 +25,8 @@ const Pharmacy = () => {
   const [noOfSuppliers, setNoOfSuppliers] = useState(22);
   const [noOfUsers, setNoOfUsers] = useState(44);
   const [noOfCustomers, setNoOfCustomers] = useState(4);
-  const [frequentlyBoughtItem, setFrequentlyBoughtItem] = useState("Weed");
+  const [frequentlyBoughtItem, setFrequentlyBoughtItem] =
+    useState("Ixabepillalone");
   const [payments, setPayments] = useState(0);
   const [medicineList, setMedicineList] = useState([]);
   const [groupsList, setGroupsList] = useState([]);
@@ -380,7 +381,7 @@ const Pharmacy = () => {
               </div>
               <RightTab />
               <div className="Pharmacy__powered flex space-between">
-                <p>Powered by Cash © 2022 </p>
+                <p>Powered by Group 12 © 2022 </p>
                 <p>v1.12</p>
               </div>
             </dataFlowContext.Provider>
