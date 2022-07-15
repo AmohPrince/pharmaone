@@ -12,10 +12,11 @@ public class Medicine {
     String medicineId;
     String medicineName;
     int inStock;
-    String lifetimeSupply;
-    String lifetimeSales;
+    int lifetimeSupply;
+    int lifetimeSales;
     String howToUse;
     String sideEffects;
+    int price;
 
     @OneToOne
     MedicineGroup medicineGroup;
@@ -24,7 +25,7 @@ public class Medicine {
 
     }
 
-    public Medicine(String medicineId, String medicineName, int inStock, String lifetimeSupply, String lifetimeSales, String howToUse, String sideEffects, int groupId) {
+    public Medicine(String medicineId, String medicineName, int inStock, int lifetimeSupply, int lifetimeSales, String howToUse, String sideEffects, int groupId , int price) {
         this.medicineId = medicineId;
         this.medicineName = medicineName;
         this.inStock = inStock;
@@ -33,6 +34,7 @@ public class Medicine {
         this.howToUse = howToUse;
         this.sideEffects = sideEffects;
         this.medicineGroup = new MedicineGroup( groupId, "" ,"");
+        this.price = price;
     }
 
     public String getMedicineName() {
@@ -59,19 +61,19 @@ public class Medicine {
         this.inStock = inStock;
     }
 
-    public String getLifetimeSupply() {
+    public int getLifetimeSupply() {
         return lifetimeSupply;
     }
 
-    public void setLifetimeSupply(String lifetimeSupply) {
+    public void setLifetimeSupply(int lifetimeSupply) {
         this.lifetimeSupply = lifetimeSupply;
     }
 
-    public String getLifetimeSales() {
+    public int getLifetimeSales() {
         return lifetimeSales;
     }
 
-    public void setLifetimeSales(String lifetimeSales) {
+    public void setLifetimeSales(int lifetimeSales) {
         this.lifetimeSales = lifetimeSales;
     }
 
@@ -99,6 +101,14 @@ public class Medicine {
         this.medicineGroup = medicineGroup;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Medicine{" +
@@ -109,6 +119,7 @@ public class Medicine {
                 ", lifetimeSales='" + lifetimeSales + '\'' +
                 ", howToUse='" + howToUse + '\'' +
                 ", sideEffects='" + sideEffects + '\'' +
+                ", price=" + price +
                 ", medicineGroup=" + medicineGroup +
                 '}';
     }

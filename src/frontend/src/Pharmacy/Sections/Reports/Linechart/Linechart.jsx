@@ -26,19 +26,21 @@ const Linechart = ({ selectedUserName, selectedGroup }) => {
   const saleDatesForChart = () =>
     setLabels(salesList.map((sale) => sale.saleDate));
 
-  const filterByGroups = () => {
-    if (selectedGroup === "All Groups") {
-      return;
-    } else {
-      const filteredSalesList = salesList.filter(
-        (sale) => sale.medicine.medicineGroup.groupName === selectedGroup
-      );
-      setLabels(filteredSalesList.map((sale) => sale.saleDate));
-      setAmountValues(filteredSalesList.map((sale) => sale.amount));
-    }
-  };
+  // const filterByGroups = () => {
+  //   if (selectedGroup === "All Groups") {
+  //     return;
+  //   } else {
+  //     const filteredSalesList = salesList.filter(
+  //       (sale) => sale.medicine.medicineGroup.groupName === selectedGroup
+  //     );
+  //     setLabels(filteredSalesList.map((sale) => sale.saleDate));
+  //     setAmountValues(filteredSalesList.map((sale) => sale.amount));
+  //   }
+  // };
 
   useUpdateLogger(salesList);
+
+  console.log(labels.map((label) => label.substring(0, 10)));
 
   useEffect(() => {
     if (selectedUserName === "All Users") {
@@ -69,7 +71,7 @@ const Linechart = ({ selectedUserName, selectedGroup }) => {
     Filler
   );
   const data = {
-    labels: labels,
+    labels: labels.map((label) => label.substring(0, 10)),
     datasets: [
       {
         label: "Sales",

@@ -3,6 +3,7 @@ package com.saludos.pharmaone.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -13,18 +14,26 @@ public class Sales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int salesId;
 
-    @Temporal(TemporalType.DATE)
-    Date saleDate;
-
-    @Temporal(TemporalType.TIME)
-    Date saleTime;
+    Timestamp saleDate;
 
     @OneToOne
     User user;
+
     BigDecimal amount;
 
     @OneToOne
     Medicine medicine;
+
+    public Sales () {
+
+    }
+
+    public Sales( User user, BigDecimal amount, Medicine medicine ,  Timestamp saleDate) {
+        this.user = user;
+        this.amount = amount;
+        this.medicine = medicine;
+        this.saleDate = saleDate;
+    }
 
     public int getSalesId() {
         return salesId;
@@ -34,20 +43,8 @@ public class Sales {
         this.salesId = salesId;
     }
 
-    public Date getSaleDate() {
+    public Timestamp getSaleDate() {
         return saleDate;
-    }
-
-    public void setSaleDate(Date saleDate) {
-        this.saleDate = saleDate;
-    }
-
-    public Date getSaleTime() {
-        return saleTime;
-    }
-
-    public void setSaleTime(Date saleTime) {
-        this.saleTime = saleTime;
     }
 
     public User getUser() {

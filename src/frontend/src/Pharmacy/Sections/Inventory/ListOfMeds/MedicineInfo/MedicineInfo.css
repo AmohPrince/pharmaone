@@ -259,3 +259,54 @@ textarea:focus {
 #inStock {
   display: none;
 }
+.sell-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  background-color: var(--white);
+  padding: 4%;
+  border-radius: 4px;
+}
+.sell-input img {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+.sell-input > input:first-of-type {
+  border-radius: 4px;
+  border: 1px solid var(--black);
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.sell-input > input:first-of-type:hover {
+  border-color: var(--border);
+}
+.sell-input > input:first-of-type:focus {
+  border-color: var(--skyBlue);
+  outline: none;
+}
+.sell-input > input:last-of-type {
+  display: block;
+}
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border-radius: 4px;
+  padding: 4%;
+  z-index: 6;
+}
+.error img:first-of-type {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.error > .danger {
+  margin-left: 45%;
+  margin-bottom: 20px;
+}

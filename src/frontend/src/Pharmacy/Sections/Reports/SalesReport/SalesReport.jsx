@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Linechart from "../Linechart/Linechart";
 import { dataFlowContext } from "../../../Pharmacy";
+import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 
 const SalesReport = () => {
   const title = {
@@ -21,6 +22,8 @@ const SalesReport = () => {
   const [value, setValue] = React.useState([null, null]);
   const [selectedUserName, setSelectedUserName] = useState("All Users");
   const [selectedGroup, setSelectedGroup] = useState("All Groups");
+
+  useUpdateLogger(salesList);
 
   return (
     <div className="Inventory__container">
@@ -110,8 +113,8 @@ const SalesReport = () => {
               <div className="flex">
                 <p>{sale.salesId}</p>
                 <div className="flex">
-                  <p>{sale.saleDate}</p>
-                  <p>{sale.saleTime}</p>
+                  <p>{sale.saleDate.substring(0, 10)}</p>
+                  <p>{sale.saleDate.substring(12, 19)}</p>
                 </div>
               </div>
             ))}

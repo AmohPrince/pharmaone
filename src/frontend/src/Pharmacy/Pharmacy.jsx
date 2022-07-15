@@ -22,8 +22,8 @@ const Pharmacy = () => {
   const [noOfGroups, setNoOfGroups] = useState(0);
   const [soldMedicine, setSoldMedicine] = useState(45);
   const [generatedInvoices, setGeneratedInvoices] = useState(13);
-  const [noOfSuppliers, setNoOfSuppliers] = useState(22);
-  const [noOfUsers, setNoOfUsers] = useState(44);
+  const [noOfSuppliers, setNoOfSuppliers] = useState(0);
+  const [noOfUsers, setNoOfUsers] = useState(0);
   const [noOfCustomers, setNoOfCustomers] = useState(4);
   const [frequentlyBoughtItem, setFrequentlyBoughtItem] =
     useState("Ixabepillalone");
@@ -42,6 +42,7 @@ const Pharmacy = () => {
   const [modals, setModals] = useState(false);
   const [loading, setLoading] = useState(false);
   const [suppliers, setSuppliers] = useState([]);
+  const [refetchRequired, setRefetchRequired] = useState(false);
 
   const toggleProfile = () => {
     const profile = document.querySelector(".User__details-showprofile");
@@ -73,14 +74,17 @@ const Pharmacy = () => {
   };
 
   const calculateTotalRevenue = () => {
-    salesList.forEach((sale) => {
-      setAmountSold((prevSaleValue) => prevSaleValue + sale.amount);
-    });
+    const totalRevenue = salesList.reduce((currentTotal, sale) => {
+      return sale.amount + currentTotal;
+    }, 0);
+
+    setAmountSold(totalRevenue);
   };
 
   useEffect(() => {
-    calculateTotalRevenue();
     setPayments(salesList.length);
+    calculateTotalRevenue();
+    setSoldMedicine(salesList.length);
   }, [salesList]);
 
   //Get all Medicine
@@ -123,6 +127,24 @@ const Pharmacy = () => {
     fetchUsers();
     fetchSuppliers();
   }, []);
+
+  useEffect(() => {
+    if (refetchRequired) {
+      fetchMedicine();
+      fetchGroups();
+      fetchSales();
+      fetchUsers();
+      fetchSuppliers();
+    }
+  }, [refetchRequired]);
+
+  useEffect(() => {
+    setNoOfSuppliers(suppliers.length);
+  }, [suppliers]);
+
+  useEffect(() => {
+    setNoOfUsers(usersList.length);
+  }, [usersList]);
 
   useEffect(() => {
     setAvailableMeds(medicineList.length);
@@ -168,6 +190,8 @@ const Pharmacy = () => {
   }, [medicineList]);
 
   const flowingData = {
+    refetchRequired,
+    setRefetchRequired,
     inventoryStatus,
     revenue,
     availableMeds,
@@ -186,7 +210,6 @@ const Pharmacy = () => {
     setSoldMedicine,
     setGeneratedInvoices,
     setNoOfSuppliers,
-    setNoOfUsers,
     setNoOfCustomers,
     setFrequentlyBoughtItem,
     getSpecificMedicineWithId,
@@ -346,6 +369,7 @@ const Pharmacy = () => {
           <Chase />
         </div>
       )}
+
       <div className="Pharmacy ">
         {/* Aside Section Begins Here */}
         <aside className="Pharmacy__sidebar">

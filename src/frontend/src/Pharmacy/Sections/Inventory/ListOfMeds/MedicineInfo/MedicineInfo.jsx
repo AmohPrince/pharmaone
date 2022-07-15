@@ -18,6 +18,8 @@ const MedicineInfo = () => {
     setActiveTab,
     setInventoryOn,
     setReportsOn,
+    refetchRequired,
+    setRefetchRequired,
   } = useContext(dataFlowContext);
 
   const [medicineName, setMedicineName] = useState(" ");
@@ -34,6 +36,9 @@ const MedicineInfo = () => {
       supplierId: "temp",
     },
   ]);
+  const [sellInput, setSellInput] = useState(false);
+  const [sellNumber, setSellNumber] = useState(0);
+  const [errors, setErrors] = useState(false);
 
   let navigate = useNavigate();
 
@@ -56,6 +61,11 @@ const MedicineInfo = () => {
     text: "Delete Medicine",
     icon: Assets.Trash,
   };
+  const buttonData3 = {
+    color: "#f0483e",
+    text: "Sell Medicine",
+    icon: Assets.Sell,
+  };
 
   const showEditModal = () => {
     setEditModal(true);
@@ -75,6 +85,15 @@ const MedicineInfo = () => {
     setOverlay(false);
   };
 
+  const showSellInput = () => {
+    setSellInput(true);
+    setOverlay(true);
+  };
+  const closeSellInput = () => {
+    setSellInput(false);
+    setOverlay(false);
+  };
+
   const fetchMedicineData = async () => {
     setLoading(true);
     await fetch(
@@ -84,6 +103,7 @@ const MedicineInfo = () => {
       .then((data) => {
         setMedicineData(data);
         setLoading(false);
+        setRefetchRequired(false);
       });
   };
 
@@ -120,6 +140,7 @@ const MedicineInfo = () => {
       .then((message) => {
         console.log(message);
         setLoading(false);
+        setRefetchRequired(true);
       })
       .catch((error) => {
         console.log(error);
@@ -152,6 +173,33 @@ const MedicineInfo = () => {
       });
   };
 
+  const sellMedicine = () => {
+    setLoading(true);
+    const remainingItems = medicineData.inStock - sellNumber;
+    closeSellInput();
+    if (Math.sign(remainingItems) === -1) {
+      setErrors(true);
+      setOverlay(true);
+    } else {
+      fetch(
+        `${process.env.REACT_APP_API_ROOT_URL}/sellMedicine/${medicineData.medicineId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ inStock: sellNumber }),
+        }
+      )
+        .then((res) => res.text())
+        .then((message) => {
+          setRefetchRequired(true);
+          console.log(message);
+          setLoading(false);
+        });
+    }
+  };
+
   const fetchMedicineSupplier = () => {
     setSupplier(
       suppliers.filter(
@@ -166,6 +214,12 @@ const MedicineInfo = () => {
     fetchMedicineName();
   }, []);
 
+  useEffect(() => {
+    if (refetchRequired) {
+      fetchMedicineData();
+    }
+  }, [refetchRequired]);
+
   return (
     <>
       <div className="padding-around Medicine__info-container ">
@@ -176,17 +230,22 @@ const MedicineInfo = () => {
               <RedButton buttonData={buttonData} />
             </div>
           </div>
-          <div
-            className="Topbar__input flex"
-            id="SearchMedicineInventoryContainer"
-          >
-            <input
-              type="search"
-              name="SearchMedicineDetails"
-              id="SearchMedicineDetails"
-              placeholder="Search in Medicine Details"
-            />
-            <img src={Assets.Search} alt="Search Icon" />
+          <div className="flex space-between">
+            <div
+              className="Topbar__input flex"
+              id="SearchMedicineInventoryContainer"
+            >
+              <input
+                type="search"
+                name="SearchMedicineDetails"
+                id="SearchMedicineDetails"
+                placeholder="Search in Medicine Details"
+              />
+              <img src={Assets.Search} alt="Search Icon" />
+            </div>
+            <div onClick={showSellInput}>
+              <RedButton buttonData={buttonData3} />
+            </div>
           </div>
         </div>
         <div className="Medicine__info-mid">
@@ -411,6 +470,41 @@ const MedicineInfo = () => {
                 </div>
               </form>
             </div>
+          </div>
+        )}
+        {sellInput && (
+          <div className="sell-input">
+            <div className="flex">
+              <p>Enter number of items to be sold</p>
+              <img
+                src={Assets.Close}
+                alt="close"
+                className="cursor"
+                onClick={closeSellInput}
+              />
+            </div>
+            <input
+              type="number"
+              onChange={(e) => {
+                setSellNumber(e.target.value);
+              }}
+            />
+            <input type="submit" onClick={sellMedicine} />
+          </div>
+        )}
+        {errors && (
+          <div className="error">
+            <img
+              src={Assets.Close}
+              alt="Close"
+              className="cursor"
+              onClick={() => {
+                setErrors(false);
+                setOverlay(false);
+              }}
+            />
+            <img src={Assets.Danger} alt="Danger" className="danger" />
+            <p>You cant sell more than you have left!</p>
           </div>
         )}
       </div>

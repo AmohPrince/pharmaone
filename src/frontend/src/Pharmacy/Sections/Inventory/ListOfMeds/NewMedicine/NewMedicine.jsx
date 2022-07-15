@@ -63,6 +63,10 @@ const NewMedicine = () => {
             <p>Medicine Id</p>
             <input {...register("medicineId")} />
           </label>
+          <label htmlFor="price">
+            <p>Price</p>
+            <input type="number" {...register("price")} />
+          </label>
         </div>
         <div className="flex space-between medicineGroup">
           <label htmlFor="medicineGroup">
