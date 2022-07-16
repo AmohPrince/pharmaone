@@ -86,3 +86,10 @@ input[type="submit"] {
 .cursor {
   cursor: pointer;
 }
+.align-center {
+  align-items: center;
+}
+.price {
+  margin-bottom: 12px;
+  font-weight: 600;
+}

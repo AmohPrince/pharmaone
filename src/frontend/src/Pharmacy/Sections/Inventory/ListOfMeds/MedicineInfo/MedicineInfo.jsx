@@ -107,6 +107,8 @@ const MedicineInfo = () => {
       });
   };
 
+  useUpdateLogger(medicineData);
+
   useEffect(() => {
     if (medicineData.length === undefined) {
       fetchMedicineSupplier();
@@ -483,12 +485,16 @@ const MedicineInfo = () => {
                 onClick={closeSellInput}
               />
             </div>
-            <input
-              type="number"
-              onChange={(e) => {
-                setSellNumber(e.target.value);
-              }}
-            />
+            <div className="flex space-between align-center">
+              <input
+                type="number"
+                onChange={(e) => {
+                  setSellNumber(e.target.value);
+                }}
+                className="number-of-items"
+              />
+              <p className="price">Ksh: {sellNumber * medicineData.price}</p>
+            </div>
             <input type="submit" onClick={sellMedicine} />
           </div>
         )}
