@@ -17,6 +17,7 @@
 aside {
   height: 100%;
   width: 25%;
+  position: relative;
 }
 .Logo__container {
   padding: 0 5%;
@@ -43,21 +44,19 @@ aside {
   justify-content: space-between;
 }
 .Topbar__input {
-  width: 50%;
-  background-color: var(--lightGrey);
-  justify-content: space-between;
-  height: 48px;
-  border-radius: 4px;
+  width: 45%;
+  position: relative;
 }
 
 .Topbar__input > input {
-  background-color: transparent;
+  background-color: var(--lightGrey);
   border: none;
   margin-left: 10px;
-  width: 90%;
-  height: 80%;
+  width: 100%;
+  height: 38px;
   font-size: 1.2rem;
   padding: 10px;
+  border-radius: 4px;
 }
 .Topbar__input > input:focus {
   outline: none;
@@ -65,40 +64,40 @@ aside {
   border-radius: 4px;
 }
 .Topbar__input > img {
-  margin-right: 10px;
-  height: 15px;
-  width: 15px;
-  object-fit: cover;
-  cursor: pointer;
+  position: absolute;
+  right: 10px;
 }
 .Topbar__input > input::-webkit-input-placeholder {
   font-size: 1rem;
   color: rgba(29, 36, 46, 0.5);
   text-align: left;
 }
-.Topbar__changelang {
+.Topbar__change-lang {
   width: 15%;
+  position: relative;
 }
-.Topbar__date {
-  width: 35%;
-}
-
-.Topbar__changelang :first-child {
+.Topbar__change-lang > img {
+  position: absolute;
+  left: 10px;
   width: 20px;
   height: 20px;
 }
-#ChangeLang {
-  border: none;
+.ChangeLang {
+  border: 1px solid transparent;
   font-size: 1rem;
+  padding-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  font-size: 12px;
 }
-.optgroup {
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+.Topbar__date {
+  width: 25%;
 }
 .Pharmacy__sidebar-body {
   background-color: var(--black2);
   height: 90%;
-  overflow: auto;
+  overflow-y: auto;
   width: 100%;
 }
 .Pharmacy__powered {
@@ -164,7 +163,14 @@ aside {
 .User__details-showprofile.active {
   display: block;
 }
-
 .Pharmacy__body {
   height: 90%;
+}
+.toggle-button {
+  outline: none;
+  border: none;
+  position: absolute;
+  bottom: 7%;
+  right: 0px;
+  transform: translateX(100%);
 }

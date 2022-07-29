@@ -371,7 +371,6 @@ const Pharmacy = () => {
       )}
 
       <div className="Pharmacy ">
-        {/* Aside Section Begins Here */}
         <aside className="Pharmacy__sidebar">
           <div className="Logo__container flex">
             <img src={Assets.Logo} alt="Logo" />
@@ -405,13 +404,17 @@ const Pharmacy = () => {
               </div>
               <RightTab />
               <div className="Pharmacy__powered flex space-between">
-                <p>Powered by Group 12 © 2022 </p>
+                <p>Powered by Saludos © 2022 </p>
                 <p>v1.12</p>
               </div>
+              <img
+                src={Assets.ToggleMenu}
+                alt="Toggle Menu"
+                className="toggle-button cursor"
+              />
             </dataFlowContext.Provider>
           </div>
         </aside>
-        {/* Right section begins here */}
         <div className="Pharmacy__right">
           <div className="Pharmacy__topbar flex">
             <div className="Topbar__input flex">
@@ -419,14 +422,14 @@ const Pharmacy = () => {
                 type="search"
                 name="Search"
                 id="Search"
-                placeholder="Search for anything here."
+                placeholder="Search for anything here..."
               />
               <img src={Assets.Search} alt="Search Icon" />
             </div>
 
-            <div className="Topbar__changelang flex ">
+            <div className="Topbar__change-lang flex ">
               <img src={Assets.Lang} alt="Language Translate Icon" />
-              <select name="ChangeLang" id="ChangeLang">
+              <select name="ChangeLang" className="ChangeLang">
                 <optgroup className="optgroup ">
                   <option value="English" className="Option">
                     English (US)

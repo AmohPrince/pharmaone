@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { useUpdateLogger } from "../../../Utilities/Updatelogger";
 import "./LineChart.css";
 import {
   Chart as ChartJS,
@@ -19,35 +18,21 @@ const Linechart = ({ selectedUserName, selectedGroup }) => {
   const { salesList } = useContext(dataFlowContext);
   const [labels, setLabels] = useState([]);
   const [amountValues, setAmountValues] = useState([]);
+  const [sales, setSales] = useState(
+    salesList.slice(salesList.length - 10, salesList.length)
+  );
 
   const amountValuesForChart = () =>
-    setAmountValues(salesList.map((sale) => sale.amount));
+    setAmountValues(sales.map((sale) => sale.amount));
 
-  const saleDatesForChart = () =>
-    setLabels(salesList.map((sale) => sale.saleDate));
-
-  // const filterByGroups = () => {
-  //   if (selectedGroup === "All Groups") {
-  //     return;
-  //   } else {
-  //     const filteredSalesList = salesList.filter(
-  //       (sale) => sale.medicine.medicineGroup.groupName === selectedGroup
-  //     );
-  //     setLabels(filteredSalesList.map((sale) => sale.saleDate));
-  //     setAmountValues(filteredSalesList.map((sale) => sale.amount));
-  //   }
-  // };
-
-  useUpdateLogger(salesList);
-
-  console.log(labels.map((label) => label.substring(0, 10)));
+  const saleDatesForChart = () => setLabels(sales.map((sale) => sale.saleDate));
 
   useEffect(() => {
     if (selectedUserName === "All Users") {
       amountValuesForChart();
       saleDatesForChart();
     } else {
-      const filteredSalesList = salesList.filter(
+      const filteredSalesList = sales.filter(
         (sale) => sale.user.userName === selectedUserName
       );
       setLabels(filteredSalesList.map((sale) => sale.saleDate));

@@ -40,10 +40,13 @@
   align-items: center;
   justify-content: center;
 }
-
 select {
   cursor: pointer;
   text-align: center;
+}
+select:focus {
+  outline: none;
+  border: 1px solid var(--skyBlue);
 }
 
 input[type="search"]::-webkit-search-cancel-button {

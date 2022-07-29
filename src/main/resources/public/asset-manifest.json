@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.5d1cc807.css",
-    "main.js": "/static/js/main.8891cb07.js",
+    "main.css": "/static/css/main.0578d735.css",
+    "main.js": "/static/js/main.c475cc7d.js",
     "static/media/HTML-404-Error-Page.gif": "/static/media/HTML-404-Error-Page.ef269a1054bc08e1291e.gif",
     "static/media/ManLaptop.jpeg": "/static/media/ManLaptop.9f537975c00d08d055ad.jpeg",
     "static/media/Covid.svg": "/static/media/Covid.0e62da6fa4b05da051ea1b127853be96.svg",
     "static/media/AdobeReader.svg": "/static/media/AdobeReader.8b5be759fc991568da93ec67ee858cef.svg",
     "static/media/Settings.svg": "/static/media/Settings.e07a7e1550063a534697d74d36c0c93b.svg",
     "static/media/Errorsuccess.svg": "/static/media/Errorsuccess.817a189a663f1022e24e5b71dd92701a.svg",
-    "static/media/Success.svg": "/static/media/Success.29ce7c4d275a6441f9588a1082646f81.svg",
-    "static/media/CloudError.svg": "/static/media/CloudError.b4372a30a6daae7366f66e82a50d5031.svg",
+    "static/media/Success.svg": "/static/media/Success.8f7c024fdd7223feae592f3c6d38252d.svg",
+    "static/media/CloudError.svg": "/static/media/CloudError.6a31a1df697570298d3ac4f290ea28c0.svg",
     "static/media/ReportsIcon.svg": "/static/media/ReportsIcon.057db8fc45f070cda8db45094661329f.svg",
-    "static/media/TickIconRound.svg": "/static/media/TickIconRound.c3af3c7d951cd2350f62854f74d19d2e.svg",
+    "static/media/TickIconRound.svg": "/static/media/TickIconRound.bfcdb0e4664289ac05edd8b604376752.svg",
     "static/media/QuestionIcon.svg": "/static/media/QuestionIcon.b83e83b501122f4c442061c6d7ba7d04.svg",
     "static/media/Trash.svg": "/static/media/Trash.669882ef906c18998ab063bfe379b96b.svg",
     "static/media/ContactManagement.svg": "/static/media/ContactManagement.fe8b79694cb0491061c70335d612e2cc.svg",
+    "static/media/CancelSearch.svg": "/static/media/CancelSearch.716cda0323b72cad8efa.svg",
     "static/media/DirectionArrows.svg": "/static/media/DirectionArrows.dbc88c01aac73f497923ac126d2f8146.svg",
     "static/media/Revenue.svg": "/static/media/Revenue.b0f46345c65af94f38f0907a14a42bd3.svg",
-    "static/media/CancelSearch.svg": "/static/media/CancelSearch.db162bfc11b48da15257.svg",
     "static/media/TopBottomArrows.svg": "/static/media/TopBottomArrows.636c597d0fc9b28d73f4d69bfe956492.svg",
     "static/media/Profile.svg": "/static/media/Profile.65f51dcd575b23ebbddd334dea468137.svg",
     "static/media/Search.svg": "/static/media/Search.61abef0b3e95754cdb341da58aedd1c1.svg",
@@ -27,9 +27,9 @@
     "static/media/LogOut.svg": "/static/media/LogOut.a2635ea0a32f844a45460c715d8203e3.svg",
     "static/media/Close.svg": "/static/media/Close.dbda4438193c784386b5921a8847bf65.svg",
     "static/media/Bell.svg": "/static/media/Bell.3b4654a2d352c13f43650076fbf8c3e6.svg",
-    "index.html": "/index.html",
     "static/media/ThreeDots.svg": "/static/media/ThreeDots.3857b34cb197b1c269307d09c7a4767a.svg",
     "static/media/Excel.svg": "/static/media/Excel.b0072078d0e4581aa4b48a7daa8abc7a.svg",
+    "index.html": "/index.html",
     "static/media/Goodhealth.svg": "/static/media/Goodhealth.a43cf4e575489a47860c713b96ef14e4.svg",
     "static/media/Inventory.svg": "/static/media/Inventory.bd1d38f1d0b85bd21d7796e90196433b.svg",
     "static/media/Penblue.svg": "/static/media/Penblue.e0c0c3a9ea89a14ee73e6ce1dbf4da4f.svg",
@@ -52,11 +52,11 @@
     "static/media/OnlineIcon.svg": "/static/media/OnlineIcon.281fd672f244c25651769862e2cc96dc.svg",
     "static/media/Moon.svg": "/static/media/Moon.6c2ccd9cc5647dcbe9d438e06c09059e.svg",
     "static/media/Sun.svg": "/static/media/Sun.c1aa92a53bd8892c7f9cc08d62c13c12.svg",
-    "main.5d1cc807.css.map": "/static/css/main.5d1cc807.css.map",
-    "main.8891cb07.js.map": "/static/js/main.8891cb07.js.map"
+    "main.0578d735.css.map": "/static/css/main.0578d735.css.map",
+    "main.c475cc7d.js.map": "/static/js/main.c475cc7d.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d1cc807.css",
-    "static/js/main.8891cb07.js"
+    "static/css/main.0578d735.css",
+    "static/js/main.c475cc7d.js"
   ]
 }

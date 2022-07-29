@@ -4,7 +4,7 @@ import "./Select.css";
 const Select = () => {
   return (
     <div className="flex__container">
-      <select name="Revenue" id="Revenue" className="p__poppins">
+      <select name="Revenue" className="Revenue">
         <option value="Jan2022">Jan 2022</option>
         <option value="Feb2022">Feb 2022</option>
         <option value="Mar2022">Mar 2022</option>

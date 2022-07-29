@@ -49,8 +49,10 @@ import FourOFour from "./HTML-404-Error-Page.gif";
 import TickBox from "./icons8-tick-box.svg";
 import Mail from "./icons8-mail-64.png";
 import Sell from "./icons8-sell-24.png";
+import ToggleMenu from "./Toggle-menu.svg";
 
 export default {
+  ToggleMenu,
   Sell,
   Mail,
   TickBox,

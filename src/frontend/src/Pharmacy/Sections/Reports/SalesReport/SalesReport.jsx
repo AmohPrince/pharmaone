@@ -95,7 +95,7 @@ const SalesReport = () => {
       </div>
       <div className="Salesreport__bottom flex__container">
         <div className="Salesreport__bottom-chart">
-          <p className="p__poppins">Sales Made</p>
+          <p className="p__poppins">Sales Made(Last 10)</p>
           <div className="Configuration__container-splitter" />
           <Linechart
             selectedUserName={selectedUserName}
