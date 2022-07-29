@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <div className="Dashboard__container">
       <div className="Dashboard__top ">
-        <div className="Dashboard__top-name flex__container">
+        <div className="Dashboard__top-name flex">
           <SectionName title={title} />
           <select name="downloadreport" className="dreport">
             <option value="" defaultValue hidden>
@@ -30,13 +30,13 @@ const Dashboard = () => {
             <option value="Pdf">PDF</option>
           </select>
         </div>
-        <div className="Dashboard__top-boxes flex__container">
+        <div className="Dashboard__top-boxes flex">
           {dataGroup.slice(0, 4).map((data) => (
             <Dashboardgrp data={data} key={data.name} />
           ))}
         </div>
       </div>
-      <div className="Dashboard__bottom flex__container">
+      <div className="Dashboard__bottom flex">
         {dataGroup2.map((data) => {
           return <DashBoardLinks data={data} key={data.groupTitle} />;
         })}

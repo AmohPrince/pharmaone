@@ -3,7 +3,7 @@
 }
 .Dashboard__top {
   background-color: var(--lightGrey);
-  padding: 1% 4%;
+  padding: 1% var(--padding-sides);
   padding-bottom: 2%;
   min-height: 53%;
 }
@@ -22,14 +22,14 @@
   font-size: 0.9rem;
 }
 .Dashboard__top-boxes {
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 30px;
 }
 .Dashboard__bottom {
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 3%;
+  padding: 3% var(--padding-sides);
   height: 47%;
 }
 .Dashboard__bottom > :first-child,

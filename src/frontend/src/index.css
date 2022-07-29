@@ -12,6 +12,8 @@
   --lightGrey: #e3ebf3;
   --border: rgb(174, 181, 187);
   --primary: #f0483e;
+  --tab-padding: 0 9% 0 5%;
+  --padding-sides: 4%;
 }
 
 * {

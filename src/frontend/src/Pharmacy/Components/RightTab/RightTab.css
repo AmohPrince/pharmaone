@@ -1,8 +1,12 @@
 .tab {
   height: calc(85% / 11);
   cursor: pointer;
-  padding: 0 9%;
+  padding: var(--tab-padding);
   position: relative;
+}
+.tab-icon {
+  width: 14px;
+  height: 14px;
 }
 .tab-name {
   color: #ffffff;

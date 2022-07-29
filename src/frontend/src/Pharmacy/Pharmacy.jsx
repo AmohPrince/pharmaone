@@ -374,9 +374,7 @@ const Pharmacy = () => {
         <aside className="Pharmacy__sidebar">
           <div className="Logo__container flex">
             <img src={Assets.Logo} alt="Logo" />
-            <div className="logo__name">
-              <p>Pharma One</p>
-            </div>
+            <p className="logo__name">Pharma One</p>
           </div>
 
           <div className="Pharmacy__sidebar-body">
@@ -387,7 +385,7 @@ const Pharmacy = () => {
                     <img src={Assets.Photo} alt="Profile Pic" />
                     <img src={Assets.OnlineIcon} alt="Online /Offline" />
                   </div>
-                  <div className="User__details-names flex-v">
+                  <div className="User__details-names">
                     <p>Subash</p>
                     <p>Super Admin</p>
                   </div>

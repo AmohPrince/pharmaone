@@ -5,13 +5,13 @@ import "./Date.css";
 
 const Date = () => {
   const [currentDate, setCurrentDate] = useState();
-  const [currentTime, setcurrentTime] = useState();
-  const [amOrPm, setamOrPm] = useState();
+  const [currentTime, setCurrentTime] = useState();
+  const [amOrPm, setAmOrPm] = useState();
 
   const setCurrents = () => {
-    setCurrentDate(moment().format("dddd D MMMM YYYY"));
-    setcurrentTime(moment().format(" h:mm:ss "));
-    setamOrPm(moment().format("a"));
+    setCurrentDate(moment().format("D MMMM YYYY"));
+    setCurrentTime(moment().format("hh:mm:ss "));
+    setAmOrPm(moment().format("a"));
   };
 
   const updateTimes = () => {
