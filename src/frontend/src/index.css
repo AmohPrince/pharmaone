@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 :root {
+  --darkBlue: #1d242e;
   --black: #0b0d1f;
   --black2: #283342;
   --red: #f0483e;
@@ -11,6 +12,7 @@
   --primaryGreen: #009099;
   --lightGrey: #e3ebf3;
   --border: rgb(174, 181, 187);
+  --bgMain: rgba(237, 241, 245, 1);
   --primary: #f0483e;
   --tab-padding: 0 9% 0 5%;
   --padding-sides: 4%;
@@ -81,8 +83,8 @@ input[type="submit"] {
   flex-direction: column;
 }
 .padding-around {
-  padding: 4%;
-  background-color: var(--lightGrey);
+  padding: var(--padding-sides);
+  background-color: var(--bgMain);
   height: 100%;
 }
 .space-between {
@@ -97,4 +99,43 @@ input[type="submit"] {
 .price {
   margin-bottom: 12px;
   font-weight: 600;
+}
+.search {
+  position: relative;
+  width: 35%;
+}
+.search > img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search > input {
+  border: 1px solid var(--darkBlue);
+  background-color: var(--lightGrey);
+  height: 38px;
+  width: 100%;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.search > input:focus {
+  outline: none;
+  border-color: var(--skyBlue);
+}
+.download-report {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--white);
+  height: 50px;
+  width: 17%;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1150px) {
+  .download-report {
+    width: 30%;
+  }
 }

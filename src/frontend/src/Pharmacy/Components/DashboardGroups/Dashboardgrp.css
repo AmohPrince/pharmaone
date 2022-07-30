@@ -30,9 +30,16 @@
   color: var(--black);
   margin-right: 10px;
 }
+
+@media screen and (max-width: 1150px) {
+  .Dashboardgrp__container {
+    width: 47%;
+    margin-bottom: 20px;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .Dashboardgrp__container {
     width: 80%;
-    margin-bottom: 20px;
   }
 }

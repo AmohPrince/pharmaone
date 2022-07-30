@@ -233,10 +233,7 @@ const MedicineInfo = () => {
             </div>
           </div>
           <div className="flex space-between">
-            <div
-              className="Topbar__input flex"
-              id="SearchMedicineInventoryContainer"
-            >
+            <div className="search">
               <input
                 type="search"
                 name="SearchMedicineDetails"

@@ -6,8 +6,7 @@
 }
 .Dashboard__links-top {
   justify-content: space-between;
-  padding: 15px;
-  padding-bottom: 0;
+  padding: 7px 20px;
 }
 .Dashboard__links-top > p {
   font-weight: 600;

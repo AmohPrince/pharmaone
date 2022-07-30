@@ -29,7 +29,7 @@ const SalesReport = () => {
     <div className="Inventory__container">
       <div className="Salesreport__top flex__container">
         <SectionName title={title} />
-        <select name="downloadreport" id="dreport" className="p__poppins">
+        <select className="download-report">
           <option value="" defaultValue hidden>
             Download Report
           </option>
@@ -39,7 +39,7 @@ const SalesReport = () => {
       </div>
       <div className="Salesreport__mid flex__container">
         <div className="Salesreport__mid-date">
-          <p className="p__poppins">Date Range</p>
+          <p>Date Range</p>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateRangePicker
               startText="Start Date"
@@ -59,11 +59,10 @@ const SalesReport = () => {
           </LocalizationProvider>
         </div>
         <div className="Salesreport__mid-medicinegroup">
-          <p className="p__poppins">Medicine Group</p>
+          <p>Medicine Group</p>
           <select
             name="selectsalesmedgroup"
             id="selectsalesmedgroup"
-            className="p__poppins"
             onChange={(e) => setSelectedGroup(e.target.value)}
           >
             <option value="" defaultValue hidden>
@@ -76,11 +75,10 @@ const SalesReport = () => {
           </select>
         </div>
         <div className="Salesreport__mid-username">
-          <p className="p__poppins">User Name</p>
+          <p>User Name</p>
           <select
             name="selectsalesusername"
             id="selectsalesusername"
-            className="p__poppins"
             onChange={(e) => setSelectedUserName(e.target.value)}
           >
             <option value="" defaultValue hidden>
@@ -95,7 +93,7 @@ const SalesReport = () => {
       </div>
       <div className="Salesreport__bottom flex__container">
         <div className="Salesreport__bottom-chart">
-          <p className="p__poppins">Sales Made(Last 10)</p>
+          <p>Sales Made(Last 10)</p>
           <div className="Configuration__container-splitter" />
           <Linechart
             selectedUserName={selectedUserName}

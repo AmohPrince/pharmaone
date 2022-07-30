@@ -14,10 +14,9 @@ import { Link } from "react-router-dom";
 
 const ListOfMeds = () => {
   const { groupNames, medicineList } = useContext(dataFlowContext);
-  const medicineListLength = medicineList.length;
   const [filteredMedicineList, setFilteredMedicineList] = useState([]);
   const [beginIndex, setBeginIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(8);
+  const [endIndex, setEndIndex] = useState(6);
   const [buttonLeftDisabled, setButtonLeftDisabled] = useState(false);
   const [buttonRightDisabled, setButtonRightDisabled] = useState(false);
 
@@ -31,7 +30,7 @@ const ListOfMeds = () => {
 
   useEffect(() => {
     filterMedicineList();
-  }, [medicineListLength, beginIndex, endIndex]);
+  }, [[], beginIndex, endIndex]);
 
   useEffect(() => {
     handleDisablingButtons();
@@ -73,11 +72,11 @@ const ListOfMeds = () => {
 
   const switchPage = (direction) => {
     if (direction === "back") {
-      setBeginIndex((prevIndex) => prevIndex - 8);
-      setEndIndex((prevIndex) => prevIndex - 8);
+      setBeginIndex((prevIndex) => prevIndex - 6);
+      setEndIndex((prevIndex) => prevIndex - 6);
     } else {
-      setEndIndex((prevIndex) => prevIndex + 8);
-      setBeginIndex((prevIndex) => prevIndex + 8);
+      setEndIndex((prevIndex) => prevIndex + 6);
+      setBeginIndex((prevIndex) => prevIndex + 6);
     }
     handleDisablingButtons();
   };
@@ -132,14 +131,11 @@ const ListOfMeds = () => {
         </Link>
       </div>
       <div className="Inventory__container-mid flex">
-        <div
-          className="Topbar__input flex"
-          id="SearchMedicineInventoryContainer"
-        >
+        <div className="search">
           <input
             type="search"
             name="SearchMedicineInventory"
-            id="SearchMedicineInventory"
+            className="search-input"
             placeholder="Search Medicine Inventory.."
             onChange={(e) => {
               filterOnSearch(e);
@@ -215,18 +211,15 @@ const ListOfMeds = () => {
       </div>
       <div className="listofmeds__footer flex">
         <p>
-          Showing {beginIndex + 1} -{" "}
-          {endIndex > filteredMedicineList.length
-            ? filteredMedicineList.length
-            : endIndex}{" "}
-          results of {filteredMedicineList.length}
+          Showing {beginIndex + 1} - {beginIndex + 6} results of{" "}
+          {medicineList.length}
         </p>
         <div className="listofmeds__footer-pageswitch flex">
           <button
             onClick={() => switchPage("back")}
             disabled={buttonLeftDisabled}
           >
-            {buttonLeftDisabled === true ? (
+            {buttonLeftDisabled ? (
               <img src={Assets.PageSwitcherLeftDisabled} alt="Change Page" />
             ) : (
               <img src={Assets.PageSwitcherLeft} alt="Change Page" />
@@ -243,7 +236,7 @@ const ListOfMeds = () => {
             onClick={() => switchPage("front")}
             disabled={buttonRightDisabled}
           >
-            {buttonRightDisabled === true ? (
+            {buttonRightDisabled ? (
               <img src={Assets.PageSwitcherRightDisabled} alt="Change Page" />
             ) : (
               <img src={Assets.PageSwitcher} alt="Change Page" />

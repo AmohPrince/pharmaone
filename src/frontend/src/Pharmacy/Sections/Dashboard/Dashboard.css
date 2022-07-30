@@ -2,24 +2,13 @@
   height: 100%;
 }
 .Dashboard__top {
-  background-color: var(--lightGrey);
+  background-color: var(--bgMain);
   padding: 1% var(--padding-sides);
   padding-bottom: 2%;
   min-height: 53%;
 }
 .Dashboard__top-name {
   justify-content: space-between;
-}
-.dreport,
-#selectmedgroup {
-  border: 0.4px solid var(--black);
-  border-radius: 4px;
-  background-color: var(--white);
-  height: 50px;
-  width: 17%;
-  text-align: center;
-  font-weight: 400;
-  font-size: 0.9rem;
 }
 .Dashboard__top-boxes {
   justify-content: space-between;
@@ -35,4 +24,10 @@
 .Dashboard__bottom > :first-child,
 .Dashboard__bottom > :nth-child(2) {
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 650px) {
+  .Dashboard__top-boxes {
+    justify-content: center;
+  }
 }

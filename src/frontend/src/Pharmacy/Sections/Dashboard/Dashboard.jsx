@@ -22,7 +22,7 @@ const Dashboard = () => {
       <div className="Dashboard__top ">
         <div className="Dashboard__top-name flex">
           <SectionName title={title} />
-          <select name="downloadreport" className="dreport">
+          <select name="downloadreport" className="download-report">
             <option value="" defaultValue hidden>
               Download Report
             </option>

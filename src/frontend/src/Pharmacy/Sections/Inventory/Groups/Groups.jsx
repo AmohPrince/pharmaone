@@ -49,16 +49,11 @@ const Groups = () => {
           <RedButton buttonData={buttonData} />
         </Link>
       </div>
-      <div
-        className="Topbar__input flex__container"
-        id="SearchMedicineInventoryContainer"
-      >
+      <div className="search">
         <input
           type="search"
           name="SearchMedicineGroups"
-          id="SearchMedicineGroups"
-          placeholder="Search Medicine Groups"
-          className="p__poppins"
+          placeholder="Search Medicine Groups..."
           onChange={searchOnInputChange}
         />
         <img src={Assets.Search} alt="Search Icon" />
